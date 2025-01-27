@@ -1,19 +1,14 @@
 ---
-title: "Intro to `lmstudio.js`"
-description: "Getting started with LM Studio's Typescript SDK"
+title: Python and Typescript SDKs
+sidebar_title: Installation
+description: "Use LM Studio's capabilities through Python and Typescript client libraries"
 index: 1
 ---
 
-`lmstudio.js` is LM Studio's Typescript SDK. It is currently in pre-release alpha, which means we are still iterating and changing APIs frequently.
+Intro about LM Studio SDKs in general and what capabilities are supported.
 
-If this doesn't concern you, you're welcome to go ahead and use `lmstudio.js` 🦾.
+How to install the python SDK
 
-```lms_notice
-`lmstudio.js` is Apache-2.0 licensed and is developed here: https://github.com/lmstudio-ai/lmstudio.js.
-```
+How to install the TS SDK
 
-<hr>
-
-The best way to learn about `lmstudio.js` is by reading the README as well as the code on the github repository.
-
-Expect this section of the documentation to evolve rapidly as we stabilize the API.
+How to get started
