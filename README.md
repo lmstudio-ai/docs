@@ -45,6 +45,7 @@ Configurations that look good:
 1. title + 1 variant
 2. no title + 2+ variants
 
+````
 ```lms_code_snippet
   variants:
     TypeScript:
@@ -64,7 +65,9 @@ Configurations that look good:
             print("hey")
             return "world"
 ```
+````
 
+````
 ```lms_code_snippet
   title: "generator.py"
   variants:
@@ -76,11 +79,13 @@ Configurations that look good:
             print("hey")
             return "world"
 ```
+````
 
 ### Horizontal Stack (HStack)
 
 Useful for placing a text block next to a code block (for example for a code explanation, or step-by-step guide)
 
+````
 ```lms_hstack
 
 # Column 1
@@ -95,3 +100,4 @@ console.log("Hello from the code block");
 Second column markdown content here
 
 ```
+````
