@@ -13,6 +13,8 @@ Content from this repo is served at [lmstudio.ai/docs](https://lmstudio.ai/docs)
 - `index.md` is a special file that is treated as the section's landing page (served on `/docs/<section>/`)
 - you can control the ordering of sections by naming them with a number prefix (e.g. `1_api`, `2_guides`, etc.)
 - you can control the ordering of articles by setting the `index` field in the frontmatter
+  - `index: -1` means "place this article at the end of the list"
+- files and folders starting with `_` are ignored
 
 ## How to add new documentation articles
 
@@ -32,9 +34,7 @@ index: 2
 
 ## Custom markdown component
 
-See examples in `_template_dont_edit.md`
-
-Notable components:
+### -> See examples in `_template_dont_edit.md`
 
 ### Multi-Language Code Snippets
 
