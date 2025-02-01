@@ -28,7 +28,7 @@ LM Studio is available for macOS, Windows, and Linux.
 
 LM Studio generally supports Apple Silicon Macs, x64/ARM64 Windows PCs, and x64 Linux PCs.
 
-Consult the [System Requirements](intro/system-requirements) page for more detailed information.
+Consult the [System Requirements](system-requirements) page for more detailed information.
 
 <hr>
 
