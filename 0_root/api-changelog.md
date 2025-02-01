@@ -1,6 +1,6 @@
 ---
 title: API Changelog
-description: Updates and new features to the LM Studio API
+description: LM Studio API Changelog - new features and updates
 index: 2
 ---
 
