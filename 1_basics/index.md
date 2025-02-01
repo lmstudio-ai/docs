@@ -35,7 +35,7 @@ Head over to the **Chat** tab, and
 
 1. Open the model loader
 2. Select one of the models you downloaded (or [sideloaded](/docs/advanced/sideload)).
-3. Optionally, choose [load configuration parameters](/docs/configuration/load)
+3. Optionally, choose load configuration parameters.
 
 <img src="/assets/docs/loader.png" data-caption="Quickly open the model loader with `cmd` + `L` on macOS or `ctrl` + `L` on Windows/Linux" />
 
