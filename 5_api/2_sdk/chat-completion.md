@@ -13,9 +13,24 @@ Explanation explanation explanation explanation explanation explanation explanat
         import lmstudio as lm
 
         llm = lm.llm()
-        response = llm.complete_stream("My name is")
-        for token in response:
+        prediction = llm.respond_stream("I have a problem, can you help?")
+        for token in prediction:
             print(token, end="", flush=True)
+        # The entire response can also be requested at once
+        response = llm.respond("I have a question, can you help?")
+
+    Python (with scoped resources):
+      language: python
+      code: |
+        import lmstudio as lm
+
+        with lm.Client() as client:
+          llm = lm.llm.get()
+          prediction = llm.respond_stream("My name is")
+          for token in prediction:
+              print(token, end="", flush=True)
+          # The entire response can also be requested at once
+          response = llm.respond("I have a question, can you help?")
 
     TypeScript:
       language: typescript
@@ -24,7 +39,7 @@ Explanation explanation explanation explanation explanation explanation explanat
 
         const client = new LMStudioClient();
         const llm = await client.llm.getAny();
-        const prediction = llm.complete("My name is");
+        const prediction = llm.respond("I have a problem, can you help?");
         for await (const { content } of prediction) {
           process.stdout.write(content);
         }
