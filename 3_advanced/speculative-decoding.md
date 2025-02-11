@@ -13,11 +13,11 @@ Speculative decoding is a technique that can substantially increase the generati
 
 ## What is speculative decoding
 
-Two models work together to perform speculative decoding:
+Speculative decoding relies on the collaboration of two models:
 - A larger, "main" model
 - A smaller, faster "draft" model
 
-During generation, the draft model rapidly proposes potential tokens (subwords), which the main model can verify faster than generating them from scratch. The main model only accepts tokens that match its own predictions, so no quality degradation, and the main model always generates one additional token after the last accepted draft token.
+During generation, the draft model rapidly proposes potential tokens (subwords), which the main model can verify faster than generating them from scratch. To maintain quality, the main model only accepts tokens that align with what it would have generated. After the last accepted draft token, the main model always generates one additional token.
 
 For a model to be used as a draft model, it must have the same "vocabulary" as the main model.
 
