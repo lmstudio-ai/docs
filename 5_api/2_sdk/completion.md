@@ -22,15 +22,15 @@ Explanation explanation explanation explanation explanation explanation explanat
     Python (with scoped resources):
       language: python
       code: |
-        import lmstudio as lm
+        import lmstudio
 
-        with lm.Client() as client:
-          llm = lm.llm.get()
-          prediction = llm.complete_stream("My name is")
-          for token in prediction:
-              print(token, end="", flush=True)
-          # The entire completion can also be requested at once
-          completion = llm.complete("I have an interest in")
+        with lmstudio.Client() as client:
+            llm = client.llm.model()
+            prediction = llm.complete_stream("My name is")
+            for token in prediction:
+                print(token, end="", flush=True)
+            # The entire completion can also be requested at once
+            completion = llm.complete("I have an interest in")
 
     TypeScript:
       language: typescript

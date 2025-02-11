@@ -17,10 +17,10 @@ Explanation explanation explanation explanation explanation explanation explanat
     Python (with scoped resources):
       language: python
       code: |
-        import lmstudio as lm
+        import lmstudio
 
-        with lm.Client() as client:
-          file_handle = lm.files.add_temp_file()
+        with lmstudio.Client() as client:
+            file_handle = client.add_temp_file()
 
     TypeScript:
       language: typescript
