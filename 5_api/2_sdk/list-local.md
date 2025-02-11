@@ -23,7 +23,6 @@ Explanation explanation explanation explanation explanation explanation explanat
 
         with lmstudio.Client() as client:
             downloaded = client.list_downloaded_models()
-            # NOTE: these don't work yet, but they will work soon
             llm_only = client.llm.list_downloaded()
             embedding_only = client.embedding.list_downloaded()
 
