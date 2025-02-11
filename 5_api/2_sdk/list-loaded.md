@@ -13,14 +13,19 @@ Explanation explanation explanation explanation explanation explanation explanat
         import lmstudio as lm
 
         downloaded = lm.list_loaded_models()
+        llm_only = lm.list_loaded_models("llm")
+        embedding_only = lm.list_loaded_models("embedding")
 
     Python (with scoped resources):
       language: python
       code: |
         import lmstudio as lm
+        import lmstudio
 
-        with lm.Client() as client:
-          downloaded = lm.system.list_loaded_models()
+        with lmstudio.Client() as client:
+            downloaded = client.list_loaded_models()
+            llm_only = client.llm.list_loaded()
+            embedding_only = client.embedding.list_loaded()
 
     TypeScript:
       language: typescript
