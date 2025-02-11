@@ -3,7 +3,14 @@ title: Get Load Config
 description: Get the load configuration of the model
 ---
 
-Explanation explanation explanation explanation explanation explanation explanation.
+LM Studio allows you to configure certain parameters when loading a model
+[through the server UI](/docs/3_advanced/per-model) or [through the API](/docs/5_api/2_sdk/load-model).
+
+You can retrieve the config with which a given model was loaded using the SDK. In the below examples, `llm` can be replaced with an embedding model `emb`.
+
+```lms_protip
+Context length is a special case that [has its own method](/docs/5_api/2_sdk/get-context-length).
+```
 
 ```lms_code_snippet
   variants:
@@ -13,7 +20,8 @@ Explanation explanation explanation explanation explanation explanation explanat
         import lmstudio as lm
 
         llm = lm.llm()
-        # TODO
+
+        load_config = llm.get_load_config()
 
     Python (with scoped resources):
       language: python
@@ -22,7 +30,8 @@ Explanation explanation explanation explanation explanation explanation explanat
 
         with lmstudio.Client() as client:
             llm = client.llm.model()
-            # TODO
+
+            load_config = llm.get_load_config()
 
     TypeScript:
       language: typescript
@@ -31,6 +40,6 @@ Explanation explanation explanation explanation explanation explanation explanat
 
         const client = new LMStudioClient();
         const llm = await client.llm.model();
-        // TODO
 
+        load_config = await llm.get_load_config()
 ```

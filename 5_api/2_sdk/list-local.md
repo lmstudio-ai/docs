@@ -1,9 +1,10 @@
 ---
 title: List Local Models
-description: Query which models are currently loaded
+description: Query which models are currently downloaded
 ---
 
-Explanation explanation explanation explanation explanation explanation explanation.
+You can see which models have been downloaded to the machine running LM Studio
+using the SDK, so that you can load them for inference.
 
 ```lms_code_snippet
   variants:
@@ -33,5 +34,4 @@ Explanation explanation explanation explanation explanation explanation explanat
 
         const client = new LMStudioClient();
         // TODO
-
 ```

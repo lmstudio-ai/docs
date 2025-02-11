@@ -3,7 +3,11 @@ title: Embedding
 description: Generate text embeddings from input text
 ---
 
-Explanation explanation explanation explanation explanation explanation explanation.
+Once you have [downloaded and loaded](/docs/1_basics/index) an embedding model,
+you can use it to create semantic representations of text for applications like
+[RAG](/docs/1_basics/rag).
+
+To embed a string or list of strings, use the `embed` method on the corresponding embedding model handle.
 
 ```lms_code_snippet
   variants:
@@ -12,8 +16,12 @@ Explanation explanation explanation explanation explanation explanation explanat
       code: |
         import lmstudio as lm
 
-        model = lm.embedding_model()
-        # TODO
+        emb = lm.embedding_model()
+
+        embedding = emb.embed("Hello, world!")
+
+        # You can also pass an iterable of strings
+        embeddings = emb.embed(["Hello, world!", "Goodbye, world!"])
 
     Python (with scoped resources):
       language: python
@@ -21,8 +29,13 @@ Explanation explanation explanation explanation explanation explanation explanat
         import lmstudio
 
         with lmstudio.Client() as client:
-            model = client.embedding.model()
-            # TODO
+
+            emb = client.embedding.model()
+
+            embedding = emb.embed("Hello, world!")
+
+            # You can also pass an iterable of strings
+            embeddings = emb.embed(["Hello, world!", "Goodbye, world!"])
 
     TypeScript:
       language: typescript
@@ -30,7 +43,8 @@ Explanation explanation explanation explanation explanation explanation explanat
         import { LMStudioClient } from "@lmstudio/sdk";
 
         const client = new LMStudioClient();
-        const model = await client.embedding.model();
-        // TODO
+        const emb = await client.embedding.model();
 
+        const { embedding } = await emb.embed("Hello, world!");
+        // TODO: iterable of strings
 ```

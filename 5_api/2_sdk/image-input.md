@@ -3,7 +3,15 @@ title: Image Input
 description: Provide an image as input to the models capable of processing images
 ---
 
-Explanation explanation explanation explanation explanation explanation explanation.
+Once you have [downloaded and loaded](/docs/1_basics/index) a large language model,
+you can use it to respond to input through the API. This article covers chatting about images with a vision-language model, but you can also
+[request text completions](/docs/5_api/2_sdk/completion),
+[request chat responses](/docs/5_api/2_sdk/chat-completion), and
+[get JSON structured output for programmatic use](/docs/5_api/2_sdk/structured-response).
+
+Vision-language models (VLMs) are LLMs that can also accept image input
+to describe and chat with images. You can upload images to conversations
+with the SDK and chat with them using the `respond` method on a VLM handle.
 
 ```lms_code_snippet
   variants:

@@ -3,7 +3,8 @@ title: Get Model Info
 description: Get information about the model
 ---
 
-Explanation explanation explanation explanation explanation explanation explanation.
+You can get some information about a given model using the SDK: the model's default `identifier`
+and the `path` used to [load it](/docs/5_api/2_sdk/load-model). In the below examples, `llm` can be replaced with an embedding model `emb`.
 
 ```lms_code_snippet
   variants:
@@ -13,7 +14,8 @@ Explanation explanation explanation explanation explanation explanation explanat
         import lmstudio as lm
 
         llm = lm.llm()
-        # TODO
+
+        model_info = llm.get_info()
 
     Python (with scoped resources):
       language: python
@@ -22,7 +24,8 @@ Explanation explanation explanation explanation explanation explanation explanat
 
         with lmstudio.Client() as client:
             llm = client.llm.model()
-            # TODO
+
+            model_info = llm.get_info()
 
     TypeScript:
       language: typescript
@@ -31,6 +34,6 @@ Explanation explanation explanation explanation explanation explanation explanat
 
         const client = new LMStudioClient();
         const llm = await client.llm.model();
-        // TODO
 
+        model_info = await llm.get_info()
 ```

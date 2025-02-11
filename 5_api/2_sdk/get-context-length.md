@@ -3,7 +3,16 @@ title: Get Context Length
 description: Get the context length of the model
 ---
 
-Explanation explanation explanation explanation explanation explanation explanation.
+Because a model cannot respond to prompts longer than its context length, it can be useful
+to know what the context length of your model is.
+
+You can obtain the context length of a loaded LLM or embedding model using the SDK. In the below examples, `llm` can be replaced with an embedding model `emb`.
+
+```lms_protip
+To check whether a conversation is over the context limit for a model,
+use this in conjunction with [tokenization](/docs/5_api/2_sdk/tokenization)
+(see that page).
+```
 
 ```lms_code_snippet
   variants:
@@ -13,7 +22,8 @@ Explanation explanation explanation explanation explanation explanation explanat
         import lmstudio as lm
 
         llm = lm.llm()
-        # TODO
+
+        context_length = llm.get_context_length()
 
     Python (with scoped resources):
       language: python
@@ -22,7 +32,8 @@ Explanation explanation explanation explanation explanation explanation explanat
 
         with lmstudio.Client() as client:
             llm = client.llm.model()
-            # TODO
+
+            context_length = llm.get_context_length()
 
     TypeScript:
       language: typescript
@@ -31,6 +42,5 @@ Explanation explanation explanation explanation explanation explanation explanat
 
         const client = new LMStudioClient();
         const llm = await client.llm.model();
-        // TODO
-
+        const context_length = await llm.get_context_length();
 ```
