@@ -17,9 +17,9 @@ Two models work together to perform speculative decoding:
 - A larger, "main" model
 - A smaller, faster "draft" model
 
-At each step during generation, the draft model guides the main model by quickly drafting potential next tokens (subwords) for the main model to accept or reject. The main model can accept or reject tokens faster than it could predict those tokens on its own. However, the main model will not accept tokens that it wouldn't have predicted on its own.
+During generation, the draft model rapidly proposes potential tokens (subwords), which the main model can verify faster than generating them from scratch. The main model only accepts tokens that match its own predictions, so no quality degradation, and the main model always generates one additional token after the last accepted draft token.
 
-The draft must have the same vocabulary as the main model to be compatible.
+For a model to be used as a draft model, it must have the same "vocabulary" as the main model.
 
 ## How to enable speculative decoding
 
@@ -32,7 +32,7 @@ If you see the following when you open the dropdown:
 
 <img src="/assets/docs/speculative-decoding-no-compatible.png" style="width:40%; margin: 20px;" data-caption="No compatible draft models">
 
-Download a smaller parameter version of the model you have loaded, if it exists. If no smaller versions of your model exist, find a pairing that does. For example:
+Download a lower parameter variant of the model you have loaded, if it exists. If no smaller versions of your model exist, find a pairing that does. For example:
 
 <center style="margin: 20px;">
 
