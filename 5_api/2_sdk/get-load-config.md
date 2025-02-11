@@ -18,11 +18,11 @@ Explanation explanation explanation explanation explanation explanation explanat
     Python (with scoped resources):
       language: python
       code: |
-        import lmstudio as lm
+        import lmstudio
 
-        with lm.Client() as client:
-          llm = lm.llm.get()
-          # TODO
+        with lmstudio.Client() as client:
+            llm = client.llm.model()
+            # TODO
 
     TypeScript:
       language: typescript
@@ -30,7 +30,7 @@ Explanation explanation explanation explanation explanation explanation explanat
         import { LMStudioClient } from "@lmstudio/sdk";
 
         const client = new LMStudioClient();
-        const llm = await client.llm.getAny();
+        const llm = await client.llm.model();
         // TODO
 
 ```
