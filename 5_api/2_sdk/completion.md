@@ -38,7 +38,7 @@ Explanation explanation explanation explanation explanation explanation explanat
         import { LMStudioClient } from "@lmstudio/sdk";
 
         const client = new LMStudioClient();
-        const llm = await client.llm.getAny();
+        const llm = await client.llm.model();
         const prediction = llm.complete("My name is");
         for await (const { content } of prediction) {
           process.stdout.write(content);
