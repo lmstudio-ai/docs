@@ -95,5 +95,5 @@ Prompt: "Write a story that begins: 'The door creaked open...'"
 
 In this case, the smaller model's draft tokens are likely be rejected more often by the larger model, as each next word could branch into countless valid possibilities. 
 
-While "4" is the only reasonable answer to "2+2", this story could continue with revealing a monster", "as the wind howled", "and Sarah froze", or hundreds of other perfectly valid continuations, making the smaller model's specific word predictions much less likely to match the larger
+While "4" is the only reasonable answer to "2+2", this story could continue with "revealing a monster", "as the wind howled", "and Sarah froze", or hundreds of other perfectly valid continuations, making the smaller model's specific word predictions much less likely to match the larger
 model's choices.
