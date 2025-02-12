@@ -3,12 +3,12 @@ title: Chat Completion
 description: Provide a chat context for the model to respond to
 ---
 
-Once you have [downloaded and loaded](/docs/1_basics/index) a large language model,
+Once you have [downloaded and loaded](/docs/basics/index) a large language model,
 you can use it to respond to input through the API. This article covers generating text
 from a prompt or conversation like the in-app chat UI, but you can also
-[request text completions](/docs/5_api/2_sdk/completion),
-[use a vision-language model to chat about images](/docs/5_api/2_sdk/image-input), and
-[get JSON structured output for programmatic use](/docs/5_api/2_sdk/structured-response).
+[request text completions](/docs/api/sdk/completion),
+[use a vision-language model to chat about images](/docs/api/sdk/image-input), and
+[get JSON structured output for programmatic use](/docs/api/sdk/structured-response).
 
 To get a response to a simple prompt from a loaded LLM, use
 the `respond` method on a the corresponding LLM handle.
@@ -63,7 +63,7 @@ the `respond` method on a the corresponding LLM handle.
 ```
 
 For more complicated conversations, use a `Chat` to handle message history.
-A `Chat` can track system prompts, user messages, and assistant responses, as well as [files and images](/docs/5_api/2_sdk/image-input).
+A `Chat` can track system prompts, user messages, and assistant responses, as well as [files and images](/docs/api/sdk/image-input).
 
 ```lms_code_snippet
   variants:
@@ -74,10 +74,9 @@ A `Chat` can track system prompts, user messages, and assistant responses, as we
 
         llm = lm.llm()
         chat = lm.Chat("This is the system prompt!")
-        chat.add_user_message("What is LM Studio?)
+        chat.add_user_message("What is LM Studio?")
 
         response = llm.respond(chat)
-        # TODO do you need .content?
         chat.add_assistant_response(response.content)
 
     Python (with scoped resources):
@@ -88,22 +87,23 @@ A `Chat` can track system prompts, user messages, and assistant responses, as we
         with lmstudio.Client() as client:
             llm = client.llm.model()
             chat = lmstudio.Chat("This is the system prompt!")
-            chat.add_user_message("What is LM Studio?)
+            chat.add_user_message("What is LM Studio?")
 
             response = llm.respond(chat)
-            # TODO do you need .content?
             chat.add_assistant_response(response.content)
 
     TypeScript:
       language: typescript
       code: |
-        import { LMStudioClient } from "@lmstudio/sdk";
+        import { LMStudioClient, Chat } from "@lmstudio/sdk";
 
         const client = new LMStudioClient();
         const llm = await client.llm.model();
+        const chat = Chat.createEmpty()
+          .withAppended("system", "This is the system prompt!")
+          .withAppended("user", "What is LM Studio?");
 
-        // TODO how do you do Chats in typescript
-        const prediction = llm.respond("What is LM Studio?");
+        const prediction = llm.respond(chat);
         for await (const { content } of prediction) {
           process.stdout.write(content);
         }
@@ -111,7 +111,7 @@ A `Chat` can track system prompts, user messages, and assistant responses, as we
 
 ## Advanced Usage
 
-### Using JSON chat histories in Python
+### Using JSON chat histories
 
 If you have an external chat history formatted in JSON like
 
@@ -124,12 +124,12 @@ chat_history = {
 }
 ```
 
-you can load this directly into Python using `Chat.from_history(chat_history)`.
+you can load this directly into Python using `Chat.from_history(chat_history)`, or into TypeScript using `Chat.from(chat_history)`.
 
 ### Prediction metadata
 
-TODO - copy from chat completion
+TODO
 
 ### Prediction configuration
 
-TODO - copy from chat completion
+TODO

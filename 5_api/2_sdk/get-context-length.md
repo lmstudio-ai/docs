@@ -10,7 +10,7 @@ You can obtain the context length of a loaded LLM or embedding model using the S
 
 ```lms_protip
 To check whether a conversation is over the context limit for a model,
-use this in conjunction with [tokenization](/docs/5_api/2_sdk/tokenization)
+use this in conjunction with [tokenization](/docs/api/sdk/tokenization)
 (see that page).
 ```
 
@@ -42,5 +42,5 @@ use this in conjunction with [tokenization](/docs/5_api/2_sdk/tokenization)
 
         const client = new LMStudioClient();
         const llm = await client.llm.model();
-        const context_length = await llm.get_context_length();
+        const contextLength = await llm.getContextLength();
 ```

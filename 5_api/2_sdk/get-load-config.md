@@ -4,12 +4,12 @@ description: Get the load configuration of the model
 ---
 
 LM Studio allows you to configure certain parameters when loading a model
-[through the server UI](/docs/3_advanced/per-model) or [through the API](/docs/5_api/2_sdk/load-model).
+[through the server UI](/docs/advanced/per-model) or [through the API](/docs/api/sdk/load-model).
 
 You can retrieve the config with which a given model was loaded using the SDK. In the below examples, `llm` can be replaced with an embedding model `emb`.
 
 ```lms_protip
-Context length is a special case that [has its own method](/docs/5_api/2_sdk/get-context-length).
+Context length is a special case that [has its own method](/docs/api/sdk/get-context-length).
 ```
 
 ```lms_code_snippet
@@ -41,5 +41,5 @@ Context length is a special case that [has its own method](/docs/5_api/2_sdk/get
         const client = new LMStudioClient();
         const llm = await client.llm.model();
 
-        load_config = await llm.get_load_config()
+        loadConfig = await llm.getLoadConfig()
 ```

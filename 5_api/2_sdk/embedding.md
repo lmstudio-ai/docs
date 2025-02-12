@@ -3,9 +3,9 @@ title: Embedding
 description: Generate text embeddings from input text
 ---
 
-Once you have [downloaded and loaded](/docs/1_basics/index) an embedding model,
+Once you have [downloaded and loaded](/docs/basics/index) an embedding model,
 you can use it to create semantic representations of text for applications like
-[RAG](/docs/1_basics/rag).
+[RAG](/docs/basics/rag).
 
 To embed a string or list of strings, use the `embed` method on the corresponding embedding model handle.
 

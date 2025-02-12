@@ -33,6 +33,7 @@ so that you can access them for inference or unload them.
         import { LMStudioClient } from "@lmstudio/sdk";
 
         const client = new LMStudioClient();
-        // TODO
 
+        const llmOnly = await client.llm.listLoaded();
+        const embeddingOnly = await client.embedding.listLoaded();
 ```

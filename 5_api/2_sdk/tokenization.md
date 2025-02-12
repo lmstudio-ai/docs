@@ -95,9 +95,20 @@ The below examples check whether a conversation is over a LLM's context length
     TypeScript:
       language: typescript
       code: |
-        import { LMStudioClient } from "@lmstudio/sdk";
+        import { LMStudioClient, Chat } from "@lmstudio/sdk";
 
         const client = new LMStudioClient();
         const llm = await client.llm.model();
-        // TODO what are the equivalents for typescript
+
+        // To check for a string, simply tokenize
+        var tokens = await llm.tokenize("Hello, world!");
+
+        // To check for a Chat, apply the prompt template first
+        const chat = Chat.createEmpty().withAppended("user", "Hello, world!");
+        const templatedChat = await llm.applyPromptTemplate(chat);
+        tokens = await llm.tokenize(templatedChat);
+
+        // If the prompt's length in tokens is less than the context length, you're good!
+        const contextLength = await llm.getContextLength()
+        const isOkay = (tokens.length < contextLength)
 ```

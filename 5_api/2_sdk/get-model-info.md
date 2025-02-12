@@ -4,7 +4,7 @@ description: Get information about the model
 ---
 
 You can get some information about a given model using the SDK: the model's default `identifier`
-and the `path` used to [load it](/docs/5_api/2_sdk/load-model). In the below examples, `llm` can be replaced with an embedding model `emb`.
+and the `path` used to [load it](/docs/api/sdk/load-model). In the below examples, `llm` can be replaced with an embedding model `emb`.
 
 ```lms_code_snippet
   variants:
@@ -35,5 +35,5 @@ and the `path` used to [load it](/docs/5_api/2_sdk/load-model). In the below exa
         const client = new LMStudioClient();
         const llm = await client.llm.model();
 
-        model_info = await llm.get_info()
+        model_info = await llm.getInfo()
 ```

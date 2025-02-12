@@ -33,5 +33,8 @@ using the SDK, so that you can load them for inference.
         import { LMStudioClient } from "@lmstudio/sdk";
 
         const client = new LMStudioClient();
-        // TODO
+
+        const downloaded = client.system.listDownloadedModels();
+        const llmOnly = downloaded.filter((model) => model.type === "llm");
+        const embeddingOnly = downloaded.filter((model) => model.type === "embedding");
 ```

@@ -3,12 +3,12 @@ title: Text Completion
 description: "Provide a string input for the model to complete"
 ---
 
-Once you have [downloaded and loaded](/docs/1_basics/index) a large language model,
+Once you have [downloaded and loaded](/docs/basics/index) a large language model,
 you can use it to respond to input through the API. This article covers generating simple
 string completions, but you can also
-[request chat responses](/docs/5_api/2_sdk/chat-completion),
-[use a vision-language model to chat about images](/docs/5_api/2_sdk/image-input), and
-[get JSON structured output for programmatic use](/docs/5_api/2_sdk/structured-response).
+[request chat responses](/docs/api/sdk/chat-completion),
+[use a vision-language model to chat about images](/docs/api/sdk/image-input), and
+[get JSON structured output for programmatic use](/docs/api/sdk/structured-response).
 
 To get a simple string completion from a loaded LLM, e.g. "The cat in the" -> "hat",
 use the `complete` method on the corresponding LLM handle.
