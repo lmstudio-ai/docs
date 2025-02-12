@@ -3,7 +3,7 @@ title: Per-model Defaults
 description: You can set default settings for each model in LM Studio
 ---
 
-`Advanced - Power User`
+`Advanced`
 
 You can set default load settings for each model in LM Studio.
 
