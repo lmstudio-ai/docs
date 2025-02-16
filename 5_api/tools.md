@@ -57,7 +57,7 @@ Tool use describes:
 
 ### High-level flow
 
-```plaintext
+```xml
 ┌──────────────────────────┐
 │ SETUP: LLM + Tool list   │
 └──────────┬───────────────┘
@@ -151,7 +151,7 @@ We will use [lmstudio-community/Qwen2.5-7B-Instruct-GGUF](https://model.lmstudio
 
    - (a) Call one or more tools
 
-   ```plaintext
+   ```xml
    User: Get me the delivery date for order 123
    Model: <tool_call>
    {"name": "get_delivery_date", "arguments": {"order_id": "123"}}
@@ -160,7 +160,7 @@ We will use [lmstudio-community/Qwen2.5-7B-Instruct-GGUF](https://model.lmstudio
 
    - (b) Respond normally
 
-   ```plaintext
+   ```xml
    User: Hi
    Model: Hello! How can I assist you today?
    ```
@@ -171,7 +171,7 @@ We will use [lmstudio-community/Qwen2.5-7B-Instruct-GGUF](https://model.lmstudio
    - If LM Studio cannot parse any **correctly formatted** tool calls, it will simply return the response to the standard `response.choices[0].message.content` field.
    - **Note**: Smaller models and models that were not trained for tool use may output improperly formatted tool calls, resulting in LM Studio being unable to parse them into the `tool_calls` field. This is useful for troubleshooting when you do not receive `tool_calls` as expected. Example of an improperly formatting `Qwen2.5-Instruct` tool call:
 
-   ```plaintext
+   ```xml
    <tool_call>
    ["name": "get_delivery_date", function: "date"]
    </tool_call>
@@ -226,7 +226,7 @@ We will use [lmstudio-community/Qwen2.5-7B-Instruct-GGUF](https://model.lmstudio
    )
    ```
    The `response.choices[0].message.content` field after this call may be something like:
-   ```plaintext
+   ```xml
    Your order #123 will be delivered on March 15th, 2024
    ```
 6. The loop continues back at step 2 of the flow
@@ -285,7 +285,7 @@ You can see the default format by running `lms log stream` in your terminal, the
 <details>
 <summary>Expand to see example of default tool use format</summary>
 
-```plaintext
+```bash
 -> % lms log stream
 Streaming logs from LM Studio
 
@@ -519,7 +519,7 @@ say_hello(name) # Prints: Hello, Bob the Builder!
 
 Running this script from the console should yield results like:
 
-```text
+```xml
 -> % python single-turn-example.py
 Hello, Bob the Builder!
 ```
@@ -667,7 +667,7 @@ print(response.choices[0].message.content, flush=True)
 
 Running this script from the console should yield results like:
 
-```text
+```xml
 -> % python multi-turn-example.py
 
 Model response requesting tool call:
@@ -987,7 +987,7 @@ if __name__ == "__main__":
 
 Running this script from the console will allow you to chat with the agent:
 
-```text
+```xml
 -> % python agent-example.py
 Assistant: Hello! I can help you open safe web links, tell you the current time, and analyze directory contents. What would you like me to do?
 (Type 'quit' to exit)
@@ -1030,7 +1030,7 @@ When streaming through `/v1/chat/completions` (`stream=true`), tool calls are se
 
 For example, to call `get_current_weather(location="San Francisco")`, the streamed `ChoiceDeltaToolCall` in each `chunk.choices[0].delta.tool_calls[0]` object will look like:
 
-```text
+```py
 ChoiceDeltaToolCall(index=0, id='814890118', function=ChoiceDeltaToolCallFunction(arguments='', name='get_current_weather'), type='function')
 ChoiceDeltaToolCall(index=0, id=None, function=ChoiceDeltaToolCallFunction(arguments='{"', name=None), type=None)
 ChoiceDeltaToolCall(index=0, id=None, function=ChoiceDeltaToolCallFunction(arguments='location', name=None), type=None)
@@ -1172,7 +1172,7 @@ if __name__ == "__main__":
 
 You can chat with the bot by running this script from the console:
 
-```text
+```xml
 -> % python tool-streaming-chatbot.py
 Assistant: Hi! I am an AI agent empowered with the ability to tell the current time (Type 'quit' to exit)
 
