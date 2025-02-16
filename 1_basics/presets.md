@@ -52,13 +52,13 @@ Presets are stored in the following directory:
 
 #### macOS or Linux
 
-```plaintext
+```xml
 ~/.lmstudio/config-presets
 ```
 
 #### Windows
 
-```plaintext
+```xml
 %USERPROFILE%\.lmstudio\config-presets
 ```
 

@@ -24,7 +24,7 @@ lms import <path/to/model.gguf>
 
 LM Studio aims to preserves the directory structure of models downloaded from Hugging Face. The expected directory structure is as follows:
 
-```plaintext
+```xml
 ~/.lmstudio/models/
 └── publisher/
     └── model/
@@ -33,7 +33,7 @@ LM Studio aims to preserves the directory structure of models downloaded from Hu
 
 For example, if you have a model named `ocelot-v1` published by `infra-ai`, the structure would look like this:
 
-```plaintext
+```xml
 ~/.lmstudio/models/
 └── infra-ai/
     └── ocelot-v1/
