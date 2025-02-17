@@ -11,7 +11,7 @@ Starting in v[0.3.5](/blog/lmstudio-v0.3.5), LM Studio can be run as a service w
 
 <hr>
 
-### Run LM Studio as a service
+## Run LM Studio as a service
 
 Running LM Studio as a service consists of several new features intended to make it more efficient to use LM Studio as a developer tool.
 
@@ -21,7 +21,7 @@ Running LM Studio as a service consists of several new features intended to make
 
 <hr>
 
-### Run the LLM service on machine login
+## Run the LLM service on machine login
 
 To enable this, head to app settings (`Cmd` / `Ctrl` + `,`) and check the box to run the LLM server on login.
 
@@ -31,7 +31,7 @@ When this setting is enabled, exiting the app will minimize it to the system tra
 
 <hr>
 
-### Just-In-Time (JIT) model loading for OpenAI endpoints
+## Just-In-Time (JIT) model loading
 
 Useful when utilizing LM Studio as an LLM service with other frontends or applications.
 
@@ -39,20 +39,23 @@ Useful when utilizing LM Studio as an LLM service with other frontends or applic
 
 <hr>
 
-#### When JIT loading is ON:
+### When JIT loading is ON:
 
 - Call to `/v1/models` will return all downloaded models, not only the ones loaded into memory
 - Calls to inference endpoints will load the model into memory if it's not already loaded
 
-#### When JIT loading is OFF:
+### When JIT loading is OFF:
 
 - Call to `/v1/models` will return only the models loaded into memory
 - You have to first load the model into memory before being able to use it
 
-##### What about auto unloading?
+### Idle TTL and Auto-Evict
 
-As of LM Studio 0.3.5, auto unloading is not yet in place. Models that are loaded via JIT loading will remain in memory until you unload them.
-We expect to implement more sophisticated memory management in the near future. Let us know if you have any feedback or suggestions.
+The counterpart to loading models on-demand is unloading them from memory at the right time.
+
+LM Studio 0.3.9 introduces TTL (unload after some time) and Auto-Evict (limit how many JIT models are loaded at one time).
+
+Read about [Idle TTL and Auto-Evict](/docs/api/ttl-and-auto-evict).
 
 <hr>
 
