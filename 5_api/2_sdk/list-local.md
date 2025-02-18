@@ -3,8 +3,10 @@ title: List Local Models
 description: Query which models are currently downloaded
 ---
 
+## Overview
+
 You can see which models have been downloaded to the machine running LM Studio
-using the SDK, so that you can load them for inference.
+using the SDK, so that you can [load them](/docs/api/sdk/load-and-access-models) for inference.
 
 ```lms_code_snippet
   variants:

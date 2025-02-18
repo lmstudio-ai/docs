@@ -3,11 +3,15 @@ title: Embedding
 description: Generate text embeddings from input text
 ---
 
+## Overview
+
 Once you have [downloaded and loaded](/docs/basics/index) an embedding model,
 you can use it to create semantic representations of text for applications like
 [RAG](/docs/basics/rag).
 
-To embed a string or list of strings, use the `embed` method on the corresponding embedding model handle.
+### Usage
+
+To embed a string or list of strings, pass it to the `embed` method on the corresponding embedding model handle.
 
 ```lms_code_snippet
   variants:

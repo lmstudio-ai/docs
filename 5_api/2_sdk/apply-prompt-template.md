@@ -3,8 +3,12 @@ title: Apply Prompt Template
 description: Apply a model's built-in prompt template to a conversation
 ---
 
+## Overview
+
 To continue conversations, LLMs internally apply a prompt template to convert them into strings
 that they can deal with more easily. LM Studio exposes this templater for utility.
+
+### Usage
 
 You can apply a loaded LLM's prompt template to a `Chat` or JSON conversation history using the SDK.
 

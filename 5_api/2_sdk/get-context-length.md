@@ -3,8 +3,12 @@ title: Get Context Length
 description: Get the context length of the model
 ---
 
+## Overview
+
 Because a model cannot respond to prompts longer than its context length, it can be useful
 to know what the context length of your model is.
+
+### Usage
 
 You can obtain the context length of a loaded LLM or embedding model using the SDK. In the below examples, `llm` can be replaced with an embedding model `emb`.
 

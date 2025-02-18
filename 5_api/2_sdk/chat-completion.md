@@ -3,6 +3,8 @@ title: Chat Completion
 description: Provide a chat context for the model to respond to
 ---
 
+## Overview
+
 Once you have [downloaded and loaded](/docs/basics/index) a large language model,
 you can use it to respond to input through the API. This article covers generating text
 from a prompt or conversation like the in-app chat UI, but you can also
@@ -10,8 +12,11 @@ from a prompt or conversation like the in-app chat UI, but you can also
 [use a vision-language model to chat about images](/docs/api/sdk/image-input), and
 [get JSON structured output for programmatic use](/docs/api/sdk/structured-response).
 
-To get a response to a simple prompt from a loaded LLM, use
-the `respond` method on a the corresponding LLM handle.
+### Simple responses
+
+To get a response to a simple prompt from a loaded LLM, pass the prompt to
+the `respond` method on a the corresponding LLM handle. You can request
+the response as a stream of tokens or all at once.
 
 ```lms_code_snippet
   variants:
@@ -61,6 +66,8 @@ the `respond` method on a the corresponding LLM handle.
           process.stdout.write(content);
         }
 ```
+
+### Chats and conversations
 
 For more complicated conversations, use a `Chat` to handle message history.
 A `Chat` can track system prompts, user messages, and assistant responses, as well as [files and images](/docs/api/sdk/image-input).
@@ -128,8 +135,17 @@ you can load this directly into Python using `Chat.from_history(chat_history)`, 
 
 ### Prediction metadata
 
+Prediction responses are really returned as `PredictionResult` objects that contain additional dot-accessible metadata about the inference request.
+This entails info about the model used, the configuration with which it was loaded, and the configuration for this particular prediction. It also provides
+inference statistics like stop reason, time to first token, tokens per second, and number of generated tokens.
+
+Please consult your specific SDK to see exact syntax.
+
+### Callbacks
+
 TODO
 
 ### Prediction configuration
 
-TODO
+You can also specify the same prediction configuration options as you could in the
+in-app chat window sidebar. Please consult your specific SDK to see exact syntax.

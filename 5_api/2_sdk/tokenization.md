@@ -3,7 +3,11 @@ title: Tokenization
 description: Tokenize text using a model's tokenizer
 ---
 
+## Overview
+
 Models use a tokenizer to internally convert text into "tokens" they can deal with more easily. LM Studio exposes this tokenizer for utility.
+
+### Usage
 
 You can tokenize a string with a loaded LLM or embedding model using the SDK. In the below examples, `llm` can be replaced with an embedding model `emb`.
 
@@ -46,6 +50,8 @@ You can tokenize a string with a loaded LLM or embedding model using the SDK. In
 
         // TODO: iterable of strings
 ```
+
+### Context length comparisons
 
 The below examples check whether a conversation is over a LLM's context length
 (replace `llm` with `emb` to check for an embedding model).

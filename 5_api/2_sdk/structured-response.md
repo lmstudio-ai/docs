@@ -3,11 +3,15 @@ title: Structured Response
 description: Enforce a structured response from the model using Pydantic (Python), Zod (TypeScript), or JSON Schema
 ---
 
+## Overview
+
 Once you have [downloaded and loaded](/docs/basics/index) a large language model,
 you can use it to respond to input through the API. This article covers getting JSON structured output, but you can also
 [request text completions](/docs/api/sdk/completion),
 [request chat responses](/docs/api/sdk/chat-completion), and
 [use a vision-language model to chat about images](/docs/api/sdk/image-input).
+
+### Usage
 
 Certain models are trained to output valid JSON data that conforms to
 a user-provided schema, which can be used programmatically in applications
@@ -35,6 +39,8 @@ methods, and relies on Pydantic in Python and Zod in TypeScript.
             response_format=Book,
         )
 
+        print(dict_response.content["title"])
+
     Python (with scoped resources):
       language: python
       code: |
@@ -54,6 +60,8 @@ methods, and relies on Pydantic in Python and Zod in TypeScript.
                 response_format=Book,
             )
 
+            print(dict_response.content["title"])
+
     TypeScript:
       language: typescript
       code: |
@@ -72,4 +80,7 @@ methods, and relies on Pydantic in Python and Zod in TypeScript.
         const response = await llm.respond(
           "Tell me about The Hobbit.", { structured: Book }
         )
+
+        // TODO verify syntax
+        process.stdout.write(response.content.title)
 ```

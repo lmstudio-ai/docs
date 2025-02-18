@@ -3,6 +3,8 @@ title: Text Completion
 description: "Provide a string input for the model to complete"
 ---
 
+## Overview
+
 Once you have [downloaded and loaded](/docs/basics/index) a large language model,
 you can use it to respond to input through the API. This article covers generating simple
 string completions, but you can also
@@ -10,8 +12,10 @@ string completions, but you can also
 [use a vision-language model to chat about images](/docs/api/sdk/image-input), and
 [get JSON structured output for programmatic use](/docs/api/sdk/structured-response).
 
+### Usage
+
 To get a simple string completion from a loaded LLM, e.g. "The cat in the" -> "hat",
-use the `complete` method on the corresponding LLM handle.
+pass the string to be completed to the `complete` method on the corresponding LLM handle.
 
 ```lms_code_snippet
   variants:
@@ -71,8 +75,17 @@ use the `complete` method on the corresponding LLM handle.
 
 ### Prediction metadata
 
-TODO - copy from chat completion
+Prediction responses are really returned as `PredictionResult` objects that contain additional dot-accessible metadata about the inference request.
+This entails info about the model used, the configuration with which it was loaded, and the configuration for this particular prediction. It also provides
+inference statistics like stop reason, time to first token, tokens per second, and number of generated tokens.
+
+Please consult your specific SDK to see exact syntax.
+
+### Callbacks
+
+TODO
 
 ### Prediction configuration
 
-TODO - copy from chat completion
+You can also specify the same prediction configuration options as you could in the
+in-app chat window sidebar. Please consult your specific SDK to see exact syntax.
