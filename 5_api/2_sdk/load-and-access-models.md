@@ -200,9 +200,38 @@ a new instance, and will _not_ retroactively change the TTL of an existing insta
         const another_llama = await client.llm.load_new_instance("llama-3.2-1b-instruct");
 ```
 
-### Callbacks
+### Progress callbacks
 
-TODO
+Loading a model requires transferring all the weights from disk to RAM/VRAM,
+which can take a long time depending on your disk read speed and the size of the model.
+If you want to get updates on the progress of this process, you can provide a float callback to `loadNewInstance`/`load_new_instance`
+that receives a float from 0.0-1.0 representing load progress.
+
+```lms_code_snippet
+  variants:
+    Python (with scoped resources):
+      language: python
+      code: |
+        import lmstudio
+
+        with lmstudio.Client() as client:
+            llama = client.llm.load_new_instance(
+                "llama-3.2-1b-instruct",
+                on_progress: lambda progress: print(f"{progress*100}% loaded"),
+            )
+
+    TypeScript:
+      language: typescript
+      code: |
+        import { LMStudioClient } from "@lmstudio/sdk";
+
+        const client = new LMStudioClient();
+
+        const llama = await client.llm.load_new_instance(
+          "llama-3.2-1b-instruct",
+          {onProgress: (progress) => process.stdout.write(`${progress*100}% loaded`)},
+        );
+```
 
 ### Load config
 

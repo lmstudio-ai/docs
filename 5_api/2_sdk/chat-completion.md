@@ -141,9 +141,53 @@ inference statistics like stop reason, time to first token, tokens per second, a
 
 Please consult your specific SDK to see exact syntax.
 
-### Callbacks
+### Progress callbacks
 
-TODO
+TODO: TS has onFirstToken callback which Python does not
+
+Long prompts will often take a long time to first token, i.e. it takes the model a long time to process your prompt.
+If you want to get updates on the progress of this process, you can provide a float callback to `respond`
+that receives a float from 0.0-1.0 representing prompt processing progress.
+
+```lms_code_snippet
+  variants:
+    Python:
+      language: python
+      code: |
+        import lmstudio as lm
+
+        llm = lm.llm()
+
+        response = llm.respond(
+            "What is LM Studio?",
+            on_progress: lambda progress: print(f"{progress*100}% complete")
+        )
+
+    Python (with scoped resources):
+      language: python
+      code: |
+        import lmstudio
+
+        with lmstudio.Client() as client:
+            llm = client.llm.model()
+
+            response = llm.respond(
+                "What is LM Studio?",
+                on_progress: lambda progress: print(f"{progress*100}% processed")
+            )
+
+    TypeScript:
+      language: typescript
+      code: |
+        import { LMStudioClient } from "@lmstudio/sdk";
+
+        const client = new LMStudioClient();
+        const llm = await client.llm.model();
+
+        const prediction = llm.respond(
+          "What is LM Studio?",
+          {onPromptProcessingProgress: (progress) => process.stdout.write(`${progress*100}% processed`)});
+```
 
 ### Prediction configuration
 

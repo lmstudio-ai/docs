@@ -81,6 +81,5 @@ methods, and relies on Pydantic in Python and Zod in TypeScript.
           "Tell me about The Hobbit.", { structured: Book }
         )
 
-        // TODO verify syntax
         process.stdout.write(response.content.title)
 ```
