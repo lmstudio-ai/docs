@@ -98,22 +98,6 @@ A `Chat` can track system prompts, user messages, and assistant responses, as we
 
             response = llm.respond(chat)
             chat.add_assistant_response(response.content)
-
-    TypeScript:
-      language: typescript
-      code: |
-        import { LMStudioClient, Chat } from "@lmstudio/sdk";
-
-        const client = new LMStudioClient();
-        const llm = await client.llm.model();
-        const chat = Chat.createEmpty()
-          .withAppended("system", "This is the system prompt!")
-          .withAppended("user", "What is LM Studio?");
-
-        const prediction = llm.respond(chat);
-        for await (const { content } of prediction) {
-          process.stdout.write(content);
-        }
 ```
 
 ## Advanced Usage

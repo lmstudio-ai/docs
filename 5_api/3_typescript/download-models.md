@@ -19,33 +19,6 @@ Downloading models consists of three steps:
 
 ```lms_code_snippet
   variants:
-    Python (with scoped resources):
-      language: python
-      code: |
-        import lmstudio
-
-        with lmstudio.Client() as client:
-            # 1. Search for the model you want
-            # Specify any/all of search_term, limit, compatibility_types
-            search_results = client.repository.search_models(
-                search_term="llama 3.2 1b",    # Search for Llama 3.2 1B
-                limit=5,                       # Get top 5 results
-                compatibility_types=["gguf"],  # Only download GGUFs
-            )
-
-            # 2. Find download options
-            best_result = search_results[0]
-            download_options = best_result.get_download_options()
-
-            # Let's download Q4_K_M, a good middle ground quantization
-            desired_model = next([option for option in download_options if option.quantization == "Q4_K_M"], None)
-
-            # 3. Download it!
-            model_key = desired_model.download()
-
-            # This returns a path you can use to load the model
-            loaded_model = client.llm.model(model_key)
-
     TypeScript:
       language: typescript
       code: |

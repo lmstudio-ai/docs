@@ -1,0 +1,43 @@
+---
+title: Apply Prompt Template
+description: Apply a model's built-in prompt template to a conversation
+---
+
+## Overview
+
+LLMs are text-in, text-out models. Thus conversations must first be converted to a string before feeding into the model. This conversion is done using a prompt template. LM Studio SDK allows you to quickly apply a model's prompt template to a given chat and get the formatted string back.
+
+### Usage
+
+You can apply a loaded LLM's prompt template to a `Chat` or JSON conversation history using the SDK.
+
+```lms_protip
+To check whether a conversation is over the context limit for a model,
+use this in conjunction with [tokenization](/docs/api/sdk/tokenization)
+(see that page).
+```
+
+```lms_code_snippet
+  variants:
+    TypeScript:
+      language: typescript
+      code: |
+        import { Chat, LMStudioClient } from "@lmstudio/sdk";
+
+        const client = new LMStudioClient();
+        const llm = await client.llm.model();
+
+        const formatted = await llm.applyPromptTemplate([
+          { role: "system", content: "You are a helpful assistant." },
+          { role: "user", content: "What is LM Studio?" },
+        ]);
+        console.info(formatted);
+
+        // OR
+
+        const chat = Chat.createEmpty();
+        chat.append("system", "You are a helpful assistant.");
+        chat.append("user", "What is LM Studio?");
+        const formatted2 = await llm.applyPromptTemplate(chat);
+        console.info(formatted2);
+```

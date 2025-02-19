@@ -37,16 +37,6 @@ a handle to any loaded model.
         with lmstudio.Client() as client:
             # It's that simple!
             llm = client.llm.model()
-
-    TypeScript:
-      language: typescript
-      code: |
-        import { LMStudioClient } from "@lmstudio/sdk";
-
-        const client = new LMStudioClient();
-
-        // It's that simple!
-        const llm = await client.llm.model();
 ```
 
 ### Access a specific model
@@ -77,15 +67,6 @@ In any case, you can be certain your handle references the model the key points 
 
         with lmstudio.Client() as client:
             llama = client.llm.model("llama-3.2-1b-instruct")
-
-    TypeScript:
-      language: typescript
-      code: |
-        import { LMStudioClient } from "@lmstudio/sdk";
-
-        const client = new LMStudioClient();
-
-        const llama = await client.llm.model("llama-3.2-1b-instruct");
 ```
 
 ### Load a new instance of a model
@@ -112,16 +93,6 @@ the server will generate one for you. You can always check in the server tab, to
         with lmstudio.Client() as client:
             llama = client.llm.load_new_instance("llama-3.2-1b-instruct")
             another_llama = client.llm.load_new_instance("llama-3.2-1b-instruct", "second-llama")
-
-    TypeScript:
-      language: typescript
-      code: |
-        import { LMStudioClient } from "@lmstudio/sdk";
-
-        const client = new LMStudioClient();
-
-        const llama = await client.llm.load_new_instance("llama-3.2-1b-instruct");
-        const another_llama = await client.llm.load_new_instance("llama-3.2-1b-instruct", "second-llama");
 ```
 
 ### Unload a model
@@ -146,16 +117,6 @@ Once you no longer need a model, you can unload it by simply calling `unload()` 
         with lmstudio.Client() as client:
             llm = client.llm.model()
             llm.unload()
-
-    TypeScript:
-      language: typescript
-      code: |
-        import { LMStudioClient } from "@lmstudio/sdk";
-
-        const client = new LMStudioClient();
-
-        const llm = await client.llm.model();
-        await llm.unload()
 ```
 
 ## Advanced Usage
@@ -187,17 +148,6 @@ a new instance, and will _not_ retroactively change the TTL of an existing insta
         with lmstudio.Client() as client:
             llama = client.llm.model("llama-3.2-1b-instruct", ttl=3600)
             another_llama = client.llm.load_new_instance("llama-3.2-1b-instruct", ttl=7200)
-
-    TypeScript:
-      language: typescript
-      code: |
-        import { LMStudioClient } from "@lmstudio/sdk";
-
-        const client = new LMStudioClient();
-
-        // TODO ttl in typescript?
-        const llama = await client.llm.model("llama-3.2-1b-instruct");
-        const another_llama = await client.llm.load_new_instance("llama-3.2-1b-instruct");
 ```
 
 ### Progress callbacks
@@ -219,18 +169,6 @@ that receives a float from 0.0-1.0 representing load progress.
                 "llama-3.2-1b-instruct",
                 on_progress: lambda progress: print(f"{progress*100}% loaded"),
             )
-
-    TypeScript:
-      language: typescript
-      code: |
-        import { LMStudioClient } from "@lmstudio/sdk";
-
-        const client = new LMStudioClient();
-
-        const llama = await client.llm.load_new_instance(
-          "llama-3.2-1b-instruct",
-          {onProgress: (progress) => process.stdout.write(`${progress*100}% loaded`)},
-        );
 ```
 
 ### Load config

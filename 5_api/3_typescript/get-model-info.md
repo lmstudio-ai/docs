@@ -15,25 +15,6 @@ and the `path` used to [load it](/docs/api/sdk/load-model). In the below example
 
 ```lms_code_snippet
   variants:
-    Python:
-      language: python
-      code: |
-        import lmstudio as lm
-
-        llm = lm.llm()
-
-        model_info = llm.get_info()
-
-    Python (with scoped resources):
-      language: python
-      code: |
-        import lmstudio
-
-        with lmstudio.Client() as client:
-            llm = client.llm.model()
-
-            model_info = llm.get_info()
-
     TypeScript:
       language: typescript
       code: |

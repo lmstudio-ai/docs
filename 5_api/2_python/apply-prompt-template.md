@@ -41,26 +41,4 @@ use this in conjunction with [tokenization](/docs/api/sdk/tokenization)
             chat.add_user_message("What is LM Studio?")
 
             formatted_chat = llm.apply_prompt_template(chat)
-
-    TypeScript:
-      language: typescript
-      code: |
-        import { Chat, LMStudioClient } from "@lmstudio/sdk";
-
-        const client = new LMStudioClient();
-        const llm = await client.llm.model();
-
-        const formatted = await llm.applyPromptTemplate([
-          { role: "system", content: "You are a helpful assistant." },
-          { role: "user", content: "What is LM Studio?" },
-        ]);
-        console.info(formatted);
-
-        // OR
-
-        const chat = Chat.createEmpty();
-        chat.append("system", "You are a helpful assistant.");
-        chat.append("user", "What is LM Studio?");
-        const formatted2 = await llm.applyPromptTemplate(chat);
-        console.info(formatted2);
 ```

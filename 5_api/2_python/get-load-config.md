@@ -36,14 +36,4 @@ Context length is a special case that [has its own method](/docs/api/sdk/get-con
             llm = client.llm.model()
 
             load_config = llm.get_load_config()
-
-    TypeScript:
-      language: typescript
-      code: |
-        import { LMStudioClient } from "@lmstudio/sdk";
-
-        const client = new LMStudioClient();
-        const llm = await client.llm.model();
-
-        loadConfig = await llm.getLoadConfig()
 ```

@@ -35,14 +35,4 @@ with the SDK and chat with them using the `respond` method on a VLM handle.
         with lmstudio.Client() as client:
             llm = client.llm.model()
             # TODO
-
-    TypeScript:
-      language: typescript
-      code: |
-        import { LMStudioClient } from "@lmstudio/sdk";
-
-        const client = new LMStudioClient();
-        const llm = await client.llm.model();
-        // TODO
-
 ```

@@ -19,43 +19,6 @@ pass the string to be completed to the `complete` method on the corresponding LL
 
 ```lms_code_snippet
   variants:
-    Python:
-      language: python
-      code: |
-        import lmstudio as lm
-
-        llm = lm.llm()
-
-        # You can either request the response token-by-token,
-        # which will only return new tokens...
-        prediction = llm.complete_stream("My name is")
-        for token in prediction:
-            print(token, end="", flush=True)
-
-        # ...or request the whole thing at once,
-        # which will return the completed string.
-        completion = llm.complete("My name is")
-        print(completion)
-
-    Python (with scoped resources):
-      language: python
-      code: |
-        import lmstudio
-
-        with lmstudio.Client() as client:
-            llm = client.llm.model()
-
-            # You can either request the response token-by-token,
-            # which will only return new tokens...
-            prediction = llm.complete_stream("My name is")
-            for token in prediction:
-                print(token, end="", flush=True)
-
-            # ...or request the whole thing at once,
-            # which will return the completed string.
-            completion = llm.complete("My name is")
-            print(completion)
-
     TypeScript:
       language: typescript
       code: |

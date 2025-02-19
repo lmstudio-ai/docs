@@ -61,25 +61,4 @@ methods, and relies on Pydantic in Python and Zod in TypeScript.
             )
 
             print(dict_response.content["title"])
-
-    TypeScript:
-      language: typescript
-      code: |
-        import { LMStudioClient } from "@lmstudio/sdk";
-        import { z } from "zod";
-
-        const Book = z.object({
-          title: z.string(),
-          author: z.string(),
-          year: z.number().int()
-        })
-
-        const client = new LMStudioClient();
-        const llm = await client.llm.model();
-
-        const response = await llm.respond(
-          "Tell me about The Hobbit.", { structured: Book }
-        )
-
-        process.stdout.write(response.content.title)
 ```

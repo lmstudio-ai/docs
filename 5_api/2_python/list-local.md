@@ -28,15 +28,4 @@ using the SDK, so that you can [load them](/docs/api/sdk/load-and-access-models)
             downloaded = client.list_downloaded_models()
             llm_only = client.llm.list_downloaded()
             embedding_only = client.embedding.list_downloaded()
-
-    TypeScript:
-      language: typescript
-      code: |
-        import { LMStudioClient } from "@lmstudio/sdk";
-
-        const client = new LMStudioClient();
-
-        const downloaded = client.system.listDownloadedModels();
-        const llmOnly = downloaded.filter((model) => model.type === "llm");
-        const embeddingOnly = downloaded.filter((model) => model.type === "embedding");
 ```

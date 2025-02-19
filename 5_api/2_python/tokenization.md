@@ -37,18 +37,6 @@ You can tokenize a string with a loaded LLM or embedding model using the SDK. In
 
             # You can also pass an iterable of strings
             more_tokens = llm.tokenize(["Hello, world!", "Goodbye, world!"])
-
-    TypeScript:
-      language: typescript
-      code: |
-        import { LMStudioClient } from "@lmstudio/sdk";
-
-        const client = new LMStudioClient();
-        const llm = await client.llm.model();
-
-        const tokens = await llm.tokenize("Hello, world!");
-
-        // TODO: iterable of strings
 ```
 
 ### Context length comparisons
@@ -97,24 +85,4 @@ The below examples check whether a conversation is over a LLM's context length
 
             # If the prompt's length in tokens is less than the context length, you're good!
             is_okay = (len(tokens) < llm.get_context_length())
-
-    TypeScript:
-      language: typescript
-      code: |
-        import { LMStudioClient, Chat } from "@lmstudio/sdk";
-
-        const client = new LMStudioClient();
-        const llm = await client.llm.model();
-
-        // To check for a string, simply tokenize
-        var tokens = await llm.tokenize("Hello, world!");
-
-        // To check for a Chat, apply the prompt template first
-        const chat = Chat.createEmpty().withAppended("user", "Hello, world!");
-        const templatedChat = await llm.applyPromptTemplate(chat);
-        tokens = await llm.tokenize(templatedChat);
-
-        // If the prompt's length in tokens is less than the context length, you're good!
-        const contextLength = await llm.getContextLength()
-        const isOkay = (tokens.length < contextLength)
 ```

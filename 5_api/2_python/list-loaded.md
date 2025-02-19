@@ -32,14 +32,4 @@ Call `listLoaded`/`list_loaded` on the desired model type (LLM/embedding).
             all_loaded_models = client.list_loaded_models()
             llm_only = client.llm.list_loaded()
             embedding_only = client.embedding.list_loaded()
-
-    TypeScript:
-      language: typescript
-      code: |
-        import { LMStudioClient } from "@lmstudio/sdk";
-
-        const client = new LMStudioClient();
-
-        const llmOnly = await client.llm.listLoaded();
-        const embeddingOnly = await client.embedding.listLoaded();
 ```

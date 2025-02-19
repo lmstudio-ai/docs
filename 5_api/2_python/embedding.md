@@ -40,15 +40,4 @@ To embed a string or list of strings, pass it to the `embed` method on the corre
 
             # You can also pass an iterable of strings
             embeddings = emb.embed(["Hello, world!", "Goodbye, world!"])
-
-    TypeScript:
-      language: typescript
-      code: |
-        import { LMStudioClient } from "@lmstudio/sdk";
-
-        const client = new LMStudioClient();
-        const emb = await client.embedding.model();
-
-        const { embedding } = await emb.embed("Hello, world!");
-        // TODO: iterable of strings
 ```
