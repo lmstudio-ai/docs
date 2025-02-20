@@ -1,27 +1,16 @@
 ---
-title: Python and Typescript SDKs
-sidebar_title: Installation
-description: "Use LM Studio's capabilities through Python and Typescript client libraries"
-index: 1
+title: "`lmstudio.js`"
+description: "Getting started with LM Studio's Typescript / JavaScript SDK"
 ---
 
+Page dedicated to introducing `lmstudio.js`, exaplain its capabilities, link the github, and provide a simple example of how to use it.
 
-Intro about LM Studio SDKs in general and what capabilities are supported.
 
-(should probably reference [Running LM Studio as a server](/docs/headless))
+## How to install the TS SDK
 
-## How to get started
+## Loading models and making predictions
 
-Language specific introductions are provided to help new users get started:
-
-* [Getting started with the LM Studio Python SDK](/docs/api/sdk/lmstudio-python)
-* [Getting started with the LM Studio Typescript SDK](/docs/api/sdk/lmstudio-js)
+## Managing chat history
 
 ## Next steps
 
-The remainder of this SDK documentation covers specific operations in detail
-from a language agnostic point of view, with example code provided for:
-
-* the Python convenience API (intended primarily for interactive use)
-* the Python client instance API (which offers more explicit resource management)
-* the Typescript SDK
