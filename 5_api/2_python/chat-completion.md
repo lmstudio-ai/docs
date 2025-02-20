@@ -200,7 +200,7 @@ provides updates on the prompt processing progress.
 
 ### Prediction configuration
 
-The same prediction configuration options that may be specified via the Lm Studio
+The same prediction configuration options that may be specified via the LM Studio
 in-app chat window sidebar may be specified via the SDK using the `config`
 keyword-only parameter on the prediction request methods.
 
@@ -208,4 +208,4 @@ If using a type hinting aware Python editor, config dictionary keys are type
 hinted appropriately, so the IDE will pick up spelling and data type errors.
 Alternatively, the `lmstudio.LlmPredictionConfig` type may be used explicitly
 when defining the configuration (although this approach is typically more
-verbose than a using dictionary based configuration).
+verbose than using a dictionary based configuration).

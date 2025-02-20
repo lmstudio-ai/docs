@@ -29,3 +29,7 @@ so that you can access them for inference or unload them.
             llm_only = client.llm.list_loaded()
             embedding_only = client.embedding.list_loaded()
 ```
+
+The returned model lists consist of live model handles,
+ready for immediate use to make preditions (or perform any
+of the other operations that model handles support).

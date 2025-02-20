@@ -3,6 +3,8 @@ title: Get Load Config
 description: Get the load configuration of the model
 ---
 
+[//] # (TODO: Finalize and publish this once we're happy with the published API)
+
 ## Overview
 
 LM Studio allows you to configure certain parameters when loading a model

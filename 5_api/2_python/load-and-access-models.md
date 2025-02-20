@@ -3,23 +3,23 @@ title: Load and Access Models
 description: Load, access, and unload models from the server
 ---
 
-[//] # (TODO: Skipped on Alyssa's initial review of the draft Python docs)
+TODO: candidate for splitting into multiple articles
 
 ## Overview
-
-TODO: candidate for splitting into multiple articles
 
 You can load, access, and unload models using the LM Studio SDK just like you would
 in the Server tab of the app itself. Loading models, or accessing a loaded model,
 returns a _model handle_ that represents that model. You can use this handle to
-do things like [respond to a conversation](/docs/api/sdk/chat-completion) or
-[retrieve the model's load config](/docs/api/sdk/get-load-config).
+do things like [respond to a conversation](/docs/sdk/python/chat-completion) or
+[request text completion](/docs/sdk/python/completion).
 
 ### Access any model
 
-If you already have a model loaded, or you don't care which
-you get, you can simply call `model()` on the respective model type (say, LLM) to get
-a handle to any loaded model.
+If you only have one relevant model loaded, or you don't care exactly which
+you get, you can simply call the `llm()` or `embedding_model()` convenience
+functions to get a handle to an arbitrary loaded model of that type.
+When using the explicit client API, the equivalent operations are
+`client.llm.model()` and `client.embedding.model()`.
 
 ```lms_code_snippet
   variants:
@@ -43,13 +43,12 @@ a handle to any loaded model.
 
 ### Access a specific model
 
-If you want a specific model, you'll need that model's _model key_,
-which you can find with `getInfo`/`get_info` on an existing model handle,
-or in the My Models tab of the LM Studio app:
+To create a handle for a specific model, you'll need that model's _model key_,
+which you can find in the My Models tab of the LM Studio app:
 
 [ TODO: image showing where to get a model key ]
 
-Attempting to access a model by its key will first attempt to get a handle to any
+Attempting to access a model by its key will first attempt to get a handle to an
 already-loaded instance of that model, then fall back to loading a new one.
 In any case, you can be certain your handle references the model the key points to.
 
@@ -71,6 +70,12 @@ In any case, you can be certain your handle references the model the key points 
             llama = client.llm.model("llama-3.2-1b-instruct")
 ```
 
+Alternatively, [listing the loaded models](/docs/sdk/python/list-loaded) provides
+a valid model handle for all currently loaded models, allowing the model of interest
+to be selected locally.
+
+[//] # (TODO?: Cover using client.{namespace}.get_model_info() with lmstudio.ModelQuery)
+
 ### Load a new instance of a model
 
 Calling `model()` will not load a new instance (copy) of a model if one already exists.
@@ -82,10 +87,14 @@ instance you're loading from the others.
 ```lms_protip
 If you provide an instance identifier that already exists, the server will throw an error.
 So if you don't really care, it's safer to leave out the identifier, in which case
-the server will generate one for you. You can always check in the server tab, too!
+the server will generate one for you that the SDK will use in the returned model handle.
+You can always check in the server tab, too!
 ```
 
+To access this feature, it is necessary to use the explicit client interface.
+
 ```lms_code_snippet
+  title: Loading two instances of a model
   variants:
     Python (with scoped resources):
       language: python
@@ -121,6 +130,23 @@ Once you no longer need a model, you can unload it by simply calling `unload()` 
             llm.unload()
 ```
 
+When using the explicit client interface, models can also be unloaded based on their
+identifier name, without requiring a valid model handle:
+
+```lms_code_snippet
+  title: Unloading a model without a model handle
+  variants:
+    Python (with scoped resources):
+      language: python
+      code: |
+        import lmstudio
+
+        with lmstudio.Client() as client:
+            client.llm.unload("llama-3.2-1b-instruct")
+            client.llm.unload("second-llama")
+```
+
+
 ## Advanced Usage
 
 ### Time to live
@@ -152,15 +178,23 @@ a new instance, and will _not_ retroactively change the TTL of an existing insta
             another_llama = client.llm.load_new_instance("llama-3.2-1b-instruct", ttl=7200)
 ```
 
+[//] # (TODO?: Cover the JIT implications of setting a TTL, and the default TTL variations)
+
 ### Progress callbacks
 
 Loading a model requires transferring all the weights from disk to RAM/VRAM,
 which can take a long time depending on your disk read speed and the size of the model.
-If you want to get updates on the progress of this process, you can provide a float callback to `loadNewInstance`/`load_new_instance`
-that receives a float from 0.0-1.0 representing load progress.
+
+In order to request status updates during this stage of the process, `load_new_instance()`
+and `model()` both accept optional `on_progress` callback parameters. These callback
+methods accept a single `float` callback value which progresses from `0.0` through to
+`1.0` as the LM Studio instance provides updates on the model loading progress.
+
+To access this feature, it is necessary to use the explicit client interface.
 
 ```lms_code_snippet
   variants:
+    title: Requesting progress updates when loading a model
     Python (with scoped resources):
       language: python
       code: |
@@ -177,3 +211,19 @@ that receives a float from 0.0-1.0 representing load progress.
 
 You can also specify the same load configuration options as you could in the
 in-app loading dropdown. Please consult your specific SDK to see exact syntax.
+
+The same model load configuration options that may be specified via the LM Studio
+in-app chat window sidebar may be specified via the SDK using the `config`
+keyword-only parameter on the model loading methods.
+
+Note that the `model()` method (and hence the `llm()` and `embedding_model()`)
+may not actually load a new instance of the model, in which case the given
+config may not be applied. If it is essential that the configuration be
+applied as specified, then `load_new_instance()` will be a more reliable
+option.
+
+If using a type hinting aware Python editor, config dictionary keys are type
+hinted appropriately, so the IDE will pick up spelling and data type errors.
+Alternatively, the `lmstudio.LlmPredictionConfig` type may be used explicitly
+when defining the configuration (although this approach is typically more
+verbose than using a dictionary based configuration).
