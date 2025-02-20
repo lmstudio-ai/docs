@@ -5,7 +5,7 @@ description: Apply a model's built-in prompt template to a conversation
 
 ## Overview
 
-LLMs are text-in, text-out models. Thus conversations must first be converted to a string before feeding into the model. This conversion is done using a prompt template. LM Studio SDK allows you to quickly apply a model's prompt template to a given chat and get the formatted string back.
+LLMs (Large Language Models) operate on a text-in, text-out basis. Before processing conversations through these models, the input must be converted into a properly formatted string using a prompt template. If you need to inspect or work with this formatted string directly, the LM Studio SDK provides a streamlined way to apply a model's prompt template to your conversations. Note that for regular LLM interactions, this conversion is handled automatically by the SDK.
 
 ### Usage
 
