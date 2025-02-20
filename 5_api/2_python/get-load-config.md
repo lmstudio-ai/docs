@@ -10,7 +10,8 @@ LM Studio allows you to configure certain parameters when loading a model
 
 ### Usage
 
-You can retrieve the config with which a given model was loaded using the SDK. In the below examples, `llm` can be replaced with an embedding model `emb`.
+You can retrieve the config with which a given model was loaded using the SDK
+(in the below examples, `llm` can instead be replaced with an embedding model handle).
 
 ```lms_protip
 Context length is a special case that [has its own method](/docs/api/sdk/get-context-length).

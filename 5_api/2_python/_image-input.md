@@ -3,6 +3,8 @@ title: Image Input
 description: Provide an image as input to the models capable of processing images
 ---
 
+[//] # (TODO: Finalize and publish this once we're happy with the published API)
+
 ## Overview
 
 Once you have [downloaded and loaded](/docs/basics/index) a large language model,

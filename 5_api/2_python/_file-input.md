@@ -3,8 +3,9 @@ title: File Input
 description: Add files to the input of the model
 ---
 
+[//] # (TODO: Finalize and publish this once we're happy with the published API)
+
 Explanation explanation explanation explanation explanation explanation explanation.
-TODO leaving this private until we get confirmation general file input (RAG) will be in 1.0.0
 
 ```lms_code_snippet
   variants:

@@ -13,8 +13,8 @@ You can apply a loaded LLM's prompt template to a `Chat` or JSON conversation hi
 
 ```lms_protip
 To check whether a conversation is over the context limit for a model,
-use this in conjunction with [tokenization](/docs/api/sdk/tokenization)
-(see that page).
+use this in conjunction with [tokenization](/docs/sdk/python/tokenization)
+(see that page for details).
 ```
 
 ```lms_code_snippet
