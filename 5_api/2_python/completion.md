@@ -27,15 +27,15 @@ a stream of prediction fragments or all at once.
         llm = lm.llm()
 
         # You can process the response content incrementally...
-        prediction = llm.complete_stream("My name is")
-        for content_fragment in prediction:
+        prediction_stream = llm.complete_stream("My name is")
+        for content_fragment in prediction_stream:
             print(content_fragment, end="", flush=True)
         # ...and then access the complete result at the end.
-        result = prediction.result()
+        completion = prediction_stream.result()
 
         # Alternatively, the SDK can internally handle both of those steps
-        result = llm.complete("My name is")
-        print(result)
+        completion = llm.complete("My name is")
+        print(completion)
 
     Python (with scoped resources):
       language: python
@@ -46,15 +46,15 @@ a stream of prediction fragments or all at once.
             llm = client.llm.model()
 
             # You can process the response content incrementally...
-            prediction = llm.complete_stream("My name is")
-            for content_fragment in prediction:
+            prediction_stream = llm.complete_stream("My name is")
+            for content_fragment in prediction_stream:
                 print(content_fragment, end="", flush=True)
             # ...and then access the complete result at the end.
-            result = prediction.result()
+            completion = prediction_stream.result()
 
             # Alternatively, the SDK can internally handle both of those steps
-            result = llm.complete("My name is")
-            print(result)
+            completion = llm.complete("My name is")
+            print(completion)
 ```
 
 Text completion predictions use the same content fragment and prediction result

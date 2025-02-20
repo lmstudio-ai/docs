@@ -30,15 +30,15 @@ You can request the response as a stream of prediction fragments or all at once.
         llm = lm.llm()
 
         # You can process the response content incrementally...
-        prediction = llm.respond_stream("What is LM Studio?")
-        for content_fragment in prediction:
+        prediction_stream = llm.respond_stream("What is LM Studio?")
+        for content_fragment in prediction_stream:
             print(content_fragment, end="", flush=True)
         # ...and then access the complete result at the end.
-        result = prediction.result()
+        response = prediction_stream.result()
 
         # Alternatively, the SDK can internally handle both of those steps
-        result = llm.respond("What is LM Studio?")
-        print(result)
+        response = llm.respond("What is LM Studio?")
+        print(response)
 
     Python (with scoped resources):
       language: python
@@ -49,15 +49,15 @@ You can request the response as a stream of prediction fragments or all at once.
             llm = client.llm.model()
 
             # You can process the response content incrementally...
-            prediction = llm.respond_stream("What is LM Studio?")
-            for content_fragment in prediction:
+            prediction_stream = llm.respond_stream("What is LM Studio?")
+            for content_fragment in prediction_stream:
                 print(content_fragment, end="", flush=True)
             # ...and then access the complete result at the end.
-            result = prediction.result()
+            response = prediction_stream.result()
 
             # Alternatively, the SDK can internally handle both of those steps
-            result = llm.respond("What is LM Studio?")
-            print(result)
+            response = llm.respond("What is LM Studio?")
+            print(response)
 ```
 
 #### Content fragments
