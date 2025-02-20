@@ -8,10 +8,6 @@ description: Query which models are currently loaded
 You can see which models are currently loaded in the LM Studio server using the SDK,
 so that you can access them for inference or unload them.
 
-### Usage
-
-Call `listLoaded`/`list_loaded` on the desired model type (LLM/embedding).
-
 ```lms_code_snippet
   variants:
     Python:
@@ -33,3 +29,7 @@ Call `listLoaded`/`list_loaded` on the desired model type (LLM/embedding).
             llm_only = client.llm.list_loaded()
             embedding_only = client.embedding.list_loaded()
 ```
+
+The returned model lists consist of live model handles,
+ready for immediate use to make preditions (or perform any
+of the other operations that model handles support).

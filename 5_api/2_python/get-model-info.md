@@ -10,8 +10,8 @@ instance of that model.
 
 ### Usage
 
-Currently, the SDK exposes the model's default `identifier`
-and the `path` used to [load it](/docs/api/sdk/load-model). In the below examples, `llm` can be replaced with an embedding model `emb`.
+Given a model handle, LM Studio can be queried for all of the current details of that model
+(in the below examples, `llm` can instead be replaced with an embedding model handle).
 
 ```lms_code_snippet
   variants:
@@ -34,3 +34,5 @@ and the `path` used to [load it](/docs/api/sdk/load-model). In the below example
 
             model_info = llm.get_info()
 ```
+
+[//] # (TODO: Describe the available model info following the data type unification)

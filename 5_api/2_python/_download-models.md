@@ -3,6 +3,8 @@ title: Download Models
 description: Download models to the machine running the LM Studio server
 ---
 
+[//] # (TODO: Finalize and publish this once we're happy with the published API)
+
 ## Overview
 
 You can browse and download models using the LM Studio SDK just like you would

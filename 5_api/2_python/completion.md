@@ -5,17 +5,17 @@ description: "Provide a string input for the model to complete"
 
 ## Overview
 
-Once you have [downloaded and loaded](/docs/basics/index) a large language model,
-you can use it to respond to input through the API. This article covers generating simple
-string completions, but you can also
-[request chat responses](/docs/api/sdk/chat-completion),
-[use a vision-language model to chat about images](/docs/api/sdk/image-input), and
-[get JSON structured output for programmatic use](/docs/api/sdk/structured-response).
+Requesting text completion is very similar to 
+[requesting chat responses](/docs/sdk/python/chat-completion), just
+substituting the `complete()` and `complete_stream()` text completion
+methods for the `respond()` and `respond_stream()` chat response methods.
 
 ### Usage
 
 To get a simple string completion from a loaded LLM, e.g. "The cat in the" -> "hat",
-pass the string to be completed to the `complete` method on the corresponding LLM handle.
+pass the string to be completed to the `complete()` or `complete_stream()` method on
+the corresponding LLM handle. As for chat response, you can request the response as
+a stream of prediction fragments or all at once.
 
 ```lms_code_snippet
   variants:
@@ -26,14 +26,14 @@ pass the string to be completed to the `complete` method on the corresponding LL
 
         llm = lm.llm()
 
-        # You can either request the response token-by-token,
-        # which will only return new tokens...
-        prediction = llm.complete_stream("My name is")
-        for token in prediction:
-            print(token, end="", flush=True)
+        # You can process the response content incrementally...
+        prediction_stream = llm.complete_stream("My name is")
+        for content_fragment in prediction_stream:
+            print(content_fragment, end="", flush=True)
+        # ...and then access the complete result at the end.
+        completion = prediction_stream.result()
 
-        # ...or request the whole thing at once,
-        # which will return the completed string.
+        # Alternatively, the SDK can internally handle both of those steps
         completion = llm.complete("My name is")
         print(completion)
 
@@ -45,77 +45,41 @@ pass the string to be completed to the `complete` method on the corresponding LL
         with lmstudio.Client() as client:
             llm = client.llm.model()
 
-            # You can either request the response token-by-token,
-            # which will only return new tokens...
-            prediction = llm.complete_stream("My name is")
-            for token in prediction:
-                print(token, end="", flush=True)
+            # You can process the response content incrementally...
+            prediction_stream = llm.complete_stream("My name is")
+            for content_fragment in prediction_stream:
+                print(content_fragment, end="", flush=True)
+            # ...and then access the complete result at the end.
+            completion = prediction_stream.result()
 
-            # ...or request the whole thing at once,
-            # which will return the completed string.
+            # Alternatively, the SDK can internally handle both of those steps
             completion = llm.complete("My name is")
             print(completion)
 ```
 
+Text completion predictions use the same content fragment and prediction result
+types as are described for [chat response predictions](/docs/sdk/python/chat-completion).
+
 ## Advanced Usage
+
+### Structured responses
+
+Requesting [structured output for programmatic use](/docs/sdk/python/structured-response)
+is covered on the linked page.
 
 ### Prediction metadata
 
-Prediction responses are really returned as `PredictionResult` objects that contain additional dot-accessible metadata about the inference request.
-This entails info about the model used, the configuration with which it was loaded, and the configuration for this particular prediction. It also provides
-inference statistics like stop reason, time to first token, tokens per second, and number of generated tokens.
-
-Please consult your specific SDK to see exact syntax.
+Text completion predictions report metadata about the prediction process and the
+model used to make the prediction in the same way as
+[chat response predictions](/docs/sdk/python/chat-completion).
 
 ### Progress callbacks
 
-TODO: TS has onFirstToken callback which Python does not
+Text completion predictions accept the same progress reporting callbacks as
+[chat response predictions](/docs/sdk/python/chat-completion).
 
-Long prompts will often take a long time to first token, i.e. it takes the model a long time to process your prompt.
-If you want to get updates on the progress of this process, you can provide a float callback to `complete`
-that receives a float from 0.0-1.0 representing prompt processing progress.
-
-```lms_code_snippet
-  variants:
-    Python:
-      language: python
-      code: |
-        import lmstudio as lm
-
-        llm = lm.llm()
-
-        completion = llm.complete(
-            "My name is",
-            on_progress: lambda progress: print(f"{progress*100}% complete")
-        )
-
-    Python (with scoped resources):
-      language: python
-      code: |
-        import lmstudio
-
-        with lmstudio.Client() as client:
-            llm = client.llm.model()
-
-            completion = llm.complete(
-                "My name is",
-                on_progress: lambda progress: print(f"{progress*100}% processed")
-            )
-
-    TypeScript:
-      language: typescript
-      code: |
-        import { LMStudioClient } from "@lmstudio/sdk";
-
-        const client = new LMStudioClient();
-        const llm = await client.llm.model();
-
-        const prediction = llm.complete(
-          "My name is",
-          {onPromptProcessingProgress: (progress) => process.stdout.write(`${progress*100}% processed`)});
-```
 
 ### Prediction configuration
 
-You can also specify the same prediction configuration options as you could in the
-in-app chat window sidebar. Please consult your specific SDK to see exact syntax.
+Text completion predictions accept additional prediction configuration details
+in the same way as [chat response predictions](/docs/sdk/python/chat-completion).

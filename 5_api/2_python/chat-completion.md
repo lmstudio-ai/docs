@@ -8,15 +8,17 @@ description: Provide a chat context for the model to respond to
 Once you have [downloaded and loaded](/docs/basics/index) a large language model,
 you can use it to respond to input through the API. This article covers generating text
 from a prompt or conversation like the in-app chat UI, but you can also
-[request text completions](/docs/api/sdk/completion),
-[use a vision-language model to chat about images](/docs/api/sdk/image-input), and
-[get JSON structured output for programmatic use](/docs/api/sdk/structured-response).
+[request text completions](/docs/sdk/python/completion), and
+[get structured output for programmatic use](/docs/sdk/python/structured-response).
+
+
+[//] # (TODO: Add file/vision processing references once those APIs are deemed stable)
 
 ### Simple responses
 
 To get a response to a simple prompt from a loaded LLM, pass the prompt to
-the `respond` method on a the corresponding LLM handle. You can request
-the response as a stream of tokens or all at once.
+the `respond()` or `respond_stream()` method on the corresponding LLM handle.
+You can request the response as a stream of prediction fragments or all at once.
 
 ```lms_code_snippet
   variants:
@@ -27,12 +29,14 @@ the response as a stream of tokens or all at once.
 
         llm = lm.llm()
 
-        # You can either request the response token-by-token...
-        prediction = llm.respond_stream("What is LM Studio?")
-        for token in prediction:
-            print(token, end="", flush=True)
+        # You can process the response content incrementally...
+        prediction_stream = llm.respond_stream("What is LM Studio?")
+        for content_fragment in prediction_stream:
+            print(content_fragment, end="", flush=True)
+        # ...and then access the complete result at the end.
+        response = prediction_stream.result()
 
-        # ...or request the whole thing at once
+        # Alternatively, the SDK can internally handle both of those steps
         response = llm.respond("What is LM Studio?")
         print(response)
 
@@ -44,33 +48,48 @@ the response as a stream of tokens or all at once.
         with lmstudio.Client() as client:
             llm = client.llm.model()
 
-            # You can either request the response token-by-token...
-            prediction = llm.respond_stream("What is LM Studio?")
-            for token in prediction:
-                print(token, end="", flush=True)
+            # You can process the response content incrementally...
+            prediction_stream = llm.respond_stream("What is LM Studio?")
+            for content_fragment in prediction_stream:
+                print(content_fragment, end="", flush=True)
+            # ...and then access the complete result at the end.
+            response = prediction_stream.result()
 
-            # ...or request the whole thing at once
+            # Alternatively, the SDK can internally handle both of those steps
             response = llm.respond("What is LM Studio?")
             print(response)
-
-    TypeScript:
-      language: typescript
-      code: |
-        import { LMStudioClient } from "@lmstudio/sdk";
-
-        const client = new LMStudioClient();
-        const llm = await client.llm.model();
-
-        const prediction = llm.respond("What is LM Studio?");
-        for await (const { content } of prediction) {
-          process.stdout.write(content);
-        }
 ```
+
+#### Content fragments
+
+The content fragments emitted by the iteration API are text values that will
+form part of the final result. While each fragment will often correspond
+to a single predicted token, this is not guaranteed (a single fragment may
+consist of multiple tokens, and in some cases, may even contain partial tokens)
+
+Additional details on the progress of a prediction may be obtained via the
+callback interfaces described below.
+
+#### Prediction results
+
+Prediction results offer the following public attributes:
+
+* `content`: the text content of the assistant response
+* `parsed`: for structured responses, this is a string-keyed dict matching
+  the requested response structure. For unstructured responses, it contains
+  the exact same text as the `content` field
+* `structured`: a boolean flag indicating this is a structured result
+* `stats`: information regarding the prediction process
+* `model_info`: information regarding the LLM making the prediction
+
+Printing an unstructured result is equivalent to printing its `content` attribute.
+Printing a structured result gives a pretty-printed JSON rendering of its `parsed`
+attribute rather than printing the raw `content` attribute.
 
 ### Chats and conversations
 
 For more complicated conversations, use a `Chat` to handle message history.
-A `Chat` can track system prompts, user messages, and assistant responses, as well as [files and images](/docs/api/sdk/image-input).
+A `Chat` can track system prompts, user messages, and assistant responses.
 
 ```lms_code_snippet
   variants:
@@ -84,7 +103,7 @@ A `Chat` can track system prompts, user messages, and assistant responses, as we
         chat.add_user_message("What is LM Studio?")
 
         response = llm.respond(chat)
-        chat.add_assistant_response(response.content)
+        chat.add_assistant_response(response)
 
     Python (with scoped resources):
       language: python
@@ -97,14 +116,24 @@ A `Chat` can track system prompts, user messages, and assistant responses, as we
             chat.add_user_message("What is LM Studio?")
 
             response = llm.respond(chat)
-            chat.add_assistant_response(response.content)
+            chat.add_assistant_response(response)
 ```
+
+When adding assistant responses to a chat instance, adding a
+prediction result directly is equivalent to adding its `content`
+attribute (for both structured and unstructured predictions).
 
 ## Advanced Usage
 
+### Structured responses
+
+Requesting [structured output for programmatic use](/docs/sdk/python/structured-response)
+is covered on the linked page.
+
 ### Using JSON chat histories
 
-If you have an external chat history formatted in JSON like
+When populating an initial chat history state, it may be more convenient
+to provide it as a JSON-compatible data structure like the following:
 
 ```json
 chat_history = {
@@ -115,23 +144,31 @@ chat_history = {
 }
 ```
 
-you can load this directly into Python using `Chat.from_history(chat_history)`, or into TypeScript using `Chat.from(chat_history)`.
+Chat histories in this format may be loaded directly into a new `Chat` instance
+using the `from_history` alternative constructor: `Chat.from_history(chat_history)`.
 
 ### Prediction metadata
 
-Prediction responses are really returned as `PredictionResult` objects that contain additional dot-accessible metadata about the inference request.
+As noted above, prediction results provide additional details on the operation of
+the prediction process, and details of the model used to make the prediction.
+
+[//] # (TODO: Note the config reporting once it uses a client-friendly format)
+
 This entails info about the model used, the configuration with which it was loaded, and the configuration for this particular prediction. It also provides
 inference statistics like stop reason, time to first token, tokens per second, and number of generated tokens.
 
-Please consult your specific SDK to see exact syntax.
-
 ### Progress callbacks
 
-TODO: TS has onFirstToken callback which Python does not
+[//] # (TODO: Add fragment processing and complete message callbacks to Python SDK)
 
-Long prompts will often take a long time to first token, i.e. it takes the model a long time to process your prompt.
-If you want to get updates on the progress of this process, you can provide a float callback to `respond`
-that receives a float from 0.0-1.0 representing prompt processing progress.
+When given a complex prompt, models may take a long time to emit the first predicted token.
+This means that even the iterator API may encounter a long pause when waiting for the first
+prediction content fragment.
+
+In order to request status updates during this stage of the process, `respond()` and `respond_stream()`
+both accept optional `on_progress` callback parameters. These callback methods accept a single
+`float` callback value which progresses from `0.0` through to `1.0` as the LM Studio instance
+provides updates on the prompt processing progress.
 
 ```lms_code_snippet
   variants:
@@ -159,21 +196,16 @@ that receives a float from 0.0-1.0 representing prompt processing progress.
                 "What is LM Studio?",
                 on_progress: lambda progress: print(f"{progress*100}% processed")
             )
-
-    TypeScript:
-      language: typescript
-      code: |
-        import { LMStudioClient } from "@lmstudio/sdk";
-
-        const client = new LMStudioClient();
-        const llm = await client.llm.model();
-
-        const prediction = llm.respond(
-          "What is LM Studio?",
-          {onPromptProcessingProgress: (progress) => process.stdout.write(`${progress*100}% processed`)});
 ```
 
 ### Prediction configuration
 
-You can also specify the same prediction configuration options as you could in the
-in-app chat window sidebar. Please consult your specific SDK to see exact syntax.
+The same prediction configuration options that may be specified via the LM Studio
+in-app chat window sidebar may be specified via the SDK using the `config`
+keyword-only parameter on the prediction request methods.
+
+If using a type hinting aware Python editor, config dictionary keys are type
+hinted appropriately, so the IDE will pick up spelling and data type errors.
+Alternatively, the `lmstudio.LlmPredictionConfig` type may be used explicitly
+when defining the configuration (although this approach is typically more
+verbose than using a dictionary based configuration).

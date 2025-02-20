@@ -5,19 +5,25 @@ description: Enforce a structured response from the model using Pydantic (Python
 
 ## Overview
 
-Once you have [downloaded and loaded](/docs/basics/index) a large language model,
-you can use it to respond to input through the API. This article covers getting JSON structured output, but you can also
-[request text completions](/docs/api/sdk/completion),
-[request chat responses](/docs/api/sdk/chat-completion), and
-[use a vision-language model to chat about images](/docs/api/sdk/image-input).
+By default, [assistant chat response predictions](/docs/sdk/python/chat-completion) and
+[text completion predictions](/docs/sdk/python/completion) are returned as plain text,
+the same format used to provide system prompts and user messages when sending requests.
+
+For programmatic AI use cases, it may instead be preferable to request that responses
+use a structured JSON format rather than raw text.
 
 ### Usage
 
 Certain models are trained to output valid JSON data that conforms to
 a user-provided schema, which can be used programmatically in applications
-that need structured data. This structured data format is supported by both
-[`complete`](/docs/api/sdk/completion) and [`respond`](/docs/api/sdk/chat-completion)
-methods, and relies on Pydantic in Python and Zod in TypeScript.
+that need structured data. Structured responses are requested via the `response_format`
+keyword only parameter on the prediction request methods (`complete()`,
+`complete_stream()`, `respond()`, `respond_stream()`).
+
+Format specifications may be in the form of either a JSON schema dict, or any
+Python class which implements a `model_json_schema()` class method. Most notably,
+the latter allows `pydantic.BaseModel` subclasses to be used to request structured
+responses.
 
 ```lms_code_snippet
   variants:
