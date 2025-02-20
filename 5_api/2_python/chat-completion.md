@@ -17,7 +17,7 @@ from a prompt or conversation like the in-app chat UI, but you can also
 ### Simple responses
 
 To get a response to a simple prompt from a loaded LLM, pass the prompt to
-the `respond` or `respond_stream` method on the corresponding LLM handle.
+the `respond()` or `respond_stream()` method on the corresponding LLM handle.
 You can request the response as a stream of prediction fragments or all at once.
 
 ```lms_code_snippet
@@ -165,7 +165,7 @@ When given a complex prompt, models may take a long time to emit the first predi
 This means that even the iterator API may encounter a long pause when waiting for the first
 prediction content fragment.
 
-In order to request status updates during this stage of the process, `respond` and `respond_stream`
+In order to request status updates during this stage of the process, `respond()` and `respond_stream()`
 both accept optional `on_progress` callback parameters. These callback methods accept a single
 `float` callback value which progresses from `0.0` through to `1.0` as the LM Studio instance
 provides updates on the prompt processing progress.

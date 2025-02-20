@@ -17,7 +17,7 @@ you can use it to respond to input through the API. This article covers chatting
 
 Vision-language models (VLMs) are LLMs that can also accept image input
 to describe and chat with images. You can upload images to conversations
-with the SDK and chat with them using the `respond` method on a VLM handle.
+with the SDK and chat with them using the `respond()` method on a VLM handle.
 
 ```lms_code_snippet
   variants:

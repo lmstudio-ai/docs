@@ -13,8 +13,8 @@ methods for the `respond()` and `respond_stream()` chat response methods.
 ### Usage
 
 To get a simple string completion from a loaded LLM, e.g. "The cat in the" -> "hat",
-pass the string to be completed to the `complete` or `complete_stream` method on
-the corresponding LLM handle. As for chat response, tou can request the response as
+pass the string to be completed to the `complete()` or `complete_stream()` method on
+the corresponding LLM handle. As for chat response, you can request the response as
 a stream of prediction fragments or all at once.
 
 ```lms_code_snippet
