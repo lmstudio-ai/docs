@@ -101,3 +101,24 @@ Second column markdown content here
 
 ```
 ````
+
+### Params
+
+List of formatted parameters
+
+````
+```lms_params
+
+- name: "username"
+  type: "string"
+  optional: false
+  description: "The user's login name"
+- name: "password"
+  type: "string"
+  optional: true
+  description: "The user's password"
+- name: "some_param_name"
+  type: "SomeTypeName"
+  description: "A description can go here, the optional field can be left out"
+```
+````

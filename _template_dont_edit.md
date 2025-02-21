@@ -32,7 +32,6 @@ Configurations that look good:
             return "world"
 ```
 
-
 ```lms_code_snippet
   title: "generator.py"
   variants:
@@ -95,6 +94,25 @@ You can jump to Settings from anywhere in the app by pressing `cmd` + `,` on mac
 You can jump to Settings from anywhere in the app by pressing `cmd` + `,` on macOS or `ctrl` + `,` on Windows/Linux.
 ```
 
+### Params
+
+List of formatted parameters
+
+```lms_params
+
+- name: "username"
+  type: "string"
+  optional: false
+  description: "The user's login name"
+- name: "password"
+  type: "string"
+  optional: true
+  description: "The user's password"
+- name: "some_param_name"
+  type: "SomeTypeName"
+  description: "A description can go here, the optional field can be left out"
+```
+
 ## What is LM Studio?
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nunc nec
@@ -136,4 +154,3 @@ This documentation is divided into the following sections:
 
 - **Quick Start**: Get started with LM Studio in minutes.
 - **API Reference**: Learn how to use the LM Studio API.
-
