@@ -1,7 +1,7 @@
 ---
 title: About LM Studio
 description: Learn how to run Llama, DeepSeek, Phi, and other LLMs locally with LM Studio.
-index: 2
+index: 1
 ---
 
 LM Studio is a desktop app for developing and experimenting with LLMs locally on your computer.
