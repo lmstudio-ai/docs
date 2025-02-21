@@ -193,8 +193,8 @@ methods accept a single `float` callback value which progresses from `0.0` throu
 To access this feature, it is necessary to use the explicit client interface.
 
 ```lms_code_snippet
+  title: Requesting progress updates when loading a model
   variants:
-    title: Requesting progress updates when loading a model
     Python (with scoped resources):
       language: python
       code: |
