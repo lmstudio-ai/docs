@@ -98,19 +98,28 @@ You can jump to Settings from anywhere in the app by pressing `cmd` + `,` on mac
 
 List of formatted parameters
 
+### Parameters 
 ```lms_params
-
-- name: "username"
-  type: "string"
-  optional: false
-  description: "The user's login name"
-- name: "password"
+- name: "[path]"
   type: "string"
   optional: true
-  description: "The user's password"
-- name: "some_param_name"
-  type: "SomeTypeName"
-  description: "A description can go here, the optional field can be left out"
+  description: "The path of the model to load. If not provided, you will be prompted to select one"
+- name: "--ttl"
+  type: "number"
+  optional: true
+  description: "If provided, when the model is not used for this number of seconds, it will be unloaded"
+- name: "--gpu"
+  type: "string"
+  optional: true
+  description: "How much to offload to the GPU. Values: 0-1, off, max"
+- name: "--context-length"
+  type: "number"
+  optional: true
+  description: "The number of tokens to consider as context when generating text"
+- name: "--identifier"
+  type: "string"
+  optional: true
+  description: "The identifier to assign to the loaded model for API reference"
 ```
 
 ## What is LM Studio?

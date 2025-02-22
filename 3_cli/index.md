@@ -6,7 +6,7 @@ index: 1
 
 LM Studio ships with `lms`, a command line tool for scripting and automating your local LLM workflows.
 
-`lms` is MIT Licensed and it is developed in this repository on GitHub: https://github.com/lmstudio-ai/lms
+`lms` is **MIT Licensed** and is developed in this repository on GitHub: https://github.com/lmstudio-ai/lms
 
 <hr>
 
@@ -32,7 +32,7 @@ Run the following command in your terminal:
 
 Run the following command in **PowerShell**:
 
-```ps1
+```shell
 cmd /c %USERPROFILE%/.lmstudio/bin/lms.exe bootstrap
 ```
 
@@ -70,14 +70,14 @@ For more help, try running `lms <subcommand> --help`
 
 ### Start and stop the local server
 
-```
+```bash
 lms server start
 lms server stop
 ```
 
 ### List the local models on the machine
 
-```
+```bash
 lms ls
 ```
 
@@ -85,13 +85,13 @@ This will reflect the current LM Studio models directory, which you set in **ðŸ“
 
 ### List the currently loaded models
 
-```
+```bash
 lms ps
 ```
 
 ### Load a model (with options)
 
-```
+```bash
 lms load [--gpu=max|auto|0.0-1.0] [--context-length=1-N]
 ```
 
@@ -99,7 +99,7 @@ lms load [--gpu=max|auto|0.0-1.0] [--context-length=1-N]
 
 - Optionally, assign an identifier to your local LLM:
 
-```
+```bash
 lms load TheBloke/phi-2-GGUF --identifier="gpt-4-turbo"
 ```
 
