@@ -1,7 +1,8 @@
 ---
-title: "`lms log stream`"
+title: "`lms log stream` Reference"
+sidebar_title: "`lms log stream`"
 description: Stream logs from LM Studio. Useful for debugging prompts sent to the model.
-index: 2
+index: -1
 ---
 
 `lms log stream` allows you to inspect the exact input string that goes to the model.
