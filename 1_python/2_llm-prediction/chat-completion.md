@@ -1,5 +1,5 @@
 ---
-title: Chat Completion
+title: Chat
 description: Provide a chat context for the model to respond to
 ---
 

@@ -3,58 +3,6 @@ title: Load and Access Models
 description: Load, access, and unload models from the server
 ---
 
-## Overview
-
-TODO: candidate for splitting into multiple articles
-
-You can load, access, and unload models using the LM Studio SDK just like you would
-in the Server tab of the app itself. Loading models, or accessing a loaded model,
-returns a _model handle_ that represents that model. You can use this handle to
-do things like [respond to a conversation](/docs/api/sdk/chat-completion) or
-[retrieve the model's load config](/docs/api/sdk/get-load-config).
-
-### Access any model
-
-If you already have a model loaded, or you don't care which
-you get, you can simply call `model()` on the respective model type (say, LLM) to get
-a handle to any loaded model.
-
-```lms_code_snippet
-  variants:
-    TypeScript:
-      language: typescript
-      code: |
-        import { LMStudioClient } from "@lmstudio/sdk";
-
-        const client = new LMStudioClient();
-
-        // It's that simple!
-        const llm = await client.llm.model();
-```
-
-### Access a specific model
-
-If you want a specific model, you'll need that model's _model key_,
-which you can find with `getInfo`/`get_info` on an existing model handle,
-or in the My Models tab of the LM Studio app:
-
-[ TODO: image showing where to get a model key ]
-
-Attempting to access a model by its key will first attempt to get a handle to any
-already-loaded instance of that model, then fall back to loading a new one.
-In any case, you can be certain your handle references the model the key points to.
-
-```lms_code_snippet
-  variants:
-    TypeScript:
-      language: typescript
-      code: |
-        import { LMStudioClient } from "@lmstudio/sdk";
-
-        const client = new LMStudioClient();
-
-        const llama = await client.llm.model("llama-3.2-1b-instruct");
-```
 
 ### Load a new instance of a model
 

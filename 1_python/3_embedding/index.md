@@ -1,5 +1,5 @@
 ---
-title: Embedding
+title: Overview
 description: Generate text embeddings from input text
 ---
 
