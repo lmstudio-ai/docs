@@ -3,21 +3,14 @@ title: Text Completion
 description: "Provide a string input for the model to complete"
 ---
 
-## Overview
+Use `llm.complete(...)` to generate text completions from a loaded language model.
 
-Once you have [downloaded and loaded](/docs/basics/index) a large language model,
-you can use it to respond to input through the API. This article covers generating simple
-string completions, but you can also
-[request chat responses](/docs/api/sdk/chat-completion),
-[use a vision-language model to chat about images](/docs/api/sdk/image-input), and
-[get JSON structured output for programmatic use](/docs/api/sdk/structured-response).
+## 1. Instantiate a model
 
-### Usage
-
-To get a simple string completion from a loaded LLM, e.g. "The cat in the" -> "hat",
-pass the string to be completed to the `complete` method on the corresponding LLM handle.
+First, you need to load a model to generate completions from. This can be done using the `model` method on the `llm` handle.
 
 ```lms_code_snippet
+  title: "index.ts"
   variants:
     TypeScript:
       language: typescript
@@ -25,12 +18,100 @@ pass the string to be completed to the `complete` method on the corresponding LL
         import { LMStudioClient } from "@lmstudio/sdk";
 
         const client = new LMStudioClient();
-        const llm = await client.llm.model();
+        const llm = await client.llm.model("qwen2.5-7b-instruct");
+```
+  
+## 2. Generate a completion
 
-        const prediction = llm.complete("My name is");
-        for await (const { content } of prediction) {
+Once you have a loaded model, you can generate completions by passing a string to the `complete` method on the `llm` handle.
+
+```lms_code_snippet
+  variants:
+    Streaming:
+      language: typescript
+      code: |
+        const completion = llm.complete("My name is");
+
+        for await (const { content } of completion) {
           process.stdout.write(content);
         }
+
+    "Non-streaming":
+      language: typescript
+      code: |
+        const completion = await llm.complete("My name is");
+
+        process.stdout.write(completion.content);
+```
+
+
+## 3. Print prediction stats
+
+You can also print prediction metadata, such as the time to first token, tokens per second, and number of generated tokens.
+
+```lms_code_snippet
+  title: "index.ts"
+  variants:
+    TypeScript:
+      language: typescript
+      code: |
+        // TODO: ...
+```
+
+## Example: Get an LLM to simulate a terminal
+
+Here's an example of how you might use the `complete` method to simulate a terminal.
+
+```lms_code_snippet
+  title: "terminal-sim.ts"
+  variants:
+    TypeScript:
+      language: typescript
+      code: |
+        import { LMStudioClient } from "@lmstudio/sdk";
+        import * as readline from 'readline';
+
+        async function simulateTerminal() {
+          const client = new LMStudioClient();
+          const llm = await client.llm.model();
+          
+          // Create readline interface
+          const rl = readline.createInterface({
+            input: process.stdin,
+            output: process.stdout
+          });
+
+          let history = '';
+
+          while (true) {
+            // Get user input
+            const command = await new Promise<string>(resolve => {
+              rl.question('$ ', resolve);
+            });
+
+            if (command.toLowerCase() === 'exit') {
+              rl.close();
+              break;
+            }
+
+            // Add command to history
+            history += `$ ${command}\n`;
+
+            // Generate completion
+            const completion = llm.complete(history, { stop: "$" });
+
+            // Print response
+            for await (const { content } of completion) {
+              process.stdout.write(content);
+            }
+            process.stdout.write('\n');
+
+            // Add response to history
+            history += completion + '\n';
+          }
+        }
+
+        simulateTerminal().catch(console.error);
 ```
 
 ## Advanced Usage
