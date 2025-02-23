@@ -1,7 +1,7 @@
 ---
 title: "`lmstudio-python`"
-sidebar_title: "Introduction"
-description: "Getting started with LM Studio's Python SDK"
+sidebar_title: "Installation"
+description: "Install the Python SDK for LM Studio"
 ---
 
 Page dedicated to introducing `lmstudio-python`, exaplain its capabilities, link the github, and provide a simple example of how to use it.

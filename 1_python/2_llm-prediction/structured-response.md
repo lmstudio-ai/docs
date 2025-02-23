@@ -1,5 +1,5 @@
 ---
-title: Structured Response
+title: Structured Output
 description: Enforce a structured response from the model using Pydantic (Python), Zod (TypeScript), or JSON Schema
 ---
 
