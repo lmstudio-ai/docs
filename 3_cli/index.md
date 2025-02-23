@@ -1,5 +1,6 @@
 ---
 title: "`lms` — LM Studio's CLI"
+sidebar_title: "Introduction"
 description: Get starting with the `lms` command line utility.
 index: 1
 ---
