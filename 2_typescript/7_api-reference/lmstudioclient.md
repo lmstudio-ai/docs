@@ -1,5 +1,5 @@
 ---
-title: "`lmstudio.js` Code Examples"
+title: "`LMStudioClient`"
 description: Examples of using `lmstudio.js` in TypeScript applications.
 ---
 

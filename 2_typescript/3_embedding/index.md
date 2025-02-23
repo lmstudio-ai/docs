@@ -1,5 +1,6 @@
 ---
 title: Embedding
+sidebar_title: Overview
 description: Generate text embeddings from input text
 ---
 
