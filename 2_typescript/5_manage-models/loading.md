@@ -26,8 +26,8 @@ the server will generate one for you. You can always check in the server tab, to
 
         const client = new LMStudioClient();
 
-        const llama = await client.llm.load_new_instance("llama-3.2-1b-instruct");
-        const another_llama = await client.llm.load_new_instance("llama-3.2-1b-instruct", "second-llama");
+        const llama = await client.llm.load("llama-3.2-1b-instruct");
+        const another_llama = await client.llm.load("llama-3.2-1b-instruct", "second-llama");
 ```
 
 ### Unload a model
@@ -70,15 +70,15 @@ a new instance, and will _not_ retroactively change the TTL of an existing insta
 
         // TODO ttl in typescript?
         const llama = await client.llm.model("llama-3.2-1b-instruct");
-        const another_llama = await client.llm.load_new_instance("llama-3.2-1b-instruct");
+        const another_llama = await client.llm.load("llama-3.2-1b-instruct");
 ```
 
 ### Progress callbacks
 
-Loading a model requires transferring all the weights from disk to RAM/VRAM,
-which can take a long time depending on your disk read speed and the size of the model.
-If you want to get updates on the progress of this process, you can provide a float callback to `loadNewInstance`/`load_new_instance`
-that receives a float from 0.0-1.0 representing load progress.
+Loading a model requires transferring all the weights from disk to RAM/VRAM, which can take a long
+time depending on your disk read speed and the size of the model. If you want to get updates on the
+progress of this process, you can provide a callback to `load` that receives a float from 0.0-1.0
+representing load progress.
 
 ```lms_code_snippet
   variants:
@@ -89,7 +89,7 @@ that receives a float from 0.0-1.0 representing load progress.
 
         const client = new LMStudioClient();
 
-        const llama = await client.llm.load_new_instance(
+        const llama = await client.llm.load(
           "llama-3.2-1b-instruct",
           {onProgress: (progress) => process.stdout.write(`${progress*100}% loaded`)},
         );

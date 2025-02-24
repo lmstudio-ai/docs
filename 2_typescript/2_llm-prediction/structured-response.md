@@ -37,8 +37,9 @@ methods, and relies on Pydantic in Python and Zod in TypeScript.
         const llm = await client.llm.model();
 
         const response = await llm.respond(
-          "Tell me about The Hobbit.", { structured: Book }
+          "Tell me about The Hobbit.",
+          { structured: Book },
         )
 
-        process.stdout.write(response.content.title)
+        console.log(response.content.title)
 ```

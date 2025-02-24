@@ -3,6 +3,71 @@ title: Chat Completion
 description: Provide a chat context for the model to respond to
 ---
 
+## 1. Instantiate a model
+
+First, you need to load a model to generate completions from. This can be done using the `model` method in the `llm` namespace.
+
+```lms_code_snippet
+  title: "index.ts"
+  variants:
+    TypeScript:
+      language: typescript
+      code: |
+        import { LMStudioClient } from "@lmstudio/sdk";
+
+        const client = new LMStudioClient();
+        const llm = await client.llm.model("qwen2.5-7b-instruct");
+```
+
+## 2. Generate a response
+
+Once you have a loaded model, you can ask the model to continue a conversation using the `respond`
+method on the `llm` instance.
+
+```lms_code_snippet
+  variants:
+    Streaming:
+      language: typescript
+      code: |
+        const prediction = llm.respond([
+          { role: "system", content: "You are a resident AI philosopher." },
+          { role: "user", content: "What is the meaning of life?" },
+        ]);
+
+        for await (const { content } of prediction) {
+          process.stdout.write(content);
+        }
+
+        console.info(); // Write a new line to prevent text from being overwritten by your shell.
+
+    "Non-streaming":
+      language: typescript
+      code: |
+        const prediction = await llm.respond([
+          { role: "system", content: "You are a resident AI philosopher." },
+          { role: "user", content: "What is the meaning of life?" },
+        ]);
+
+        console.info(prediction.content);
+```
+
+## 3. Print prediction stats
+
+You can also print prediction metadata, such as the model used for generation, number of generated
+tokens, time to first token, and stop reason.
+
+```lms_code_snippet
+  title: "index.ts"
+  variants:
+    TypeScript:
+      language: typescript
+      code: |
+        console.info("Model used:", prediction.modelInfo.displayName);
+        console.info("Predicted tokens:", prediction.stats.predictedTokensCount);
+        console.info("Time to first token (seconds):", prediction.stats.timeToFirstTokenSec);
+        console.info("Stop reason:", prediction.stats.stopReason);
+```
+
 ## Overview
 
 Once you have [downloaded and loaded](/docs/basics/index) a large language model,

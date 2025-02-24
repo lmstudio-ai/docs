@@ -20,7 +20,7 @@ First, you need to load a model to generate completions from. This can be done u
         const client = new LMStudioClient();
         const llm = await client.llm.model("qwen2.5-7b-instruct");
 ```
-  
+
 ## 2. Generate a completion
 
 Once you have a loaded model, you can generate completions by passing a string to the `complete` method on the `llm` handle.
@@ -36,18 +36,19 @@ Once you have a loaded model, you can generate completions by passing a string t
           process.stdout.write(content);
         }
 
+        console.info(); // Write a new line to prevent text from being overwritten by your shell.
+
     "Non-streaming":
       language: typescript
       code: |
         const completion = await llm.complete("My name is");
 
-        process.stdout.write(completion.content);
+        console.info(completion.content);
 ```
-
 
 ## 3. Print prediction stats
 
-You can also print prediction metadata, such as the time to first token, tokens per second, and number of generated tokens.
+You can also print prediction metadata, such as the model used for generation, number of generated tokens, time to first token, and stop reason.
 
 ```lms_code_snippet
   title: "index.ts"
@@ -55,7 +56,10 @@ You can also print prediction metadata, such as the time to first token, tokens 
     TypeScript:
       language: typescript
       code: |
-        // TODO: ...
+        console.info("Model used:", prediction.modelInfo.displayName);
+        console.info("Predicted tokens:", prediction.stats.predictedTokensCount);
+        console.info("Time to first token (seconds):", prediction.stats.timeToFirstTokenSec);
+        console.info("Stop reason:", prediction.stats.stopReason);
 ```
 
 ## Example: Get an LLM to simulate a terminal
@@ -74,7 +78,7 @@ Here's an example of how you might use the `complete` method to simulate a termi
         async function simulateTerminal() {
           const client = new LMStudioClient();
           const llm = await client.llm.model();
-          
+
           // Create readline interface
           const rl = readline.createInterface({
             input: process.stdin,
