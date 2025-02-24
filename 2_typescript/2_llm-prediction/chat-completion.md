@@ -7,14 +7,26 @@ TODO Regular text
 
 ## Quick Example
 
-ryan: single string respond
+```lms_code_snippet
+  variants:
+    TypeScript:
+      language: typescript
+      code: |
+        import { LMStudioClient } from "@lmstudio/sdk";
+        const client = new LMStudioClient();
+        const model = await client.llm.model();
+        for await (const { content } of model.respond("What is the meaning of life?")) {
+          process.stdout.write(content);
+        }
+        console.info(); // Create a new line
+
+```
 
 ## Obtaining a Model
 
-First, you need to load a model to generate completions from. This can be done using the `model` method in the `llm` namespace. TODO: Link: model init
+First, you need to get a model handle to generate completions. This can be done using the `model` method in the `llm` namespace. For example, here is how to use Qwen2.5 7B Instruct.
 
 ```lms_code_snippet
-  title: "index.ts"
   variants:
     TypeScript:
       language: typescript
@@ -25,30 +37,45 @@ First, you need to load a model to generate completions from. This can be done u
         const model = await client.llm.model("qwen2.5-7b-instruct");
 ```
 
+There are other ways to get a model handle. See [Managing Models in Memory](./../manage-models/loading) for more info.
+
 ## Manage Chat Context
 
-1. show this
-   context = Chat.from([
-   { role: "system", content: "You are a resident AI philosopher." },
-   { role: "user", content: "What is the meaning of life?" },
-   ])
-2. context builder
-   ...
+TODO: paragraph about needing to create a chat context
+
+```lms_code_snippet
+  variants:
+    "Using an Array of Messages":
+      language: typescript
+      code: |
+        import { Chat } from "@lmstudio/sdk";
+
+        const chat = Chat.from([
+          { role: "system", content: "You are a resident AI philosopher." },
+          { role: "user", content: "What is the meaning of life?" },
+        ]);
+    "Build the Context":
+      language: typescript
+      code: |
+        import { Chat } from "@lmstudio/sdk";
+
+        const chat = Chat.empty();
+        chat.append("system", "You are a resident AI philosopher.");
+        chat.append("user", "What is the meaning of life?");
+```
+
+See [Working with Chats](./working-with-chats) for more information on managing chat context.
 
 ## Generate a response
 
-Once you have a loaded model, you can ask the model to continue a conversation using the `respond`
-method on the `llm` instance. TODO Link: working with chats
+You can ask the LLM to continue a conversation using the `.respond` method.
 
 ```lms_code_snippet
   variants:
     Streaming:
       language: typescript
       code: |
-        const prediction = llm.respond([
-          { role: "system", content: "You are a resident AI philosopher." },
-          { role: "user", content: "What is the meaning of life?" },
-        ]);
+        const prediction = model.respond(chat);
 
         for await (const { content } of prediction) {
           process.stdout.write(content);
@@ -59,17 +86,33 @@ method on the `llm` instance. TODO Link: working with chats
     "Non-streaming":
       language: typescript
       code: |
-        const prediction = await llm.respond([
-          { role: "system", content: "You are a resident AI philosopher." },
-          { role: "user", content: "What is the meaning of life?" },
-        ]);
+        const result = await model.respond(chat);
 
-        console.info(prediction.content);
+        console.info(result.content);
 ```
 
 ## Customize Inferencing Parameters
 
-show streaming one
+You can pass in inferencing parameters as the second parameter to `.respond`.
+
+```lms_code_snippet
+  variants:
+    Streaming:
+      language: typescript
+      code: |
+        const prediction = model.respond(chat, {
+          temperature: 0.6,
+          maxTokens: 50,
+        });
+
+    "Non-streaming":
+      language: typescript
+      code: |
+        const result = await model.respond(chat, {
+          temperature: 0.6,
+          maxTokens: 50,
+        });
+```
 
 ## Print prediction stats
 
@@ -77,18 +120,28 @@ You can also print prediction metadata, such as the model used for generation, n
 tokens, time to first token, and stop reason.
 
 ```lms_code_snippet
-  title: "index.ts"
   variants:
-    TypeScript:
+    Streaming:
       language: typescript
       code: |
-        console.info("Model used:", prediction.modelInfo.displayName);
-        console.info("Predicted tokens:", prediction.stats.predictedTokensCount);
-        console.info("Time to first token (seconds):", prediction.stats.timeToFirstTokenSec);
-        console.info("Stop reason:", prediction.stats.stopReason);
+        // If you have already iterated through the fragments, doing this will not result in extra
+        // waiting.
+        const result = await prediction.result();
+
+        console.info("Model used:", result.modelInfo.displayName);
+        console.info("Predicted tokens:", result.stats.predictedTokensCount);
+        console.info("Time to first token (seconds):", result.stats.timeToFirstTokenSec);
+        console.info("Stop reason:", result.stats.stopReason);
+    "Non-streaming":
+      language: typescript
+      code: |
+        console.info("Model used:", result.modelInfo.displayName);
+        console.info("Predicted tokens:", result.stats.predictedTokensCount);
+        console.info("Time to first token (seconds):", result.stats.timeToFirstTokenSec);
+        console.info("Stop reason:", result.stats.stopReason);
 ```
 
-### Progress callbacks
+<!-- ### Progress callbacks
 
 TODO: TS has onFirstToken callback which Python does not
 
@@ -139,4 +192,4 @@ that receives a float from 0.0-1.0 representing prompt processing progress.
 ### Prediction configuration
 
 You can also specify the same prediction configuration options as you could in the
-in-app chat window sidebar. Please consult your specific SDK to see exact syntax.
+in-app chat window sidebar. Please consult your specific SDK to see exact syntax. -->
