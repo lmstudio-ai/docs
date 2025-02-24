@@ -7,13 +7,103 @@ description: Enforce a structured response from the model using Pydantic (Python
 
 TODO: 2-3 lines:
 
-## Enforce Using a JSON Schema
-
 ## Enforce Using a zod Schema
 
-// \/ destroy
+TODO: Info about zod & type safety
 
-## Overview
+```lms_code_snippet
+  variants:
+    "Non-streaming":
+      language: typescript
+      code: |
+        const bookSchema = z.object({
+          title: z.string(),
+          author: z.string(),
+          year: z.number().int(),
+        });
+
+        const result = await model.respond("Tell me about The Hobbit.", { structured: bookSchema });
+        const book = result.parsed;
+
+        console.info(book);
+    Streaming:
+      language: typescript
+      code: |
+        const bookSchema = z.object({
+          title: z.string(),
+          author: z.string(),
+          year: z.number().int(),
+        });
+
+        const prediction = model.respond("Tell me about The Hobbit.", { structured: bookSchema });
+
+        for await (const { content } of prediction) {
+          process.stdout.write(content);
+        }
+        console.info(); // Print a newline
+
+        const result = await prediction.result();
+        const book = result.parsed;
+
+        console.info("Parsed", book);
+```
+
+## Enforce Using a JSON Schema
+
+```lms_code_snippet
+  variants:
+    "Non-streaming":
+      language: typescript
+      code: |
+        const result = await model.respond("Tell me about The Hobbit.", {
+          structured: {
+            type: "json",
+            jsonSchema: {
+              type: "object",
+              properties: {
+                title: { type: "string" },
+                author: { type: "string" },
+                year: { type: "integer" },
+              },
+              required: ["title", "author", "year"],
+            },
+          },
+        });
+
+        const book = JSON.parse(result.content);
+        console.info(book);
+    Streaming:
+      language: typescript
+      code: |
+        const prediction = model.respond("Tell me about The Hobbit.", {
+          structured: {
+            type: "json",
+            jsonSchema: {
+              type: "object",
+              properties: {
+                title: { type: "string" },
+                author: { type: "string" },
+                year: { type: "integer" },
+              },
+              required: ["title", "author", "year"],
+            },
+          },
+        });
+
+        for await (const { content } of prediction) {
+          process.stdout.write(content);
+        }
+        console.info(); // Print a newline
+
+        const result = await prediction.result();
+        const book = JSON.parse(result.content);
+
+        console.info("Parsed", book);
+```
+
+TODO: Info about structured generation caveats
+
+<!-- ## Overview
 
 Once you have [downloaded and loaded](/docs/basics/index) a large language model,
 you can use it to respond to input through the API. This article covers getting JSON structured output, but you can also
@@ -52,4 +142,4 @@ methods, and relies on Pydantic in Python and Zod in TypeScript.
         )
 
         console.log(response.content.title)
-```
+``` -->
