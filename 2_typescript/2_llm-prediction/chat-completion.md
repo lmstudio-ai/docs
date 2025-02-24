@@ -114,6 +114,8 @@ You can pass in inferencing parameters as the second parameter to `.respond`.
         });
 ```
 
+See [Configuring the Model](./parameters) for more information on what can be configured.
+
 ## Print prediction stats
 
 You can also print prediction metadata, such as the model used for generation, number of generated
