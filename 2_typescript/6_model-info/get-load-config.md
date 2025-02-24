@@ -3,12 +3,8 @@ title: Get Load Config
 description: Get the load configuration of the model
 ---
 
-## Overview
-
 LM Studio allows you to configure certain parameters when loading a model
 [through the server UI](/docs/advanced/per-model) or [through the API](/docs/api/sdk/load-model).
-
-### Usage
 
 You can retrieve the config with which a given model was loaded using the SDK. In the below examples, `llm` can be replaced with an embedding model `emb`.
 

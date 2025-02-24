@@ -3,9 +3,15 @@ title: Chat Completion
 description: Provide a chat context for the model to respond to
 ---
 
-## 1. Instantiate a model
+TODO Regular text
 
-First, you need to load a model to generate completions from. This can be done using the `model` method in the `llm` namespace.
+## Quick Example
+
+ryan: single string respond
+
+## Obtaining a Model
+
+First, you need to load a model to generate completions from. This can be done using the `model` method in the `llm` namespace. TODO: Link: model init
 
 ```lms_code_snippet
   title: "index.ts"
@@ -16,13 +22,23 @@ First, you need to load a model to generate completions from. This can be done u
         import { LMStudioClient } from "@lmstudio/sdk";
 
         const client = new LMStudioClient();
-        const llm = await client.llm.model("qwen2.5-7b-instruct");
+        const model = await client.llm.model("qwen2.5-7b-instruct");
 ```
 
-## 2. Generate a response
+## Manage Chat Context
+
+1. show this
+   context = Chat.from([
+   { role: "system", content: "You are a resident AI philosopher." },
+   { role: "user", content: "What is the meaning of life?" },
+   ])
+2. context builder
+   ...
+
+## Generate a response
 
 Once you have a loaded model, you can ask the model to continue a conversation using the `respond`
-method on the `llm` instance.
+method on the `llm` instance. TODO Link: working with chats
 
 ```lms_code_snippet
   variants:
@@ -51,7 +67,11 @@ method on the `llm` instance.
         console.info(prediction.content);
 ```
 
-## 3. Print prediction stats
+## Customize Inferencing Parameters
+
+show streaming one
+
+## Print prediction stats
 
 You can also print prediction metadata, such as the model used for generation, number of generated
 tokens, time to first token, and stop reason.
@@ -67,111 +87,6 @@ tokens, time to first token, and stop reason.
         console.info("Time to first token (seconds):", prediction.stats.timeToFirstTokenSec);
         console.info("Stop reason:", prediction.stats.stopReason);
 ```
-
-## Overview
-
-Once you have [downloaded and loaded](/docs/basics/index) a large language model,
-you can use it to respond to input through the API. This article covers generating text
-from a prompt or conversation like the in-app chat UI, but you can also
-[request text completions](/docs/api/sdk/completion),
-[use a vision-language model to chat about images](/docs/api/sdk/image-input), and
-[get JSON structured output for programmatic use](/docs/api/sdk/structured-response).
-
-### Simple responses
-
-To get a response to a simple prompt from a loaded LLM, pass the prompt to
-the `respond` method on a the corresponding LLM handle. You can request
-the response as a stream of tokens or all at once.
-
-```lms_code_snippet
-  variants:
-    TypeScript:
-      language: typescript
-      code: |
-        import { LMStudioClient } from "@lmstudio/sdk";
-
-        const client = new LMStudioClient();
-        const llm = await client.llm.model();
-
-        const prediction = llm.respond("What is LM Studio?");
-        for await (const { content } of prediction) {
-          process.stdout.write(content);
-        }
-```
-
-### Chats and conversations
-
-For more complicated conversations, use a `Chat` to handle message history.
-A `Chat` can track system prompts, user messages, and assistant responses, as well as [files and images](/docs/api/sdk/image-input).
-
-```lms_code_snippet
-  variants:
-    Python:
-      language: python
-      code: |
-        import lmstudio as lm
-
-        llm = lm.llm()
-        chat = lm.Chat("This is the system prompt!")
-        chat.add_user_message("What is LM Studio?")
-
-        response = llm.respond(chat)
-        chat.add_assistant_response(response.content)
-
-    Python (with scoped resources):
-      language: python
-      code: |
-        import lmstudio
-
-        with lmstudio.Client() as client:
-            llm = client.llm.model()
-            chat = lmstudio.Chat("This is the system prompt!")
-            chat.add_user_message("What is LM Studio?")
-
-            response = llm.respond(chat)
-            chat.add_assistant_response(response.content)
-
-    TypeScript:
-      language: typescript
-      code: |
-        import { LMStudioClient, Chat } from "@lmstudio/sdk";
-
-        const client = new LMStudioClient();
-        const llm = await client.llm.model();
-        const chat = Chat.createEmpty()
-          .withAppended("system", "This is the system prompt!")
-          .withAppended("user", "What is LM Studio?");
-
-        const prediction = llm.respond(chat);
-        for await (const { content } of prediction) {
-          process.stdout.write(content);
-        }
-```
-
-## Advanced Usage
-
-### Using JSON chat histories
-
-If you have an external chat history formatted in JSON like
-
-```json
-chat_history = {
-  "messages": [
-    { "role": "system", "content": "You are a helpful assistant." },
-    { "role": "user", "content": "What is LM Studio?" }
-  ]
-}
-```
-
-you can load this directly into Python using `Chat.from_history(chat_history)`, or into TypeScript using `Chat.from(chat_history)`.
-
-### Prediction metadata
-
-Prediction responses are really returned as `PredictionResult` objects that contain additional dot-accessible metadata about the inference request.
-This entails info about the model used, the configuration with which it was loaded, and the configuration for this particular prediction. It also provides
-inference statistics like stop reason, time to first token, tokens per second, and number of generated tokens.
-
-Please consult your specific SDK to see exact syntax.
 
 ### Progress callbacks
 

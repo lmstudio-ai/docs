@@ -3,8 +3,6 @@ title: List Local Models
 description: Query which models are currently downloaded
 ---
 
-## Overview
-
 You can see which models have been downloaded to the machine running LM Studio
 using the SDK, so that you can [load them](/docs/api/sdk/load-and-access-models) for inference.
 
@@ -21,3 +19,7 @@ using the SDK, so that you can [load them](/docs/api/sdk/load-and-access-models)
         const llmOnly = downloaded.filter((model) => model.type === "llm");
         const embeddingOnly = downloaded.filter((model) => model.type === "embedding");
 ```
+
+## CLI usage
+
+TODO `lms ls`

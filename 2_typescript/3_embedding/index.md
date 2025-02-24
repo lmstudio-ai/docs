@@ -4,15 +4,13 @@ sidebar_title: Overview
 description: Generate text embeddings from input text
 ---
 
-## Overview
+## Load an Embedding Model
 
-Once you have [downloaded and loaded](/docs/basics/index) an embedding model,
-you can use it to create semantic representations of text for applications like
-[RAG](/docs/basics/rag).
+// todo embedding
 
-### Usage
+## Create Embeddings
 
-To embed a string or list of strings, pass it to the `embed` method on the corresponding embedding model handle.
+To embed a string, pass it to the `embed` method on the corresponding embedding model handle.
 
 ```lms_code_snippet
   variants:
@@ -25,5 +23,4 @@ To embed a string or list of strings, pass it to the `embed` method on the corre
         const emb = await client.embedding.model();
 
         const { embedding } = await emb.embed("Hello, world!");
-        // TODO: iterable of strings
 ```

@@ -3,6 +3,16 @@ title: Structured Response
 description: Enforce a structured response from the model using Pydantic (Python), Zod (TypeScript), or JSON Schema
 ---
 
+## Enforce a Particular Response Format
+
+TODO: 2-3 lines:
+
+## Enforce Using a JSON Schema
+
+## Enforce Using a zod Schema
+
+// \/ destroy
+
 ## Overview
 
 Once you have [downloaded and loaded](/docs/basics/index) a large language model,

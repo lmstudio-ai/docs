@@ -3,7 +3,19 @@ title: Load and Access Models
 description: Load, access, and unload models from the server
 ---
 
+Some intro text full stop links to lms ls lms ps
+
+## Managing Models in Memory
+
+TODO: quick text about memory
+
+### `.model()`
+
+for most task, use `.model()`
+
 ### Load a new instance of a model
+
+TODO: something
 
 Calling `model()` will not load a new instance (copy) of a model if one already exists.
 If you intentionally want to have multiple instances of the same model alive
