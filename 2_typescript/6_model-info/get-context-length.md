@@ -1,27 +1,34 @@
 ---
 title: Get Context Length
-description: Get the context length of the model
+description: API to get the maximum context length of a model.
 ---
 
-Because a model cannot respond to prompts longer than its context length, it can be useful
-to know what the context length of your model is.
+LLMs and embedding models, due to their fundamental architecture, have a property called `context length`, and more specifically a **maximum** context length.  Loosely speaking, this is how many tokens the models can "keep in memory" when generating text or embeddings. Exceeding this limit will result in the model behaving erratically.
 
-You can obtain the context length of a loaded LLM or embedding model using the SDK. In the below examples, `llm` can be replaced with an embedding model `emb`.
+## Use the `getContextLength()` function on the model object
 
-```lms_protip
-To check whether a conversation is over the context limit for a model,
-use this in conjunction with [tokenization](/docs/api/sdk/tokenization)
-(see that page).
-```
+It's useful to be able to check the context length of a model, especially as an extra check before providing potentially long input to the model.
 
 ```lms_code_snippet
+  title: "index.ts"
   variants:
     TypeScript:
       language: typescript
       code: |
-        import { LMStudioClient } from "@lmstudio/sdk";
+        const contextLength = await model.getContextLength();
+```
 
-        const client = new LMStudioClient();
-        const llm = await client.llm.model();
-        const contextLength = await llm.getContextLength();
+The `model` in the above code snippet is an instance of a loaded model you get from the `llm.model` method. See [Manage Models in Memory](../manage-models/loading) for more information.
+
+## Example: Check if the input will fit in the model's context length
+
+To check whether a conversation is over the context limit for a model, use in conjunction with [countTokens()](../api-reference/count-tokens).
+
+```lms_code_snippet
+  title: "index.ts"
+  variants:
+    TypeScript:
+      language: typescript
+      code: |
+        // TODO:
 ```
