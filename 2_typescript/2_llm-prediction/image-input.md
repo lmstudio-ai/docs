@@ -19,7 +19,6 @@ lms get qwen2-vl-2b-instruct
 Connect to LM Studio and obtain a handle to the VLM (Vision-Language Model) you want to use.
 
 ```lms_code_snippet
-  title: "index.ts"
   variants:
     Example:
       language: typescript
@@ -35,7 +34,6 @@ Connect to LM Studio and obtain a handle to the VLM (Vision-Language Model) you 
 Use the `client.files.prepareImage()` method to get a handle to the image you can pass to the model.
 
 ```lms_code_snippet
-  title: "index.ts"
   variants:
     Example:
       language: typescript
@@ -45,14 +43,24 @@ Use the `client.files.prepareImage()` method to get a handle to the image you ca
 
 ```
 
-Supported formats include JPEG, PNG, and TODO ???.
+If you only have the image in the form of a base64 string, you can use the `client.files.prepareImage64()` method instead.
+
+```lms_code_snippet
+  variants:
+    Example:
+      language: typescript
+      code: |
+        const imageBase64 = "Your base64 string here";
+        const image = await client.files.prepareImage64(imageBase64);
+```
+
+We support JPEG, PNG, and WebP image formats.
 
 ## 3. Pass the Image to the Model in `.respond()`
 
 Generate a prediction by passing the image to the model in the `.respond()` method.
 
 ```lms_code_snippet
-  title: "index.ts"
   variants:
     Example:
       language: typescript
