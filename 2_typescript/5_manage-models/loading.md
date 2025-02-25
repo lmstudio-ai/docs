@@ -4,13 +4,18 @@ sidebar_title: Load and Access Models
 description: APIs to load, access, and unload models from memory
 ---
 
-TODO: quick text about memory
+AI models are huge. It can take a while to load them into memory. LM Studio's SDK allows you to precisely control this process.
 
-## Get or Load a Model with `.model()`
+- For most people,
+  - Use `.model()` to get any currently loaded model
+  - Use `.model("model-key")` to use a specific model
+- If you want to manage models manually
+  - Use `.load("model-key")` to load a new instance of a model
+  - Use `model.unload()` to unload a model from memory
 
-For most task, use `.model()`.
+## Get the Current Model with `.model()`
 
-Calling `model()` will...
+If you already have a model loaded in LM Studio (either via the GUI or `lms load`), you can use it by calling `.model()` without any arguments.
 
 ```lms_code_snippet
   variants:
@@ -20,7 +25,24 @@ Calling `model()` will...
         import { LMStudioClient } from "@lmstudio/sdk";
         const client = new LMStudioClient();
 
-        const llama = await client.llm.model("llama-3.2-1b-instruct");
+        const model = await client.llm.model();
+```
+
+## Get a Specific Model with `.model("model-key")`
+
+If you want to use a specific model, you can provide the model key as an argument to `.model()`.
+
+Calling `.model("model-key")` will load the model if it's not already loaded, or return the existing instance if it is.
+
+```lms_code_snippet
+  variants:
+    TypeScript:
+      language: typescript
+      code: |
+        import { LMStudioClient } from "@lmstudio/sdk";
+        const client = new LMStudioClient();
+
+        const model = await client.llm.model("llama-3.2-1b-instruct");
 ```
 
 Learn more about the `.model()` method and the parameters it accepts in the [API Reference](../api-reference/model).
@@ -43,13 +65,11 @@ Use `load()` to load a new instance of a model, even if one already exists. This
 
 Learn more about the `.load()` method and the parameters it accepts in the [API Reference](../api-reference/load).
 
-
 ### Note about Instance Identifiers
 
 If you provide an instance identifier that already exists, the server will throw an error.
 So if you don't really care, it's safer to not provide an identifier, in which case
 the server will generate one for you. You can always check in the server tab in LM Studio, too!
-
 
 ## Unload a Model from Memory with `.unload()`
 
@@ -95,4 +115,3 @@ a new instance, and will _not_ retroactively change the TTL of an existing insta
         const llama = await client.llm.model("llama-3.2-1b-instruct");
         const another_llama = await client.llm.load("llama-3.2-1b-instruct");
 ```
-
