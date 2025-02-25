@@ -1,5 +1,5 @@
 ---
-title: Text Completion
+title: Text Completions
 description: "Provide a string input for the model to complete"
 ---
 
