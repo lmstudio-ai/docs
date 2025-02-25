@@ -6,7 +6,7 @@ description: APIs for representing a chat conversation with an LLM
 SDK methods such as `llm.respond()`, `llm.applyPromptTemplate()`, or `llm.operate()`
 takes in a chat parameter as an input. There are a few ways to represent a chat in the SDK.
 
-## Option 1: Array of messages
+## Option 1: Array of Messages
 
 You can use an array of messages to represent a chat. Here is an example with the `.respond()` method.
 
@@ -30,7 +30,7 @@ variants:
       ]);
 ```
 
-## Option 2: A single string
+## Option 2: a Single String
 
 If your chat only has one single user message, you can use a single string to represent the chat. Here is an example with the `.respond` method.
 
@@ -42,7 +42,7 @@ variants:
       const prediction = llm.respond("What is the meaning of life?");
 ```
 
-## Option 3: Using the `Chat` helper class
+## Option 3: Using the `Chat` Helper Class
 
 For more complex tasks, it is recommended to use the `Chat` helper classes. It provides various commonly used methods to manage the chat. Here is an example with the `Chat` class.
 

@@ -37,9 +37,7 @@ Another useful inference-time configuration parameter is [`structured`](<(./stru
 
 Set load-time parameters such as `contextLength`, `gpuOffload`, and more.
 
-Once a model is loaded, these parameters cannot be changed. To make changes, simply unload the model and reload again it with the new parameters.
-
-## Use with `.model()`
+### Set Load Parameters with `.model()`
 
 The `.model()` retrieves a handle to a model that has already been loaded, or loads a new one on demand (JIT loading).
 
@@ -60,7 +58,7 @@ The `.model()` retrieves a handle to a model that has already been loaded, or lo
 
 See [`LLMLoadModelConfig`](./../api-reference/llm-load-model-config) for all configurable fields.
 
-## Use with `.load()`
+### Set Load Parameters with `.load()`
 
 The `.load()` method creates a new model instance and loads it with the specified configuration.
 

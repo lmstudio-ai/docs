@@ -4,31 +4,13 @@ sidebar_title: Load and Access Models
 description: APIs to load, access, and unload models from memory
 ---
 
-Some intro text full stop links to lms ls lms ps
-
-## Managing Models in Memory
-
 TODO: quick text about memory
 
-### `.model()`
+## Get or Load a Model with `.model()`
 
-for most task, use `.model()`
+For most task, use `.model()`.
 
-### Load a new instance of a model
-
-TODO: something
-
-Calling `model()` will not load a new instance (copy) of a model if one already exists.
-If you intentionally want to have multiple instances of the same model alive
-at the same time, the SDK allows you to do so. Again, you'll need the model key,
-but this time you can specify a custom _instance identifier_ to distinguish the
-instance you're loading from the others.
-
-```lms_protip
-If you provide an instance identifier that already exists, the server will throw an error.
-So if you don't really care, it's safer to leave out the identifier, in which case
-the server will generate one for you. You can always check in the server tab, too!
-```
+Calling `model()` will...
 
 ```lms_code_snippet
   variants:
@@ -36,14 +18,40 @@ the server will generate one for you. You can always check in the server tab, to
       language: typescript
       code: |
         import { LMStudioClient } from "@lmstudio/sdk";
+        const client = new LMStudioClient();
 
+        const llama = await client.llm.model("llama-3.2-1b-instruct");
+```
+
+Learn more about the `.model()` method and the parameters it accepts in the [API Reference](../api-reference/model).
+
+## Load a New Instance of a Model with `.load()`
+
+Use `load()` to load a new instance of a model, even if one already exists. This allows you to have multiple instances of the same or different models loaded at the same time.
+
+```lms_code_snippet
+  variants:
+    TypeScript:
+      language: typescript
+      code: |
+        import { LMStudioClient } from "@lmstudio/sdk";
         const client = new LMStudioClient();
 
         const llama = await client.llm.load("llama-3.2-1b-instruct");
         const another_llama = await client.llm.load("llama-3.2-1b-instruct", "second-llama");
 ```
 
-### Unload a model
+Learn more about the `.load()` method and the parameters it accepts in the [API Reference](../api-reference/load).
+
+
+### Note about Instance Identifiers
+
+If you provide an instance identifier that already exists, the server will throw an error.
+So if you don't really care, it's safer to not provide an identifier, in which case
+the server will generate one for you. You can always check in the server tab in LM Studio, too!
+
+
+## Unload a Model from Memory with `.unload()`
 
 Once you no longer need a model, you can unload it by simply calling `unload()` on its handle.
 
@@ -60,9 +68,11 @@ Once you no longer need a model, you can unload it by simply calling `unload()` 
         await llm.unload()
 ```
 
-## Advanced Usage
+## Set Custom Load Config Parameters
 
-### Time to live
+You can also specify the same load-time configuration options when loading a model, such as Context Length and GPU offload %. See [load-time configuration](../llm-prediction/parameters) for more.
+
+## Set an Auto Unload Timer (TTL)
 
 You can specify a _time to live_ for a model you load, which is the idle time (in seconds)
 after the last request until the model unloads. See [the page on TTL](/docs/api/ttl-and-auto-evict) for more on this.
@@ -86,29 +96,3 @@ a new instance, and will _not_ retroactively change the TTL of an existing insta
         const another_llama = await client.llm.load("llama-3.2-1b-instruct");
 ```
 
-### Progress callbacks
-
-Loading a model requires transferring all the weights from disk to RAM/VRAM, which can take a long
-time depending on your disk read speed and the size of the model. If you want to get updates on the
-progress of this process, you can provide a callback to `load` that receives a float from 0.0-1.0
-representing load progress.
-
-```lms_code_snippet
-  variants:
-    TypeScript:
-      language: typescript
-      code: |
-        import { LMStudioClient } from "@lmstudio/sdk";
-
-        const client = new LMStudioClient();
-
-        const llama = await client.llm.load(
-          "llama-3.2-1b-instruct",
-          {onProgress: (progress) => process.stdout.write(`${progress*100}% loaded`)},
-        );
-```
-
-### Load config
-
-You can also specify the same load configuration options as you could in the
-in-app loading dropdown. Please consult your specific SDK to see exact syntax.
