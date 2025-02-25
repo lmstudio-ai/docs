@@ -3,7 +3,9 @@ title: Text Completions
 description: "Provide a string input for the model to complete"
 ---
 
-Use `llm.complete(...)` to generate text completions from a loaded language model.
+Use `llm.complete(...)` to generate text completions from a loaded language model. Text completions mean sending an non-formatted string to the model with the expectation that the model will complete the text.
+
+This is different from multi-turn chat conversations. For more information on chat completions, see [Chat Completions](./chat-completion).
 
 ## 1. Instantiate a model
 
@@ -18,7 +20,7 @@ First, you need to load a model to generate completions from. This can be done u
         import { LMStudioClient } from "@lmstudio/sdk";
 
         const client = new LMStudioClient();
-        const llm = await client.llm.model("qwen2.5-7b-instruct");
+        const model = await client.llm.model("qwen2.5-7b-instruct");
 ```
 
 ## 2. Generate a completion
@@ -30,18 +32,18 @@ Once you have a loaded model, you can generate completions by passing a string t
     Streaming:
       language: typescript
       code: |
-        const completion = llm.complete("My name is");
+        const completion = model.complete("My name is");
 
         for await (const { content } of completion) {
           process.stdout.write(content);
         }
 
-        console.info(); // Write a new line to prevent text from being overwritten by your shell.
+        console.info(); // Write a new line for cosmetic purposes
 
     "Non-streaming":
       language: typescript
       code: |
-        const completion = await llm.complete("My name is");
+        const completion = await model.complete("My name is");
 
         console.info(completion.content);
 ```

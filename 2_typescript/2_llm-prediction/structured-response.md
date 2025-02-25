@@ -1,13 +1,14 @@
 ---
 title: Structured Response
 description: Enforce a structured response from the model using Pydantic (Python), Zod (TypeScript), or JSON Schema
+index: 4
 ---
 
 ## Enforce a Particular Response Format
 
 TODO: 2-3 lines:
 
-## Enforce Using a zod Schema
+## Enforce Using a `zod` Schema
 
 TODO: Info about zod & type safety
 

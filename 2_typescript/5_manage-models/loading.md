@@ -1,6 +1,7 @@
 ---
-title: Load and Access Models
-description: Load, access, and unload models from the server
+title: "Manage Models in Memory"
+sidebar_title: Load and Access Models
+description: APIs to load, access, and unload models from memory
 ---
 
 Some intro text full stop links to lms ls lms ps

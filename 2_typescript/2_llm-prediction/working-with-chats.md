@@ -1,14 +1,14 @@
 ---
 title: Working with Chats
-description: How to represent chats in lmstudio.js?
+description: APIs for representing a chat conversation with an LLM
 ---
 
-Many methods in lmstudio.js, such as `llm.respond`, `llm.applyPromptTemplate`, or `llm.operate`
-takes in a chat parameter as an input. There are three ways to represent a chat in lmstudio.js:
+SDK methods such as `llm.respond()`, `llm.applyPromptTemplate()`, or `llm.operate()`
+takes in a chat parameter as an input. There are a few ways to represent a chat in the SDK.
 
-### Option 1. Using an array of messages
+## Option 1: Array of messages
 
-You can use an array of messages to present a chat. Here is an example with the `.respond` method.
+You can use an array of messages to represent a chat. Here is an example with the `.respond()` method.
 
 ```lms_code_snippet
 variants:
@@ -23,13 +23,14 @@ variants:
     language: typescript
     code: |
       const image = await client.files.prepareImage("/path/to/image.jpg");
+
       const prediction = llm.respond([
         { role: "system", content: "You are a state-of-art object recognition system." },
         { role: "user", content: "What is this object?", images: [image] },
       ]);
 ```
 
-### Option 2. Using a single string
+## Option 2: A single string
 
 If your chat only has one single user message, you can use a single string to represent the chat. Here is an example with the `.respond` method.
 
@@ -41,7 +42,7 @@ variants:
       const prediction = llm.respond("What is the meaning of life?");
 ```
 
-### Option 3. Using the `Chat` helper class
+## Option 3: Using the `Chat` helper class
 
 For more complex tasks, it is recommended to use the `Chat` helper classes. It provides various commonly used methods to manage the chat. Here is an example with the `Chat` class.
 
