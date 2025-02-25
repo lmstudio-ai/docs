@@ -1,6 +1,7 @@
 ---
-title: Overview
-description: Load, access, and unload models from the server
+title: Predicting with LLMs
+sidebar_title: Overview
+description: APIs to predict with LLMs managed by LM Studio.
 index: 1
 ---
 
