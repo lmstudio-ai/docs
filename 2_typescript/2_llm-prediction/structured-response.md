@@ -8,7 +8,8 @@ You can enforce a particular response format from an LLM by providing a schema (
 
 ## Enforce Using a `zod` Schema
 
-TODO: Info about zod & type safety
+If you wish the model to generate JSON that satisfies a given schema, it is recommended to provide
+the schema using [`zod`](https://zod.dev/). When a `zod` schema is provided, the prediction result will contain an extra field `parsed`, which contains parsed, validated, and typed result.
 
 #### Define a `zod` Schema
 
@@ -36,6 +37,9 @@ const bookSchema = z.object({
 
         const book = result.parsed;
         console.info(book);
+        //           ^
+        // Note that `book` is now correctly typed as { title: string, author: string, year: number }
+
     Streaming:
       language: typescript
       code: |
@@ -53,7 +57,9 @@ const bookSchema = z.object({
         const result = await prediction.result();
         const book = result.parsed;
 
-        console.info("Parsed", book);
+        console.info(book);
+        //           ^
+        // Note that `book` is now correctly typed as { title: string, author: string, year: number }
 ```
 
 ## Enforce Using a JSON Schema

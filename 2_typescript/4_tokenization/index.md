@@ -22,12 +22,58 @@ You can tokenize a string with a loaded LLM or embedding model using the SDK. In
 
         const tokens = await llm.tokenize("Hello, world!");
 
-        // TODO: iterable of strings
+        console.info(tokens); // Array of token IDs.
 ```
 
 ## Count tokens
 
+If you only care about the number of tokens, you can use the `.countTokens` method instead.
+
+```lms_code_snippet
+  variants:
+    TypeScript:
+      language: typescript
+      code: |
+        const tokenCount = await llm.countTokens("Hello, world!");
+        console.info("Token count:", tokenCount);
+```
+
 ### Example: count context
+
+You can determine if a given conversation fits into a model's context by doing the following:
+
+1. Convert the conversation to a string using the prompt template.
+2. Count the number of tokens in the string.
+3. Compare the token count to the model's context length.
+
+```lms_code_snippet
+  variants:
+    TypeScript:
+      language: typescript
+      code: |
+        import { Chat, type LLM, LMStudioClient } from "@lmstudio/sdk";
+
+        async function doesChatFitInContext(model: LLM, chat: Chat) {
+          // Convert the conversation to a string using the prompt template.
+          const formatted = await model.applyPromptTemplate(chat);
+          // Count the number of tokens in the string.
+          const tokenCount = await model.countTokens(formatted);
+          // Get the current loaded context length of the model
+          const contextLength = await model.getContextLength();
+          return tokenCount < contextLength;
+        }
+
+        const client = new LMStudioClient();
+        const model = await client.llm.model();
+
+        const chat = Chat.from([
+          { role: "user", content: "What is the meaning of life." },
+          { role: "assistant", content: "The meaning of life is..." },
+          // ... More messages
+        ]);
+
+        console.info("Fits", await doesChatFitInContext(model, chat));
+```
 
 <!-- ### Context length comparisons
 

@@ -53,7 +53,7 @@ Here is an example tool that creates a file:
             if (existsSync(name)) {
               return "Error: File already exists.";
             }
-            await writeFile(name, content);
+            await writeFile(name, content, "utf-8");
             return "File created.";
           },
         });
