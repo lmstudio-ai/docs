@@ -1,9 +1,10 @@
 ---
-title: Chat Completion
-description: Provide a chat context for the model to respond to
+title: Chat Completions
+sidebar_title: Chat
+description: APIs for a multi-turn chat conversations with an LLM
 ---
 
-TODO Regular text
+Use `llm.respond(...)` to generate completions for a chat conversation. This method can be used to generate completions for a single message or a multi-turn conversation.
 
 ## Quick Example
 
