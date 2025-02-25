@@ -75,49 +75,26 @@ Here's an example of how you might use the `complete` method to simulate a termi
       language: typescript
       code: |
         import { LMStudioClient } from "@lmstudio/sdk";
-        import * as readline from 'readline';
+        import { createInterface } from "node:readline/promises";
 
-        async function simulateTerminal() {
-          const client = new LMStudioClient();
-          const llm = await client.llm.model();
+        const rl = createInterface({ input: process.stdin, output: process.stdout });
+        const client = new LMStudioClient();
+        const model = await client.llm.model();
+        let history = "";
 
-          // Create readline interface
-          const rl = readline.createInterface({
-            input: process.stdin,
-            output: process.stdout
-          });
+        while (true) {
+          const command = await rl.question("$ ");
+          history += "$ " + command + "\n";
 
-          let history = '';
-
-          while (true) {
-            // Get user input
-            const command = await new Promise<string>(resolve => {
-              rl.question('$ ', resolve);
-            });
-
-            if (command.toLowerCase() === 'exit') {
-              rl.close();
-              break;
-            }
-
-            // Add command to history
-            history += `$ ${command}\n`;
-
-            // Generate completion
-            const completion = llm.complete(history, { stop: "$" });
-
-            // Print response
-            for await (const { content } of completion) {
-              process.stdout.write(content);
-            }
-            process.stdout.write('\n');
-
-            // Add response to history
-            history += completion + '\n';
+          const prediction = model.complete(history, { stopStrings: ["$"] });
+          for await (const { content } of prediction) {
+            process.stdout.write(content);
           }
-        }
+          process.stdout.write("\n");
 
-        simulateTerminal().catch(console.error);
+          const { content } = await prediction.result();
+          history += content;
+        }
 ```
 
 <!-- ## Advanced Usage
