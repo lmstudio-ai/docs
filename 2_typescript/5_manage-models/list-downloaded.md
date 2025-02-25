@@ -1,10 +1,11 @@
 ---
 title: List Local Models
-description: Query which models are currently downloaded
+description: APIs to list the available models in a given local environment
 ---
 
-You can see which models have been downloaded to the machine running LM Studio
-using the SDK, so that you can [load them](/docs/api/sdk/load-and-access-models) for inference.
+You can iterate through locally available models using the `listLocalModels` method. This method lives under the `system` namespace of the `LMStudioClient` object.
+
+## Available Model on the Local Machine
 
 ```lms_code_snippet
   variants:
@@ -13,13 +14,7 @@ using the SDK, so that you can [load them](/docs/api/sdk/load-and-access-models)
       code: |
         import { LMStudioClient } from "@lmstudio/sdk";
 
-        const client = new LMStudioClient();
-
-        const downloaded = client.system.listDownloadedModels();
-        const llmOnly = downloaded.filter((model) => model.type === "llm");
-        const embeddingOnly = downloaded.filter((model) => model.type === "embedding");
+        // TODO: @ryan
 ```
 
-## CLI usage
-
-TODO `lms ls`
+Learn more about `client.system` namespace in the [System API Reference](../api-reference/system-namespace).
