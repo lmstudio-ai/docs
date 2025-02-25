@@ -1,7 +1,7 @@
 ---
-title: "`client.model` Reference"
-sidebar_title: "`client.model` namespace"
-description: "`client.model` - API reference for the model namespace in an `LMStudioClient` instance"
+title: "`client.llm` Reference"
+sidebar_title: "`client.llm` namespace"
+description: "`client.llm` - API reference for the llm namespace in an `LMStudioClient` instance"
 index: 6
 ---
 
