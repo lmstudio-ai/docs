@@ -7,6 +7,8 @@ You can iterate through locally available models using the `listLocalModels` met
 
 ## Available Model on the Local Machine
 
+This will give you results equivalent to using [`lms ls`](../../cli/ls) in the CLI.
+
 ```lms_code_snippet
   variants:
     TypeScript:

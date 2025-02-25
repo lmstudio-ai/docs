@@ -3,10 +3,12 @@ title: List Loaded Models
 description: Query which models are currently loaded
 ---
 
-You can see which models are currently loaded in the LM Studio server using the SDK,
-so that you can access them for inference or unload them.
+You can iterate through models loaded into memory using the `listLoaded` method. This method lives under the `llm` and `embedding` namespaces of the `LMStudioClient` object.
 
-Call `listLoaded`/`list_loaded` on the desired model type (LLM/embedding).
+
+## List Models Currently Loaded in Memory
+
+This will give you results equivalent to using [`lms ps`](../../cli/ps) in the CLI.
 
 ```lms_code_snippet
   variants:
@@ -21,6 +23,4 @@ Call `listLoaded`/`list_loaded` on the desired model type (LLM/embedding).
         const embeddingOnly = await client.embedding.listLoaded();
 ```
 
-## CLI usage
-
-TODO `lms ps`
+Learn more about `client.llm` namespace in the [API Reference](../api-reference/llm-namespace).
