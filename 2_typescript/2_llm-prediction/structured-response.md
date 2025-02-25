@@ -4,45 +4,52 @@ description: Enforce a structured response from the model using Pydantic (Python
 index: 4
 ---
 
-## Enforce a Particular Response Format
-
-TODO: 2-3 lines:
+You can enforce a particular response format from an LLM by providing a schema (JSON or `zod`) to the `.respond()` method. This guarantees that the model's output conforms to the schema you provide.
 
 ## Enforce Using a `zod` Schema
 
 TODO: Info about zod & type safety
+
+#### Define a `zod` Schema
+
+```ts
+import { z } from "zod";
+
+// A zod schema for a book
+const bookSchema = z.object({
+  title: z.string(),
+  author: z.string(),
+  year: z.number().int(),
+});
+```
+
+#### Generate a Structured Response
 
 ```lms_code_snippet
   variants:
     "Non-streaming":
       language: typescript
       code: |
-        const bookSchema = z.object({
-          title: z.string(),
-          author: z.string(),
-          year: z.number().int(),
-        });
+        const result = await model.respond("Tell me about The Hobbit.",
+          { structured: bookSchema }
+        );
 
-        const result = await model.respond("Tell me about The Hobbit.", { structured: bookSchema });
         const book = result.parsed;
-
         console.info(book);
     Streaming:
       language: typescript
       code: |
-        const bookSchema = z.object({
-          title: z.string(),
-          author: z.string(),
-          year: z.number().int(),
-        });
+        const prediction = model.respond("Tell me about The Hobbit.",
+          { structured: bookSchema }
+        );
 
-        const prediction = model.respond("Tell me about The Hobbit.", { structured: bookSchema });
+        // Optionally stream the response
+        // for await (const { content } of prediction) {
+        //   process.stdout.write(content);
+        // }
+        // console.info();
 
-        for await (const { content } of prediction) {
-          process.stdout.write(content);
-        }
-        console.info(); // Print a newline
-
+        // Get the final structured result
         const result = await prediction.result();
         const book = result.parsed;
 
@@ -50,6 +57,25 @@ TODO: Info about zod & type safety
 ```
 
 ## Enforce Using a JSON Schema
+
+You can also enforce a structured response using a JSON schema.
+
+#### Define a JSON Schema
+
+```ts
+// A JSON schema for a book
+const schema = {
+  type: "object",
+  properties: {
+    title: { type: "string" },
+    author: { type: "string" },
+    year: { type: "integer" },
+  },
+  required: ["title", "author", "year"],
+};
+```
+
+#### Generate a Structured Response
 
 ```lms_code_snippet
   variants:
@@ -59,15 +85,7 @@ TODO: Info about zod & type safety
         const result = await model.respond("Tell me about The Hobbit.", {
           structured: {
             type: "json",
-            jsonSchema: {
-              type: "object",
-              properties: {
-                title: { type: "string" },
-                author: { type: "string" },
-                year: { type: "integer" },
-              },
-              required: ["title", "author", "year"],
-            },
+            jsonSchema: schema,
           },
         });
 

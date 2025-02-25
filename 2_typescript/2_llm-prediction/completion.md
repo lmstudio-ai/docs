@@ -120,7 +120,7 @@ Here's an example of how you might use the `complete` method to simulate a termi
         simulateTerminal().catch(console.error);
 ```
 
-## Advanced Usage
+<!-- ## Advanced Usage
 
 ### Prediction metadata
 
@@ -181,4 +181,4 @@ that receives a float from 0.0-1.0 representing prompt processing progress.
 ### Prediction configuration
 
 You can also specify the same prediction configuration options as you could in the
-in-app chat window sidebar. Please consult your specific SDK to see exact syntax.
+in-app chat window sidebar. Please consult your specific SDK to see exact syntax. -->
