@@ -12,8 +12,8 @@ LLMs are text-in text-out models and cannot directly execute code. However, just
 
 ```lms_code_snippet
   variants:
-    TypeScript:
-      language: typescript
+    "Python (convenience API)":
+      language: python
       code: |
         import { LMStudioClient, tool } from "@lmstudio/sdk";
         import { z } from "zod";
@@ -50,8 +50,8 @@ The following code demonstrates how to provide multiple tools in a single `.act(
 
 ```lms_code_snippet
   variants:
-    TypeScript:
-      language: typescript
+    "Python (convenience API)":
+      language: python
       code: |
         import { LMStudioClient, tool } from "@lmstudio/sdk";
         import { z } from "zod";
@@ -93,8 +93,8 @@ The following code creates a conversation loop with an LLM agent that can create
 
 ```lms_code_snippet
   variants:
-    TypeScript:
-      language: typescript
+    "Python (convenience API)":
+      language: python
       code: |
         import { Chat, LMStudioClient, tool } from "@lmstudio/sdk";
         import { existsSync } from "fs";
@@ -122,7 +122,7 @@ The following code creates a conversation loop with an LLM agent that can create
 
         while (true) {
           const input = await rl.question("You: ");
-          // Append the user input to the chat
+          # Append the user input to the chat
           chat.append("user", input);
 
           process.stdout.write("Bot: ");

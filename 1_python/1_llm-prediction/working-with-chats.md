@@ -13,14 +13,14 @@ You can use an array of messages to represent a chat. Here is an example with th
 ```lms_code_snippet
 variants:
   "Text-only":
-    language: typescript
+    language: python
     code: |
       const prediction = llm.respond([
         { role: "system", content: "You are a resident AI philosopher." },
         { role: "user", content: "What is the meaning of life?" },
       ]);
   With Images:
-    language: typescript
+    language: python
     code: |
       const image = await client.files.prepareImage("/path/to/image.jpg");
 
@@ -36,8 +36,8 @@ If your chat only has one single user message, you can use a single string to re
 
 ```lms_code_snippet
 variants:
-  TypeScript:
-    language: typescript
+  "Python (convenience API)":
+    language: python
     code: |
       const prediction = llm.respond("What is the meaning of life?");
 ```
@@ -49,7 +49,7 @@ For more complex tasks, it is recommended to use the `Chat` helper classes. It p
 ```lms_code_snippet
 variants:
   "Text-only":
-    language: typescript
+    language: python
     code: |
       const chat = Chat.empty();
       chat.append("system", "You are a resident AI philosopher.");
@@ -57,7 +57,7 @@ variants:
 
       const prediction = llm.respond(chat);
   With Images:
-    language: typescript
+    language: python
     code: |
       const image = await client.files.prepareImage("/path/to/image.jpg");
 
@@ -73,15 +73,15 @@ You can also quickly construct a `Chat` object using the `Chat.from` method.
 ```lms_code_snippet
 variants:
   "Array of messages":
-    language: typescript
+    language: python
     code: |
       const chat = Chat.from([
         { role: "system", content: "You are a resident AI philosopher." },
         { role: "user", content: "What is the meaning of life?" },
       ]);
   "Single string":
-    language: typescript
+    language: python
     code: |
-      // This constructs a chat with a single user message
+      # This constructs a chat with a single user message
       const chat = Chat.from("What is the meaning of life?");
 ```

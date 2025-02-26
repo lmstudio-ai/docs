@@ -13,14 +13,14 @@ Set inference-time parameters such as `temperature`, `maxTokens`, `topP` and mor
 ```lms_code_snippet
   variants:
     ".respond()":
-      language: typescript
+      language: python
       code: |
         const prediction = model.respond(chat, {
           temperature: 0.6,
           maxTokens: 50,
         });
     ".complete()":
-        language: typescript
+        language: python
         code: |
           const prediction = model.complete(prompt, {
             temperature: 0.6,
@@ -45,8 +45,8 @@ The `.model()` retrieves a handle to a model that has already been loaded, or lo
 
 ```lms_code_snippet
   variants:
-    TypeScript:
-      language: typescript
+    "Python (convenience API)":
+      language: python
       code: |
         const model = await client.llm.model("qwen2.5-7b-instruct", {
           config: {
@@ -64,8 +64,8 @@ The `.load()` method creates a new model instance and loads it with the specifie
 
 ```lms_code_snippet
   variants:
-    TypeScript:
-      language: typescript
+    "Python (convenience API)":
+      language: python
       code: |
         const model = await client.llm.load("qwen2.5-7b-instruct", {
           config: {

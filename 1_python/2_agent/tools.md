@@ -12,25 +12,25 @@ You can define tools with the `tool()` function and pass them to the model in th
 Follow this standard format to define functions as tools:
 
 ```lms_code_snippet
-  title: "index.ts"
+  title: "example.py"
   variants:
-    TypeScript:
-      language: typescript
+    "Python (convenience API)":
+      language: python
       code: |
         import { tool } from "@lmstudio/sdk";
         import { z } from "zod";
 
         const exampleTool = tool({
-          // The name of the tool
+          # The name of the tool
           name: "add",
 
-          // A description of the tool
+          # A description of the tool
           description: "Given two numbers a and b. Returns the sum of them.",
           
-          // zod schema of the parameters
+          # zod schema of the parameters
           parameters: { a: z.number(), b: z.number() }, 
           
-          // The implementation of the tool. Just a regular function.
+          # The implementation of the tool. Just a regular function.
           implementation: ({ a, b }) => a + b, 
         });
 ```
@@ -52,8 +52,8 @@ can essentially turn your LLMs into autonomous agents that can perform tasks on 
 ```lms_code_snippet
   title: "createFileTool.ts"
   variants:
-    TypeScript:
-      language: typescript
+    "Python (convenience API)":
+      language: python
       code: |
         import { tool } from "@lmstudio/sdk";
         import { existsSync } from "fs";
@@ -77,10 +77,10 @@ can essentially turn your LLMs into autonomous agents that can perform tasks on 
 ### Example code using the `createFile` tool:
 
 ```lms_code_snippet
-  title: "index.ts"
+  title: "example.py"
   variants:
-    TypeScript:
-      language: typescript
+    "Python (convenience API)":
+      language: python
       code: |
         import { LMStudioClient } from "@lmstudio/sdk";
         import { createFileTool } from "./createFileTool";

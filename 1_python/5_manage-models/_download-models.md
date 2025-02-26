@@ -19,32 +19,32 @@ Downloading models consists of three steps:
 
 ```lms_code_snippet
   variants:
-    TypeScript:
-      language: typescript
+    "Python (convenience API)":
+      language: python
       code: |
         import { LMStudioClient } from "@lmstudio/sdk";
 
         const client = new LMStudioClient();
 
-        // 1. Search for the model you want
-        // Specify any/all of searchTerm, limit, compatibilityTypes
+        # 1. Search for the model you want
+        # Specify any/all of searchTerm, limit, compatibilityTypes
         const searchResults = await client.repository.searchModels({
-          searchTerm: "llama 3.2 1b",    // Search for Llama 3.2 1B
-          limit: 5,                      // Get top 5 results
-          compatibilityTypes: ["gguf"],  // Only download GGUFs
+          searchTerm: "llama 3.2 1b",    # Search for Llama 3.2 1B
+          limit: 5,                      # Get top 5 results
+          compatibilityTypes: ["gguf"],  # Only download GGUFs
         });
 
-        // 2. Find download options
+        # 2. Find download options
         const bestResult = searchResults[0];
         const downloadOptions = await bestResult.getDownloadOptions();
 
-        // Let's download Q4_K_M, a good middle ground quantization
+        # Let's download Q4_K_M, a good middle ground quantization
         const desiredModel = downloadOptions.find(option => option.quantization === 'Q4_K_M');
 
-        // 3. Download it!
+        # 3. Download it!
         const modelKey = await desiredModel.download();
 
-        // This returns a path you can use to load the model
+        # This returns a path you can use to load the model
         const loadedModel = await client.llm.model(modelKey);
 ```
 
@@ -78,8 +78,8 @@ one for progress updates and/or one when the download is being finalized
                 on_finalize: lambda: print("Finalizing download...")
             )
 
-    TypeScript:
-      language: typescript
+    "Python (convenience API)":
+      language: python
       code: |
         import { LMStudioClient, type DownloadProgressUpdate } from "@lmstudio/sdk";
 
@@ -90,7 +90,7 @@ one for progress updates and/or one when the download is being finalized
 
         const client = new LMStudioClient();
 
-        // ... Same code as before ...
+        # ... Same code as before ...
 
         modelKey = await desiredModel.download({
           onProgress: printProgressUpdate,

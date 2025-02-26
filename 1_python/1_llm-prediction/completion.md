@@ -12,10 +12,10 @@ This is different from multi-turn chat conversations. For more information on ch
 First, you need to load a model to generate completions from. This can be done using the `model` method on the `llm` handle.
 
 ```lms_code_snippet
-  title: "index.ts"
+  title: "example.py"
   variants:
-    TypeScript:
-      language: typescript
+    "Python (convenience API)":
+      language: python
       code: |
         import { LMStudioClient } from "@lmstudio/sdk";
 
@@ -30,7 +30,7 @@ Once you have a loaded model, you can generate completions by passing a string t
 ```lms_code_snippet
   variants:
     Streaming:
-      language: typescript
+      language: python
       code: |
         const completion = model.complete("My name is");
 
@@ -38,10 +38,10 @@ Once you have a loaded model, you can generate completions by passing a string t
           process.stdout.write(content);
         }
 
-        console.info(); // Write a new line for cosmetic purposes
+        console.info(); # Write a new line for cosmetic purposes
 
     "Non-streaming":
-      language: typescript
+      language: python
       code: |
         const completion = await model.complete("My name is");
 
@@ -53,10 +53,10 @@ Once you have a loaded model, you can generate completions by passing a string t
 You can also print prediction metadata, such as the model used for generation, number of generated tokens, time to first token, and stop reason.
 
 ```lms_code_snippet
-  title: "index.ts"
+  title: "example.py"
   variants:
-    TypeScript:
-      language: typescript
+    "Python (convenience API)":
+      language: python
       code: |
         console.info("Model used:", prediction.modelInfo.displayName);
         console.info("Predicted tokens:", prediction.stats.predictedTokensCount);
@@ -71,8 +71,8 @@ Here's an example of how you might use the `complete` method to simulate a termi
 ```lms_code_snippet
   title: "terminal-sim.ts"
   variants:
-    TypeScript:
-      language: typescript
+    "Python (convenience API)":
+      language: python
       code: |
         import { LMStudioClient } from "@lmstudio/sdk";
         import { createInterface } from "node:readline/promises";
@@ -142,8 +142,8 @@ that receives a float from 0.0-1.0 representing prompt processing progress.
                 on_progress: lambda progress: print(f"{progress*100}% processed")
             )
 
-    TypeScript:
-      language: typescript
+    "Python (convenience API)":
+      language: python
       code: |
         import { LMStudioClient } from "@lmstudio/sdk";
 

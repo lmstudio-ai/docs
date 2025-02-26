@@ -20,8 +20,8 @@ If you already have a model loaded in LM Studio (either via the GUI or `lms load
 
 ```lms_code_snippet
   variants:
-    TypeScript:
-      language: typescript
+    "Python (convenience API)":
+      language: python
       code: |
         import { LMStudioClient } from "@lmstudio/sdk";
         const client = new LMStudioClient();
@@ -38,8 +38,8 @@ Calling `.model("model-key")` will load the model if it's not already loaded, or
 
 ```lms_code_snippet
   variants:
-    TypeScript:
-      language: typescript
+    "Python (convenience API)":
+      language: python
       code: |
         import { LMStudioClient } from "@lmstudio/sdk";
         const client = new LMStudioClient();
@@ -55,8 +55,8 @@ Use `load()` to load a new instance of a model, even if one already exists. This
 
 ```lms_code_snippet
   variants:
-    TypeScript:
-      language: typescript
+    "Python (convenience API)":
+      language: python
       code: |
         import { LMStudioClient } from "@lmstudio/sdk";
         const client = new LMStudioClient();
@@ -79,8 +79,8 @@ Once you no longer need a model, you can unload it by simply calling `unload()` 
 
 ```lms_code_snippet
   variants:
-    TypeScript:
-      language: typescript
+    "Python (convenience API)":
+      language: python
       code: |
         import { LMStudioClient } from "@lmstudio/sdk";
 

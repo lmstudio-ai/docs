@@ -16,7 +16,7 @@ the schema using [`zod`](https://zod.dev/). When a `zod` schema is provided, the
 ```ts
 import { z } from "zod";
 
-// A zod schema for a book
+# A zod schema for a book
 const bookSchema = z.object({
   title: z.string(),
   author: z.string(),
@@ -29,7 +29,7 @@ const bookSchema = z.object({
 ```lms_code_snippet
   variants:
     "Non-streaming":
-      language: typescript
+      language: python
       code: |
         const result = await model.respond("Tell me about The Hobbit.",
           { structured: bookSchema }
@@ -37,29 +37,29 @@ const bookSchema = z.object({
 
         const book = result.parsed;
         console.info(book);
-        //           ^
-        // Note that `book` is now correctly typed as { title: string, author: string, year: number }
+        #           ^
+        # Note that `book` is now correctly typed as { title: string, author: string, year: number }
 
     Streaming:
-      language: typescript
+      language: python
       code: |
         const prediction = model.respond("Tell me about The Hobbit.",
           { structured: bookSchema }
         );
 
-        // Optionally stream the response
-        // for await (const { content } of prediction) {
-        //   process.stdout.write(content);
-        // }
-        // console.info();
+        # Optionally stream the response
+        # for await (const { content } of prediction) {
+        #   process.stdout.write(content);
+        # }
+        # console.info();
 
-        // Get the final structured result
+        # Get the final structured result
         const result = await prediction.result();
         const book = result.parsed;
 
         console.info(book);
-        //           ^
-        // Note that `book` is now correctly typed as { title: string, author: string, year: number }
+        #           ^
+        # Note that `book` is now correctly typed as { title: string, author: string, year: number }
 ```
 
 ## Enforce Using a JSON Schema
@@ -69,7 +69,7 @@ You can also enforce a structured response using a JSON schema.
 #### Define a JSON Schema
 
 ```ts
-// A JSON schema for a book
+# A JSON schema for a book
 const schema = {
   type: "object",
   properties: {
@@ -86,7 +86,7 @@ const schema = {
 ```lms_code_snippet
   variants:
     "Non-streaming":
-      language: typescript
+      language: python
       code: |
         const result = await model.respond("Tell me about The Hobbit.", {
           structured: {
@@ -98,7 +98,7 @@ const schema = {
         const book = JSON.parse(result.content);
         console.info(book);
     Streaming:
-      language: typescript
+      language: python
       code: |
         const prediction = model.respond("Tell me about The Hobbit.", {
           structured: {
@@ -118,7 +118,7 @@ const schema = {
         for await (const { content } of prediction) {
           process.stdout.write(content);
         }
-        console.info(); // Print a newline
+        console.info(); # Print a newline
 
         const result = await prediction.result();
         const book = JSON.parse(result.content);
@@ -146,8 +146,8 @@ methods, and relies on Pydantic in Python and Zod in TypeScript.
 
 ```lms_code_snippet
   variants:
-    TypeScript:
-      language: typescript
+    "Python (convenience API)":
+      language: python
       code: |
         import { LMStudioClient } from "@lmstudio/sdk";
         import { z } from "zod";

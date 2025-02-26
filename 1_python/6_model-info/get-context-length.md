@@ -10,10 +10,10 @@ LLMs and embedding models, due to their fundamental architecture, have a propert
 It's useful to be able to check the context length of a model, especially as an extra check before providing potentially long input to the model.
 
 ```lms_code_snippet
-  title: "index.ts"
+  title: "example.py"
   variants:
-    TypeScript:
-      language: typescript
+    "Python (convenience API)":
+      language: python
       code: |
         const contextLength = await model.getContextLength();
 ```
@@ -25,10 +25,10 @@ The `model` in the above code snippet is an instance of a loaded model you get f
 To check whether a conversation is over the context limit for a model, use in conjunction with [countTokens()](../api-reference/count-tokens).
 
 ```lms_code_snippet
-  title: "index.ts"
+  title: "example.py"
   variants:
-    TypeScript:
-      language: typescript
+    "Python (convenience API)":
+      language: python
       code: |
-        // TODO:
+        # TODO:
 ```
