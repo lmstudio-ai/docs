@@ -3,7 +3,7 @@ title: Working with Chats
 description: APIs for representing a chat conversation with an LLM
 ---
 
-SDK methods such as `llm.respond()`, `llm.applyPromptTemplate()`, or `llm.operate()`
+SDK methods such as `llm.respond()`, `llm.applyPromptTemplate()`, or `llm.act()`
 takes in a chat parameter as an input. There are a few ways to represent a chat in the SDK.
 
 ## Option 1: Array of Messages

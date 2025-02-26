@@ -88,7 +88,7 @@ can essentially turn your LLMs into autonomous agents that can perform tasks on 
         const client = new LMStudioClient();
 
         const model = await client.llm.model("qwen2.5-7b-instruct");
-        await model.operate(
+        await model.act(
           "Please create a file named output.txt with your understanding of the meaning of life.",
           [createFileTool],
         );

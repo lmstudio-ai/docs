@@ -1,5 +1,5 @@
 ---
-title: The `.operate()` call
+title: The `.act()` call
 description: TODO...
 index: 2
 ---
@@ -28,7 +28,7 @@ LLMs are text-in text-out models and cannot directly execute code. However, just
         });
 
         const model = await client.llm.model("qwen2.5-7b-instruct");
-        await model.operate("What is the result of 12345 multiplied by 54321?", [multiplyTool], {
+        await model.act("What is the result of 12345 multiplied by 54321?", [multiplyTool], {
           onMessage: (message) => console.info(message.toString()),
         });
 ```
@@ -46,7 +46,7 @@ Some general guidance when selecting a model:
 
 ### Example: Multiple Tools
 
-The following code demonstrates how to provide multiple tools in a single `.operate()` call.
+The following code demonstrates how to provide multiple tools in a single `.act()` call.
 
 ```lms_code_snippet
   variants:
@@ -80,7 +80,7 @@ The following code demonstrates how to provide multiple tools in a single `.oper
         });
 
         const model = await client.llm.model("qwen2.5-7b-instruct");
-        await model.operate(
+        await model.act(
           "Is the result of 12345 + 45668 a prime? Think step by step.",
           [additionTool, isPrimeTool],
           { onMessage: (message) => console.info(message.toString()) },
@@ -126,7 +126,7 @@ The following code creates a conversation loop with an LLM agent that can create
           chat.append("user", input);
 
           process.stdout.write("Bot: ");
-          await model.operate(chat, [createFileTool], {
+          await model.act(chat, [createFileTool], {
             // When the model finish the entire message, push it to the chat
             onMessage: (message) => chat.append(message),
             onPredictionFragment: ({ content }) => {
