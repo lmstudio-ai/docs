@@ -1,12 +1,26 @@
 ---
 title: "`lmstudio-python`"
-sidebar_title: "Installation"
-description: "Install the Python SDK for LM Studio"
+sidebar_title: "Introduction"
+description: "Getting started with LM Studio's Python SDK"
 ---
 
 Page dedicated to introducing `lmstudio-python`, exaplain its capabilities, link the github, and provide a simple example of how to use it.
 
-## How to install the Python SDK
+## Installation
+
+`lmstudio-python` is available as a pypi package. You can install it using pip:
+
+```lms_code_snippet
+  variants:
+    Using pip:
+      language: bash
+      code: |
+        pip install lmstudio
+    Using uv:
+      language: bash
+      code: |
+        uv pip install lmstudio
+```
 
 ## Loading models and making predictions
 
