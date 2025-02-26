@@ -1,12 +1,15 @@
 ---
 title: "Project Setup"
-description: "Set up your `lmstudio.js` app, script, or notebook."
+sidebar_title: "Project Setup"
+description: "Set up your `lmstudio-js` app or script."
 index: 2
 ---
 
-## Install in an Exiting Project
+`@lmstudio/sdk` is a library published on npm that allows you to use `lmstudio-js` in your own projects. It is open source and it's developed on GitHub. You can find the source code [here](https://github.com/lmstudio-ai/lmstudio.js).
 
-If you have already created a project and would like to use `lmstudio.js` in it, you can install it using npm, yarn, or pnpm.
+## Add `lmstudio-js` to an Exiting Project
+
+If you have already created a project and would like to use `lmstudio-js` in it, you can install it using npm, yarn, or pnpm.
 
 ```lms_code_snippet
   variants:
