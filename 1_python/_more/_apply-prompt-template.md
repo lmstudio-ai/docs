@@ -1,44 +1,54 @@
 ---
 title: Apply Prompt Template
-description: Apply a model's built-in prompt template to a conversation
+description: Apply a model's prompt template to a conversation
 ---
 
 ## Overview
 
-LLMs (Large Language Models) operate on a text-in, text-out basis. Before processing conversations through these models, the input must be converted into a properly formatted string using a prompt template. If you need to inspect or work with this formatted string directly, the LM Studio SDK provides a streamlined way to apply a model's prompt template to your conversations. Note that for regular LLM interactions, this conversion is handled automatically by the SDK.
+LLMs (Large Language Models) operate on a text-in, text-out basis. Before processing conversations through these models, the input must be converted into a properly formatted string using a prompt template. If you need to inspect or work with this formatted string directly, the LM Studio SDK provides a streamlined way to apply a model's prompt template to your conversations.
 
-### Usage
-
-You can apply a loaded LLM's prompt template to a `Chat` or JSON conversation history using the SDK.
-
-```lms_protip
-To check whether a conversation is over the context limit for a model,
-use this in conjunction with [tokenization](/docs/sdk/python/tokenization)
-(see that page for details).
+```lms_info
+You do not need to use this method when using `.respond`. It will automatically apply the prompt template for you.
 ```
+
+## Usage with a Chat
+
+You can apply a prompt template to a `Chat` by using the `applyPromptTemplate` method. This method takes a `Chat` object as input and returns a formatted string.
 
 ```lms_code_snippet
   variants:
-    Python:
-      language: python
+    TypeScript:
+      language: typescript
       code: |
-        import lmstudio as lm
+        import { Chat, LMStudioClient } from "@lmstudio/sdk";
 
-        llm = lm.llm()
-        chat = lm.Chat("You are a helpful assistant.")
-        chat.add_user_message("What is LM Studio?")
+        const client = new LMStudioClient();
+        const llm = await client.llm.model(); // Use any loaded LLM
 
-        formatted_chat = llm.apply_prompt_template(chat)
+        const chat = Chat.createEmpty();
+        chat.append("system", "You are a helpful assistant.");
+        chat.append("user", "What is LM Studio?");
+        const formatted = await llm.applyPromptTemplate(chat);
+        console.info(formatted);
+```
 
-    Python (with scoped resources):
-      language: python
+## Usage with an Array of Messages
+
+The same method can also be used with any object that can be converted to a `Chat`, for example, an array of messages.
+
+```lms_code_snippet
+  variants:
+    TypeScript:
+      language: typescript
       code: |
-        import lmstudio
+        import { LMStudioClient } from "@lmstudio/sdk";
 
-        with lmstudio.Client() as client:
-            llm = client.llm.model()
-            chat = lm.Chat("You are a helpful assistant.")
-            chat.add_user_message("What is LM Studio?")
+        const client = new LMStudioClient();
+        const llm = await client.llm.model(); // Use any loaded LLM
 
-            formatted_chat = llm.apply_prompt_template(chat)
+        const formatted = await llm.applyPromptTemplate([
+          { role: "system", content: "You are a helpful assistant." },
+          { role: "user", content: "What is LM Studio?" },
+        ]);
+        console.info(formatted);
 ```

@@ -3,33 +3,24 @@ title: List Loaded Models
 description: Query which models are currently loaded
 ---
 
-## Overview
+You can iterate through models loaded into memory using the `listLoaded` method. This method lives under the `llm` and `embedding` namespaces of the `LMStudioClient` object.
 
-You can see which models are currently loaded in the LM Studio server using the SDK,
-so that you can access them for inference or unload them.
+
+## List Models Currently Loaded in Memory
+
+This will give you results equivalent to using [`lms ps`](../../cli/ps) in the CLI.
 
 ```lms_code_snippet
   variants:
-    Python:
-      language: python
+    TypeScript:
+      language: typescript
       code: |
-        import lmstudio as lm
+        import { LMStudioClient } from "@lmstudio/sdk";
 
-        all_loaded_models = lm.list_loaded_models()
-        llm_only = lm.list_loaded_models("llm")
-        embedding_only = lm.list_loaded_models("embedding")
+        const client = new LMStudioClient();
 
-    Python (with scoped resources):
-      language: python
-      code: |
-        import lmstudio
-
-        with lmstudio.Client() as client:
-            all_loaded_models = client.list_loaded_models()
-            llm_only = client.llm.list_loaded()
-            embedding_only = client.embedding.list_loaded()
+        const llmOnly = await client.llm.listLoaded();
+        const embeddingOnly = await client.embedding.listLoaded();
 ```
 
-The returned model lists consist of live model handles,
-ready for immediate use to make preditions (or perform any
-of the other operations that model handles support).
+Learn more about `client.llm` namespace in the [API Reference](../api-reference/llm-namespace).

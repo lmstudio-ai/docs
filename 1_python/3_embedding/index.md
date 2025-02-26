@@ -1,43 +1,33 @@
 ---
-title: Overview
+title: Embedding
+sidebar_title: Overview
 description: Generate text embeddings from input text
 ---
 
-## Overview
+Generate embeddings for input text. Embeddings are vector representations of text that capture semantic meaning. Embeddings are a building block for RAG (Retrieval-Augmented Generation) and other similarity-based tasks.
 
-Once you have [downloaded and loaded](/docs/basics/index) an embedding model,
-you can use it to create semantic representations of text for applications like
-[RAG](/docs/basics/rag).
+### Prerequisite: Get an Embedding Model
 
-### Usage
+If you don't yet have an embedding model, you can download a model like `nomic-ai/nomic-embed-text-v1.5` using the following command:
 
-To embed a string or list of strings, pass it to the `embed` method on the corresponding embedding model handle.
+```bash
+lms get nomic-ai/nomic-embed-text-v1.5
+```
+
+## Create Embeddings
+
+To convert a string to a vector representation, pass it to the `embed` method on the corresponding embedding model handle.
 
 ```lms_code_snippet
+  title: "index.ts"
   variants:
-    Python:
-      language: python
+    TypeScript:
+      language: typescript
       code: |
-        import lmstudio as lm
+        import { LMStudioClient } from "@lmstudio/sdk";
+        const client = new LMStudioClient();
 
-        emb = lm.embedding_model()
+        const model = await client.embedding.model("nomic-embed-text-v1.5");
 
-        embedding = emb.embed("Hello, world!")
-
-        # You can also pass an iterable of strings
-        embeddings = emb.embed(["Hello, world!", "Goodbye, world!"])
-
-    Python (with scoped resources):
-      language: python
-      code: |
-        import lmstudio
-
-        with lmstudio.Client() as client:
-
-            emb = client.embedding.model()
-
-            embedding = emb.embed("Hello, world!")
-
-            # You can also pass an iterable of strings
-            embeddings = emb.embed(["Hello, world!", "Goodbye, world!"])
+        const { embedding } = await model.embed("Hello, world!");
 ```
