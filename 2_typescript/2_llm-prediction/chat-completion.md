@@ -27,7 +27,7 @@ The following snippet shows how to stream the AI's response to quick chat prompt
         }
 ```
 
-## Obtaining a Model
+## Obtain a Model
 
 First, you need to get a model handle. This can be done using the `model` method in the `llm` namespace. For example, here is how to use Qwen2.5 7B Instruct.
 

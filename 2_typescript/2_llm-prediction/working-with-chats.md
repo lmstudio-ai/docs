@@ -30,7 +30,7 @@ variants:
       ]);
 ```
 
-## Option 2: a Single String
+## Option 2: Input a Single String
 
 If your chat only has one single user message, you can use a single string to represent the chat. Here is an example with the `.respond` method.
 

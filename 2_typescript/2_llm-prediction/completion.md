@@ -7,7 +7,7 @@ Use `llm.complete(...)` to generate text completions from a loaded language mode
 
 This is different from multi-turn chat conversations. For more information on chat completions, see [Chat Completions](./chat-completion).
 
-## 1. Instantiate a model
+## 1. Instantiate a Model
 
 First, you need to load a model to generate completions from. This can be done using the `model` method on the `llm` handle.
 
@@ -23,7 +23,7 @@ First, you need to load a model to generate completions from. This can be done u
         const model = await client.llm.model("qwen2.5-7b-instruct");
 ```
 
-## 2. Generate a completion
+## 2. Generate a Completion
 
 Once you have a loaded model, you can generate completions by passing a string to the `complete` method on the `llm` handle.
 
@@ -48,7 +48,7 @@ Once you have a loaded model, you can generate completions by passing a string t
         console.info(completion.content);
 ```
 
-## 3. Print prediction stats
+## 3. Print Prediction Stats
 
 You can also print prediction metadata, such as the model used for generation, number of generated tokens, time to first token, and stop reason.
 
@@ -64,7 +64,7 @@ You can also print prediction metadata, such as the model used for generation, n
         console.info("Stop reason:", prediction.stats.stopReason);
 ```
 
-## Example: Get an LLM to simulate a terminal
+## Example: Get an LLM to Simulate a Terminal
 
 Here's an example of how you might use the `complete` method to simulate a terminal.
 
