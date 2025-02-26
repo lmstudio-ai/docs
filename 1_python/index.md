@@ -6,7 +6,7 @@ description: "Getting started with LM Studio's Typescript / JavaScript SDK"
 
 `lmstudio-python` provides you a set APIs to interact with LLMs, embeddings models, and agentic flows.
 
-## Installation
+## Installing the SDK
 
 `lmstudio-python` is available as an pypi package. You can install it using pip.
 
