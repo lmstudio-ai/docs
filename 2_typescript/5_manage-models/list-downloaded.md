@@ -3,11 +3,11 @@ title: List Local Models
 description: APIs to list the available models in a given local environment
 ---
 
-You can iterate through locally available models using the `listLocalModels` method. This method lives under the `system` namespace of the `LMStudioClient` object.
+You can iterate through locally available models using the `listLocalModels` method. 
 
 ## Available Model on the Local Machine
 
-This will give you results equivalent to using [`lms ls`](../../cli/ls) in the CLI.
+`listLocalModels` lives under the `system` namespace of the `LMStudioClient` object.
 
 ```lms_code_snippet
   variants:
@@ -19,8 +19,9 @@ This will give you results equivalent to using [`lms ls`](../../cli/ls) in the C
 
         console.info(await client.system.listDownloadedModels());
 ```
+This will give you results equivalent to using [`lms ls`](../../cli/ls) in the CLI.
 
-Example output:
+### Example output:
 
 ```json
 [
@@ -50,4 +51,4 @@ Example output:
 ]
 ```
 
-Learn more about `client.system` namespace in the [System API Reference](../api-reference/system-namespace).
+Learn more about the `client.system` namespace in the [System API Reference](../api-reference/system-namespace).
