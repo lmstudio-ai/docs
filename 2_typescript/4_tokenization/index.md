@@ -38,7 +38,7 @@ If you only care about the number of tokens, you can use the `.countTokens` meth
         console.info("Token count:", tokenCount);
 ```
 
-### Example: count context
+### Example: Count Context
 
 You can determine if a given conversation fits into a model's context by doing the following:
 
