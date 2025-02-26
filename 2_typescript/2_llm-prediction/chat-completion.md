@@ -192,7 +192,7 @@ TODO: Probably needs polish here:
 
 <!-- ### Progress callbacks
 
-TODO: TS has onFirstToken callback which Python does not
+TODO: Cover onFirstToken callback (Python SDK has this now)
 
 Long prompts will often take a long time to first token, i.e. it takes the model a long time to process your prompt.
 If you want to get updates on the progress of this process, you can provide a float callback to `respond`

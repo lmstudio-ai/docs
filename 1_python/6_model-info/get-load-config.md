@@ -14,8 +14,8 @@ Context length is a special case that [has its own method](/docs/api/sdk/get-con
 
 ```lms_code_snippet
   variants:
-    TypeScript:
-      language: typescript
+    "Python (convenience API)":
+      language: python
       code: |
         import { LMStudioClient } from "@lmstudio/sdk";
 

@@ -12,8 +12,8 @@ This will give you results equivalent to using [`lms ps`](../../cli/ps) in the C
 
 ```lms_code_snippet
   variants:
-    TypeScript:
-      language: typescript
+    "Python (convenience API)":
+      language: python
       code: |
         import { LMStudioClient } from "@lmstudio/sdk";
 

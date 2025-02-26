@@ -17,13 +17,13 @@ You can apply a prompt template to a `Chat` by using the `applyPromptTemplate` m
 
 ```lms_code_snippet
   variants:
-    TypeScript:
-      language: typescript
+    "Python (convenience API)":
+      language: python
       code: |
         import { Chat, LMStudioClient } from "@lmstudio/sdk";
 
         const client = new LMStudioClient();
-        const llm = await client.llm.model(); // Use any loaded LLM
+        const llm = await client.llm.model(); # Use any loaded LLM
 
         const chat = Chat.createEmpty();
         chat.append("system", "You are a helpful assistant.");
@@ -38,13 +38,13 @@ The same method can also be used with any object that can be converted to a `Cha
 
 ```lms_code_snippet
   variants:
-    TypeScript:
-      language: typescript
+    "Python (convenience API)":
+      language: python
       code: |
         import { LMStudioClient } from "@lmstudio/sdk";
 
         const client = new LMStudioClient();
-        const llm = await client.llm.model(); // Use any loaded LLM
+        const llm = await client.llm.model(); # Use any loaded LLM
 
         const formatted = await llm.applyPromptTemplate([
           { role: "system", content: "You are a helpful assistant." },

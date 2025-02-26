@@ -30,10 +30,10 @@ For the source code and open source contribution, visit [lmstudio-python](https:
 ## Quick Example: Chat with a Llama Model
 
 ```lms_code_snippet
-  title: "index.ts"
+  title: "example.py"
   variants:
-    TypeScript:
-      language: typescript
+    "Python (convenience API)":
+      language: python
       code: |
         import { LMStudioClient } from "@lmstudio/sdk";
         const client = new LMStudioClient();

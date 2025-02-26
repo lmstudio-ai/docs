@@ -11,8 +11,8 @@ You can iterate through locally available models using the `listLocalModels` met
 
 ```lms_code_snippet
   variants:
-    TypeScript:
-      language: typescript
+    "Python (convenience API)":
+      language: python
       code: |
         import { LMStudioClient } from "@lmstudio/sdk";
         const client = new LMStudioClient();

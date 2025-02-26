@@ -21,7 +21,7 @@ Connect to LM Studio and obtain a handle to the VLM (Vision-Language Model) you 
 ```lms_code_snippet
   variants:
     Example:
-      language: typescript
+      language: python
       code: |
         import { LMStudioClient } from "@lmstudio/sdk";
         const client = new LMStudioClient();
@@ -36,9 +36,9 @@ Use the `client.files.prepareImage()` method to get a handle to the image you ca
 ```lms_code_snippet
   variants:
     Example:
-      language: typescript
+      language: python
       code: |
-        const imagePath = "/path/to/image.jpg"; // Replace with the path to your image
+        const imagePath = "/path/to/image.jpg"; # Replace with the path to your image
         const image = await client.files.prepareImage(imagePath);
 
 ```
@@ -48,7 +48,7 @@ If you only have the image in the form of a base64 string, you can use the `clie
 ```lms_code_snippet
   variants:
     Example:
-      language: typescript
+      language: python
       code: |
         const imageBase64 = "Your base64 string here";
         const image = await client.files.prepareImage64(imageBase64);
@@ -63,7 +63,7 @@ Generate a prediction by passing the image to the model in the `.respond()` meth
 ```lms_code_snippet
   variants:
     Example:
-      language: typescript
+      language: python
       code: |
         const prediction = llm.respond([
           { role: "user", content: "Describe this image please", images: [image] },

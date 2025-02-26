@@ -11,8 +11,8 @@ and the `path` used to [load it](/docs/api/sdk/load-model). In the below example
 
 ```lms_code_snippet
   variants:
-    TypeScript:
-      language: typescript
+    "Python (convenience API)":
+      language: python
       code: |
         import { LMStudioClient } from "@lmstudio/sdk";
 
