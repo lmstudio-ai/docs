@@ -1,8 +1,8 @@
 ---
-title: "`.operate()` Reference"
-sidebar_title: "`.operate()`"
-description: ".operate() - API reference for automatic tool use in a multi-turn chat conversation"
+title: "`.act()` Reference"
+sidebar_title: "`.act()`"
+description: ".act() - API reference for automatic tool use in a multi-turn chat conversation"
 index: 3
 ---
 
-`.operate()` is a method that generates automatic tool use in a multi-turn chat conversation.
+`.act()` is a method that generates automatic tool use in a multi-turn chat conversation.
