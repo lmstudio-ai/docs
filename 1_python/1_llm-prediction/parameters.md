@@ -16,17 +16,17 @@ Set inference-time parameters such as `temperature`, `maxTokens`, `topP` and mor
       language: python
       code: |
         result = model.respond(chat, config={
-            temperature: 0.6,
-            maxTokens: 50,
+            "temperature": 0.6,
+            "maxTokens": 50,
         })
 
     ".complete()":
       language: python
       code: |
         result = model.respond(chat, config={
-            temperature: 0.6,
-            maxTokens: 50,
-            stop: ["\n\n"],
+            "temperature": 0.6,
+            "maxTokens": 50,
+            "stop": ["\n\n"],
           })
 
 ```
