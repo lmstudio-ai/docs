@@ -34,7 +34,7 @@ variants:
       chat = Chat("You are a resident AI philosopher.")
       chat.add_user_message("What is the meaning of life?")
 
-      const prediction = llm.respond(chat)
+      prediction = llm.respond(chat)
 ```
 
 You can also quickly construct a `Chat` object using the `Chat.from_history` method.
@@ -59,12 +59,15 @@ variants:
 
 ## Option 3: Providing Chat History Data Directly
 
+As the APIs that accept chat histories use `Chat.from_history` internally,
+they also accept the chat history data format as a regular dictionary:
+
 ```lms_code_snippet
 variants:
   "Chat history data":
     language: python
     code: |
-      chat = Chat.from_history({"messages": [
+      prediction = llm.respond({"messages": [
         { "role": "system", "content": "You are a resident AI philosopher." },
         { "role": "user", "content": "What is the meaning of life?" },
       ]})
