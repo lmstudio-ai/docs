@@ -30,14 +30,14 @@ If you already have a model loaded in LM Studio (either via the GUI or `lms load
     "Python (convenience API)":
       language: python
       code: |
-        import lmstudio as lms;
+        import lmstudio as lms
 
         model = lms.llm()
 
     "Python (scoped resource API)":
       language: python
       code: |
-        import lmstudio as lms;
+        import lmstudio as lms
 
         with lms.Client() as client:
             model = client.llm.model()
@@ -56,14 +56,14 @@ Calling `.model("model-key")` will load the model if it's not already loaded, or
     "Python (convenience API)":
       language: python
       code: |
-        import lmstudio as lms;
+        import lmstudio as lms
 
         model = lms.llm("llama-3.2-1b-instruct")
 
     "Python (scoped resource API)":
       language: python
       code: |
-        import lmstudio as lms;
+        import lmstudio as lms
 
         with lms.Client() as client:
             model = client.llm.model("llama-3.2-1b-instruct")
@@ -84,7 +84,7 @@ This allows you to have multiple instances of the same or different models loade
     "Python (convenience API)":
       language: python
       code: |
-        import lmstudio as lms;
+        import lmstudio as lms
 
         client = lms.get_default_client
         llama = client.llm.load_new_instance("llama-3.2-1b-instruct")
@@ -93,7 +93,7 @@ This allows you to have multiple instances of the same or different models loade
     "Python (scoped resource API)":
       language: python
       code: |
-        import lmstudio as lms;
+        import lmstudio as lms
 
         with lms.Client() as client:
             llama = client.llm.load_new_instance("llama-3.2-1b-instruct")
@@ -119,7 +119,7 @@ Once you no longer need a model, you can unload it by simply calling `unload()` 
     "Python (convenience API)":
       language: python
       code: |
-        import lmstudio as lms;
+        import lmstudio as lms
 
         model = lms.llm()
         model.unload()
@@ -127,7 +127,7 @@ Once you no longer need a model, you can unload it by simply calling `unload()` 
     "Python (scoped resource API)":
       language: python
       code: |
-        import lmstudio as lms;
+        import lmstudio as lms
 
         with lms.Client() as client:
             model = client.llm.model()

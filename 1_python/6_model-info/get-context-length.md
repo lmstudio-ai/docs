@@ -42,7 +42,7 @@ You can determine if a given conversation fits into a model's context by doing t
             token_count = len(model.tokenize(formatted))
             # Get the current loaded context length of the model
             context_length = model.get_context_length()
-            return token_count < context_length;
+            return token_count < context_length
 
         model = lms.llm()
 
