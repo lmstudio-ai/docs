@@ -34,5 +34,3 @@ This will give you results equivalent to using [`lms ps`](../../cli/ps) in the C
             embedding_only = client.embedding.list_loaded()
 
 ```
-
-Learn more about `client.llm` namespace in the [API Reference](../api-reference/llm-namespace).
