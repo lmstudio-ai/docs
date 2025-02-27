@@ -83,7 +83,6 @@ The following code creates a conversation loop with an LLM agent that can create
     "Python (convenience API)":
       language: python
       code: |
-
         import readline # Enables input line editing
         from pathlib import Path
 
