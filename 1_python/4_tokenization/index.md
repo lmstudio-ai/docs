@@ -72,6 +72,7 @@ You can determine if a given conversation fits into a model's context by doing t
         })
 
         print("Fits", does_chat_fit_in_context(model, chat))
+
 ```
 
 <!-- ### Context length comparisons

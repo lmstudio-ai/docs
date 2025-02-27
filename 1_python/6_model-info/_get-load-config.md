@@ -3,6 +3,8 @@ title: Get Load Config
 description: Get the load configuration of the model
 ---
 
+TODO: Python SDK has this interface hidden until we can translate server config info back to client configs
+
 LM Studio allows you to configure certain parameters when loading a model
 [through the server UI](/docs/advanced/per-model) or [through the API](/docs/api/sdk/load-model).
 
