@@ -43,7 +43,7 @@ Use the `client.files.prepareImage()` method to get a handle to the image you ca
 
 ```
 
-If you only have the image in the form of a base64 string, you can use the `client.files.prepareImage64()` method instead.
+If you only have the image in the form of a base64 string, you can use the `client.files.prepareImageBase64()` method instead.
 
 ```lms_code_snippet
   variants:
@@ -51,7 +51,7 @@ If you only have the image in the form of a base64 string, you can use the `clie
       language: typescript
       code: |
         const imageBase64 = "Your base64 string here";
-        const image = await client.files.prepareImage64(imageBase64);
+        const image = await client.files.prepareImageBase64(imageBase64);
 ```
 
 We support JPEG, PNG, and WebP image formats.
@@ -65,7 +65,7 @@ Generate a prediction by passing the image to the model in the `.respond()` meth
     Example:
       language: typescript
       code: |
-        const prediction = llm.respond([
+        const prediction = model.respond([
           { role: "user", content: "Describe this image please", images: [image] },
         ]);
 ```
