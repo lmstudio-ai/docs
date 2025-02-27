@@ -22,14 +22,14 @@ You can apply a prompt template to a `Chat` by using the `applyPromptTemplate` m
       code: |
         import { Chat, LMStudioClient } from "@lmstudio/sdk";
 
-        const client = new LMStudioClient();
-        const llm = await client.llm.model(); # Use any loaded LLM
+        const client = new LMStudioClient()
+        const llm = client.llm.model() # Use any loaded LLM
 
-        const chat = Chat.createEmpty();
-        chat.append("system", "You are a helpful assistant.");
-        chat.append("user", "What is LM Studio?");
-        const formatted = await llm.applyPromptTemplate(chat);
-        console.info(formatted);
+        const chat = Chat.createEmpty()
+        chat.append("system", "You are a helpful assistant.")
+        chat.append("user", "What is LM Studio?")
+        const formatted = llm.applyPromptTemplate(chat)
+        print(formatted)
 ```
 
 ## Usage with an Array of Messages
@@ -43,12 +43,12 @@ The same method can also be used with any object that can be converted to a `Cha
       code: |
         import { LMStudioClient } from "@lmstudio/sdk";
 
-        const client = new LMStudioClient();
-        const llm = await client.llm.model(); # Use any loaded LLM
+        const client = new LMStudioClient()
+        const llm = client.llm.model() # Use any loaded LLM
 
-        const formatted = await llm.applyPromptTemplate([
+        const formatted = llm.applyPromptTemplate([
           { role: "system", content: "You are a helpful assistant." },
           { role: "user", content: "What is LM Studio?" },
-        ]);
-        console.info(formatted);
+        ])
+        print(formatted)
 ```

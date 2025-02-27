@@ -24,9 +24,9 @@ If you already have a model loaded in LM Studio (either via the GUI or `lms load
       language: python
       code: |
         import { LMStudioClient } from "@lmstudio/sdk";
-        const client = new LMStudioClient();
+        const client = new LMStudioClient()
 
-        const model = await client.llm.model();
+        const model = client.llm.model()
 ```
 
 ## Get a Specific Model with `.model("model-key")`
@@ -42,9 +42,9 @@ Calling `.model("model-key")` will load the model if it's not already loaded, or
       language: python
       code: |
         import { LMStudioClient } from "@lmstudio/sdk";
-        const client = new LMStudioClient();
+        const client = new LMStudioClient()
 
-        const model = await client.llm.model("llama-3.2-1b-instruct");
+        const model = client.llm.model("llama-3.2-1b-instruct")
 ```
 
 Learn more about the `.model()` method and the parameters it accepts in the [API Reference](../api-reference/model).
@@ -59,10 +59,10 @@ Use `load()` to load a new instance of a model, even if one already exists. This
       language: python
       code: |
         import { LMStudioClient } from "@lmstudio/sdk";
-        const client = new LMStudioClient();
+        const client = new LMStudioClient()
 
-        const llama = await client.llm.load("llama-3.2-1b-instruct");
-        const another_llama = await client.llm.load("llama-3.2-1b-instruct", "second-llama");
+        const llama = client.llm.load("llama-3.2-1b-instruct")
+        const another_llama = client.llm.load("llama-3.2-1b-instruct", "second-llama")
 ```
 
 Learn more about the `.load()` method and the parameters it accepts in the [API Reference](../api-reference/load).
@@ -84,10 +84,10 @@ Once you no longer need a model, you can unload it by simply calling `unload()` 
       code: |
         import { LMStudioClient } from "@lmstudio/sdk";
 
-        const client = new LMStudioClient();
+        const client = new LMStudioClient()
 
-        const llm = await client.llm.model();
-        await llm.unload()
+        const llm = client.llm.model()
+        llm.unload()
 ```
 
 ## Set Custom Load Config Parameters

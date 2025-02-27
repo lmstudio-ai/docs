@@ -15,7 +15,7 @@ It's useful to be able to check the context length of a model, especially as an 
     "Python (convenience API)":
       language: python
       code: |
-        const contextLength = await model.getContextLength();
+        const contextLength = model.getContextLength()
 ```
 
 The `model` in the above code snippet is an instance of a loaded model you get from the `llm.model` method. See [Manage Models in Memory](../manage-models/loading) for more information.

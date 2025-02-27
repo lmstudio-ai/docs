@@ -3,24 +3,34 @@ title: Text Completions
 description: "Provide a string input for the model to complete"
 ---
 
-Use `llm.complete(...)` to generate text completions from a loaded language model. Text completions mean sending an non-formatted string to the model with the expectation that the model will complete the text.
+Use `llm.complete(...)` to generate text completions from a loaded language model.
+Text completions mean sending a non-formatted string to the model with the expectation that the model will complete the text.
 
 This is different from multi-turn chat conversations. For more information on chat completions, see [Chat Completions](./chat-completion).
 
 ## 1. Instantiate a Model
 
-First, you need to load a model to generate completions from. This can be done using the `model` method on the `llm` handle.
+First, you need to load a model to generate completions from.
+This can be done using the top-level `llm` convenience API,
+or the `model` method in the `llm` namespace when using the scoped resource API.
+For example, here is how to use Qwen2.5 7B Instruct.
+
 
 ```lms_code_snippet
-  title: "example.py"
   variants:
     "Python (convenience API)":
       language: python
       code: |
-        import { LMStudioClient } from "@lmstudio/sdk";
+        import lmstudio as lm
+        model = lm.llm("qwen2.5-7b-instruct")
 
-        const client = new LMStudioClient();
-        const model = await client.llm.model("qwen2.5-7b-instruct");
+    "Python (scoped resource API)":
+      language: python
+      code: |
+        import lmstudio
+        with lmstudio.Client() as client:
+            model = client.llm.model("qwen2.5-7b-instruct")
+
 ```
 
 ## 2. Generate a Completion
@@ -32,20 +42,20 @@ Once you have a loaded model, you can generate completions by passing a string t
     Streaming:
       language: python
       code: |
-        const completion = model.complete("My name is");
+        # The `chat` object is created in the previous step.
+        prediction_stream = model.complete("My name is")
 
-        for await (const { content } of completion) {
-          process.stdout.write(content);
-        }
-
-        console.info(); # Write a new line for cosmetic purposes
+        for fragment in prediction_stream:
+            print(fragment.content, end="", flush=True)
+        print() # Advance to a new line at the end of the response
 
     "Non-streaming":
       language: python
       code: |
-        const completion = await model.complete("My name is");
+        # The `chat` object is created in the previous step.
+        result = model.complete("My name is")
 
-        console.info(completion.content);
+        print(result)
 ```
 
 ## 3. Print Prediction Stats
@@ -53,15 +63,26 @@ Once you have a loaded model, you can generate completions by passing a string t
 You can also print prediction metadata, such as the model used for generation, number of generated tokens, time to first token, and stop reason.
 
 ```lms_code_snippet
-  title: "example.py"
   variants:
-    "Python (convenience API)":
+    Streaming:
       language: python
       code: |
-        console.info("Model used:", prediction.modelInfo.displayName);
-        console.info("Predicted tokens:", prediction.stats.predictedTokensCount);
-        console.info("Time to first token (seconds):", prediction.stats.timeToFirstTokenSec);
-        console.info("Stop reason:", prediction.stats.stopReason);
+        # After iterating through the prediction fragments,
+        # the overall prediction result may be obtained from the stream
+        result = prediction_stream.result()
+
+        print("Model used:", result.model_info.display_name)
+        print("Predicted tokens:", result.stats.predicted_tokens_count)
+        print("Time to first token (seconds):", result.stats.time_to_first_token_sec)
+        print("Stop reason:", result.stats.stop_reason)
+    "Non-streaming":
+      language: python
+      code: |
+        # `result` is the response from the model.
+        print("Model used:", result.model_info.display_name)
+        print("Predicted tokens:", result.stats.predicted_tokens_count)
+        print("Time to first token (seconds):", result.stats.time_to_first_token_sec)
+        print("Stop reason:", result.stats.stop_reason)
 ```
 
 ## Example: Get an LLM to Simulate a Terminal
@@ -69,47 +90,44 @@ You can also print prediction metadata, such as the model used for generation, n
 Here's an example of how you might use the `complete` method to simulate a terminal.
 
 ```lms_code_snippet
-  title: "terminal-sim.ts"
+  title: "terminal-sim.py"
   variants:
-    "Python (convenience API)":
+    Python:
       language: python
       code: |
-        import { LMStudioClient } from "@lmstudio/sdk";
-        import { createInterface } from "node:readline/promises";
+        import readline # Enables input line editing
 
-        const rl = createInterface({ input: process.stdin, output: process.stdout });
-        const client = new LMStudioClient();
-        const model = await client.llm.model();
-        let history = "";
+        import lmstudio as lm
 
-        while (true) {
-          const command = await rl.question("$ ");
-          history += "$ " + command + "\n";
+        model = lm.llm()
+        console_history = []
 
-          const prediction = model.complete(history, { stopStrings: ["$"] });
-          for await (const { content } of prediction) {
-            process.stdout.write(content);
-          }
-          process.stdout.write("\n");
+        while True:
+            try:
+                user_command = input("$ ")
+            except EOFError:
+                print()
+                break
+            if user_command.strip() == "exit":
+                break
+            console_history.append(f"$ {user_command}")
+            history_prompt = "\n".join(console_history)
+            prediction_stream = model.complete_stream(
+                history_prompt,
+                config={ "stopStrings": ["$"] },
+            )
+            for fragment in prediction_stream:
+                print(fragment.content, end="", flush=True)
+            print()
+            console_history.append(prediction_stream.result().content)
 
-          const { content } = await prediction.result();
-          history += content;
-        }
 ```
 
 <!-- ## Advanced Usage
 
-### Prediction metadata
-
-Prediction responses are really returned as `PredictionResult` objects that contain additional dot-accessible metadata about the inference request.
-This entails info about the model used, the configuration with which it was loaded, and the configuration for this particular prediction. It also provides
-inference statistics like stop reason, time to first token, tokens per second, and number of generated tokens.
-
-Please consult your specific SDK to see exact syntax.
-
 ### Progress callbacks
 
-TODO: TS has onFirstToken callback which Python does not
+TODO: Cover available callbacks (Python SDK has all of these now)
 
 Long prompts will often take a long time to first token, i.e. it takes the model a long time to process your prompt.
 If you want to get updates on the progress of this process, you can provide a float callback to `complete`
@@ -147,12 +165,12 @@ that receives a float from 0.0-1.0 representing prompt processing progress.
       code: |
         import { LMStudioClient } from "@lmstudio/sdk";
 
-        const client = new LMStudioClient();
-        const llm = await client.llm.model();
+        const client = new LMStudioClient()
+        const llm = client.llm.model()
 
         const prediction = llm.complete(
           "My name is",
-          {onPromptProcessingProgress: (progress) => process.stdout.write(`${progress*100}% processed`)});
+          {onPromptProcessingProgress: (progress) => process.stdout.write(`${progress*100}% processed`)})
 ```
 
 ### Prediction configuration

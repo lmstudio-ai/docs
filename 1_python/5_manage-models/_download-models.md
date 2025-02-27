@@ -14,7 +14,7 @@ in the Discover tab of the app itself. Once a model is downloaded, you can
 Downloading models consists of three steps:
 
 1. Search for the model you want;
-2. Find the download option you want (e.g. quantization); and
+2. Find the download option you want (e.g. quantization) and
 3. Download the model!
 
 ```lms_code_snippet
@@ -24,28 +24,28 @@ Downloading models consists of three steps:
       code: |
         import { LMStudioClient } from "@lmstudio/sdk";
 
-        const client = new LMStudioClient();
+        const client = new LMStudioClient()
 
         # 1. Search for the model you want
         # Specify any/all of searchTerm, limit, compatibilityTypes
-        const searchResults = await client.repository.searchModels({
+        const searchResults = client.repository.searchModels({
           searchTerm: "llama 3.2 1b",    # Search for Llama 3.2 1B
           limit: 5,                      # Get top 5 results
           compatibilityTypes: ["gguf"],  # Only download GGUFs
-        });
+        })
 
         # 2. Find download options
         const bestResult = searchResults[0];
-        const downloadOptions = await bestResult.getDownloadOptions();
+        const downloadOptions = bestResult.getDownloadOptions()
 
         # Let's download Q4_K_M, a good middle ground quantization
-        const desiredModel = downloadOptions.find(option => option.quantization === 'Q4_K_M');
+        const desiredModel = downloadOptions.find(option => option.quantization === 'Q4_K_M')
 
         # 3. Download it!
-        const modelKey = await desiredModel.download();
+        const modelKey = desiredModel.download()
 
         # This returns a path you can use to load the model
-        const loadedModel = await client.llm.model(modelKey);
+        const loadedModel = client.llm.model(modelKey)
 ```
 
 ## Advanced Usage
@@ -85,17 +85,17 @@ one for progress updates and/or one when the download is being finalized
 
         function printProgressUpdate(update: DownloadProgressUpdate) {
           process.stdout.write(`Downloaded ${update.downloadedBytes} bytes of ${update.totalBytes} total \
-                                at ${update.speed_bytes_per_second} bytes/sec`);
+                                at ${update.speed_bytes_per_second} bytes/sec`)
         }
 
-        const client = new LMStudioClient();
+        const client = new LMStudioClient()
 
         # ... Same code as before ...
 
-        modelKey = await desiredModel.download({
+        modelKey = desiredModel.download({
           onProgress: printProgressUpdate,
           onStartFinalizing: () => console.log("Finalizing..."),
-        });
+        })
 
-        const loadedModel = await client.llm.model(modelKey);
+        const loadedModel = client.llm.model(modelKey)
 ```

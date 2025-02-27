@@ -36,12 +36,12 @@ For the source code and open source contribution, visit [lmstudio-python](https:
       language: python
       code: |
         import { LMStudioClient } from "@lmstudio/sdk";
-        const client = new LMStudioClient();
+        const client = new LMStudioClient()
 
-        const model = await client.llm.model("llama-3.2-1b-instruct");
-        const result = await model.respond("What is the meaning of life?");
+        const model = client.llm.model("llama-3.2-1b-instruct")
+        const result = model.respond("What is the meaning of life?")
         
-        console.info(result.content);
+        print(result.content)
 ```
 
 ### Getting Local Models

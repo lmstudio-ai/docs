@@ -15,9 +15,9 @@ You can iterate through locally available models using the `listLocalModels` met
       language: python
       code: |
         import { LMStudioClient } from "@lmstudio/sdk";
-        const client = new LMStudioClient();
+        const client = new LMStudioClient()
 
-        console.info(await client.system.listDownloadedModels());
+        print(client.system.listDownloadedModels())
 ```
 This will give you results equivalent to using [`lms ls`](../../cli/ls) in the CLI.
 

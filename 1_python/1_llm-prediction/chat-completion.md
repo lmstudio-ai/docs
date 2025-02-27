@@ -43,8 +43,8 @@ entire response to be generated before displaying anything).
         import lmstudio as lm
         model = lm.llm()
 
-        for text_content in model.respond_stream("What is the meaning of life?"):
-            print(text_content, end="", flush=True)
+        for fragment in model.respond_stream("What is the meaning of life?"):
+            print(fragment.content, end="", flush=True)
         print() # Advance to a new line at the end of the response
 
     "Python (scoped resource API)":
@@ -54,8 +54,8 @@ entire response to be generated before displaying anything).
         with lmstudio.Client() as client:
             model = client.llm.model()
 
-            for text_content in model.respond_stream("What is the meaning of life?"):
-                print(text_content, end="", flush=True)
+            for fragment in model.respond_stream("What is the meaning of life?"):
+                print(fragment.content, end="", flush=True)
             print() # Advance to a new line at the end of the response
 
 ```
@@ -63,7 +63,8 @@ entire response to be generated before displaying anything).
 ## Obtain a Model
 
 First, you need to get a model handle.
-This can be done using the `model` method in the `llm` namespace.
+This can be done using the top-level `llm` convenience API,
+or the `model` method in the `llm` namespace when using the scoped resource API.
 For example, here is how to use Qwen2.5 7B Instruct.
 
 ```lms_code_snippet
@@ -103,7 +104,7 @@ and it is asked to predict the assistant's response in that conversation.
         chat.add_entries([
           { role: "system", content: "You are a resident AI philosopher." },
           { role: "user", content: "What is the meaning of life?" },
-        ]);
+        ])
         # ... continued in next example
 
     "Constructing a Chat object":
@@ -112,10 +113,10 @@ and it is asked to predict the assistant's response in that conversation.
         import lmstudio as lm
 
         # Create a chat with an initial system prompt.
-        const chat = lm.Chat("You are a resident AI philosopher.");
+        const chat = lm.Chat("You are a resident AI philosopher.")
 
         # Build the chat context by adding messages of relevant types.
-        chat.add_user_message("What is the meaning of life?");
+        chat.add_user_message("What is the meaning of life?")
         # ... continued in next example
 
 ```
@@ -133,17 +134,17 @@ You can ask the LLM to predict the next response in the chat context using the `
       language: python
       code: |
         # The `chat` object is created in the previous step.
-        prediction_stream = model.respond_stream(chat);
+        prediction_stream = model.respond_stream(chat)
 
-        for text_content in prediction_stream:
-            print(text_content, end="", flush=True)
+        for fragment in prediction_stream:
+            print(fragment.content, end="", flush=True)
         print() # Advance to a new line at the end of the response
 
     "Non-streaming":
       language: python
       code: |
         # The `chat` object is created in the previous step.
-        result = await model.respond(chat);
+        result = model.respond(chat)
 
         print(result)
 ```
@@ -157,18 +158,18 @@ You can pass in inferencing parameters via the `config` keyword parameter on `.r
     Streaming:
       language: python
       code: |
-        prediction_stream = model.respond(chat, config={
-          temperature: 0.6,
-          maxTokens: 50,
-        });
+        prediction_stream = model.respond_stream(chat, config={
+            temperature: 0.6,
+            maxTokens: 50,
+        })
 
     "Non-streaming":
       language: python
       code: |
-        result = await model.respond(chat, config={
-          temperature: 0.6,
-          maxTokens: 50,
-        });
+        result = model.respond(chat, config={
+            temperature: 0.6,
+            maxTokens: 50,
+        })
 ```
 
 See [Configuring the Model](./parameters) for more information on what can be configured.
@@ -185,20 +186,20 @@ tokens, time to first token, and stop reason.
       code: |
         # After iterating through the prediction fragments,
         # the overall prediction result may be obtained from the stream
-        result = prediction_stream.result();
+        result = prediction_stream.result()
 
-        console.info("Model used:", result.model_info.display_name);
-        console.info("Predicted tokens:", result.stats.predictedTokensCount);
-        console.info("Time to first token (seconds):", result.stats.time_to_first_token_sec);
-        console.info("Stop reason:", result.stats.stop_reason);
+        print("Model used:", result.model_info.display_name)
+        print("Predicted tokens:", result.stats.predicted_tokens_count)
+        print("Time to first token (seconds):", result.stats.time_to_first_token_sec)
+        print("Stop reason:", result.stats.stop_reason)
     "Non-streaming":
       language: python
       code: |
         # `result` is the response from the model.
-        console.info("Model used:", result.model_info.display_name);
-        console.info("Predicted tokens:", result.stats.predictedTokensCount);
-        console.info("Time to first token (seconds):", result.stats.time_to_first_token_sec);
-        console.info("Stop reason:", result.stats.stop_reason);
+        print("Model used:", result.model_info.display_name)
+        print("Predicted tokens:", result.stats.predicted_tokens_count)
+        print("Time to first token (seconds):", result.stats.time_to_first_token_sec)
+        print("Stop reason:", result.stats.stop_reason)
 ```
 
 ## Example: Multi-turn Chat
@@ -225,16 +226,20 @@ tokens, time to first token, and stop reason.
             if not user_input:
                 break
             chat.add_user_message(user_input)
-            response_stream=model.respond_stream(chat, on_message=chat.append)
+            prediction_stream = model.respond_stream(
+                chat,
+                on_message=chat.append,
+            )
             print("Bot: ", end="", flush=True)
-            for text_fragment in response_stream:
-                print(text_fragment, end="", flush=True)
+            for fragment in prediction_stream:
+                print(fragment.content, end="", flush=True)
             print()
+
 ```
 
 <!-- ### Progress callbacks
 
-TODO: Cover onFirstToken callback (Python SDK has this now)
+TODO: Cover available callbacks (Python SDK has all of these now)
 
 Long prompts will often take a long time to first token, i.e. it takes the model a long time to process your prompt.
 If you want to get updates on the progress of this process, you can provide a float callback to `respond`
@@ -270,14 +275,14 @@ that receives a float from 0.0-1.0 representing prompt processing progress.
     "Python (convenience API)":
       language: python
       code: |
-        import { LMStudioClient } from "@lmstudio/sdk";
+        import { LMStudioClient } from "@lmstudio/sdk"
 
-        const client = new LMStudioClient();
-        const llm = await client.llm.model();
+        const client = new LMStudioClient()
+        const llm = client.llm.model()
 
         const prediction = llm.respond(
           "What is LM Studio?",
-          {onPromptProcessingProgress: (progress) => process.stdout.write(`${progress*100}% processed`)});
+          {onPromptProcessingProgress: (progress) => process.stdout.write(`${progress*100}% processed`)})
 ```
 
 ### Prediction configuration
