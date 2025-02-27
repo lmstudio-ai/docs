@@ -127,6 +127,6 @@ request to avoid the failure.
         model = lm.llm("qwen2.5-7b-instruct")
         model.act(
           "Please create a file named output.txt with your understanding of the meaning of life.",
-          [create_file_],
+          [create_file],
         )
 ```
