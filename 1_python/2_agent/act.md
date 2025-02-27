@@ -15,22 +15,18 @@ LLMs are text-in text-out models and cannot directly execute code. However, just
     "Python (convenience API)":
       language: python
       code: |
-        import { LMStudioClient, tool } from "@lmstudio/sdk";
-        import { z } from "zod";
+        import lmstudio as lm
 
-        const client = new LMStudioClient()
+        def multiply(a: float, b: float) -> float:
+            """Given two numbers a and b. Returns the product of them."""
+            return a * b
 
-        const multiplyTool = tool({
-          name: "multiply",
-          description: "Given two numbers a and b. Returns the product of them.",
-          parameters: { a: z.number(), b: z.number() },
-          implementation: ({ a, b }) => a * b,
-        })
-
-        const model = client.llm.model("qwen2.5-7b-instruct")
-        model.act("What is the result of 12345 multiplied by 54321?", [multiplyTool], {
-          onMessage: (message) => print(message.toString()),
-        })
+        model = lm.llm("qwen2.5-7b-instruct")
+        model.act(
+          "What is the result of 12345 multiplied by 54321?",
+          [multiply],
+          on_message=print,
+        )
 ```
 
 ### Important: Model Selection
@@ -53,37 +49,28 @@ The following code demonstrates how to provide multiple tools in a single `.act(
     "Python (convenience API)":
       language: python
       code: |
-        import { LMStudioClient, tool } from "@lmstudio/sdk";
-        import { z } from "zod";
+        import math
+        import lmstudio as lm
 
-        const client = new LMStudioClient()
+        def add(a: int, b: int) -> int:
+            """Given two numbers a and b, returns the sum of them."""
+            return a + b
 
-        const additionTool = tool({
-          name: "add",
-          description: "Given two numbers a and b. Returns the sum of them.",
-          parameters: { a: z.number(), b: z.number() },
-          implementation: ({ a, b }) => a + b,
-        })
+        def is_prime(n: int) -> bool:
+            """Given a number n, returns True if n is a prime number."""
+            if n < 2:
+                return False
+            sqrt = int(math.sqrt(n))
+            for i in range(2, sqrt):
+                if n % i == 0:
+                    return False
+            return True
 
-        const isPrimeTool = tool({
-          name: "isPrime",
-          description: "Given a number n. Returns true if n is a prime number.",
-          parameters: { n: z.number() },
-          implementation: ({ n }) => {
-            if (n < 2) return false;
-            const sqrt = Math.sqrt(n)
-            for (let i = 2; i <= sqrt; i++) {
-              if (n % i === 0) return false;
-            }
-            return true;
-          },
-        })
-
-        const model = client.llm.model("qwen2.5-7b-instruct")
+        model = lm.llm("qwen2.5-7b-instruct")
         model.act(
           "Is the result of 12345 + 45668 a prime? Think step by step.",
-          [additionTool, isPrimeTool],
-          { onMessage: (message) => print(message.toString()) },
+          [add, is_prime],
+          on_message=print,
         )
 ```
 
@@ -96,43 +83,44 @@ The following code creates a conversation loop with an LLM agent that can create
     "Python (convenience API)":
       language: python
       code: |
-        import { Chat, LMStudioClient, tool } from "@lmstudio/sdk";
-        import { existsSync } from "fs";
-        import { writeFile } from "fs/promises";
-        import { createInterface } from "readline/promises";
-        import { z } from "zod";
 
-        const rl = createInterface({ input: process.stdin, output: process.stdout })
-        const client = new LMStudioClient()
-        const model = client.llm.model()
-        const chat = Chat.empty()
+        import readline # Enables input line editing
+        from pathlib import Path
 
-        const createFileTool = tool({
-          name: "createFile",
-          description: "Create a file with the given name and content.",
-          parameters: { name: z.string(), content: z.string() },
-          implementation: async ({ name, content }) => {
-            if (existsSync(name)) {
-              return "Error: File already exists.";
-            }
-            writeFile(name, content, "utf-8")
-            return "File created.";
-          },
-        })
+        import lmstudio as lm
 
-        while (true) {
-          const input = rl.question("You: ")
-          # Append the user input to the chat
-          chat.append("user", input)
+        def create_file(name: str, content: str):
+            """Create a file with the given name and content."""
+            dest_path = Path(name)
+            if dest_path.exists():
+                return "Error: File already exists."
+            try:
+                dest_path.write_text(content, encoding="utf-8")
+            except Exception as exc:
+                return "Error: {exc!r}"
+            return "File created."
 
-          process.stdout.write("Bot: ")
-          model.act(chat, [createFileTool], {
-            // When the model finish the entire message, push it to the chat
-            onMessage: (message) => chat.append(message),
-            onPredictionFragment: ({ content }) => {
-              process.stdout.write(content)
-            },
-          })
-          process.stdout.write("\n")
-        }
+        def print_content(fragment):
+            print(fragment.content, end="", flush=True)
+
+        model = lm.llm()
+        chat = lm.Chat("You are a task focused AI assistant")
+
+        while True:
+            try:
+                user_input = input("You (leave blank to exit): ")
+            except EOFError:
+                print()
+                break
+            if not user_input:
+                break
+            chat.add_user_message(user_input)
+            print("Bot: ", end="", flush=True)
+            model.act(
+                chat,
+                on_message=chat.append,
+                on_fragment=print_fragment,
+            )
+            print()
+
 ```
