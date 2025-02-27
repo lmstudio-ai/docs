@@ -53,7 +53,7 @@ variants:
     language: python
     code: |
       # This constructs a chat with a single user message
-      const chat = Chat.from_history("What is the meaning of life?")
+      chat = Chat.from_history("What is the meaning of life?")
 
 ```
 
