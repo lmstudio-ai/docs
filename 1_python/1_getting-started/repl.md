@@ -24,9 +24,9 @@ example:
     "Interactive chat session":
       language: python
       code: |
-        >>> import lmstudio as lm
-        >>> model = lm.llm()
-        >>> chat = lm.Chat("You answer questions concisely")
+        >>> import lmstudio as lms
+        >>> model = lms.llm()
+        >>> chat = lms.Chat("You answer questions concisely")
         >>> chat.add_user_message("Tell me three fruits")
         ChatMessageDataUser(content=[ChatMessagePartTextData(text='Tell me three fruits')])
         >>> print(model.respond(chat, on_message=chat.append))

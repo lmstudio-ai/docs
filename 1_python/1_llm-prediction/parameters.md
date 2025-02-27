@@ -50,8 +50,8 @@ The `.model()` retrieves a handle to a model that has already been loaded, or lo
     "Python (convenience API)":
       language: python
       code: |
-        import lmstudio as lm
-        model = lm.llm("qwen2.5-7b-instruct", config = {
+        import lmstudio as lms
+        model = lms.llm("qwen2.5-7b-instruct", config = {
             contextLength: 8192,
             gpuOffload: 0.5,
         })
@@ -59,8 +59,8 @@ The `.model()` retrieves a handle to a model that has already been loaded, or lo
     "Python (scoped resource API)":
       language: python
       code: |
-        import lmstudio
-        with lmstudio.Client() as client:
+        import lmstudio as lms
+        with lms.Client() as client:
             model = client.llm.model(
                 "qwen2.5-7b-instruct",
                 config = {
@@ -81,8 +81,8 @@ The `.load_new_instance()` method creates a new model instance and loads it with
     "Python (convenience API)":
       language: python
       code: |
-        import lmstudio as lm
-        client = lm.get_default_client()
+        import lmstudio as lms
+        client = lms.get_default_client()
         model = client.llm.load_new_instance("qwen2.5-7b-instruct", config = {
             contextLength: 8192,
             gpuOffload: 0.5,
@@ -91,8 +91,8 @@ The `.load_new_instance()` method creates a new model instance and loads it with
     "Python (scoped resource API)":
       language: python
       code: |
-        import lmstudio
-        with lmstudio.Client() as client:
+        import lmstudio as lms
+        with lms.Client() as client:
             model = client.llm.load_new_instance(
                 "qwen2.5-7b-instruct",
                 config = {

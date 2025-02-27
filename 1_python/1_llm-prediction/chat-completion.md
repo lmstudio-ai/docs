@@ -16,15 +16,15 @@ The following snippet shows how to obtain the AI's response to a quick chat prom
     "Python (convenience API)":
       language: python
       code: |
-        import lmstudio as lm
-        model = lm.llm()
+        import lmstudio as lms
+        model = lms.llm()
         print(model.respond("What is the meaning of life?"))
 
     "Python (scoped resource API)":
       language: python
       code: |
-        import lmstudio
-        with lmstudio.Client() as client:
+        import lmstudio as lms
+        with lms.Client() as client:
             model = client.llm.model()
             print(model.respond("What is the meaning of life?"))
 ```
@@ -40,8 +40,8 @@ entire response to be generated before displaying anything).
     "Python (convenience API)":
       language: python
       code: |
-        import lmstudio as lm
-        model = lm.llm()
+        import lmstudio as lms
+        model = lms.llm()
 
         for fragment in model.respond_stream("What is the meaning of life?"):
             print(fragment.content, end="", flush=True)
@@ -50,8 +50,8 @@ entire response to be generated before displaying anything).
     "Python (scoped resource API)":
       language: python
       code: |
-        import lmstudio
-        with lmstudio.Client() as client:
+        import lmstudio as lms
+        with lms.Client() as client:
             model = client.llm.model()
 
             for fragment in model.respond_stream("What is the meaning of life?"):
@@ -72,14 +72,14 @@ For example, here is how to use Qwen2.5 7B Instruct.
     "Python (convenience API)":
       language: python
       code: |
-        import lmstudio as lm
-        model = lm.llm("qwen2.5-7b-instruct")
+        import lmstudio as lms
+        model = lms.llm("qwen2.5-7b-instruct")
 
     "Python (scoped resource API)":
       language: python
       code: |
-        import lmstudio
-        with lmstudio.Client() as client:
+        import lmstudio as lms
+        with lms.Client() as client:
             model = client.llm.model("qwen2.5-7b-instruct")
 
 ```
@@ -97,10 +97,10 @@ and it is asked to predict the assistant's response in that conversation.
     "Using an array of messages":
       language: python
       code: |
-        import lmstudio as lm
+        import lmstudio as lms
 
         # Create a chat object from an array of messages.
-        chat = lm.Chat()
+        chat = lms.Chat()
         chat.add_entries([
           { role: "system", content: "You are a resident AI philosopher." },
           { role: "user", content: "What is the meaning of life?" },
@@ -110,10 +110,10 @@ and it is asked to predict the assistant's response in that conversation.
     "Constructing a Chat object":
       language: python
       code: |
-        import lmstudio as lm
+        import lmstudio as lms
 
         # Create a chat with an initial system prompt.
-        const chat = lm.Chat("You are a resident AI philosopher.")
+        const chat = lms.Chat("You are a resident AI philosopher.")
 
         # Build the chat context by adding messages of relevant types.
         chat.add_user_message("What is the meaning of life?")
@@ -212,10 +212,10 @@ tokens, time to first token, and stop reason.
       code: |
         import readline # Enables input line editing
 
-        import lmstudio as lm
+        import lmstudio as lms
 
-        model = lm.llm()
-        chat = lm.Chat("You are a task focused AI assistant")
+        model = lms.llm()
+        chat = lms.Chat("You are a task focused AI assistant")
 
         while True:
             try:
@@ -250,9 +250,9 @@ that receives a float from 0.0-1.0 representing prompt processing progress.
     Python:
       language: python
       code: |
-        import lmstudio as lm
+        import lmstudio as lms
 
-        llm = lm.llm()
+        llm = lms.llm()
 
         response = llm.respond(
             "What is LM Studio?",
@@ -262,9 +262,9 @@ that receives a float from 0.0-1.0 representing prompt processing progress.
     Python (with scoped resources):
       language: python
       code: |
-        import lmstudio
+        import lmstudio as lms
 
-        with lmstudio.Client() as client:
+        with lms.Client() as client:
             llm = client.llm.model()
 
             response = llm.respond(
