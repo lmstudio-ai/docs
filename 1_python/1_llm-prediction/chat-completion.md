@@ -159,16 +159,16 @@ You can pass in inferencing parameters via the `config` keyword parameter on `.r
       language: python
       code: |
         prediction_stream = model.respond_stream(chat, config={
-            temperature: 0.6,
-            maxTokens: 50,
+            "temperature": 0.6,
+            "maxTokens": 50,
         })
 
     "Non-streaming":
       language: python
       code: |
         result = model.respond(chat, config={
-            temperature: 0.6,
-            maxTokens: 50,
+            "temperature": 0.6,
+            "maxTokens": 50,
         })
 ```
 
