@@ -15,7 +15,7 @@ It's useful to be able to check the context length of a model, especially as an 
     "Python (convenience API)":
       language: python
       code: |
-        const context_length = model.get_context_length()
+        context_length = model.get_context_length()
 ```
 
 The `model` in the above code snippet is an instance of a loaded model you get from the `llm.model` method. See [Manage Models in Memory](../manage-models/loading) for more information.
@@ -46,7 +46,7 @@ You can determine if a given conversation fits into a model's context by doing t
 
         model = lms.llm()
 
-        const chat = lms.Chat.from_history({
+        chat = lms.Chat.from_history({
             "messages": [
                 { "role": "user", "content": "What is the meaning of life." },
                 { "role": "assistant", "content": "The meaning of life is..." },

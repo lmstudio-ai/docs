@@ -63,7 +63,7 @@ You can determine if a given conversation fits into a model's context by doing t
 
         model = lms.llm()
 
-        const chat = lms.Chat.from_history({
+        chat = lms.Chat.from_history({
             "messages": [
                 { "role": "user", "content": "What is the meaning of life." },
                 { "role": "assistant", "content": "The meaning of life is..." },
