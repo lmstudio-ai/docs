@@ -43,7 +43,7 @@ Once you have a loaded model, you can generate completions by passing a string t
       language: python
       code: |
         # The `chat` object is created in the previous step.
-        prediction_stream = model.complete_stream("My name is", config={"max_tokens": 100})
+        prediction_stream = model.complete_stream("My name is", config={"maxTokens": 100})
 
         for fragment in prediction_stream:
             print(fragment.content, end="", flush=True)
@@ -53,7 +53,7 @@ Once you have a loaded model, you can generate completions by passing a string t
       language: python
       code: |
         # The `chat` object is created in the previous step.
-        result = model.complete("My name is", config={"max_tokens": 100})
+        result = model.complete("My name is", config={"maxTokens": 100})
 
         print(result)
 ```

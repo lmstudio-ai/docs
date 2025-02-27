@@ -32,7 +32,9 @@ Once you have a loaded model, you can generate completions by passing a string t
     Streaming:
       language: typescript
       code: |
-        const completion = model.complete("My name is");
+        const completion = model.complete("My name is", {
+          maxTokens: 100,
+        });
 
         for await (const { content } of completion) {
           process.stdout.write(content);
@@ -43,7 +45,9 @@ Once you have a loaded model, you can generate completions by passing a string t
     "Non-streaming":
       language: typescript
       code: |
-        const completion = await model.complete("My name is");
+        const completion = await model.complete("My name is", {
+          maxTokens: 100,
+        });
 
         console.info(completion.content);
 ```
