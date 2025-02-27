@@ -210,8 +210,6 @@ tokens, time to first token, and stop reason.
     Python:
       language: python
       code: |
-        import readline # Enables input line editing
-
         import lmstudio as lms
 
         model = lms.llm()
