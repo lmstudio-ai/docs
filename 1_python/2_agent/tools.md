@@ -4,11 +4,9 @@ description: TODO...
 index: 1
 ---
 
-
 You can define tools as regular Python functions and pass them to the model in the `act()` call.
 Alternatively, tools can be defined with `lmstudio.ToolFunctionDef` in order to control the
 name and description passed to the language model.
-
 
 ## Anatomy of a Tool
 
@@ -16,7 +14,6 @@ Follow one of the following examples to define functions as tools (the first app
 is typically going to be the most convenient):
 
 ```lms_code_snippet
-  title: "example.py"
   variants:
     "Python function":
       language: python
@@ -70,8 +67,7 @@ is typically going to be the most convenient):
 
 ```
 
-
-**Important**: The tool name, description, and the parameter definitions are all passed to the model! 
+**Important**: The tool name, description, and the parameter definitions are all passed to the model!
 
 This means that your wording will affect the quality of the generation. Make sure to always provide a clear description of the tool so the model knows how to use it.
 
@@ -111,7 +107,6 @@ The SDK does not yet automatically convert raised exceptions to text and report 
 to the language model, but it can be beneficial for tool implementations to do so.
 In many cases, when notified of an error, a language model is able to adjust its
 request to avoid the failure.
-
 
 ### Example code using the `create_file` tool:
 
