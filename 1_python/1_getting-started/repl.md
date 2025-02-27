@@ -25,7 +25,12 @@ example:
       language: python
       code: |
         >>> import lmstudio as lms
-        >>> model = lms.llm()
+        >>> loaded_models = lms.list_loaded_models()
+        >>> for idx, model in enumerate(loaded_models):
+        ...     print(f"{idx:>3} {model}")
+        ...
+          0 LLM(identifier='qwen2.5-7b-instruct')
+        >>> model = loaded_models[0]
         >>> chat = lms.Chat("You answer questions concisely")
         >>> chat.add_user_message("Tell me three fruits")
         ChatMessageDataUser(content=[ChatMessagePartTextData(text='Tell me three fruits')])

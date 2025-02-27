@@ -94,19 +94,6 @@ and it is asked to predict the assistant's response in that conversation.
 
 ```lms_code_snippet
   variants:
-    "Using an array of messages":
-      language: python
-      code: |
-        import lmstudio as lms
-
-        # Create a chat object from an array of messages.
-        chat = lms.Chat()
-        chat.add_entries([
-          { role: "system", content: "You are a resident AI philosopher." },
-          { role: "user", content: "What is the meaning of life?" },
-        ])
-        # ... continued in next example
-
     "Constructing a Chat object":
       language: python
       code: |
@@ -117,6 +104,20 @@ and it is asked to predict the assistant's response in that conversation.
 
         # Build the chat context by adding messages of relevant types.
         chat.add_user_message("What is the meaning of life?")
+        # ... continued in next example
+
+  "From chat history data":
+      language: python
+      code: |
+        import lmstudio as lms
+
+        # Create a chat object from a chat history dict
+        chat = lms.Chat.from_history({
+            "messages": [
+                { "role": "system", "content": "You are a resident AI philosopher." },
+                { "role": "user", "content": "What is the meaning of life?" },
+            ]
+        })
         # ... continued in next example
 
 ```

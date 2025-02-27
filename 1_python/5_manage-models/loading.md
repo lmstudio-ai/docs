@@ -6,13 +6,20 @@ description: APIs to load, access, and unload models from memory
 
 AI models are huge. It can take a while to load them into memory. LM Studio's SDK allows you to precisely control this process.
 
+**Model namespaces:**
+
+  - LLMs are accessed through the `client.llm` namespace
+  - Embedding models are accessed through the `client.embedding` namespace
+  - `lmstudio.llm` is equivalent to `client.llm.model` on the default client
+  - `lmstudio.embedding_model` is equivalent to `client.embedding.model` on the default client
+
 **Most commonly:**
   - Use `.model()` to get any currently loaded model
   - Use `.model("model-key")` to use a specific model
 
 **Advanced (manual model management):**
-  - Use `.load("model-key")` to load a new instance of a model
-  - Use `model.unload()` to unload a model from memory
+  - Use `.load_new_instance("model-key")` to load a new instance of a model
+  - Use `.unload("model-key")` or `model_handle.unload()` to unload a model from memory
 
 ## Get the Current Model with `.model()`
 
@@ -23,10 +30,18 @@ If you already have a model loaded in LM Studio (either via the GUI or `lms load
     "Python (convenience API)":
       language: python
       code: |
-        import { LMStudioClient } from "@lmstudio/sdk";
-        const client = new LMStudioClient()
+        import lmstudio as lms
 
-        const model = client.llm.model()
+        model = lms.llm()
+
+    "Python (scoped resource API)":
+      language: python
+      code: |
+        import lmstudio as lms
+
+        with lms.Client() as client:
+            model = client.llm.model()
+
 ```
 
 ## Get a Specific Model with `.model("model-key")`
@@ -41,31 +56,53 @@ Calling `.model("model-key")` will load the model if it's not already loaded, or
     "Python (convenience API)":
       language: python
       code: |
-        import { LMStudioClient } from "@lmstudio/sdk";
-        const client = new LMStudioClient()
+        import lmstudio as lms
 
-        const model = client.llm.model("llama-3.2-1b-instruct")
+        model = lms.llm("llama-3.2-1b-instruct")
+
+    "Python (scoped resource API)":
+      language: python
+      code: |
+        import lmstudio as lms
+
+        with lms.Client() as client:
+            model = client.llm.model("llama-3.2-1b-instruct")
+
 ```
 
+<!--
 Learn more about the `.model()` method and the parameters it accepts in the [API Reference](../api-reference/model).
+-->
 
-## Load a New Instance of a Model with `.load()`
+## Load a New Instance of a Model with `.load_new_instance()`
 
-Use `load()` to load a new instance of a model, even if one already exists. This allows you to have multiple instances of the same or different models loaded at the same time.
+Use `load_new_instance()` to load a new instance of a model, even if one already exists.
+This allows you to have multiple instances of the same or different models loaded at the same time.
 
 ```lms_code_snippet
   variants:
     "Python (convenience API)":
       language: python
       code: |
-        import { LMStudioClient } from "@lmstudio/sdk";
-        const client = new LMStudioClient()
+        import lmstudio as lms
 
-        const llama = client.llm.load("llama-3.2-1b-instruct")
-        const another_llama = client.llm.load("llama-3.2-1b-instruct", "second-llama")
+        client = lms.get_default_client
+        llama = client.llm.load_new_instance("llama-3.2-1b-instruct")
+        another_llama = client.llm.load_new_instance("llama-3.2-1b-instruct", "second-llama")
+
+    "Python (scoped resource API)":
+      language: python
+      code: |
+        import lmstudio as lms
+
+        with lms.Client() as client:
+            llama = client.llm.load_new_instance("llama-3.2-1b-instruct")
+            another_llama = client.llm.load_new_instance("llama-3.2-1b-instruct", "second-llama")
 ```
 
-Learn more about the `.load()` method and the parameters it accepts in the [API Reference](../api-reference/load).
+<!--
+Learn more about the `.load_new_instance()` method and the parameters it accepts in the [API Reference](../api-reference/load_new_instance).
+-->
 
 ### Note about Instance Identifiers
 
@@ -82,12 +119,20 @@ Once you no longer need a model, you can unload it by simply calling `unload()` 
     "Python (convenience API)":
       language: python
       code: |
-        import { LMStudioClient } from "@lmstudio/sdk";
+        import lmstudio as lms
 
-        const client = new LMStudioClient()
+        model = lms.llm()
+        model.unload()
 
-        const llm = client.llm.model()
-        llm.unload()
+    "Python (scoped resource API)":
+      language: python
+      code: |
+        import lmstudio as lms
+
+        with lms.Client() as client:
+            model = client.llm.model()
+            model.unload()
+
 ```
 
 ## Set Custom Load Config Parameters
@@ -99,6 +144,32 @@ See [load-time configuration](../llm-prediction/parameters) for more.
 ## Set an Auto Unload Timer (TTL)
 
 You can specify a _time to live_ for a model you load, which is the idle time (in seconds)
-after the last request until the model unloads. See [Idle TTL](/docs/api/ttl-and-auto-evict) for more on this.
+after the last request until the model unloads. See [Idle TTL](/docs/app/api/ttl-and-auto-evict) for more on this.
 
-TODO: code snippet
+```lms_protip
+If you specify a TTL to `model()`, it will only apply if `model()` loads
+a new instance, and will _not_ retroactively change the TTL of an existing instance.
+```
+
+```lms_code_snippet
+  variants:
+    Python:
+      language: python
+      code: |
+        import lmstudio as lms
+
+        llama = lms.llm("llama-3.2-1b-instruct", ttl=3600)
+
+    Python (with scoped resources):
+      language: python
+      code: |
+        import lmstudio as lms
+
+        with lms.Client() as client:
+            llama = client.llm.model("llama-3.2-1b-instruct", ttl=3600)
+
+```
+
+<!--
+(TODO?: Cover the JIT implications of setting a TTL, and the default TTL variations)
+-->
