@@ -19,7 +19,7 @@ AI models are huge. It can take a while to load them into memory. LM Studio's SD
 
 **Advanced (manual model management):**
   - Use `.load_new_instance("model-key")` to load a new instance of a model
-  - Use `model.unload()` to unload a model from memory
+  - Use `.unload("model-key")` or `model_handle.unload()` to unload a model from memory
 
 ## Get the Current Model with `.model()`
 
