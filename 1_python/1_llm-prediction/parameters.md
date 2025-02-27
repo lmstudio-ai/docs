@@ -59,8 +59,8 @@ The `.model()` retrieves a handle to a model that has already been loaded, or lo
     "Python (scoped resource API)":
       language: python
       code: |
-        import lmstudio
-        with lmstudio.Client() as client:
+        import lmstudio as lms
+        with lms.Client() as client:
             model = client.llm.model(
                 "qwen2.5-7b-instruct",
                 config = {
@@ -91,8 +91,8 @@ The `.load_new_instance()` method creates a new model instance and loads it with
     "Python (scoped resource API)":
       language: python
       code: |
-        import lmstudio
-        with lmstudio.Client() as client:
+        import lmstudio as lms
+        with lms.Client() as client:
             model = client.llm.load_new_instance(
                 "qwen2.5-7b-instruct",
                 config = {

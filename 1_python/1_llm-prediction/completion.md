@@ -27,8 +27,8 @@ For example, here is how to use Qwen2.5 7B Instruct.
     "Python (scoped resource API)":
       language: python
       code: |
-        import lmstudio
-        with lmstudio.Client() as client:
+        import lmstudio as lms
+        with lms.Client() as client:
             model = client.llm.model("qwen2.5-7b-instruct")
 
 ```
@@ -150,9 +150,9 @@ that receives a float from 0.0-1.0 representing prompt processing progress.
     Python (with scoped resources):
       language: python
       code: |
-        import lmstudio
+        import lmstudio as lms
 
-        with lmstudio.Client() as client:
+        with lms.Client() as client:
             llm = client.llm.model()
 
             completion = llm.complete(

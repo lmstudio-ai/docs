@@ -64,13 +64,13 @@ one for progress updates and/or one when the download is being finalized
     Python (with scoped resources):
       language: python
       code: |
-        import lmstudio
+        import lmstudio as lms
 
         def print_progress_update(update: lmstudio.DownloadProgressUpdate) -> None:
             print(f"Downloaded {update.downloaded_bytes} bytes of {update.total_bytes} total \
                     at {update.speed_bytes_per_second} bytes/sec")
 
-        with lmstudio.Client() as client:
+        with lms.Client() as client:
             # ... Same code as before ...
 
             model_key = desired_model.download(

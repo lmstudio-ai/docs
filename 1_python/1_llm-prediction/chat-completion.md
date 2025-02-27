@@ -23,8 +23,8 @@ The following snippet shows how to obtain the AI's response to a quick chat prom
     "Python (scoped resource API)":
       language: python
       code: |
-        import lmstudio
-        with lmstudio.Client() as client:
+        import lmstudio as lms
+        with lms.Client() as client:
             model = client.llm.model()
             print(model.respond("What is the meaning of life?"))
 ```
@@ -50,8 +50,8 @@ entire response to be generated before displaying anything).
     "Python (scoped resource API)":
       language: python
       code: |
-        import lmstudio
-        with lmstudio.Client() as client:
+        import lmstudio as lms
+        with lms.Client() as client:
             model = client.llm.model()
 
             for fragment in model.respond_stream("What is the meaning of life?"):
@@ -78,8 +78,8 @@ For example, here is how to use Qwen2.5 7B Instruct.
     "Python (scoped resource API)":
       language: python
       code: |
-        import lmstudio
-        with lmstudio.Client() as client:
+        import lmstudio as lms
+        with lms.Client() as client:
             model = client.llm.model("qwen2.5-7b-instruct")
 
 ```
@@ -262,9 +262,9 @@ that receives a float from 0.0-1.0 representing prompt processing progress.
     Python (with scoped resources):
       language: python
       code: |
-        import lmstudio
+        import lmstudio as lms
 
-        with lmstudio.Client() as client:
+        with lms.Client() as client:
             llm = client.llm.model()
 
             response = llm.respond(
