@@ -4,84 +4,71 @@ description: APIs for representing a chat conversation with an LLM
 ---
 
 SDK methods such as `llm.respond()`, `llm.applyPromptTemplate()`, or `llm.act()`
-takes in a chat parameter as an input. There are a few ways to represent a chat in the SDK.
+take in a chat parameter as an input.
+There are a few ways to represent a chat when using the SDK.
 
-## Option 1: Array of Messages
+## Option 1: Input a Single String
 
-You can use an array of messages to represent a chat. Here is an example with the `.respond()` method.
+If your chat only has one single user message, you can use a single string to represent the chat.
+Here is an example with the `.respond` method.
 
 ```lms_code_snippet
 variants:
-  "Text-only":
+  "Single string":
     language: python
     code: |
-      const prediction = llm.respond([
-        { role: "system", content: "You are a resident AI philosopher." },
-        { role: "user", content: "What is the meaning of life?" },
-      ]);
-  With Images:
-    language: python
-    code: |
-      const image = await client.files.prepareImage("/path/to/image.jpg");
-
-      const prediction = llm.respond([
-        { role: "system", content: "You are a state-of-art object recognition system." },
-        { role: "user", content: "What is this object?", images: [image] },
-      ]);
+      prediction = llm.respond("What is the meaning of life?")
 ```
 
-## Option 2: Input a Single String
+## Option 2: Using the `Chat` Helper Class
 
-If your chat only has one single user message, you can use a single string to represent the chat. Here is an example with the `.respond` method.
+For more complex tasks, it is recommended to use the `Chat` helper class.
+It provides various commonly used methods to manage the chat.
+Here is an example with the `Chat` class.
 
 ```lms_code_snippet
 variants:
-  "Python (convenience API)":
+  "Simple chat":
     language: python
     code: |
-      const prediction = llm.respond("What is the meaning of life?");
+      chat = Chat("You are a resident AI philosopher.")
+      chat.add_user_message("What is the meaning of life?")
+
+      prediction = llm.respond(chat)
 ```
 
-## Option 3: Using the `Chat` Helper Class
-
-For more complex tasks, it is recommended to use the `Chat` helper classes. It provides various commonly used methods to manage the chat. Here is an example with the `Chat` class.
+You can also quickly construct a `Chat` object using the `Chat.from_history` method.
 
 ```lms_code_snippet
 variants:
-  "Text-only":
+  "Chat history data":
     language: python
     code: |
-      const chat = Chat.empty();
-      chat.append("system", "You are a resident AI philosopher.");
-      chat.append("user", "What is the meaning of life?");
+      chat = Chat.from_history({"messages": [
+        { "role": "system", "content": "You are a resident AI philosopher." },
+        { "role": "user", "content": "What is the meaning of life?" },
+      ]})
 
-      const prediction = llm.respond(chat);
-  With Images:
-    language: python
-    code: |
-      const image = await client.files.prepareImage("/path/to/image.jpg");
-
-      const chat = Chat.empty();
-      chat.append("system", "You are a state-of-art object recognition system.");
-      chat.append("user", "What is this object?", { images: [image] });
-
-      const prediction = llm.respond(chat);
-```
-
-You can also quickly construct a `Chat` object using the `Chat.from` method.
-
-```lms_code_snippet
-variants:
-  "Array of messages":
-    language: python
-    code: |
-      const chat = Chat.from([
-        { role: "system", content: "You are a resident AI philosopher." },
-        { role: "user", content: "What is the meaning of life?" },
-      ]);
   "Single string":
     language: python
     code: |
       # This constructs a chat with a single user message
-      const chat = Chat.from("What is the meaning of life?");
+      const chat = Chat.from_history("What is the meaning of life?")
+
+```
+
+## Option 3: Providing Chat History Data Directly
+
+As the APIs that accept chat histories use `Chat.from_history` internally,
+they also accept the chat history data format as a regular dictionary:
+
+```lms_code_snippet
+variants:
+  "Chat history data":
+    language: python
+    code: |
+      prediction = llm.respond({"messages": [
+        { "role": "system", "content": "You are a resident AI philosopher." },
+        { "role": "user", "content": "What is the meaning of life?" },
+      ]})
 ```

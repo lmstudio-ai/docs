@@ -4,4 +4,4 @@ description: API to use a draft model in speculative decoding in `lmstudio-pytho
 index: 5
 ---
 
-TODO
+TODO: Not yet supported in the Python SDK's LlmPredictionConfig -> KvConfigStack translation.

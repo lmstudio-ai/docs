@@ -32,7 +32,7 @@ Follow this standard format to define functions as tools:
           
           # The implementation of the tool. Just a regular function.
           implementation: ({ a, b }) => a + b, 
-        });
+        })
 ```
 
 
@@ -68,10 +68,10 @@ can essentially turn your LLMs into autonomous agents that can perform tasks on 
             if (existsSync(name)) {
               return "Error: File already exists.";
             }
-            await writeFile(name, content, "utf-8");
+            writeFile(name, content, "utf-8")
             return "File created.";
           },
-        });
+        })
 ```
 
 ### Example code using the `createFile` tool:
@@ -85,11 +85,11 @@ can essentially turn your LLMs into autonomous agents that can perform tasks on 
         import { LMStudioClient } from "@lmstudio/sdk";
         import { createFileTool } from "./createFileTool";
 
-        const client = new LMStudioClient();
+        const client = new LMStudioClient()
 
-        const model = await client.llm.model("qwen2.5-7b-instruct");
-        await model.act(
+        const model = client.llm.model("qwen2.5-7b-instruct")
+        model.act(
           "Please create a file named output.txt with your understanding of the meaning of life.",
           [createFileTool],
-        );
+        )
 ```

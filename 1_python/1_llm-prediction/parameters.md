@@ -15,23 +15,25 @@ Set inference-time parameters such as `temperature`, `maxTokens`, `topP` and mor
     ".respond()":
       language: python
       code: |
-        const prediction = model.respond(chat, {
-          temperature: 0.6,
-          maxTokens: 50,
-        });
+        result = model.respond(chat, config={
+            temperature: 0.6,
+            maxTokens: 50,
+        })
+
     ".complete()":
-        language: python
-        code: |
-          const prediction = model.complete(prompt, {
+      language: python
+      code: |
+        result = model.respond(chat, config={
             temperature: 0.6,
             maxTokens: 50,
             stop: ["\n\n"],
-          });
+          })
+
 ```
 
 See [`LLMPredictionConfigInput`](./../api-reference/llm-prediction-config-input) for all configurable fields.
 
-Another useful inference-time configuration parameter is [`structured`](<(./structured-responses)>), which allows you to rigorously enforce the structure of the output using a JSON or zod schema.
+Another useful inference-time configuration parameter is [`structured`](<(./structured-responses)>), which allows you to rigorously enforce the structure of the output using a JSON or Pydantic schema.
 
 # Load Parameters
 
@@ -48,31 +50,56 @@ The `.model()` retrieves a handle to a model that has already been loaded, or lo
     "Python (convenience API)":
       language: python
       code: |
-        const model = await client.llm.model("qwen2.5-7b-instruct", {
-          config: {
+        import lmstudio as lm
+        model = lm.llm("qwen2.5-7b-instruct", config = {
             contextLength: 8192,
             gpuOffload: 0.5,
-          },
-        });
+        })
+
+    "Python (scoped resource API)":
+      language: python
+      code: |
+        import lmstudio
+        with lmstudio.Client() as client:
+            model = client.llm.model(
+                "qwen2.5-7b-instruct",
+                config = {
+                    contextLength: 8192,
+                    gpuOffload: 0.5,
+            })
+
 ```
 
 See [`LLMLoadModelConfig`](./../api-reference/llm-load-model-config) for all configurable fields.
 
-### Set Load Parameters with `.load()`
+### Set Load Parameters with `.load_new_instance()`
 
-The `.load()` method creates a new model instance and loads it with the specified configuration.
+The `.load_new_instance()` method creates a new model instance and loads it with the specified configuration.
 
 ```lms_code_snippet
   variants:
     "Python (convenience API)":
       language: python
       code: |
-        const model = await client.llm.load("qwen2.5-7b-instruct", {
-          config: {
+        import lmstudio as lm
+        client = lm.get_default_client()
+        model = client.llm.load_new_instance("qwen2.5-7b-instruct", config = {
             contextLength: 8192,
             gpuOffload: 0.5,
-          },
-        });
+        })
+
+    "Python (scoped resource API)":
+      language: python
+      code: |
+        import lmstudio
+        with lmstudio.Client() as client:
+            model = client.llm.load_new_instance(
+                "qwen2.5-7b-instruct",
+                config = {
+                    contextLength: 8192,
+                    gpuOffload: 0.5,
+            })
+
 ```
 
 See [`LLMLoadModelConfig`](./../api-reference/llm-load-model-config) for all configurable fields.

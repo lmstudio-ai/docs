@@ -1,27 +1,69 @@
 ---
 title: Structured Response
-description: Enforce a structured response from the model using Pydantic (Python), Zod (TypeScript), or JSON Schema
+description: Enforce a structured response from the model using Pydantic models or JSON Schema
 index: 4
 ---
 
-You can enforce a particular response format from an LLM by providing a schema (JSON or `zod`) to the `.respond()` method. This guarantees that the model's output conforms to the schema you provide.
+You can enforce a particular response format from an LLM by providing a JSON schema to the `.respond()` method.
+This guarantees that the model's output conforms to the schema you provide.
 
-## Enforce Using a `zod` Schema
+The JSON schema can either be provided directly,
+or by providing an object that implements the `lmstudio.ModelSchema` protocol,
+such as `pydantic.BaseModel` or `lmstudio.BaseModel`.
 
-If you wish the model to generate JSON that satisfies a given schema, it is recommended to provide
-the schema using [`zod`](https://zod.dev/). When a `zod` schema is provided, the prediction result will contain an extra field `parsed`, which contains parsed, validated, and typed result.
+The `lmstudio.ModelSchema` protocol is defined as follows:
 
-#### Define a `zod` Schema
+```python
+@runtime_checkable
+class ModelSchema(Protocol):
+    """Protocol for classes that provide a JSON schema for their model."""
 
-```ts
-import { z } from "zod";
+    @classmethod
+    def model_json_schema(cls) -> DictSchema:
+        """Return a JSON schema dict describing this model."""
+        ...
 
-# A zod schema for a book
-const bookSchema = z.object({
-  title: z.string(),
-  author: z.string(),
-  year: z.number().int(),
-});
+```
+
+When a schema is provided, the prediction result's `parsed` field will contain a string-keyed dictionary that conforms
+to the given schema (for unstructured results, this field is a string field containing the same value as `content`).
+
+
+## Enforce Using a Class Based Schema Definition
+
+If you wish the model to generate JSON that satisfies a given schema,
+it is recommended to provide a class based schema definition using a library
+such as [`pydantic`](https://docs.pydantic.dev/) or [`msgspec`](https://jcristharif.com/msgspec/).
+
+Pydantic models natively implement the `lmstudio.ModelSchema` protocol,
+while `lmstudio.BaseModel` is a `msgspec.Struct` subclass that implements `.model_json_schema()` appropriately.
+
+#### Define a Class Based Schema
+
+```lms_code_snippet
+  variants:
+    "pydantic.BaseModel":
+      language: python
+      code: |
+        from pydantic import BaseModel
+
+        # A class based schema for a book
+        class BookSchema(BaseModel):
+            title: str
+            author: str
+            year: int
+
+    "lmstudio.BaseModel":
+      language: python
+      code: |
+        from lmstudio import BaseModel
+
+        # A class based schema for a book
+        class BookSchema(BaseModel):
+            title: str
+            author: str
+            year: int
+
 ```
 
 #### Generate a Structured Response
@@ -31,35 +73,31 @@ const bookSchema = z.object({
     "Non-streaming":
       language: python
       code: |
-        const result = await model.respond("Tell me about The Hobbit.",
-          { structured: bookSchema }
-        );
+        result = model.respond("Tell me about The Hobbit", response_format=BookSchema)
+        book = result.parsed
 
-        const book = result.parsed;
-        console.info(book);
+        print(book)
         #           ^
-        # Note that `book` is now correctly typed as { title: string, author: string, year: number }
+        # Note that `book` is correctly typed as { title: string, author: string, year: number }
 
     Streaming:
       language: python
       code: |
-        const prediction = model.respond("Tell me about The Hobbit.",
-          { structured: bookSchema }
-        );
+        prediction_stream = model.respond_stream("Tell me about The Hobbit", response_format=BookSchema)
 
         # Optionally stream the response
-        # for await (const { content } of prediction) {
-        #   process.stdout.write(content);
-        # }
-        # console.info();
+        # for fragment in prediction:
+        #   print(fragment.content, end="", flush=True)
+        # print()
+        # Note that even for structured responses, the *fragment* contents are still only text
 
         # Get the final structured result
-        const result = await prediction.result();
-        const book = result.parsed;
+        result = prediction_stream.result()
+        book = result.parsed
 
-        console.info(book);
+        print(book)
         #           ^
-        # Note that `book` is now correctly typed as { title: string, author: string, year: number }
+        # Note that `book` is correctly typed as { title: string, author: string, year: number }
 ```
 
 ## Enforce Using a JSON Schema
@@ -68,17 +106,17 @@ You can also enforce a structured response using a JSON schema.
 
 #### Define a JSON Schema
 
-```ts
+```python
 # A JSON schema for a book
-const schema = {
-  type: "object",
-  properties: {
-    title: { type: "string" },
-    author: { type: "string" },
-    year: { type: "integer" },
+schema = {
+  "type": "object",
+  "properties": {
+    "title": { "type": "string" },
+    "author": { "type": "string" },
+    "year": { "type": "integer" },
   },
-  required: ["title", "author", "year"],
-};
+  "required": ["title", "author", "year"],
+}
 ```
 
 #### Generate a Structured Response
@@ -88,42 +126,31 @@ const schema = {
     "Non-streaming":
       language: python
       code: |
-        const result = await model.respond("Tell me about The Hobbit.", {
-          structured: {
-            type: "json",
-            jsonSchema: schema,
-          },
-        });
+        result = model.respond("Tell me about The Hobbit", response_format=schema)
+        book = result.parsed
 
-        const book = JSON.parse(result.content);
-        console.info(book);
+        print(book)
+        #           ^
+        # Note that `book` is correctly typed as { title: string, author: string, year: number }
+
     Streaming:
       language: python
       code: |
-        const prediction = model.respond("Tell me about The Hobbit.", {
-          structured: {
-            type: "json",
-            jsonSchema: {
-              type: "object",
-              properties: {
-                title: { type: "string" },
-                author: { type: "string" },
-                year: { type: "integer" },
-              },
-              required: ["title", "author", "year"],
-            },
-          },
-        });
+        prediction_stream = model.respond_stream("Tell me about The Hobbit", response_format=schema)
 
-        for await (const { content } of prediction) {
-          process.stdout.write(content);
-        }
-        console.info(); # Print a newline
+        # Optionally stream the response
+        # for fragment in prediction:
+        #   print(fragment.content, end="", flush=True)
+        # print()
+        # Note that even for structured responses, the *fragment* contents are still only text
 
-        const result = await prediction.result();
-        const book = JSON.parse(result.content);
+        # Get the final structured result
+        result = prediction_stream.result()
+        book = result.parsed
 
-        console.info("Parsed", book);
+        print(book)
+        #           ^
+        # Note that `book` is correctly typed as { title: string, author: string, year: number }
 ```
 
 TODO: Info about structured generation caveats
@@ -158,10 +185,10 @@ methods, and relies on Pydantic in Python and Zod in TypeScript.
           year: z.number().int()
         })
 
-        const client = new LMStudioClient();
-        const llm = await client.llm.model();
+        const client = new LMStudioClient()
+        const llm = client.llm.model()
 
-        const response = await llm.respond(
+        const response = llm.respond(
           "Tell me about The Hobbit.",
           { structured: Book },
         )
