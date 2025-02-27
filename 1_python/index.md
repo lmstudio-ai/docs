@@ -30,7 +30,6 @@ For the source code and open source contribution, visit [lmstudio-python](https:
 ## Quick Example: Chat with a Llama Model
 
 ```lms_code_snippet
-  title: "example.py"
   variants:
     "Python (convenience API)":
       language: python
