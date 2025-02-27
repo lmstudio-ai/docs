@@ -95,8 +95,6 @@ Here's an example of how you might use the `complete` method to simulate a termi
     Python:
       language: python
       code: |
-        import readline # Enables input line editing
-
         import lmstudio as lms
 
         model = lms.llm()
