@@ -51,7 +51,6 @@ For the source code and open source contribution, visit [lmstudio-python](https:
             result = model.respond("What is the meaning of life?")
 
             print(result)
-
 ```
 
 ### Getting Local Models
