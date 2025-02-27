@@ -3,7 +3,10 @@ title: List Downloaded Models
 description: APIs to list the available models in a given local environment
 ---
 
-You can iterate through locally available models using the downloaded model listing methods. 
+You can iterate through locally available models using the downloaded model listing methods.
+
+The listing results offer `.model()` and `.load_new_instance()` methods, which allow the
+downloaded model reference to be converted in the full SDK handle for a loaded model.
 
 ## Available Models on the LM Studio Server
 
@@ -21,7 +24,7 @@ You can iterate through locally available models using the downloaded model list
         for model in downloaded_models:
             print(model)
 
-    Python (with scoped resources):
+    "Python (scoped resource API)":
       language: python
       code: |
         import lmstudio as lms
