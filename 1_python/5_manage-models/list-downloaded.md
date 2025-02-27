@@ -21,7 +21,7 @@ downloaded model reference to be converted in the full SDK handle for a loaded m
         llm_only = lms.list_downloaded_models("llm")
         embedding_only = lms.list_downloaded_models("embedding")
 
-        for model in downloaded_models:
+        for model in downloaded:
             print(model)
 
     "Python (scoped resource API)":
@@ -34,7 +34,7 @@ downloaded model reference to be converted in the full SDK handle for a loaded m
             llm_only = client.llm.list_downloaded()
             embedding_only = client.embedding.list_downloaded()
 
-        for model in downloaded_models:
+        for model in downloaded:
             print(model)
 
 ```

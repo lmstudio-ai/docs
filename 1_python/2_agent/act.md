@@ -99,7 +99,7 @@ The following code creates a conversation loop with an LLM agent that can create
                 return "Error: {exc!r}"
             return "File created."
 
-        def print_content(fragment):
+        def print_fragment(fragment, *args):
             print(fragment.content, end="", flush=True)
 
         model = lms.llm()
@@ -117,8 +117,9 @@ The following code creates a conversation loop with an LLM agent that can create
             print("Bot: ", end="", flush=True)
             model.act(
                 chat,
+                [create_file],
                 on_message=chat.append,
-                on_fragment=print_fragment,
+                on_prediction_fragment=print_fragment,
             )
             print()
 

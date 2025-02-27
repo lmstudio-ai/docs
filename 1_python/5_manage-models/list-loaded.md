@@ -23,6 +23,8 @@ This will give you results equivalent to using [`lms ps`](../../cli/ps) in the C
         llm_only = lms.list_loaded_models("llm")
         embedding_only = lms.list_loaded_models("embedding")
 
+        print(all_loaded_models)
+
     Python (scoped resource API):
       language: python
       code: |
@@ -32,5 +34,7 @@ This will give you results equivalent to using [`lms ps`](../../cli/ps) in the C
             all_loaded_models = client.list_loaded_models()
             llm_only = client.llm.list_loaded()
             embedding_only = client.embedding.list_loaded()
+
+            print(all_loaded_models)
 
 ```
