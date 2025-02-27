@@ -75,6 +75,8 @@ is typically going to be the most convenient):
 
 This means that your wording will affect the quality of the generation. Make sure to always provide a clear description of the tool so the model knows how to use it.
 
+When a tool call fails, the language model may be able to respond appropriately to the failure.
+
 ## Tools with External Effects (like Computer Use or API Calls)
 
 Tools can also have external effects, such as creating files or calling programs and even APIs. By implementing tools with external effects, you
@@ -97,10 +99,19 @@ can essentially turn your LLMs into autonomous agents that can perform tasks on 
             dest_path = Path(name)
             if dest_path.exists():
                 return "Error: File already exists."
-            dest_path.write_text(content, encoding="utf-8")
+            try:
+                dest_path.write_text(content, encoding="utf-8")
+            except Exception as exc:
+                return "Error: {exc!r}"
             return "File created."
 
 ```
+
+The SDK does not yet automatically convert raised exceptions to text and report them
+to the language model, but it can be beneficial for tool implementations to do so.
+In many cases, when notified of an error, a language model is able to adjust its
+request to avoid the failure.
+
 
 ### Example code using the `create_file` tool:
 
