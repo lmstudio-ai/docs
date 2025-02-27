@@ -23,7 +23,7 @@ Set inference-time parameters such as `temperature`, `maxTokens`, `topP` and mor
     ".complete()":
       language: python
       code: |
-        result = model.respond(chat, config={
+        result = model.complete(chat, config={
             "temperature": 0.6,
             "maxTokens": 50,
             "stop": ["\n\n"],
@@ -51,9 +51,9 @@ The `.model()` retrieves a handle to a model that has already been loaded, or lo
       language: python
       code: |
         import lmstudio as lms
-        model = lms.llm("qwen2.5-7b-instruct", config = {
-            contextLength: 8192,
-            gpuOffload: 0.5,
+        model = lms.llm("qwen2.5-7b-instruct", config={
+            "contextLength": 8192,
+            "gpuOffload": 0.5,
         })
 
     "Python (scoped resource API)":
@@ -63,10 +63,11 @@ The `.model()` retrieves a handle to a model that has already been loaded, or lo
         with lms.Client() as client:
             model = client.llm.model(
                 "qwen2.5-7b-instruct",
-                config = {
-                    contextLength: 8192,
-                    gpuOffload: 0.5,
-            })
+                config={
+                    "contextLength": 8192,
+                    "gpuOffload": 0.5,
+                }
+            )
 
 ```
 
@@ -83,9 +84,9 @@ The `.load_new_instance()` method creates a new model instance and loads it with
       code: |
         import lmstudio as lms
         client = lms.get_default_client()
-        model = client.llm.load_new_instance("qwen2.5-7b-instruct", config = {
-            contextLength: 8192,
-            gpuOffload: 0.5,
+        model = client.llm.load_new_instance("qwen2.5-7b-instruct", config={
+            "contextLength": 8192,
+            "gpuOffload": 0.5,
         })
 
     "Python (scoped resource API)":
@@ -95,10 +96,11 @@ The `.load_new_instance()` method creates a new model instance and loads it with
         with lms.Client() as client:
             model = client.llm.load_new_instance(
                 "qwen2.5-7b-instruct",
-                config = {
-                    contextLength: 8192,
-                    gpuOffload: 0.5,
-            })
+                config={
+                    "contextLength": 8192,
+                    "gpuOffload": 0.5,
+                }
+            )
 
 ```
 

@@ -19,7 +19,7 @@ You can tokenize a string with a loaded LLM or embedding model using the SDK. In
 
         model = lms.llm()
 
-        tokens = llm.tokenize("Hello, world!")
+        tokens = model.tokenize("Hello, world!")
 
         print(tokens) # Array of token IDs.
 ```
@@ -33,7 +33,7 @@ If you only care about the number of tokens, simply check the length of the resu
     "Python (convenience API)":
       language: python
       code: |
-        token_count = len(llm.tokenize("Hello, world!"))
+        token_count = len(model.tokenize("Hello, world!"))
         print("Token count:", token_count)
 ```
 
@@ -71,7 +71,7 @@ You can determine if a given conversation fits into a model's context by doing t
             ]
         })
 
-        print("Fits", does_chat_fit_in_context(model, chat))
+        print("Fits in context:", does_chat_fit_in_context(model, chat))
 
 ```
 

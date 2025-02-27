@@ -86,7 +86,7 @@ This allows you to have multiple instances of the same or different models loade
       code: |
         import lmstudio as lms
 
-        client = lms.get_default_client
+        client = lms.get_default_client()
         llama = client.llm.load_new_instance("llama-3.2-1b-instruct")
         another_llama = client.llm.load_new_instance("llama-3.2-1b-instruct", "second-llama")
 
