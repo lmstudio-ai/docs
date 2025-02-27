@@ -121,10 +121,10 @@ request to avoid the failure.
     "Python (convenience API)":
       language: python
       code: |
-        import lmstudio as lm
+        import lmstudio as lms
         from create_file_tool import create_file
 
-        model = lm.llm("qwen2.5-7b-instruct")
+        model = lms.llm("qwen2.5-7b-instruct")
         model.act(
           "Please create a file named output.txt with your understanding of the meaning of life.",
           [create_file],

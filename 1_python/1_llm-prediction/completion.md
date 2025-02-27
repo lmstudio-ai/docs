@@ -21,8 +21,8 @@ For example, here is how to use Qwen2.5 7B Instruct.
     "Python (convenience API)":
       language: python
       code: |
-        import lmstudio as lm
-        model = lm.llm("qwen2.5-7b-instruct")
+        import lmstudio as lms
+        model = lms.llm("qwen2.5-7b-instruct")
 
     "Python (scoped resource API)":
       language: python
@@ -97,9 +97,9 @@ Here's an example of how you might use the `complete` method to simulate a termi
       code: |
         import readline # Enables input line editing
 
-        import lmstudio as lm
+        import lmstudio as lms
 
-        model = lm.llm()
+        model = lms.llm()
         console_history = []
 
         while True:
@@ -138,9 +138,9 @@ that receives a float from 0.0-1.0 representing prompt processing progress.
     Python:
       language: python
       code: |
-        import lmstudio as lm
+        import lmstudio as lms
 
-        llm = lm.llm()
+        llm = lms.llm()
 
         completion = llm.complete(
             "My name is",

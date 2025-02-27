@@ -15,13 +15,13 @@ LLMs are text-in text-out models and cannot directly execute code. However, just
     "Python (convenience API)":
       language: python
       code: |
-        import lmstudio as lm
+        import lmstudio as lms
 
         def multiply(a: float, b: float) -> float:
             """Given two numbers a and b. Returns the product of them."""
             return a * b
 
-        model = lm.llm("qwen2.5-7b-instruct")
+        model = lms.llm("qwen2.5-7b-instruct")
         model.act(
           "What is the result of 12345 multiplied by 54321?",
           [multiply],
@@ -50,7 +50,7 @@ The following code demonstrates how to provide multiple tools in a single `.act(
       language: python
       code: |
         import math
-        import lmstudio as lm
+        import lmstudio as lms
 
         def add(a: int, b: int) -> int:
             """Given two numbers a and b, returns the sum of them."""
@@ -66,7 +66,7 @@ The following code demonstrates how to provide multiple tools in a single `.act(
                     return False
             return True
 
-        model = lm.llm("qwen2.5-7b-instruct")
+        model = lms.llm("qwen2.5-7b-instruct")
         model.act(
           "Is the result of 12345 + 45668 a prime? Think step by step.",
           [add, is_prime],
@@ -87,7 +87,7 @@ The following code creates a conversation loop with an LLM agent that can create
         import readline # Enables input line editing
         from pathlib import Path
 
-        import lmstudio as lm
+        import lmstudio as lms
 
         def create_file(name: str, content: str):
             """Create a file with the given name and content."""
@@ -103,8 +103,8 @@ The following code creates a conversation loop with an LLM agent that can create
         def print_content(fragment):
             print(fragment.content, end="", flush=True)
 
-        model = lm.llm()
-        chat = lm.Chat("You are a task focused AI assistant")
+        model = lms.llm()
+        chat = lms.Chat("You are a task focused AI assistant")
 
         while True:
             try:
