@@ -1,54 +1,46 @@
 ---
-title: List Local Models
+title: List Downloaded Models
 description: APIs to list the available models in a given local environment
 ---
 
-You can iterate through locally available models using the `listLocalModels` method. 
+You can iterate through locally available models using the downloaded model listing methods. 
 
-## Available Model on the Local Machine
-
-`listLocalModels` lives under the `system` namespace of the `LMStudioClient` object.
+## Available Models on the LM Studio Server
 
 ```lms_code_snippet
   variants:
     "Python (convenience API)":
       language: python
       code: |
-        import { LMStudioClient } from "@lmstudio/sdk";
-        const client = new LMStudioClient()
+        import lmstudio as lms
 
-        print(client.system.listDownloadedModels())
+        downloaded = lms.list_downloaded_models()
+        llm_only = lms.list_downloaded_models("llm")
+        embedding_only = lms.list_downloaded_models("embedding")
+
+        for model in downloaded_models:
+            print(model)
+
+    Python (with scoped resources):
+      language: python
+      code: |
+        import lmstudio as lms
+
+        with lms.Client() as client:
+            downloaded = client.list_downloaded_models()
+            llm_only = client.llm.list_downloaded()
+            embedding_only = client.embedding.list_downloaded()
+
+        for model in downloaded_models:
+            print(model)
+
 ```
 This will give you results equivalent to using [`lms ls`](../../cli/ls) in the CLI.
 
+
 ### Example output:
 
-```json
-[
-  {
-    "type": "llm",
-    "modelKey": "qwen2.5-7b-instruct",
-    "format": "gguf",
-    "displayName": "Qwen2.5 7B Instruct",
-    "path": "lmstudio-community/Qwen2.5-7B-Instruct-GGUF/Qwen2.5-7B-Instruct-Q4_K_M.gguf",
-    "sizeBytes": 4683073952,
-    "paramsString": "7B",
-    "architecture": "qwen2",
-    "vision": false,
-    "trainedForToolUse": true,
-    "maxContextLength": 32768
-  },
-  {
-    "type": "embedding",
-    "modelKey": "text-embedding-nomic-embed-text-v1.5@q4_k_m",
-    "format": "gguf",
-    "displayName": "Nomic Embed Text v1.5",
-    "path": "nomic-ai/nomic-embed-text-v1.5-GGUF/nomic-embed-text-v1.5.Q4_K_M.gguf",
-    "sizeBytes": 84106624,
-    "architecture": "nomic-bert",
-    "maxContextLength": 2048
-  }
-]
+```python
+DownloadedLlm(model_key='qwen2.5-7b-instruct-1m', display_name='Qwen2.5 7B Instruct 1M', architecture='qwen2', vision=False)
+DownloadedEmbeddingModel(model_key='text-embedding-nomic-embed-text-v1.5', display_name='Nomic Embed Text v1.5', architecture='nomic-bert')
 ```
-
-Learn more about the `client.system` namespace in the [System API Reference](../api-reference/system-namespace).

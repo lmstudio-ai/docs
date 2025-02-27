@@ -15,27 +15,26 @@ You can tokenize a string with a loaded LLM or embedding model using the SDK. In
     "Python (convenience API)":
       language: python
       code: |
-        import { LMStudioClient } from "@lmstudio/sdk";
+        import lmstudio as lms
 
-        const client = new LMStudioClient()
-        const llm = client.llm.model()
+        model = lms.llm()
 
-        const tokens = llm.tokenize("Hello, world!")
+        tokens = llm.tokenize("Hello, world!")
 
         print(tokens) # Array of token IDs.
 ```
 
 ## Count tokens
 
-If you only care about the number of tokens, you can use the `.countTokens` method instead.
+If you only care about the number of tokens, simply check the length of the resulting array.
 
 ```lms_code_snippet
   variants:
     "Python (convenience API)":
       language: python
       code: |
-        const tokenCount = llm.countTokens("Hello, world!")
-        print("Token count:", tokenCount)
+        token_count = len(llm.tokenize("Hello, world!"))
+        print("Token count:", token_count)
 ```
 
 ### Example: count context
@@ -51,28 +50,28 @@ You can determine if a given conversation fits into a model's context by doing t
     "Python (convenience API)":
       language: python
       code: |
-        import { Chat, type LLM, LMStudioClient } from "@lmstudio/sdk";
+        import lmstudio as lms
 
-        async function doesChatFitInContext(model: LLM, chat: Chat) {
-          # Convert the conversation to a string using the prompt template.
-          const formatted = model.applyPromptTemplate(chat)
-          # Count the number of tokens in the string.
-          const tokenCount = model.countTokens(formatted)
-          # Get the current loaded context length of the model
-          const contextLength = model.getContextLength()
-          return tokenCount < contextLength;
-        }
+        def does_chat_fit_in_context(model: lms.LLM, chat: lms.Chat) -> bool:
+            # Convert the conversation to a string using the prompt template.
+            formatted = model.apply_prompt_template(chat)
+            # Count the number of tokens in the string.
+            token_count = len(model.tokenize(formatted))
+            # Get the current loaded context length of the model
+            context_length = model.get_context_length()
+            return token_count < context_length;
 
-        const client = new LMStudioClient()
-        const model = client.llm.model()
+        model = lms.llm()
 
-        const chat = Chat.from([
-          { role: "user", content: "What is the meaning of life." },
-          { role: "assistant", content: "The meaning of life is..." },
-          # ... More messages
-        ])
+        const chat = lms.Chat.from_history({
+            "messages": [
+                { "role": "user", "content": "What is the meaning of life." },
+                { "role": "assistant", "content": "The meaning of life is..." },
+                # ... More messages
+            ]
+        })
 
-        print("Fits", doesChatFitInContext(model, chat))
+        print("Fits", does_chat_fit_in_context(model, chat))
 ```
 
 <!-- ### Context length comparisons

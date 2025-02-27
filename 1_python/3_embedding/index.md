@@ -26,7 +26,8 @@ To convert a string to a vector representation, pass it to the `embed` method on
       code: |
         import lmstudio as lms
 
-        const model = client.embedding.model("nomic-embed-text-v1.5")
+        model = lms.embedding.model("nomic-embed-text-v1.5")
 
-        const { embedding } = model.embed("Hello, world!")
+        embedding = model.embed("Hello, world!")
+
 ```
