@@ -113,7 +113,7 @@ and it is asked to predict the assistant's response in that conversation.
         import lmstudio as lms
 
         # Create a chat with an initial system prompt.
-        const chat = lms.Chat("You are a resident AI philosopher.")
+        chat = lms.Chat("You are a resident AI philosopher.")
 
         # Build the chat context by adding messages of relevant types.
         chat.add_user_message("What is the meaning of life?")
