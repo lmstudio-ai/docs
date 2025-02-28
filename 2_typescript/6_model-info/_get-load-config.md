@@ -20,7 +20,7 @@ Context length is a special case that [has its own method](/docs/api/sdk/get-con
         import { LMStudioClient } from "@lmstudio/sdk";
 
         const client = new LMStudioClient();
-        const llm = await client.llm.model();
+        const model = await client.llm.model();
 
-        loadConfig = await llm.getLoadConfig()
+        loadConfig = await model.getLoadConfig()
 ```

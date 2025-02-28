@@ -103,15 +103,7 @@ const schema = {
         const prediction = model.respond("Tell me about The Hobbit.", {
           structured: {
             type: "json",
-            jsonSchema: {
-              type: "object",
-              properties: {
-                title: { type: "string" },
-                author: { type: "string" },
-                year: { type: "integer" },
-              },
-              required: ["title", "author", "year"],
-            },
+            jsonSchema: schema,
           },
         });
 

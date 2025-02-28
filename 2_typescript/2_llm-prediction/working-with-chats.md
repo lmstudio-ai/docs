@@ -3,7 +3,7 @@ title: Working with Chats
 description: APIs for representing a chat conversation with an LLM
 ---
 
-SDK methods such as `llm.respond()`, `llm.applyPromptTemplate()`, or `llm.act()`
+SDK methods such as `model.respond()`, `model.applyPromptTemplate()`, or `model.act()`
 takes in a chat parameter as an input. There are a few ways to represent a chat in the SDK.
 
 ## Option 1: Array of Messages
@@ -15,7 +15,7 @@ variants:
   "Text-only":
     language: typescript
     code: |
-      const prediction = llm.respond([
+      const prediction = model.respond([
         { role: "system", content: "You are a resident AI philosopher." },
         { role: "user", content: "What is the meaning of life?" },
       ]);
@@ -24,7 +24,7 @@ variants:
     code: |
       const image = await client.files.prepareImage("/path/to/image.jpg");
 
-      const prediction = llm.respond([
+      const prediction = model.respond([
         { role: "system", content: "You are a state-of-art object recognition system." },
         { role: "user", content: "What is this object?", images: [image] },
       ]);
@@ -39,7 +39,7 @@ variants:
   TypeScript:
     language: typescript
     code: |
-      const prediction = llm.respond("What is the meaning of life?");
+      const prediction = model.respond("What is the meaning of life?");
 ```
 
 ## Option 3: Using the `Chat` Helper Class
@@ -55,7 +55,7 @@ variants:
       chat.append("system", "You are a resident AI philosopher.");
       chat.append("user", "What is the meaning of life?");
 
-      const prediction = llm.respond(chat);
+      const prediction = model.respond(chat);
   With Images:
     language: typescript
     code: |
@@ -65,7 +65,7 @@ variants:
       chat.append("system", "You are a state-of-art object recognition system.");
       chat.append("user", "What is this object?", { images: [image] });
 
-      const prediction = llm.respond(chat);
+      const prediction = model.respond(chat);
 ```
 
 You can also quickly construct a `Chat` object using the `Chat.from` method.

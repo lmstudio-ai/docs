@@ -17,7 +17,7 @@ and the `path` used to [load it](/docs/api/sdk/load-model). In the below example
         import { LMStudioClient } from "@lmstudio/sdk";
 
         const client = new LMStudioClient();
-        const llm = await client.llm.model();
+        const model = await client.llm.model();
 
-        model_info = await llm.getInfo()
+        const model_info = await model.getInfo();
 ```

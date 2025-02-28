@@ -62,7 +62,9 @@ Use `load()` to load a new instance of a model, even if one already exists. This
         const client = new LMStudioClient();
 
         const llama = await client.llm.load("llama-3.2-1b-instruct");
-        const another_llama = await client.llm.load("llama-3.2-1b-instruct", "second-llama");
+        const another_llama = await client.llm.load("llama-3.2-1b-instruct", {
+          identifier: "second-llama"
+        });
 ```
 
 Learn more about the `.load()` method and the parameters it accepts in the [API Reference](../api-reference/load).
@@ -86,8 +88,8 @@ Once you no longer need a model, you can unload it by simply calling `unload()` 
 
         const client = new LMStudioClient();
 
-        const llm = await client.llm.model();
-        await llm.unload()
+        const model = await client.llm.model();
+        await model.unload();
 ```
 
 ## Set Custom Load Config Parameters
