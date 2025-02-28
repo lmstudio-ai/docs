@@ -51,7 +51,9 @@ The `.model()` retrieves a handle to a model that has already been loaded, or lo
         const model = await client.llm.model("qwen2.5-7b-instruct", {
           config: {
             contextLength: 8192,
-            gpuOffload: 0.5,
+            gpu: {
+              ratio: 0.5,
+            },
           },
         });
 ```
@@ -70,7 +72,9 @@ The `.load()` method creates a new model instance and loads it with the specifie
         const model = await client.llm.load("qwen2.5-7b-instruct", {
           config: {
             contextLength: 8192,
-            gpuOffload: 0.5,
+            gpu: {
+              ratio: 0.5,
+            },
           },
         });
 ```

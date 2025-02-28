@@ -54,5 +54,5 @@ You can determine if a given conversation fits into a model's context by doing t
           // ... More messages
         ]);
 
-        console.info("Fits", await doesChatFitInContext(model, chat));
+        console.info("Fits in context:", await doesChatFitInContext(model, chat));
 ```

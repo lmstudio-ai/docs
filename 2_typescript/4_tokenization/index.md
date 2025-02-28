@@ -18,9 +18,9 @@ You can tokenize a string with a loaded LLM or embedding model using the SDK. In
         import { LMStudioClient } from "@lmstudio/sdk";
 
         const client = new LMStudioClient();
-        const llm = await client.llm.model();
+        const model = await client.llm.model();
 
-        const tokens = await llm.tokenize("Hello, world!");
+        const tokens = await model.tokenize("Hello, world!");
 
         console.info(tokens); // Array of token IDs.
 ```
@@ -34,7 +34,7 @@ If you only care about the number of tokens, you can use the `.countTokens` meth
     TypeScript:
       language: typescript
       code: |
-        const tokenCount = await llm.countTokens("Hello, world!");
+        const tokenCount = await model.countTokens("Hello, world!");
         console.info("Token count:", tokenCount);
 ```
 
@@ -72,7 +72,7 @@ You can determine if a given conversation fits into a model's context by doing t
           // ... More messages
         ]);
 
-        console.info("Fits", await doesChatFitInContext(model, chat));
+        console.info("Fits in context:", await doesChatFitInContext(model, chat));
 ```
 
 <!-- ### Context length comparisons

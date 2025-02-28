@@ -62,10 +62,10 @@ You can also print prediction metadata, such as the model used for generation, n
     TypeScript:
       language: typescript
       code: |
-        console.info("Model used:", prediction.modelInfo.displayName);
-        console.info("Predicted tokens:", prediction.stats.predictedTokensCount);
-        console.info("Time to first token (seconds):", prediction.stats.timeToFirstTokenSec);
-        console.info("Stop reason:", prediction.stats.stopReason);
+        console.info("Model used:", completion.modelInfo.displayName);
+        console.info("Predicted tokens:", completion.stats.predictedTokensCount);
+        console.info("Time to first token (seconds):", completion.stats.timeToFirstTokenSec);
+        console.info("Stop reason:", completion.stats.stopReason);
 ```
 
 ## Example: Get an LLM to Simulate a Terminal
