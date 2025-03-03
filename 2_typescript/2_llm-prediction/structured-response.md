@@ -32,7 +32,8 @@ const bookSchema = z.object({
       language: typescript
       code: |
         const result = await model.respond("Tell me about The Hobbit.",
-          { structured: bookSchema }
+          { structured: bookSchema },
+          maxTokens: 100, // Recommended to avoid getting stuck
         );
 
         const book = result.parsed;
@@ -44,14 +45,14 @@ const bookSchema = z.object({
       language: typescript
       code: |
         const prediction = model.respond("Tell me about The Hobbit.",
-          { structured: bookSchema }
+          { structured: bookSchema },
+          maxTokens: 100, // Recommended to avoid getting stuck
         );
 
-        // Optionally stream the response
-        // for await (const { content } of prediction) {
-        //   process.stdout.write(content);
-        // }
-        // console.info();
+        for await (const { content } of prediction) {
+          process.stdout.write(content);
+        }
+        process.stdout.write("\n");
 
         // Get the final structured result
         const result = await prediction.result();
@@ -93,6 +94,7 @@ const schema = {
             type: "json",
             jsonSchema: schema,
           },
+          maxTokens: 100, // Recommended to avoid getting stuck
         });
 
         const book = JSON.parse(result.content);
@@ -105,12 +107,13 @@ const schema = {
             type: "json",
             jsonSchema: schema,
           },
+          maxTokens: 100, // Recommended to avoid getting stuck
         });
 
         for await (const { content } of prediction) {
           process.stdout.write(content);
         }
-        console.info(); // Print a newline
+        process.stdout.write("\n");
 
         const result = await prediction.result();
         const book = JSON.parse(result.content);
@@ -118,7 +121,13 @@ const schema = {
         console.info("Parsed", book);
 ```
 
-TODO: Info about structured generation caveats
+```lms_warning
+Structured generation works by constraining the model to only generate tokens that conform to the provided schema. This ensures valid output in normal cases, but comes with two important limitations:
+
+1. Models (especially smaller ones) may occasionally get stuck in an unclosed structure (like an open bracket), as they can only generate tokens that satisfy the schema and cannot stop until the structure is properly closed. Always include a `maxTokens` parameter to prevent infinite generation.
+
+2. Schema compliance is only guaranteed for complete, successful generations. If generation is interrupted (by cancellation, reaching the `maxTokens` limit, or other reasons), the output will likely violate the schema. With `zod` schema input, this will raise an error; with JSON schema, you'll receive an invalid string that doesn't meet schema requirements.
+```
 
 <!-- ## Overview
 
