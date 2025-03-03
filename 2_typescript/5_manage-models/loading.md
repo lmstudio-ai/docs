@@ -7,12 +7,14 @@ description: APIs to load, access, and unload models from memory
 AI models are huge. It can take a while to load them into memory. LM Studio's SDK allows you to precisely control this process.
 
 **Most commonly:**
-  - Use `.model()` to get any currently loaded model
-  - Use `.model("model-key")` to use a specific model
+
+- Use `.model()` to get any currently loaded model
+- Use `.model("model-key")` to use a specific model
 
 **Advanced (manual model management):**
-  - Use `.load("model-key")` to load a new instance of a model
-  - Use `model.unload()` to unload a model from memory
+
+- Use `.load("model-key")` to load a new instance of a model
+- Use `model.unload()` to unload a model from memory
 
 ## Get the Current Model with `.model()`
 
@@ -34,6 +36,7 @@ If you already have a model loaded in LM Studio (either via the GUI or `lms load
 If you want to use a specific model, you can provide the model key as an argument to `.model()`.
 
 #### Get if Loaded, or Load if not
+
 Calling `.model("model-key")` will load the model if it's not already loaded, or return the existing instance if it is.
 
 ```lms_code_snippet
@@ -94,7 +97,7 @@ Once you no longer need a model, you can unload it by simply calling `unload()` 
 
 ## Set Custom Load Config Parameters
 
-You can also specify the same load-time configuration options when loading a model, such as Context Length and GPU offload. 
+You can also specify the same load-time configuration options when loading a model, such as Context Length and GPU offload.
 
 See [load-time configuration](../llm-prediction/parameters) for more.
 
@@ -103,4 +106,28 @@ See [load-time configuration](../llm-prediction/parameters) for more.
 You can specify a _time to live_ for a model you load, which is the idle time (in seconds)
 after the last request until the model unloads. See [Idle TTL](/docs/api/ttl-and-auto-evict) for more on this.
 
-TODO: code snippet
+```lms_code_snippet
+  variants:
+    "Using .load":
+      language: typescript
+      code: |
+        import { LMStudioClient } from "@lmstudio/sdk";
+
+        const client = new LMStudioClient();
+
+        const model = await client.llm.load("llama-3.2-1b-instruct", {
+          ttl: 300, // 300 seconds
+        });
+    "Using .model":
+      language: typescript
+      code: |
+        import { LMStudioClient } from "@lmstudio/sdk";
+
+        const client = new LMStudioClient();
+
+        const model = await client.llm.model("llama-3.2-1b-instruct", {
+          // Note: specifying ttl in `.model` will only set the TTL for the model if the model is
+          // loaded from this call. If the model was already loaded, the TTL will not be updated.
+          ttl: 300, // 300 seconds
+        });
+```
