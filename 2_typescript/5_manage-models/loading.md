@@ -50,7 +50,7 @@ Calling `.model("model-key")` will load the model if it's not already loaded, or
         const model = await client.llm.model("llama-3.2-1b-instruct");
 ```
 
-Learn more about the `.model()` method and the parameters it accepts in the [API Reference](../api-reference/model).
+<!-- Learn more about the `.model()` method and the parameters it accepts in the [API Reference](../api-reference/model). -->
 
 ## Load a New Instance of a Model with `.load()`
 
@@ -70,7 +70,7 @@ Use `load()` to load a new instance of a model, even if one already exists. This
         });
 ```
 
-Learn more about the `.load()` method and the parameters it accepts in the [API Reference](../api-reference/load).
+<!-- Learn more about the `.load()` method and the parameters it accepts in the [API Reference](../api-reference/load). -->
 
 ### Note about Instance Identifiers
 

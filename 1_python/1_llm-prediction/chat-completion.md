@@ -122,8 +122,9 @@ and it is asked to predict the assistant's response in that conversation.
 
 ```
 
-See [Working with Chats](./working-with-chats) for more information on managing chat context,
-and [`Chat`](./../api-reference/chat) for API reference for the `Chat` class.
+See [Working with Chats](./working-with-chats) for more information on managing chat context.
+
+<!-- , and [`Chat`](./../api-reference/chat) for API reference for the `Chat` class. -->
 
 ## Generate a response
 

@@ -31,7 +31,7 @@ Set inference-time parameters such as `temperature`, `maxTokens`, `topP` and mor
 
 ```
 
-See [`LLMPredictionConfigInput`](./../api-reference/llm-prediction-config-input) for all configurable fields.
+<!-- See [`LLMPredictionConfigInput`](./../api-reference/llm-prediction-config-input) for all configurable fields. -->
 
 Another useful inference-time configuration parameter is [`structured`](<(./structured-responses)>), which allows you to rigorously enforce the structure of the output using a JSON or Pydantic schema.
 
@@ -71,7 +71,7 @@ The `.model()` retrieves a handle to a model that has already been loaded, or lo
 
 ```
 
-See [`LLMLoadModelConfig`](./../api-reference/llm-load-model-config) for all configurable fields.
+<!-- See [`LLMLoadModelConfig`](./../api-reference/llm-load-model-config) for all configurable fields. -->
 
 ### Set Load Parameters with `.load_new_instance()`
 
@@ -104,4 +104,4 @@ The `.load_new_instance()` method creates a new model instance and loads it with
 
 ```
 
-See [`LLMLoadModelConfig`](./../api-reference/llm-load-model-config) for all configurable fields.
+<!-- See [`LLMLoadModelConfig`](./../api-reference/llm-load-model-config) for all configurable fields. -->

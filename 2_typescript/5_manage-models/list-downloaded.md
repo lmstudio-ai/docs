@@ -3,7 +3,7 @@ title: List Local Models
 description: APIs to list the available models in a given local environment
 ---
 
-You can iterate through locally available models using the `listLocalModels` method. 
+You can iterate through locally available models using the `listLocalModels` method.
 
 ## Available Model on the Local Machine
 
@@ -19,6 +19,7 @@ You can iterate through locally available models using the `listLocalModels` met
 
         console.info(await client.system.listDownloadedModels());
 ```
+
 This will give you results equivalent to using [`lms ls`](../../cli/ls) in the CLI.
 
 ### Example output:
@@ -51,4 +52,4 @@ This will give you results equivalent to using [`lms ls`](../../cli/ls) in the C
 ]
 ```
 
-Learn more about the `client.system` namespace in the [System API Reference](../api-reference/system-namespace).
+<!-- Learn more about the `client.system` namespace in the [System API Reference](../api-reference/system-namespace). -->

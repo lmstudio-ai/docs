@@ -74,7 +74,9 @@ The input to the model is referred to as the "context". Conceptually, the model 
         chat.append("user", "What is the meaning of life?");
 ```
 
-See [Working with Chats](./working-with-chats) for more information on managing chat context, and [`Chat`](./../api-reference/chat) for API reference for the `Chat` class.
+See [Working with Chats](./working-with-chats) for more information on managing chat context.
+
+<!-- , and [`Chat`](./../api-reference/chat) for API reference for the `Chat` class. -->
 
 ## Generate a response
 
