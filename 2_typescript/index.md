@@ -31,7 +31,7 @@ For the source code and open source contribution, visit [lmstudio.js](https://gi
 ## Features
 
 - Use LLMs to [respond in chats](./typescript/llm-prediction/chat-completion) or predict [text completions](./typescript/llm-prediction/completion)
-- Define functions as tools, and turn LLMs into [autonomous agents](./typescript/agent) that run completely locally
+- Define functions as tools, and turn LLMs into [autonomous agents](./typescript/agent/act) that run completely locally
 - [Load](./typescript/manage-models/loading), [configure](./typescript/llm-prediction/parameters), and [unload](./typescript/manage-models/loading) models from memory
 - Supports for both browser and any Node-compatible environments
 - Generate embeddings for text, and more!
@@ -49,7 +49,7 @@ For the source code and open source contribution, visit [lmstudio.js](https://gi
 
         const model = await client.llm.model("llama-3.2-1b-instruct");
         const result = await model.respond("What is the meaning of life?");
-        
+
         console.info(result.content);
 ```
 
