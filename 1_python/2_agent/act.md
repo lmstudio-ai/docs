@@ -99,7 +99,10 @@ The following code creates a conversation loop with an LLM agent that can create
                 return "Error: {exc!r}"
             return "File created."
 
-        def print_fragment(fragment, *args):
+        def print_fragment(fragment, round_index=0):
+            # .act() supplies the round index as the second parameter
+            # Setting a default value means the callback is also
+            # compatible with .complete() and .respond().
             print(fragment.content, end="", flush=True)
 
         model = lms.llm()
