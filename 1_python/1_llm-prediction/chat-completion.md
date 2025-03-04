@@ -132,6 +132,14 @@ You can ask the LLM to predict the next response in the chat context using the `
 
 ```lms_code_snippet
   variants:
+    "Non-streaming":
+      language: python
+      code: |
+        # The `chat` object is created in the previous step.
+        result = model.respond(chat)
+
+        print(result)
+
     Streaming:
       language: python
       code: |
@@ -141,14 +149,6 @@ You can ask the LLM to predict the next response in the chat context using the `
         for fragment in prediction_stream:
             print(fragment.content, end="", flush=True)
         print() # Advance to a new line at the end of the response
-
-    "Non-streaming":
-      language: python
-      code: |
-        # The `chat` object is created in the previous step.
-        result = model.respond(chat)
-
-        print(result)
 ```
 
 ## Customize Inferencing Parameters

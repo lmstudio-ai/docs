@@ -6,8 +6,8 @@ index: 2
 ---
 
 To enable interactive use, `lmstudio-python` offers a convenience API which manages
-its resources via `atexit` hooks, allowing the a default synchronous client session
-to be used across multiple interactive comments.
+its resources via `atexit` hooks, allowing a default synchronous client session
+to be used across multiple interactive commands.
 
 This convenience API is shown in the examples throughout the documentation as the
 `Python (convenience API)` tab (alongside the `Python (scoped resource API)` examples,

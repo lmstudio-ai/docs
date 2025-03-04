@@ -8,7 +8,9 @@ Models use a tokenizer to internally convert text into "tokens" they can deal wi
 
 ## Tokenize
 
-You can tokenize a string with a loaded LLM or embedding model using the SDK. In the below examples, `llm` can be replaced with an embedding model `emb`.
+You can tokenize a string with a loaded LLM or embedding model using the SDK.
+In the below examples, the LLM reference can be replaced with an
+embedding model reference without requiring any other changes.
 
 ```lms_code_snippet
   variants:
@@ -74,31 +76,3 @@ You can determine if a given conversation fits into a model's context by doing t
         print("Fits in context:", does_chat_fit_in_context(model, chat))
 
 ```
-
-<!-- ### Context length comparisons
-
-The below examples check whether a conversation is over a LLM's context length
-(replace `llm` with `emb` to check for an embedding model).
-
-```lms_code_snippet
-  variants:
-    "Python (convenience API)":
-      language: python
-      code: |
-        import { LMStudioClient, Chat } from "@lmstudio/sdk";
-
-        const client = new LMStudioClient()
-        const llm = client.llm.model()
-
-        # To check for a string, simply tokenize
-        var tokens = llm.tokenize("Hello, world!")
-
-        # To check for a Chat, apply the prompt template first
-        const chat = Chat.createEmpty().withAppended("user", "Hello, world!")
-        const templatedChat = llm.applyPromptTemplate(chat)
-        tokens = llm.tokenize(templatedChat)
-
-        # If the prompt's length in tokens is less than the context length, you're good!
-        const contextLength = llm.getContextLength()
-        const isOkay = (tokens.length < contextLength)
-``` -->

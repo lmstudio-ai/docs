@@ -8,7 +8,7 @@ description: "Getting started with LM Studio's Python SDK"
 
 ## Installing the SDK
 
-`lmstudio-python` is available as a pypi package. You can install it using pip.
+`lmstudio-python` is available as a PyPI package. You can install it using pip.
 
 ```lms_code_snippet
   variants:

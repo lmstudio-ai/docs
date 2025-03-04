@@ -130,7 +130,7 @@ schema = {
         book = result.parsed
 
         print(book)
-        #           ^
+        #     ^
         # Note that `book` is correctly typed as { title: string, author: string, year: number }
 
     Streaming:
@@ -138,10 +138,10 @@ schema = {
       code: |
         prediction_stream = model.respond_stream("Tell me about The Hobbit", response_format=schema)
 
-        # Optionally stream the response
-        # for fragment in prediction:
-        #   print(fragment.content, end="", flush=True)
-        # print()
+        # Stream the response
+        for fragment in prediction:
+            print(fragment.content, end="", flush=True)
+        print()
         # Note that even for structured responses, the *fragment* contents are still only text
 
         # Get the final structured result
@@ -149,13 +149,15 @@ schema = {
         book = result.parsed
 
         print(book)
-        #           ^
+        #     ^
         # Note that `book` is correctly typed as { title: string, author: string, year: number }
 ```
 
+<!--
+
 TODO: Info about structured generation caveats
 
-<!-- ## Overview
+ ## Overview
 
 Once you have [downloaded and loaded](/docs/basics/index) a large language model,
 you can use it to respond to input through the API. This article covers getting JSON structured output, but you can also
