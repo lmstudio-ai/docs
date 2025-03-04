@@ -1,7 +1,7 @@
 ---
 title: Tool Definition
 description: Define tools to be called by the LLM, and pass them to the model in the `act()` call.
-index: 1
+index: 2
 ---
 
 You can define tools as regular Python functions and pass them to the model in the `act()` call.

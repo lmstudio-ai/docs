@@ -1,7 +1,7 @@
 ---
 title: Tool Definition
 description: Define tools with the `tool()` function and pass them to the model in the `operate()` call.
-index: 1
+index: 2
 ---
 
 You can define tools with the `tool()` function and pass them to the model in the `operate()` call.
