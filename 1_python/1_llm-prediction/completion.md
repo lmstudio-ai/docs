@@ -39,6 +39,14 @@ Once you have a loaded model, you can generate completions by passing a string t
 
 ```lms_code_snippet
   variants:
+    "Non-streaming":
+      language: python
+      code: |
+        # The `chat` object is created in the previous step.
+        result = model.complete("My name is", config={"maxTokens": 100})
+
+        print(result)
+
     Streaming:
       language: python
       code: |
@@ -48,14 +56,6 @@ Once you have a loaded model, you can generate completions by passing a string t
         for fragment in prediction_stream:
             print(fragment.content, end="", flush=True)
         print() # Advance to a new line at the end of the response
-
-    "Non-streaming":
-      language: python
-      code: |
-        # The `chat` object is created in the previous step.
-        result = model.complete("My name is", config={"maxTokens": 100})
-
-        print(result)
 ```
 
 ## 3. Print Prediction Stats
@@ -64,6 +64,15 @@ You can also print prediction metadata, such as the model used for generation, n
 
 ```lms_code_snippet
   variants:
+    "Non-streaming":
+      language: python
+      code: |
+        # `result` is the response from the model.
+        print("Model used:", result.model_info.display_name)
+        print("Predicted tokens:", result.stats.predicted_tokens_count)
+        print("Time to first token (seconds):", result.stats.time_to_first_token_sec)
+        print("Stop reason:", result.stats.stop_reason)
+
     Streaming:
       language: python
       code: |
@@ -71,14 +80,6 @@ You can also print prediction metadata, such as the model used for generation, n
         # the overall prediction result may be obtained from the stream
         result = prediction_stream.result()
 
-        print("Model used:", result.model_info.display_name)
-        print("Predicted tokens:", result.stats.predicted_tokens_count)
-        print("Time to first token (seconds):", result.stats.time_to_first_token_sec)
-        print("Stop reason:", result.stats.stop_reason)
-    "Non-streaming":
-      language: python
-      code: |
-        # `result` is the response from the model.
         print("Model used:", result.model_info.display_name)
         print("Predicted tokens:", result.stats.predicted_tokens_count)
         print("Time to first token (seconds):", result.stats.time_to_first_token_sec)

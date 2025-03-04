@@ -24,7 +24,9 @@ variants:
 
 For more complex tasks, it is recommended to use the `Chat` helper class.
 It provides various commonly used methods to manage the chat.
-Here is an example with the `Chat` class.
+Here is an example with the `Chat` class, where the initial system prompt
+is supplied when initializing the chat instance, and then the initial user
+message is added via the corresponding method call.
 
 ```lms_code_snippet
 variants:

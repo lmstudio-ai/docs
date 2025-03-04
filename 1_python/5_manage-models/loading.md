@@ -23,7 +23,8 @@ AI models are huge. It can take a while to load them into memory. LM Studio's SD
 
 ## Get the Current Model with `.model()`
 
-If you already have a model loaded in LM Studio (either via the GUI or `lms load`), you can use it by calling `.model()` without any arguments.
+If you already have a model loaded in LM Studio (either via the GUI or `lms load`),
+you can use it by calling `.model()` without any arguments.
 
 ```lms_code_snippet
   variants:

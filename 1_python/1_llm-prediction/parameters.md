@@ -33,7 +33,10 @@ Set inference-time parameters such as `temperature`, `maxTokens`, `topP` and mor
 
 <!-- See [`LLMPredictionConfigInput`](./../api-reference/llm-prediction-config-input) for all configurable fields. -->
 
-Another useful inference-time configuration parameter is [`structured`](<(./structured-responses)>), which allows you to rigorously enforce the structure of the output using a JSON or Pydantic schema.
+Note that while `structured` can be set to a JSON schema definition as an inference-time configuration parameter,
+the preferred approach is to instead set the [dedicated `response_format` parameter](<(./structured-responses)>),
+which allows you to more rigorously enforce the structure of the output using a JSON or class based schema
+definition.
 
 # Load Parameters
 
