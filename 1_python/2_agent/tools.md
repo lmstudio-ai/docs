@@ -1,6 +1,6 @@
 ---
 title: Tool Definition
-description: TODO...
+description: Define tools to be called by the LLM, and pass them to the model in the `act()` call.
 index: 1
 ---
 

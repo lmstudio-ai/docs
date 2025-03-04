@@ -1,9 +1,8 @@
 ---
 title: Tool Definition
-description: TODO...
+description: Define tools with the `tool()` function and pass them to the model in the `operate()` call.
 index: 1
 ---
-
 
 You can define tools with the `tool()` function and pass them to the model in the `operate()` call.
 
@@ -26,17 +25,16 @@ Follow this standard format to define functions as tools:
 
           // A description of the tool
           description: "Given two numbers a and b. Returns the sum of them.",
-          
+
           // zod schema of the parameters
-          parameters: { a: z.number(), b: z.number() }, 
-          
+          parameters: { a: z.number(), b: z.number() },
+
           // The implementation of the tool. Just a regular function.
-          implementation: ({ a, b }) => a + b, 
+          implementation: ({ a, b }) => a + b,
         });
 ```
 
-
-**Important**: The tool name, description, and the parameter definitions are all passed to the model! 
+**Important**: The tool name, description, and the parameter definitions are all passed to the model!
 
 This means that your wording will affect the quality of the generation. Make sure to always provide a clear description of the tool so the model knows how to use it.
 
