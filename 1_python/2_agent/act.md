@@ -1,7 +1,7 @@
 ---
 title: The `.act()` call
 description: How to use the `.act()` call to turn LLMs into autonomous agents that can perform tasks on your local machine.
-index: 2
+index: 1
 ---
 
 ## Agents
