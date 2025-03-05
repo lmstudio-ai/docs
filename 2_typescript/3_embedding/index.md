@@ -1,6 +1,6 @@
 ---
 title: Embedding
-sidebar_title: Overview
+sidebar_title: Generating embedding vectors
 description: Generate text embeddings from input text
 ---
 

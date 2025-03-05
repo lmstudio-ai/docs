@@ -1,6 +1,6 @@
 ---
 title: Tokenization
-sidebar_title: Overview
+sidebar_title: Tokenizing text
 description: Tokenize text using a model's tokenizer
 ---
 
