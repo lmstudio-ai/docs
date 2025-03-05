@@ -4,9 +4,29 @@ description: How to use the `.act()` call to turn LLMs into autonomous agents th
 index: 1
 ---
 
-## Agents
+## What does it mean for an LLM to "use a tool"?
 
-LLMs are text-in text-out models and cannot directly execute code. However, just like an ancient general can command an army with their voices alone, if we ask the LLM to output text in a certain format when it wants to use an external tool, and execute those requests on its behave, we can effectively turn LLMs into autonomous agents that can perform tasks on your local machine.
+LLMs are largely text-in, text-out programs. So, you may ask "how can an LLM use a tool?". The answer is that some LLMs are trained to ask the human to call the tool for them, and expect the tool output to to be provided back in some format.
+
+Imagine you're giving computer support to someone over the phone. You might say things like "run this command for me ... OK what did it output? ... OK now click there and tell me what it says ...". In this case you're the LLM! And you're "calling tools" vicariously through the person on the other side of the line.
+
+### Running tool calls in "`rounds`"
+
+We introduce the concept of execution "rounds" to describe the combined process of running a tool, providing its output to the LLM, and then waiting for the LLM to decide what to do next.
+
+**Execution Round**
+
+```
+ • run a tool ->
+ ↑   • provide the result to the LLM ->
+ │       • wait for the LLM to generate a response
+ │
+ └────────────────────────────────────────┘ └➔ (return)
+```
+
+A model might choose to run tools multiple times before returning a final result. For example, if the LLM is writing code, it might choose to compile or run the program, fix errors, and then run it again, rinse and repeat until it gets the desired result.
+
+With this in mind, we say that the `.act()` API is an automatic "multi-round" tool calling API.
 
 ### Quick Example
 
