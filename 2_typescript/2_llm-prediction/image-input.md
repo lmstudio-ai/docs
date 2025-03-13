@@ -31,7 +31,7 @@ Connect to LM Studio and obtain a handle to the VLM (Vision-Language Model) you 
 
 ## 2. Prepare the Image
 
-Use the `client.files.prepareImage()` method to get a handle to the image you can pass to the model.
+Use the `client.files.prepareImage()` method to get a handle to the image that can be subsequently passed to the model.
 
 ```lms_code_snippet
   variants:
