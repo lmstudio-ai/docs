@@ -54,7 +54,7 @@ If you only have the image in the form of a base64 string, you can use the `clie
         const image = await client.files.prepareImageBase64(imageBase64);
 ```
 
-We support JPEG, PNG, and WebP image formats.
+The LM Studio server supports JPEG, PNG, and WebP image formats.
 
 ## 3. Pass the Image to the Model in `.respond()`
 
