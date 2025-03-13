@@ -28,7 +28,7 @@ LM Studio is available for macOS, Windows, and Linux.
 
 LM Studio generally supports Apple Silicon Macs, x64/ARM64 Windows PCs, and x64 Linux PCs.
 
-Consult the [System Requirements](system-requirements) page for more detailed information.
+Consult the [System Requirements](app/system-requirements) page for more detailed information.
 
 <hr>
 
@@ -46,7 +46,7 @@ To install or manage LM Runtimes, press `⌘` `Shift` `R` on Mac or `Ctrl` `Shif
 
 To run an LLM on your computer you first need to download the model weights.
 
-You can do this right within LM Studio! See [Download an LLM](basics/download-model) for guidance.
+You can do this right within LM Studio! See [Download an LLM](app/basics/download-model) for guidance.
 
 <hr>
 
@@ -54,7 +54,7 @@ You can do this right within LM Studio! See [Download an LLM](basics/download-mo
 
 You can attach documents to your chat messages and interact with them entirely offline, also known as "RAG".
 
-Read more about how to use this feature in the [Chat with Documents](basics/rag) guide.
+Read more about how to use this feature in the [Chat with Documents](app/basics/rag) guide.
 
 ### Use LM Studio's API from your own apps and scripts
 
