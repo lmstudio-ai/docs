@@ -76,16 +76,6 @@ Generate a prediction by passing the image to the model in the `.respond()` meth
 
 ```lms_code_snippet
   variants:
-    Example:
-      language: typescript
-      code: |
-        const prediction = model.respond([
-          { role: "user", content: "Describe this image please", images: [image] },
-        ]);
-```
-
-```lms_code_snippet
-  variants:
     "Python (convenience API)":
       language: python
       code: |
