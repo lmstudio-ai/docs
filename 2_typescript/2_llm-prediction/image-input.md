@@ -31,7 +31,7 @@ Connect to LM Studio and obtain a handle to the VLM (Vision-Language Model) you 
 
 ## 2. Prepare the Image
 
-Use the `client.files.prepareImage()` method to get a handle to the image you can pass to the model.
+Use the `client.files.prepareImage()` method to get a handle to the image that can be subsequently passed to the model.
 
 ```lms_code_snippet
   variants:
@@ -54,7 +54,7 @@ If you only have the image in the form of a base64 string, you can use the `clie
         const image = await client.files.prepareImageBase64(imageBase64);
 ```
 
-We support JPEG, PNG, and WebP image formats.
+The LM Studio server supports JPEG, PNG, and WebP image formats.
 
 ## 3. Pass the Image to the Model in `.respond()`
 
