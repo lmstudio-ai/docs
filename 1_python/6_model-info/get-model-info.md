@@ -6,8 +6,6 @@ description: Get information about the model
 You can access general information and metadata about a model itself from a loaded
 instance of that model.
 
-Currently, the SDK exposes the model's default `identifier`
-and the `path` used to [load it](/docs/api/sdk/load-model).
 In the below examples, the LLM reference can be replaced with an
 embedding model reference without requiring any other changes.
 
