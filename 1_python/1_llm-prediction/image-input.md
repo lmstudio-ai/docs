@@ -48,7 +48,7 @@ get a handle to the image that can subsequently be passed to the model.
       language: python
       code: |
         import lmstudio as lms
-        image_path = "/path/to/image.jpg"; // Replace with the path to your image
+        image_path = "/path/to/image.jpg" # Replace with the path to your image
         image_handle = lms.prepare_image(image_path)
 
     "Python (scoped resource API)":
@@ -56,7 +56,7 @@ get a handle to the image that can subsequently be passed to the model.
       code: |
         import lmstudio as lms
         with lms.Client() as client:
-            image_path = "/path/to/image.jpg"; // Replace with the path to your image
+            image_path = "/path/to/image.jpg" # Replace with the path to your image
             image_handle = client.files.prepare_image(image_path)
 
 ```
@@ -80,7 +80,7 @@ Generate a prediction by passing the image to the model in the `.respond()` meth
       language: python
       code: |
         import lmstudio as lms
-        image_path = "/path/to/image.jpg"; // Replace with the path to your image
+        image_path = "/path/to/image.jpg" # Replace with the path to your image
         image_handle = lms.prepare_image(image_path)
         model = lms.llm("qwen2-vl-2b-instruct")
         chat = lms.Chat()
@@ -92,7 +92,7 @@ Generate a prediction by passing the image to the model in the `.respond()` meth
       code: |
         import lmstudio as lms
         with lms.Client() as client:
-            image_path = "/path/to/image.jpg"; // Replace with the path to your image
+            image_path = "/path/to/image.jpg" # Replace with the path to your image
             image_handle = client.files.prepare_image(image_path)
             model = client.llm.model("qwen2-vl-2b-instruct")
             chat = lms.Chat()
