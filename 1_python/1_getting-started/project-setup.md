@@ -54,6 +54,7 @@ passing a `"host:port"` string when creating the client instance.
       code: |
         import lmstudio as lms
         SERVER_API_HOST = "localhost:1234"
+
         # When using the scoped resource API, each client instance
         # can be configured to use a specific server instance
         with lms.Client(SERVER_API_HOST) as client:
