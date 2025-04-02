@@ -12,7 +12,7 @@ You can find the source code [here](https://github.com/lmstudio-ai/lmstudio-pyth
 ## Installing `lmstudio-python`
 
 As it is published to PyPI, `lmstudio-python` may be installed using `pip`
-or your preferred project dependency manager (`pdm` is shown, but other
+or your preferred project dependency manager (`pdm` and `uv` are shown, but other
 Python project management tools offer similar dependency addition commands).
 
 ```lms_code_snippet
@@ -25,4 +25,41 @@ Python project management tools offer similar dependency addition commands).
       language: bash
       code: |
         pdm add lmstudio
+    uv:
+      language: bash
+      code: |
+        uv add lmstudio
+```
+
+## Customizing the server API host and TCP port
+
+All of the examples in the documentation assume that the server API is running locally
+on the default port. The network location of the server API can be overridden by
+passing a `"host:port"` string when creating the client instance.
+
+```lms_code_snippet
+  variants:
+    "Python (convenience API)":
+      language: python
+      code: |
+        import lmstudio as lms
+        SERVER_API_HOST = "localhost:1234"
+
+        # This must be the *first* SDK interaction (otherwise the SDK will
+        # implicitly attempt to access the default server instance)
+        lms.get_default_client(SERVER_API_HOST)
+
+    "Python (scoped resource API)":
+      language: python
+      code: |
+        import lmstudio as lms
+        SERVER_API_HOST = "localhost:1234"
+        # When using the scoped resource API, each client instance
+        # can be configured to use a specific server instance
+        with lms.Client(SERVER_API_HOST) as client:
+            model = client.llm.model()
+
+            for fragment in model.respond_stream("What is the meaning of life?"):
+                print(fragment.content, end="", flush=True)
+            print() # Advance to a new line at the end of the response
 ```
