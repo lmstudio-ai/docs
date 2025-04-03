@@ -45,8 +45,14 @@ passing a `"host:port"` string when creating the client instance.
         import lmstudio as lms
         SERVER_API_HOST = "localhost:1234"
 
-        # This must be the *first* SDK interaction (otherwise the SDK will
-        # implicitly attempt to access the default server instance)
+        # get_default_client() returns a reference to the global default
+        # client instance, creating it first if it doesn't already exist.
+        # When the default client is created by the call, passing an explicit
+        # "host:port" string will connect the default client instance to the
+        # given API host instead of to the default local port. All subsequent
+        # convenience API calls will then use that existing instance.
+        # get_default_client() will raise an exception if the default client
+        # already exists when an explicit API host string is passed in.        
         lms.get_default_client(SERVER_API_HOST)
 
     "Python (scoped resource API)":
