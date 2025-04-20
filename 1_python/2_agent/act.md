@@ -4,13 +4,7 @@ description: How to use the `.act()` call to turn LLMs into autonomous agents th
 index: 1
 ---
 
-## What does it mean for an LLM to "use a tool"?
-
-LLMs are largely text-in, text-out programs. So, you may ask "how can an LLM use a tool?". The answer is that some LLMs are trained to ask the human to call the tool for them, and expect the tool output to to be provided back in some format.
-
-Imagine you're giving computer support to someone over the phone. You might say things like "run this command for me ... OK what did it output? ... OK now click there and tell me what it says ...". In this case you're the LLM! And you're "calling tools" vicariously through the person on the other side of the line.
-
-### Running tool calls in "`rounds`"
+## Automatic tool calling
 
 We introduce the concept of execution "rounds" to describe the combined process of running a tool, providing its output to the LLM, and then waiting for the LLM to decide what to do next.
 
@@ -48,6 +42,12 @@ With this in mind, we say that the `.act()` API is an automatic "multi-round" to
           on_message=print,
         )
 ```
+
+### What does it mean for an LLM to "use a tool"?
+
+LLMs are largely text-in, text-out programs. So, you may ask "how can an LLM use a tool?". The answer is that some LLMs are trained to ask the human to call the tool for them, and expect the tool output to to be provided back in some format.
+
+Imagine you're giving computer support to someone over the phone. You might say things like "run this command for me ... OK what did it output? ... OK now click there and tell me what it says ...". In this case you're the LLM! And you're "calling tools" vicariously through the person on the other side of the line.
 
 ### Important: Model Selection
 
