@@ -1,10 +1,10 @@
 ---
 title: Tool Definition
-description: Define tools with the `tool()` function and pass them to the model in the `operate()` call.
+description: Define tools with the `tool()` function and pass them to the model in the `act()` call.
 index: 2
 ---
 
-You can define tools with the `tool()` function and pass them to the model in the `operate()` call.
+You can define tools with the `tool()` function and pass them to the model in the `act()` call.
 
 ## Anatomy of a Tool
 
