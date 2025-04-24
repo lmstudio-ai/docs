@@ -32,17 +32,18 @@ example:
           0 LLM(identifier='qwen2.5-7b-instruct')
         >>> model = loaded_models[0]
         >>> chat = lms.Chat("You answer questions concisely")
+        >>> chat = lms.Chat("You answer questions concisely")
         >>> chat.add_user_message("Tell me three fruits")
-        ChatMessageDataUser(content=[ChatMessagePartTextData(text='Tell me three fruits')])
+        UserMessage(content=[TextData(text='Tell me three fruits')])
         >>> print(model.respond(chat, on_message=chat.append))
         Banana, apple, orange.
         >>> chat.add_user_message("Tell me three more fruits")
-        ChatMessageDataUser(content=[ChatMessagePartTextData(text='Tell me three more fruits')])
+        UserMessage(content=[TextData(text='Tell me three more fruits')])
         >>> print(model.respond(chat, on_message=chat.append))
-        Pineapple, avocado, strawberry.
+        Mango, strawberry, avocado.
         >>> chat.add_user_message("How many fruits have you told me?")
-        ChatMessageDataUser(content=[ChatMessagePartTextData(text='How many fruits have you told me?')])
+        UserMessage(content=[TextData(text='How many fruits have you told me?')])
         >>> print(model.respond(chat, on_message=chat.append))
-        You asked for three fruits initially, then three more, so I've told you six fruits in total: banana, apple, orange, pineapple, avocado, and strawberry.
+        You asked for three initial fruits and three more, so I've listed a total of six fruits.
 
 ```
