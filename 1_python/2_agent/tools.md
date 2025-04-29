@@ -71,12 +71,6 @@ is typically going to be the most convenient):
 
 This means that your wording will affect the quality of the generation. Make sure to always provide a clear description of the tool so the model knows how to use it.
 
-The SDK does not yet automatically convert raised exceptions to text and report them
-to the language model, but it can be beneficial for tool implementations to do so.
-In many cases, when notified of an error, a language model is able to adjust its
-request to avoid the failure.
-
-
 ## Tools with External Effects (like Computer Use or API Calls)
 
 Tools can also have external effects, such as creating files or calling programs and even APIs. By implementing tools with external effects, you
@@ -124,3 +118,58 @@ can essentially turn your LLMs into autonomous agents that can perform tasks on 
           [create_file],
         )
 ```
+
+## Handling tool calling errors
+
+By default, version 1.3.0 and later of the Python SDK will automatically convert exceptions raised by tool calls to text and report them back to the language model.
+In many cases, when notified of an error in this way, a language model is able
+to either adjust its request to avoid the failure, or else accept the failure as
+a valid response to its request (consider a prompt like `Attempt to divide 1 by 0
+using the provided tool. Explain the result.`, where the expected
+response is an explanation of the `ZeroDivisionError` exception the Python
+interpreter raises when instructed to divide by zero).
+
+This error handling behaviour can be overridden using the `handle_invalid_tool_request`
+callback. For example, the following code reverts the error handling back to raising
+exceptions locally in the client:
+
+```lms_code_snippet
+  title: "example.py"
+  variants:
+    "Python (convenience API)":
+      language: python
+      code: |
+        import lmstudio as lms
+
+        model = lms.llm("qwen2.5-7b-instruct")
+        chat = Chat()
+        chat.add_user_message(
+            "Attempt to divide 1 by 0 using the tool. Explain the result."
+        )
+
+        def _raise_exc_in_client(
+            exc: LMStudioPredictionError, request: ToolCallRequest | None
+        ) -> None:
+            raise exc
+
+        act_result = llm.act(
+            chat,
+            [divide],
+            handle_invalid_tool_request=_raise_exc_in_client,
+        )
+```
+
+When a tool request is passed in, the callback results are processed as follows:
+
+* `None`: the original exception text is passed to the LLM unmodified
+* a string: the returned string is passed to the LLM instead of the original
+  exception text
+* raising an exception (whether the passed in exception or a new exception):
+  the raised exception is propagated locally in the client, terminating the
+  prediction process
+
+If no tool request is passed in, the callback invocation is a notification only,
+and the exception cannot be converted to text for passing pack to the LLM
+(although it can still be replaced with a different exception). These cases
+indicate failures in the expected communication with the server API that mean
+the prediction process cannot reasonably continue.
