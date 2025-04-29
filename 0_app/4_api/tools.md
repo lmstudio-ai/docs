@@ -722,6 +722,7 @@ def open_safe_url(url: str) -> dict:
     # List of allowed domains (expand as needed)
     SAFE_DOMAINS = {
         "lmstudio.ai",
+        "huggingface.co",
         "github.com",
         "google.com",
         "wikipedia.org",
