@@ -121,7 +121,8 @@ can essentially turn your LLMs into autonomous agents that can perform tasks on 
 
 ## Handling tool calling errors
 
-By default, version 1.3.0 and later of the Python SDK will automatically convert exceptions raised by tool calls to text and report them back to the language model.
+By default, version 1.3.0 and later of the Python SDK will automatically convert
+exceptions raised by tool calls to text and report them back to the language model.
 In many cases, when notified of an error in this way, a language model is able
 to either adjust its request to avoid the failure, or else accept the failure as
 a valid response to its request (consider a prompt like `Attempt to divide 1 by 0
@@ -172,4 +173,5 @@ If no tool request is passed in, the callback invocation is a notification only,
 and the exception cannot be converted to text for passing pack to the LLM
 (although it can still be replaced with a different exception). These cases
 indicate failures in the expected communication with the server API that mean
-the prediction process cannot reasonably continue.
+the prediction process cannot reasonably continue, so if the callback doesn't
+raise an exception, the calling code will raise the original exception directly.
