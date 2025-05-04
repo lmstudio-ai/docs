@@ -61,16 +61,20 @@ Responses now include a `stats` object for speculative decoding:
 
 ---
 
-###### [👾 LM Studio 0.3.9](/blog/lmstudio-v0.3.9) • 2025-01-30
+###### [👾 LM Studio 0.3.9](blog/lmstudio-v0.3.9) • 2025-01-30
 
 ### Idle TTL and Auto Evict
 
-Set a TTL (in seconds) for models loaded via API requests.
+Set a TTL (in seconds) for models loaded via API requests (docs article: [Idle TTL and Auto-Evict](/docs/api/ttl-and-auto-evict))
 
-```json
-{
-  "ttl": 300
-}
+```diff
+curl http://localhost:1234/api/v0/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "deepseek-r1-distill-qwen-7b",
+    "messages": [ ... ]
++   "ttl": 300,
+}'
 ```
 
 With `lms`:
@@ -81,26 +85,44 @@ lms load --ttl <seconds>
 
 ### Separate `reasoning_content` in Chat Completion responses
 
-For DeepSeek R1 models, get reasoning content in a separate field. Turn on in App Settings > Developer.
+For DeepSeek R1 models, get reasoning content in a separate field. See more [here](/blog/lmstudio-v0.3.9#separate-reasoningcontent-in-chat-completion-responses).
+
+Turn this on in App Settings > Developer.
 
 ---
 
-###### [👾 LM Studio 0.3.6](/blog/lmstudio-v0.3.6) • 2025-01-06
+<br>
+
+###### [👾 LM Studio 0.3.6](blog/lmstudio-v0.3.6) • 2025-01-06
 
 ### Tool and Function Calling API
 
 Use any LLM that supports Tool Use and Function Calling through the OpenAI-like API.
 
+Docs: [Tool Use and Function Calling](/docs/api/tools).
+
 ---
 
-###### [👾 LM Studio 0.3.5](/blog/lmstudio-v0.3.5) • 2024-10-22
+<br>
+
+###### [👾 LM Studio 0.3.5](blog/lmstudio-v0.3.5) • 2024-10-22
 
 ### Introducing `lms get`: download models from the terminal
 
-You can now download models directly from the terminal using a keyword or a full Hugging Face URL.
+You can now download models directly from the terminal using a keyword
 
 ```bash
 lms get deepseek-r1
+```
+
+or a full Hugging Face URL
+
+```bash
 lms get <hugging face url>
+```
+
+To filter for MLX models only, add `--mlx` to the command.
+
+```bash
 lms get deepseek-r1 --mlx
 ```
