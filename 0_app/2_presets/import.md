@@ -4,22 +4,28 @@ description: You can import preset files directly from disk, or pull presets mad
 index: 2
 ---
 
-You can import preset from disk or the LM Studio Hub by URL
+You can import preset by file or URL. This is useful for sharing presets with others, or for importing presets from other users.
 
 <hr>
 
 # Import Presets
+
+First, click the presets dropdown in the sidebar. You will see a list of your presets along with 2 buttons: `+ New Preset` and `Import`.
+
+Click the `Import` button to import a preset.
 
 <img src="/assets/docs/preset-import-button.png" data-caption="Import Presets" />
 
 ## Import Presets from File
 
 Once you click the Import button, you can select the source of the preset you want to import. You can either import from a file or from a URL.
-<img src="/assets/docs/import-preset-from-file.png" data-caption="Import Presets from file" />
+<img src="/assets/docs/import-preset-from-file.png" data-caption="Import one or more Presets from file" />
 
 ## Import Presets from URL
 
-Presets that are [published](/docs/app/presets/publish) to the LM Studio Hub can be imported by URL.
+Presets that are [published](/docs/app/presets/publish) to the LM Studio Hub can be imported by providing their URL.
+
+Importing public presets does not require logging in within LM Studio.
 
 <img src="/assets/docs/import-preset-from-url.png" data-caption="Import Presets by URL" />
 
