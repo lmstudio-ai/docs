@@ -1,6 +1,6 @@
 ---
 title: Push New Revisions
-description: Share your Presets with the community or with your colleagues. Import Presets from other users.
+description: Publish new revisions of your Presets to the LM Studio Hub.
 index: 5
 ---
 

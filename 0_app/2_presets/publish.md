@@ -1,7 +1,7 @@
 ---
 title: Publish Your Presets
 sidebar_title: Publish a Preset
-description: Share your Presets with the community or with your colleagues. Import Presets from other users.
+description: Publish your Presets to the LM Studio Hub. Share your Presets with the community or with your colleagues.
 index: 3
 ---
 
