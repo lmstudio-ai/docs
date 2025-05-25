@@ -12,7 +12,7 @@ LM Studio's APIs can be used through an [OpenAI compatibility mode](/docs/api/re
 
 - [TypeScript SDK](/docs/typescript) - `lmstudio-js`
 - [Python SDK](/docs/python) - `lmstudio-python`
-- [LM Studio REST API](/docs/api/rest-api/endpoints) (new, in beta)
-- [OpenAI Compatibility endpoints](/docs/api/openai-api)
+- [LM Studio REST API](/docs/app/api/endpoints/rest) (new, in beta)
+- [OpenAI Compatibility endpoints](/docs/app/api/endpoints/openai)
 
 <img src="/assets/docs/server.png" style="" data-caption="Load and server LLMs from LM Studio" />
