@@ -183,7 +183,7 @@ Finally, applications may request notifications when agents emit invalid tool re
   Receives a text error message describing the problem, as well as the original tool
   request that resulted in the problem. When no tool request is given, this is
   purely a notification of an unrecoverable error before the agent interaction fails
-  with an exception.
+  with an exception (allowing the application to raise its own exception instead).
   When a tool request is given, it indicates that the text error message is going to
   be passed back to the LLM as the result of that failed tool request. In this case,
   the callback may return a replacement string that should be sent to the LLM instead
