@@ -293,9 +293,7 @@ tokens, time to first token, and stop reason.
 
 ```
 
-<!-- ### Progress callbacks
-
-TODO: Cover available callbacks (Python SDK has all of these now)
+### Progress Callbacks
 
 Long prompts will often take a long time to first token, i.e. it takes the model a long time to process your prompt.
 If you want to get updates on the progress of this process, you can provide a float callback to `respond`
@@ -303,7 +301,7 @@ that receives a float from 0.0-1.0 representing prompt processing progress.
 
 ```lms_code_snippet
   variants:
-    Python:
+    Python (convenience API):
       language: python
       code: |
         import lmstudio as lms
@@ -312,10 +310,10 @@ that receives a float from 0.0-1.0 representing prompt processing progress.
 
         response = llm.respond(
             "What is LM Studio?",
-            on_progress: lambda progress: print(f"{progress*100}% complete")
+            on_prompt_processing_progress = (lambda progress: print(f"{progress*100}% complete")),
         )
 
-    Python (with scoped resources):
+    Python (scoped resource API):
       language: python
       code: |
         import lmstudio as lms
@@ -325,23 +323,17 @@ that receives a float from 0.0-1.0 representing prompt processing progress.
 
             response = llm.respond(
                 "What is LM Studio?",
-                on_progress: lambda progress: print(f"{progress*100}% processed")
+                on_prompt_processing_progress = (lambda progress: print(f"{progress*100}% complete")),
             )
 
-    "Python (convenience API)":
-      language: python
-      code: |
-        import { LMStudioClient } from "@lmstudio/sdk"
-
-        const client = new LMStudioClient()
-        const llm = client.llm.model()
-
-        const prediction = llm.respond(
-          "What is LM Studio?",
-          {onPromptProcessingProgress: (progress) => process.stdout.write(`${progress*100}% processed`)})
 ```
 
-### Prediction configuration
+In addition to `on_prompt_processing_progress`, the other available progress callbacks are:
 
-You can also specify the same prediction configuration options as you could in the
-in-app chat window sidebar. Please consult your specific SDK to see exact syntax. -->
+* `on_first_token`: called after prompt processing is complete and the first token is being emitted.
+  Does not receive any arguments (use the streaming iteration API or `on_prediction_fragment`
+  to process tokens as they are emitted).
+* `on_prediction_fragment`: called for each prediction fragment received by the client.
+  Receives the same prediction fragments as iterating over the stream iteration API.
+* `on_message`: called with an assistant response message when the prediction is complete.
+  Intended for appending received messages to a chat history instance.
