@@ -47,7 +47,7 @@ If your application already uses an `AbortController` to propagate cancellation,
           maxTokens: 50,
           signal: controller.signal,
         });
-        setTimeout(() => controller.abort();, 1000); // cancel after 1 second
+        setTimeout(() => controller.abort(), 1000); // cancel after 1 second
 
         const result = await prediction.result();
         console.info(result.stats.stopReason); // "userStopped"
