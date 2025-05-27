@@ -60,6 +60,63 @@ entire response to be generated before displaying anything).
 
 ```
 
+## Cancelling a Chat Response
+
+One benefit of using the streaming API is the ability to cancel the
+prediction request before it is completed. The following snippet
+illustrates cancelling the request in response to an event set by another
+thread.
+
+```lms_code_snippet
+  variants:
+    "Python (convenience API)":
+      language: python
+      code: |
+        import lmstudio as lms
+        model = lms.llm()
+
+        # "shared_event" is a threading.Event object set by another thread
+
+        prediction_stream = model.respond_stream("What is the meaning of life?")
+        cancelled = False
+        for fragment in prediction_stream:
+            if shared_event.is_set():
+                cancelled = True
+                prediction_stream.cancel()
+                # Note: it is recommended to let the iteration complete,
+                # as doing so allows the partial result to be recorded.
+                # Breaking the loop *is* permitted, but means the final
+                # stats for the prediction won't be available to the client
+        # The stream allows the prediction result to be retrieved after iteration
+        if not cancelled:
+            print(prediction_stream.result())
+
+    "Python (scoped resource API)":
+      language: python
+      code: |
+        import lmstudio as lms
+
+        # "shared_event" is a threading.Event object set by another thread
+
+        with lms.Client() as client:
+            model = client.llm.model()
+
+            prediction_stream = model.respond_stream("What is the meaning of life?")
+            cancelled = False
+            for fragment in prediction_stream:
+                if shared_event.is_set():
+                    cancelled = True
+                    prediction_stream.cancel()
+                    # Note: it is recommended to let the iteration complete,
+                    # as doing so allows the partial result to be recorded.
+                    # Breaking the loop *is* permitted, but means the final
+                    # stats for the prediction won't be available to the client
+            # The stream allows the prediction result to be retrieved after iteration
+            if not cancelled:
+                print(prediction_stream.result())
+
+```
+
 ## Obtain a Model
 
 First, you need to get a model handle.
