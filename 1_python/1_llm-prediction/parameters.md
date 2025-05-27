@@ -26,17 +26,18 @@ Set inference-time parameters such as `temperature`, `maxTokens`, `topP` and mor
         result = model.complete(chat, config={
             "temperature": 0.6,
             "maxTokens": 50,
-            "stop": ["\n\n"],
+            "stopStrings": ["\n\n"],
           })
 
 ```
 
-<!-- See [`LLMPredictionConfigInput`](./../api-reference/llm-prediction-config-input) for all configurable fields. -->
+See [`LLMPredictionConfigInput`](./../../typescript/api-reference/llm-prediction-config-input) in the
+Typescript SDK documentation for all configurable fields.
 
-Note that while `structured` can be set to a JSON schema definition as an inference-time configuration parameter,
-the preferred approach is to instead set the [dedicated `response_format` parameter](<(./structured-responses)>),
-which allows you to more rigorously enforce the structure of the output using a JSON or class based schema
-definition.
+Note that while `structured` can be set to a JSON schema definition as an inference-time configuration parameter
+(Zod schemas are not supported in the Python SDK), the preferred approach is to instead set the
+[dedicated `response_format` parameter](<(./structured-responses)>), which allows you to more rigorously
+enforce the structure of the output using a JSON or class based schema definition.
 
 # Load Parameters
 
@@ -78,7 +79,8 @@ The `.model()` retrieves a handle to a model that has already been loaded, or lo
 
 ```
 
-<!-- See [`LLMLoadModelConfig`](./../api-reference/llm-load-model-config) for all configurable fields. -->
+See [`LLMLoadModelConfig`](./../../typescript/api-reference/llm-load-model-config) in the
+Typescript SDK documentation for all configurable fields.
 
 ### Set Load Parameters with `.load_new_instance()`
 
@@ -115,4 +117,5 @@ The `.load_new_instance()` method creates a new model instance and loads it with
 
 ```
 
-<!-- See [`LLMLoadModelConfig`](./../api-reference/llm-load-model-config) for all configurable fields. -->
+See [`LLMLoadModelConfig`](./../../typescript/api-reference/llm-load-model-config) in the
+Typescript SDK documentation for all configurable fields.
