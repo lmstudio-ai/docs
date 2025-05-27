@@ -63,9 +63,8 @@ entire response to be generated before displaying anything).
 ## Cancelling a Chat Response
 
 One benefit of using the streaming API is the ability to cancel the
-prediction request before it is completed based on criteria that
-can't be represented using the `stopStrings` or `maxPredictedTokens`
-settings in the prediction configuration.
+prediction request based on criteria that can't be represented using
+the `stopStrings` or `maxPredictedTokens` configuration settings.
 
 The following snippet illustrates cancelling the request in response
 to an application specification cancellation condition (such as polling
