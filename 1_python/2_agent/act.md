@@ -147,3 +147,44 @@ The following code creates a conversation loop with an LLM agent that can create
             print()
 
 ```
+
+### Progress Callbacks
+
+Complex interactions with a tool using agent may take some time to process.
+
+The regular progress callbacks for any prediction request are available,
+but the expected capabilities differ from those for single round predictions.
+
+* `on_prompt_processing_progress`: called during prompt processing for each
+  prediction round. Receives the progress ratio (as a float) and the round
+  index as positional arguments.
+* `on_first_token`: called after prompt processing is complete for each prediction round.
+  Receives the round index as its sole argument.
+* `on_prediction_fragment`: called for each prediction fragment received by the client.
+  Receives the prediction fragment and the round index as positional arguments.
+* `on_message`: called with an assistant response message when each prediction round is
+  complete, and with tool result messages as each tool call request is completed.
+  Intended for appending received messages to a chat history instance, and hence
+  does *not* receive the round index as an argument.
+
+The following additional callbacks are available to monitor the prediction rounds:
+
+* `on_round_start`: called before submitting the prediction request for each round.
+  Receives the round index as its sole argument.
+* `on_prediction_completed`: called after the prediction for the round has been completed,
+  but before any requested tool calls have been initiated. Receives the round's prediction
+  result as its sole argument. A round prediction result is a regular prediction result
+  with an additional `round_index` attribute.
+* `on_round_end`: called after any tool call requests for the round have been resolved.
+
+Finally, applications may request notifications when agents emit invalid tool requests:
+
+* `handle_invalid_tool_request`: called when a tool request was unable to be processed.
+  Receives a text error message describing the problem, as well as the original tool
+  request that resulted in the problem. When no tool request is given, this is
+  purely a notification of an unrecoverable error before the agent interaction fails
+  with an exception (allowing the application to raise its own exception instead).
+  When a tool request is given, it indicates that the text error message is going to
+  be passed back to the LLM as the result of that failed tool request. In this case,
+  the callback may return a replacement string that should be sent to the LLM instead
+  (returning `None` indicates that the text should be sent to the LLM as given).
