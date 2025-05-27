@@ -40,13 +40,13 @@ definition.
 
 # Load Parameters
 
-Set load-time parameters such as `contextLength`, `gpuOffload`, and more.
+Set load-time parameters such as the context length, GPU offload ratio, and more.
 
 ### Set Load Parameters with `.model()`
 
 The `.model()` retrieves a handle to a model that has already been loaded, or loads a new one on demand (JIT loading).
 
-**Note**: if the model is already loaded, the configuration will be **ignored**.
+**Note**: if the model is already loaded, the given configuration will be **ignored**.
 
 ```lms_code_snippet
   variants:
@@ -56,7 +56,9 @@ The `.model()` retrieves a handle to a model that has already been loaded, or lo
         import lmstudio as lms
         model = lms.llm("qwen2.5-7b-instruct", config={
             "contextLength": 8192,
-            "gpuOffload": 0.5,
+            "gpu": {
+              "ratio": 0.5,
+            }
         })
 
     "Python (scoped resource API)":
@@ -68,7 +70,9 @@ The `.model()` retrieves a handle to a model that has already been loaded, or lo
                 "qwen2.5-7b-instruct",
                 config={
                     "contextLength": 8192,
-                    "gpuOffload": 0.5,
+                    "gpu": {
+                      "ratio": 0.5,
+                    }
                 }
             )
 
@@ -89,7 +93,9 @@ The `.load_new_instance()` method creates a new model instance and loads it with
         client = lms.get_default_client()
         model = client.llm.load_new_instance("qwen2.5-7b-instruct", config={
             "contextLength": 8192,
-            "gpuOffload": 0.5,
+            "gpu": {
+              "ratio": 0.5,
+            }
         })
 
     "Python (scoped resource API)":
@@ -101,7 +107,9 @@ The `.load_new_instance()` method creates a new model instance and loads it with
                 "qwen2.5-7b-instruct",
                 config={
                     "contextLength": 8192,
-                    "gpuOffload": 0.5,
+                    "gpu": {
+                      "ratio": 0.5,
+                    }
                 }
             )
 
