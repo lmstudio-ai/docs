@@ -190,4 +190,4 @@ In addition to `on_prompt_processing_progress`, the other available progress cal
 * `on_prediction_fragment`: called for each prediction fragment received by the client.
   Receives the same prediction fragments as iterating over the stream iteration API.
 * `on_message`: called with an assistant response message when the prediction is complete.
-  Intended for appending received messages to a chat history instance.
+  (This callback parameter format is shared with the chat completion API).
