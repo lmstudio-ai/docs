@@ -75,12 +75,12 @@ thread.
         import lmstudio as lms
         model = lms.llm()
 
-        # "shared_event" is a threading.Event object set by another thread
+        # Exact criteria for cancelling the prediction will be app specific
 
         prediction_stream = model.respond_stream("What is the meaning of life?")
         cancelled = False
         for fragment in prediction_stream:
-            if shared_event.is_set():
+            if prediction_should_be_cancelled():
                 cancelled = True
                 prediction_stream.cancel()
                 # Note: it is recommended to let the iteration complete,
@@ -96,15 +96,15 @@ thread.
       code: |
         import lmstudio as lms
 
-        # "shared_event" is a threading.Event object set by another thread
-
         with lms.Client() as client:
             model = client.llm.model()
+
+            # Exact criteria for cancelling the prediction will be app specific
 
             prediction_stream = model.respond_stream("What is the meaning of life?")
             cancelled = False
             for fragment in prediction_stream:
-                if shared_event.is_set():
+                if prediction_should_be_cancelled():
                     cancelled = True
                     prediction_stream.cancel()
                     # Note: it is recommended to let the iteration complete,
