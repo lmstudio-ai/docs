@@ -35,7 +35,7 @@ Another useful inference-time configuration parameter is [`structured`](<(./stru
 
 # Load Parameters
 
-Set load-time parameters such as `contextLength`, `gpuOffload`, and more.
+Set load-time parameters such as the context length, GPU offload ratio, and more.
 
 ### Set Load Parameters with `.model()`
 
