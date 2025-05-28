@@ -7,7 +7,7 @@ description: "The REST API includes enhanced stats such as Token / Second and Ti
 
 ##### Requires [LM Studio 0.3.6](/download) or newer. Still WIP, endpoints may change.
 
-LM Studio now has its own REST API, in addition to OpenAI compatibility mode ([learn more](/docs/api/openai-api)).
+LM Studio now has its own REST API, in addition to OpenAI compatibility mode ([learn more](/docs/app/api/endpoints/openai)).
 
 The REST API includes enhanced stats such as Token / Second and Time To First Token (TTFT), as well as rich information about models such as loaded vs unloaded, max context, quantization, and more.
 
