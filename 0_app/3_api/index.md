@@ -6,7 +6,7 @@ description: Run an LLM API server on localhost with LM Studio
 
 You can serve local LLMs from LM Studio's Developer tab, either on localhost or on the network.
 
-LM Studio's APIs can be used through an [OpenAI compatibility mode](/docs/api/rest-api/openai-api), enhanced [REST API](/docs/api/rest-api/endpoints/endpoints), or through a client library like [lmstudio-js](/docs/api/sdk).
+LM Studio's APIs can be used through an [OpenAI compatibility mode](/docs/app/api/endpoints/openai), enhanced [REST API](/docs/api/rest-api/endpoints/endpoints), or through a client library like [lmstudio-js](/docs/api/sdk).
 
 #### API options
 
