@@ -180,11 +180,17 @@ The following additional callbacks are available to monitor the prediction round
 Finally, applications may request notifications when agents emit invalid tool requests:
 
 * `handle_invalid_tool_request`: called when a tool request was unable to be processed.
-  Receives a text error message describing the problem, as well as the original tool
+  Receives the exception that is about to be reported, as well as the original tool
   request that resulted in the problem. When no tool request is given, this is
-  purely a notification of an unrecoverable error before the agent interaction fails
-  with an exception (allowing the application to raise its own exception instead).
-  When a tool request is given, it indicates that the text error message is going to
-  be passed back to the LLM as the result of that failed tool request. In this case,
-  the callback may return a replacement string that should be sent to the LLM instead
-  (returning `None` indicates that the text should be sent to the LLM as given).
+  purely a notification of an unrecoverable error before the agent interaction raises
+  the given exception (allowing the application to raise its own exception instead).
+  When a tool request is given, it indicates that rather than being raised locally,
+  the text description of the exception is going to be passed back to the agent
+  as the result of that failed tool request. In these cases, the callback may either
+  return `None` to indicate that the error description should be sent to the agent,
+  raise the given exception (or a different exception) locally, or return a text
+  string that should be sent to the agent instead of the error description.
+
+For additional details on defining tools, and an example of overriding the invalid
+tool request handling to raise all exceptions locally instead of passing them to
+back the agent, refer to [Tool Definition](./tools.md).

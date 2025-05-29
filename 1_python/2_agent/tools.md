@@ -142,6 +142,10 @@ exceptions locally in the client:
       code: |
         import lmstudio as lms
 
+        def divide(numerator: float, denominator: float) -> float:
+            """Divide the given numerator by the given denominator. Return the result."""
+            return numerator / denominator
+
         model = lms.llm("qwen2.5-7b-instruct")
         chat = Chat()
         chat.add_user_message(
