@@ -184,12 +184,12 @@ Finally, applications may request notifications when agents emit invalid tool re
   request that resulted in the problem. When no tool request is given, this is
   purely a notification of an unrecoverable error before the agent interaction raises
   the given exception (allowing the application to raise its own exception instead).
-  When a tool request is given, it indicates that rather than being raised locally in
-  client, the text description of the exception is going to be passed back to the agent
+  When a tool request is given, it indicates that rather than being raised locally,
+  the text description of the exception is going to be passed back to the agent
   as the result of that failed tool request. In these cases, the callback may either
-  return `None` to indicate that the error should be returned to the agent, raise the
-  given exception (or a different exception) locally, or return a text string that
-  should be sent to the agent instead of the error description.
+  return `None` to indicate that the error description should be sent to the agent,
+  raise the given exception (or a different exception) locally, or return a text
+  string that should be sent to the agent instead of the error description.
 
 For additional details on defining tools, and an example of overriding the invalid
 tool request handling to raise all exceptions locally instead of passing them to
