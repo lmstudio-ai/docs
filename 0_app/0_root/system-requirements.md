@@ -25,6 +25,7 @@ LM Studio is supported on both x64 and ARM (Snapdragon X Elite) based systems.
 
 - CPU: AVX2 instruction set support is required (for x64)
 - RAM: LLMs can consume a lot of RAM. At least 16GB of RAM is recommended.
+- GPU: at least 4GB of dedicated VRAM is recommended.
 
 ### Linux
 
