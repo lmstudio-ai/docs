@@ -48,6 +48,8 @@ You can jump to Settings from anywhere in the app by pressing `cmd` + `,` on mac
 - Swedish (sv) [@reinew](https://github.com/reinew)
 - Catalan (ca) [@Gopro3010](https://github.com/Gopro3010)
 - French [@Plexi09](https://github.com/Plexi09)
+- Finnish (fi) [@divergentti](https://github.com/divergentti)
+- Bengali (bn) [@AbiruzzamanMolla](https://github.com/AbiruzzamanMolla)
 - Malayalam (ml) [@prasanthc41m](https://github.com/prasanthc41m)
 - Thai (th) [@gnoparus](https://github.com/gnoparus)
 - Bosnian (bs) [@0haris0](https://github.com/0haris0)
