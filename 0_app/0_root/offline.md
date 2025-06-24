@@ -32,7 +32,7 @@ When you search for models in the Discover tab, LM Studio makes network requests
 
 #### Downloading new models
 
-In order to download models you need a stable (and decently fast) internet connection. You can also 'sideload' models (use models that were procured outside the app). See instructions for [sideloading models](advanced/sideload).
+In order to download models you need a stable (and decently fast) internet connection. You can also 'sideload' models (use models that were procured outside the app). See instructions for [sideloading models](/docs/advanced/sideload).
 
 #### Discover tab's model catalog
 
