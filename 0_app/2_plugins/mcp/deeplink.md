@@ -11,3 +11,7 @@ Model Context Protocol (MCP) refers to a way to interact with tools and external
 ## Use MCP servers with LM Studio
 
 Starting LM Studio 0.3.17, LM Studio acts as an MCP Host.
+
+```lms_mcp_deep_link_generator
+
+```
