@@ -21,6 +21,7 @@ Starting 0.3.17 (b10), LM Studio supports both local and remote MCP servers. You
 ## Install new servers: `mcp.json`
 
 Switch to the "Program" tab in the right hand sidebar. Click `Install > Edit mcp.json`.
+
 <img src="/assets/docs/install-mcp.png"  data-caption="" style="width: 80%;" className="" />
 
 <br>
