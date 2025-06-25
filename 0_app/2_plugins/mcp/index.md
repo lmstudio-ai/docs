@@ -16,7 +16,7 @@ Some MCP servers can run arbitrary code, access your local files, and use your n
 
 # Use MCP servers in LM Studio
 
-Starting 0.3.17 (b8), LM Studio supports both local and remote MCP servers. You can add MCPs by editing the app's `mcp.json` file or via the ["Add to LM Studio" Button](mcp/deeplink), when available. LM Studio currently follows Cursor's `mcp.json` notation.
+Starting 0.3.17 (b10), LM Studio supports both local and remote MCP servers. You can add MCPs by editing the app's `mcp.json` file or via the ["Add to LM Studio" Button](mcp/deeplink), when available. LM Studio currently follows Cursor's `mcp.json` notation.
 
 ## Install new servers: `mcp.json`
 

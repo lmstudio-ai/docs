@@ -4,13 +4,9 @@ description: Add MCP servers to LM Studio using a deeplink
 index: 2
 ---
 
-`New in 0.3.17`
+Starting with version 0.3.17 (10), LM Studio can act as an MCP host. Learn more about it [here](../mcp).
 
-Model Context Protocol (MCP) refers to a way to interact with tools and external resources and make them available to LLMs.
-
-## Use MCP servers with LM Studio
-
-Starting LM Studio 0.3.17, LM Studio acts as an MCP Host.
+### Generate install link
 
 ```lms_mcp_deep_link_generator
 
