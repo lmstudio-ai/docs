@@ -6,8 +6,6 @@ index: 1
 
 Starting LM Studio 0.3.17, LM Studio acts as an **Model Context Protocol (MCP) Host**. This means you can connect MCP servers to the app and make them available to your models.
 
-[MCP](https://github.com/modelcontextprotocol) refers to a set of standard interfaces intended for making tools or external resources available to LLMs.
-
 ### Be cautious
 
 Never install MCPs from untrusted sources.
@@ -20,16 +18,31 @@ Some MCP servers can run arbitrary code, access your local files, and use your n
 
 Starting 0.3.17 (b8), LM Studio supports both local and remote MCP servers. You can add MCPs by editing the app's `mcp.json` file or via the ["Add to LM Studio" Button](mcp/deeplink), when available. LM Studio currently follows Cursor's `mcp.json` notation.
 
-### Edit `mcp.json`
+## Install new servers: `mcp.json`
 
 Switch to the "Program" tab in the right hand sidebar. Click `Install > Edit mcp.json`.
-<img src="/assets/docs/install-mcp.png"  data-caption="Edit mcp.json using the in-app editor" style="width: 80%;" className="" />
+<img src="/assets/docs/install-mcp.png"  data-caption="" style="width: 80%;" className="" />
+
+<br>
+
+This will open the `mcp.json` file in the in-app editor. You can add MCP servers by editing this file.
+
+<img src="/assets/docs/mcp-editor.png"  data-caption="Edit mcp.json using the in-app editor" style="width: 100%;" className="" />
 
 ### Example MCP to try: Hugging Face MCP Server
 
 This MCP server provides access to functions like model and dataset search.
 
-<div className="w-fit"><a style="background: rgb(255,255,255)" href="http://localhost:3001/install-mcp?name=hf-mcp-server&config=eyJ1cmwiOiJodHRwczovL2h1Z2dpbmdmYWNlLmNvL21jcCIsImhlYWRlcnMiOnsiQXV0aG9yaXphdGlvbiI6IkJlYXJlciA8WU9VUl9IRl9UT0tFTj4ifX0%3D"><img src="https://files.lmstudio.ai/deeplink/mcp-install-light.svg" alt="Add MCP Server hf-mcp-server to LM Studio" /></a></div>
+<div className="w-fit">
+  <a style="background: rgb(255,255,255)" href="http://localhost:3001/install-mcp?name=hf-mcp-server&config=eyJ1cmwiOiJodHRwczovL2h1Z2dpbmdmYWNlLmNvL21jcCIsImhlYWRlcnMiOnsiQXV0aG9yaXphdGlvbiI6IkJlYXJlciA8WU9VUl9IRl9UT0tFTj4ifX0%3D">
+    <LightVariant>
+      <img src="https://files.lmstudio.ai/deeplink/mcp-install-light.svg" alt="Add MCP Server hf-mcp-server to LM Studio" />
+    </LightVariant>
+    <DarkVariant>
+      <img src="https://files.lmstudio.ai/deeplink/mcp-install-dark.svg" alt="Add MCP Server hf-mcp-server to LM Studio" />
+    </DarkVariant>
+  </a>
+</div>
 
 ```json
 {
@@ -47,6 +60,8 @@ This MCP server provides access to functions like model and dataset search.
 ###### You will need to replace `<YOUR_HF_TOKEN>` with your actual Hugging Face token. Learn more [here](https://huggingface.co/docs/hub/en/security-tokens).
 
 Use the [deeplink button](mcp/deeplink), or copy the JSON snippet above and paste it into your `mcp.json` file.
+
+---
 
 ## Gotchas and Troubleshooting
 
