@@ -238,3 +238,15 @@ We support the following field types:
           )
           // ... other fields ...
   ```
+
+## Examples
+
+The following are some plugins that make use of custom configurations
+
+- [lmstudio/wikipedia](https://lmstudio.ai/lmstudio/wikipedia)
+
+  Gives the LLM tools to search and read Wikipedia articles.
+
+- [lmstudio/openai-compat-endpoint](https://lmstudio.ai/lmstudio/openai-compat-endpoint)
+
+  Use any OpenAI-compatible API in LM Studio.
