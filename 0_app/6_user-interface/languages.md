@@ -1,10 +1,10 @@
 ---
 title: LM Studio in your language
 sidebar_title: Languages
-description: LM Studio is available in English, Spanish, French, German, Korean, Russian, and 6+ more languages.
+description: LM Studio is available in English, Chinese, Spanish, French, German, Korean, Russian, and 26+ more languages.
 ---
 
-LM Studio is available in `English`, `Spanish`, `Japanese`, `Chinese`, `German`, `Norwegian`, `Turkish`, `Russian`, `Korean`, `Polish`, `Vietnamese`, `Czech`, `Ukranian`, and `Portuguese (BR,PT)` thanks to incredibly awesome efforts from the LM Studio community.
+LM Studio is available in `English`, `Spanish`, `Japanese`, `Chinese`, `German`, `Norwegian`, `Turkish`, `Russian`, `Korean`, `Polish`, `Vietnamese`, `Czech`, `Ukranian`, `Portuguese (BR,PT)` and many more languages thanks to incredible  community localizers.
 
 <hr>
 
