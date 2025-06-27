@@ -49,6 +49,18 @@ LLMs are largely text-in, text-out programs. So, you may ask "how can an LLM use
 
 Imagine you're giving computer support to someone over the phone. You might say things like "run this command for me ... OK what did it output? ... OK now click there and tell me what it says ...". In this case you're the LLM! And you're "calling tools" vicariously through the person on the other side of the line.
 
+### Running multiple tool calls in parallel
+
+By default, version 1.4.0 and later of the Python SDK will only run a single tool call request at a time,
+even if the model requests multiple tool calls in a single response message. This ensures the requests will
+be processed correctly even if the tool implementations do not support multiple concurrent calls.
+
+When the tool implementations are known to be thread-safe, and are both slow and frequent enough to be worth
+running in parallel, the `max_parallel_tool_calls` option specifies the maximum number of tool call requests
+that will be processed in parallel from a single model response. This value defaults to 1 (waiting for each
+tool call to complete before starting the next one). Setting this value to `None` will automatically scale
+the maximum number of parallel tool calls to a multiple of the number of CPU cores available to the process.
+
 ### Important: Model Selection
 
 The model selected for tool use will greatly impact performance.
