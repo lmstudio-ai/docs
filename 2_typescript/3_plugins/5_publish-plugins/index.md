@@ -4,6 +4,10 @@ description: "How to publish your LM Studio plugins so they can be used by other
 index: 7
 ---
 
+```lms_private_beta
+Plugin support is currently in private beta. [Join the beta here](https://forms.gle/ZPfGLMvVC6DbSRQm9).
+```
+
 To share publish your LM Studio plugin, open the plugin directory in a terminal and run:
 
 ```bash

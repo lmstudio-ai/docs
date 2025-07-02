@@ -1,5 +1,5 @@
 ---
-title: "Generators"
+title: "Generator"
 description: "Writing generators for LM Studio plugins using TypeScript"
 index: 4
 ---

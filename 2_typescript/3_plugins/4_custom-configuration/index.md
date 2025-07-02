@@ -1,5 +1,5 @@
 ---
-title: "Configurations"
+title: "Custom Configurations"
 description: "Add custom configurations to LM Studio plugins using TypeScript"
 index: 5
 ---
@@ -8,14 +8,32 @@ index: 5
 Plugin support is currently in private beta. [Join the beta here](https://forms.gle/ZPfGLMvVC6DbSRQm9).
 ```
 
+## Overview
+
 LM Studio plugins support custom configurations. That is, you can define a configuration schema and LM Studio will present a UI to the user so they can configure your plugin without having to edit any code.
 
 There are two types of configurations:
 
-- Per-chat configuration: These are configurations that are tied to a specific chat. Different chats can have different configurations. Most configurations that affects the behavior of the plugin should be of this type.
-- Global configuration: These are configurations that apply to all chats and are shared across the application. This is useful for global settings such as API keys.
+- **Per-chat configuration**: tied to a specific chat. Different chats can have different configurations. Most configurations that affects the behavior of the plugin should be of this type.
+- **Global configuration**: apply to _all_ chats and are shared across the application. This is useful for global settings such as API keys.
 
-By default, the plugin scaffold will create a `config.ts` file in the `src` directory which will contain the schematics of the configurations. If the files does not exist, you can create it manually:
+## Types of Configurations
+
+You can define configurations in TypeScript using the `createConfigSchematics` function from the `@lmstudio/sdk` package. This function allows you to define fields with various types and options.
+
+Supported types include:
+
+- `string`: A text input field.
+- `numeric`: A number input field with optional validation and slider UI.
+- `boolean`: A checkbox or toggle input field.
+- `stringArray`: An array of string values with configurable constraints.
+- `select`: A dropdown selection field with predefined options.
+
+See the [Defining New Fields](#defining-new-fields) section for more details on how to define these fields.
+
+## The `config.ts` File
+
+By default, the plugin scaffold will create a `config.ts` file in the `src/` directory which will contain the schematics of the configurations. If the files does not exist, you can create it manually:
 
 ```lms_code_snippet
   title: "src/toolsProvider.ts"
@@ -58,7 +76,9 @@ By default, the plugin scaffold will create a `config.ts` file in the `src` dire
           .build();
 ```
 
-You will also need to register the configurations in your plugin's `index.ts` file:
+If you've added your config schematics manuall, you will also need to register the configurations in your plugin's `index.ts` file.
+
+This is done by calling `context.withConfigSchematics(configSchematics)` and `context.withGlobalConfigSchematics(globalConfigSchematics)` in the `main` function of your plugin.
 
 ```lms_code_snippet
   title: "src/index.ts"

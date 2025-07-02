@@ -14,7 +14,13 @@ Plugins are currently written in JavaScript/TypeScript and run on Node.js v20.18
 
 ## Getting Started
 
-LM Studio includes Node.js, so no separate installation is required. To create a new plugin, navigate to LM Studio... [TO BE CONTINUED]
+LM Studio includes Node.js, so no separate installation is required.
+
+### Create a new plugin
+
+To create a new plugin, navigate to LM Studio... [TO BE CONTINUED]
+
+### Run a plugin in development mode
 
 Once you've created a plugin, run this command in the plugin directory to start development mode:
 
@@ -28,19 +34,19 @@ You only need `lms dev` during development. When the plugin is installed, LM Stu
 
 ## Next Steps
 
-- [Tools Providers](./plugins/tools-providers)
+- [Tools Providers](./plugins/tools-provider)
 
   Give models extra capabilities by creating tools they can use during generation, like accessing external APIs or performing calculations.
 
-- [Prompt Preprocessors](./plugins/prompt-preprocessors)
+- [Prompt Preprocessors](./plugins/prompt-preprocessor)
 
   Modify user input before it reaches the model - handle file uploads, inject context, or transform queries.
 
-- [Generators](./plugins/generators)
+- [Generators](./plugins/generator)
 
   Create custom text generation sources that replace the local model, perfect for online model adapters.
 
-- [Custom Configurations](./plugins/configurations)
+- [Custom Configurations](./plugins/custom-configuration)
 
   Add configuration UIs so users can customize your plugin's behavior.
 
@@ -48,6 +54,6 @@ You only need `lms dev` during development. When the plugin is installed, LM Stu
 
   Use npm packages to leverage existing libraries in your plugins.
 
-- [Sharing Plugins](./plugins/sharing)
+- [Sharing Plugins](./plugins/publish-plugins)
 
   Package and share your plugins with the community.
