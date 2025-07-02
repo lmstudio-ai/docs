@@ -24,7 +24,7 @@ lms dev
 
 Your plugin will appear in LM Studio's plugin list. Development mode automatically rebuilds and reloads your plugin when you make code changes.
 
-You only need `lms dev` during development. When the plugin is installed, LM Studio automatically runs them as needed.
+You only need `lms dev` during development. When the plugin is installed, LM Studio automatically runs them as needed. Learn more about distributing and installing plugins in the [Sharing Plugins](./plugins/sharing) section.
 
 ## Next Steps
 
@@ -32,7 +32,7 @@ You only need `lms dev` during development. When the plugin is installed, LM Stu
 
   Give models extra capabilities by creating tools they can use during generation, like accessing external APIs or performing calculations.
 
-- [Preprocessors](./plugins/preprocessors)
+- [Prompt Preprocessors](./plugins/prompt-preprocessors)
 
   Modify user input before it reaches the model - handle file uploads, inject context, or transform queries.
 

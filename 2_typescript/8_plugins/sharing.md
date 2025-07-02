@@ -30,4 +30,4 @@ If your account supports private plugins, you can publish your plugins privately
 lms push --private
 ```
 
-Contact Sales to learn more about private plugins.
+Private artifact is in test. Get in touch if you are interested.

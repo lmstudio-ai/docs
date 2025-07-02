@@ -156,7 +156,7 @@ First, add the config field to `config.ts`:
 ```
 
 ```lms_info
-In this example, we added the field to `configSchematics`, which is the "per-chat" configuration. If you want to add a global configuration field that shared across different chats, you should add it under the section `globalConfigSchematics` in the same file.
+In this example, we added the field to `configSchematics`, which is the "per-chat" configuration. If you want to add a global configuration field that is shared across different chats, you should add it under the section `globalConfigSchematics` in the same file.
 
 Learn more about configurations in [Custom Configurations](../plugins/configurations).
 ```

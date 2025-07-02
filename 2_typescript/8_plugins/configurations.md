@@ -85,10 +85,10 @@ You will also need to register the configurations in your plugin's `index.ts` fi
 
 You can access the configuration using the method `ctl.getPluginConfig(configSchematics)` and `ctl.getGlobalConfig(globalConfigSchematics)` respectively.
 
-For example, here is how to access the config within the preprocessor:
+For example, here is how to access the config within the promptPreprocessor:
 
 ```lms_code_snippet
-  title: "src/preprocessor.ts"
+  title: "src/promptPreprocessor.ts"
   variants:
     TypeScript:
       language: typescript
