@@ -38,7 +38,7 @@ Try to copy and paste the following into the link generator above.
 ### Deeplink format
 
 ```bash
-lmstudio://add-mcp?name=hf-mcp-server&config=eyJ1cmwiOiJodHRwczovL2h1Z2dpbmdmYWNlLmNvL21jcCIsImhlYWRlcnMiOnsiQXV0aG9yaXphdGlvbiI6IkJlYXJlciA8WU9VUl9IRl9UT0tFTj4ifX0%3D
+lmstudio://add_mcp?name=hf-mcp-server&config=eyJ1cmwiOiJodHRwczovL2h1Z2dpbmdmYWNlLmNvL21jcCIsImhlYWRlcnMiOnsiQXV0aG9yaXphdGlvbiI6IkJlYXJlciA8WU9VUl9IRl9UT0tFTj4ifX0%3D
 ```
 
 #### Parameters
@@ -47,7 +47,7 @@ lmstudio://add-mcp?name=hf-mcp-server&config=eyJ1cmwiOiJodHRwczovL2h1Z2dpbmdmYWN
 - name: "lmstudio://"
   type: "protocol"
   description: "The protocol scheme to open LM Studio"
-- name: "add-mcp"
+- name: "add_mcp"
   type: "path"
   description: "The action to install an MCP server"
 - name: "name"
