@@ -6,8 +6,6 @@ index: 2
 
 LM Studio has a ChatGPT-like interface for chatting with local LLMs. You can create many different conversation threads and manage them in folders.
 
-<img src="/assets/docs/chatTab.png" style="width: 500px; margin-top:30px" data-caption="Manage your conversations in the Chat tab" />
-
 <hr>
 
 ### Create a new chat
