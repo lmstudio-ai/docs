@@ -41,7 +41,7 @@ Head over to the **Chat** tab, and
 
 ##### What does loading a model mean?
 
-Loading a model typically means allocating memory to be able to accomodate the model's weights and other parameters in your computer's RAM.
+Loading a model typically means allocating memory to be able to accommodate the model's weights and other parameters in your computer's RAM.
 
 ### 3. Chat!
 

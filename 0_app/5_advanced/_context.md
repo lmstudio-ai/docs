@@ -1,6 +1,6 @@
 ---
 title: Context construction
-description: Inserting Assistant and User messages to contruct a conversation context for a given purpose
+description: Inserting Assistant and User messages to construct a conversation context for a given purpose
 ---
 
 ### Page
