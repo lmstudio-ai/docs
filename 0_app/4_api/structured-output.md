@@ -8,7 +8,7 @@ You can enforce a particular response format from an LLM by providing a JSON sch
 <hr>
 
 ### Start LM Studio as a server
-To use LM Studio programatically from your own code, run LM Studio as a local server.
+To use LM Studio programmatically from your own code, run LM Studio as a local server.
 
 You can turn on the server from the "Developer" tab in LM Studio, or via the `lms` CLI:
 
