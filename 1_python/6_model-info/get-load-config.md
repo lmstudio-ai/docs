@@ -37,4 +37,17 @@ Context length is a special case that [has its own method](/docs/api/sdk/get-con
             model = client.llm.model()
 
             print(model.get_load_config())
+
+    "Python (asynchronous API)":
+      language: python
+      code: |
+        # Note: assumes use of an async function or the "python -m asyncio" asynchronous REPL
+        # Requires Python SDK version 1.5.0 or later
+        import lmstudio as lms
+
+        async with lms.Client() as client:
+            model = await client.llm.model()
+
+            print(await model.get_load_config())
+
 ```

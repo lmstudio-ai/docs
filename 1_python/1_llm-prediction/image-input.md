@@ -26,14 +26,26 @@ Connect to LM Studio and obtain a handle to the VLM (Vision-Language Model) you 
       language: python
       code: |
         import lmstudio as lms
+
         model = lms.llm("qwen2-vl-2b-instruct")
 
     "Python (scoped resource API)":
       language: python
       code: |
         import lmstudio as lms
+
         with lms.Client() as client:
             model = client.llm.model("qwen2-vl-2b-instruct")
+
+    "Python (asynchronous API)":
+      language: python
+      code: |
+        # Note: assumes use of an async function or the "python -m asyncio" asynchronous REPL
+        # Requires Python SDK version 1.5.0 or later
+        import lmstudio as lms
+
+        async with lms.AsyncClient() as client:
+            model = await client.llm.model("qwen2-vl-2b-instruct")
 
 ```
 
@@ -48,6 +60,7 @@ get a handle to the image that can subsequently be passed to the model.
       language: python
       code: |
         import lmstudio as lms
+
         image_path = "/path/to/image.jpg" # Replace with the path to your image
         image_handle = lms.prepare_image(image_path)
 
@@ -55,9 +68,21 @@ get a handle to the image that can subsequently be passed to the model.
       language: python
       code: |
         import lmstudio as lms
+
         with lms.Client() as client:
             image_path = "/path/to/image.jpg" # Replace with the path to your image
             image_handle = client.files.prepare_image(image_path)
+
+    "Python (asynchronous API)":
+      language: python
+      code: |
+        # Note: assumes use of an async function or the "python -m asyncio" asynchronous REPL
+        # Requires Python SDK version 1.5.0 or later
+        import lmstudio as lms
+
+        async with lms.AsyncClient() as client:
+            image_path = "/path/to/image.jpg" # Replace with the path to your image
+            image_handle = await client.files.prepare_image(image_path)
 
 ```
 
@@ -80,6 +105,7 @@ Generate a prediction by passing the image to the model in the `.respond()` meth
       language: python
       code: |
         import lmstudio as lms
+
         image_path = "/path/to/image.jpg" # Replace with the path to your image
         image_handle = lms.prepare_image(image_path)
         model = lms.llm("qwen2-vl-2b-instruct")
@@ -91,6 +117,7 @@ Generate a prediction by passing the image to the model in the `.respond()` meth
       language: python
       code: |
         import lmstudio as lms
+
         with lms.Client() as client:
             image_path = "/path/to/image.jpg" # Replace with the path to your image
             image_handle = client.files.prepare_image(image_path)
@@ -98,5 +125,20 @@ Generate a prediction by passing the image to the model in the `.respond()` meth
             chat = lms.Chat()
             chat.add_user_message("Describe this image please", images=[image_handle])
             prediction = model.respond(chat)
+
+    "Python (asynchronous API)":
+      language: python
+      code: |
+        # Note: assumes use of an async function or the "python -m asyncio" asynchronous REPL
+        # Requires Python SDK version 1.5.0 or later
+        import lmstudio as lms
+
+        async with lms.AsyncClient() as client:
+            image_path = "/path/to/image.jpg" # Replace with the path to your image
+            image_handle = client.files.prepare_image(image_path)
+            model = await client.llm.model("qwen2-vl-2b-instruct")
+            chat = lms.Chat()
+            chat.add_user_message("Describe this image please", images=[image_handle])
+            prediction = await model.respond(chat)
 
 ```

@@ -3,7 +3,7 @@ title: Download Models
 description: Download models to the machine running the LM Studio server
 ---
 
-TODO: this is available, but the current API is a bit awkward, so hold
+TODO: model downloading is available, but the current API is a bit awkward, so hold
       off on documenting it until the interface is nicer to use
 
 ## Overview
@@ -19,6 +19,9 @@ Downloading models consists of three steps:
 1. Search for the model you want;
 2. Find the download option you want (e.g. quantization) and
 3. Download the model!
+
+
+TODO: Actually translate this example code from TS to Python
 
 ```lms_code_snippet
   variants:
@@ -64,23 +67,6 @@ one for progress updates and/or one when the download is being finalized
 
 ```lms_code_snippet
   variants:
-    Python (with scoped resources):
-      language: python
-      code: |
-        import lmstudio as lms
-
-        def print_progress_update(update: lmstudio.DownloadProgressUpdate) -> None:
-            print(f"Downloaded {update.downloaded_bytes} bytes of {update.total_bytes} total \
-                    at {update.speed_bytes_per_second} bytes/sec")
-
-        with lms.Client() as client:
-            # ... Same code as before ...
-
-            model_key = desired_model.download(
-                on_progress=print_progress_update,
-                on_finalize: lambda: print("Finalizing download...")
-            )
-
     "Python (convenience API)":
       language: python
       code: |
@@ -101,4 +87,29 @@ one for progress updates and/or one when the download is being finalized
         })
 
         const loadedModel = client.llm.model(modelKey)
+
+    "Python (scoped resource API)":
+      language: python
+      code: |
+        import lmstudio as lms
+
+        def print_progress_update(update: lmstudio.DownloadProgressUpdate) -> None:
+            print(f"Downloaded {update.downloaded_bytes} bytes of {update.total_bytes} total \
+                    at {update.speed_bytes_per_second} bytes/sec")
+
+        with lms.Client() as client:
+            # ... Same code as before ...
+
+            model_key = desired_model.download(
+                on_progress=print_progress_update,
+                on_finalize: lambda: print("Finalizing download...")
+            )
+
+    "Python (asynchronous API)":
+      language: python
+      code: |
+        # Note: assumes use of an async function or the "python -m asyncio" asynchronous REPL
+        # Requires Python SDK version 1.5.0 or later
+        import lmstudio as lms
+
 ```

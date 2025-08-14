@@ -43,6 +43,16 @@ you can use it by calling `.model()` without any arguments.
         with lms.Client() as client:
             model = client.llm.model()
 
+    "Python (asynchronous API)":
+      language: python
+      code: |
+        # Note: assumes use of an async function or the "python -m asyncio" asynchronous REPL
+        # Requires Python SDK version 1.5.0 or later
+        import lmstudio as lms
+
+        async with lms.AsyncClient() as client:
+            model = await client.llm.model()
+
 ```
 
 ## Get a Specific Model with `.model("model-key")`
@@ -68,6 +78,16 @@ Calling `.model("model-key")` will load the model if it's not already loaded, or
 
         with lms.Client() as client:
             model = client.llm.model("llama-3.2-1b-instruct")
+
+    "Python (asynchronous API)":
+      language: python
+      code: |
+        # Note: assumes use of an async function or the "python -m asyncio" asynchronous REPL
+        # Requires Python SDK version 1.5.0 or later
+        import lmstudio as lms
+
+        async with lms.AsyncClient() as client:
+            model = await client.llm.model("llama-3.2-1b-instruct")
 
 ```
 
@@ -99,6 +119,18 @@ This allows you to have multiple instances of the same or different models loade
         with lms.Client() as client:
             llama = client.llm.load_new_instance("llama-3.2-1b-instruct")
             another_llama = client.llm.load_new_instance("llama-3.2-1b-instruct", "second-llama")
+
+    "Python (asynchronous API)":
+      language: python
+      code: |
+        # Note: assumes use of an async function or the "python -m asyncio" asynchronous REPL
+        # Requires Python SDK version 1.5.0 or later
+        import lmstudio as lms
+
+        async with lms.AsyncClient() as client:
+            llama = await client.llm.load_new_instance("llama-3.2-1b-instruct")
+            another_llama = await client.llm.load_new_instance("llama-3.2-1b-instruct", "second-llama")
+
 ```
 
 <!--
@@ -134,6 +166,17 @@ Once you no longer need a model, you can unload it by simply calling `unload()` 
             model = client.llm.model()
             model.unload()
 
+    "Python (asynchronous API)":
+      language: python
+      code: |
+        # Note: assumes use of an async function or the "python -m asyncio" asynchronous REPL
+        # Requires Python SDK version 1.5.0 or later
+        import lmstudio as lms
+
+        async with lms.AsyncClient() as client:
+            model = await client.llm.model()
+            await model.unload()
+
 ```
 
 ## Set Custom Load Config Parameters
@@ -154,20 +197,30 @@ a new instance, and will _not_ retroactively change the TTL of an existing insta
 
 ```lms_code_snippet
   variants:
-    Python:
+    "Python (convenience API)":
       language: python
       code: |
         import lmstudio as lms
 
         llama = lms.llm("llama-3.2-1b-instruct", ttl=3600)
 
-    Python (with scoped resources):
+    "Python (scoped resource API)":
       language: python
       code: |
         import lmstudio as lms
 
         with lms.Client() as client:
             llama = client.llm.model("llama-3.2-1b-instruct", ttl=3600)
+
+    "Python (asynchronous API)":
+      language: python
+      code: |
+        # Note: assumes use of an async function or the "python -m asyncio" asynchronous REPL
+        # Requires Python SDK version 1.5.0 or later
+        import lmstudio as lms
+
+        async with lms.AsyncClient() as client:
+            llama = await client.llm.model("llama-3.2-1b-instruct", ttl=3600)
 
 ```
 

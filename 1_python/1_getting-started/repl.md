@@ -5,7 +5,7 @@ description: "You can use `lmstudio-python` in REPL (Read-Eval-Print Loop) to in
 index: 2
 ---
 
-To enable interactive use, `lmstudio-python` offers a convenience API which manages
+To simplify interactive use, `lmstudio-python` offers a convenience API which manages
 its resources via `atexit` hooks, allowing a default synchronous client session
 to be used across multiple interactive commands.
 
@@ -45,5 +45,42 @@ example:
         UserMessage(content=[TextData(text='How many fruits have you told me?')])
         >>> print(model.respond(chat, on_message=chat.append))
         You asked for three initial fruits and three more, so I've listed a total of six fruits.
+
+```
+
+While not primarily intended for use this way, the asynchronous Python REPL (provided as
+`python -m asyncio`) is compatible with the SDK's asynchronous structured concurrency API.
+For example:
+
+```lms_code_snippet
+  title: "Python REPL"
+  variants:
+    "Asynchronous chat session":
+      language: python
+      code: |
+        # Note: assumes use of the "python -m asyncio" asynchronous REPL (or equivalent)
+        >>> from contextlib import AsyncExitStack
+        >>> import lmstudio as lms
+        >>> resources = AsyncExitStack()
+        >>> client = await resources.enter_async_context(lms.AsyncClient())
+        >>> loaded_models = await client.llm.list_loaded()
+        >>> for idx, model in enumerate(loaded_models):
+        ...     print(f"{idx:>3} {model}")
+        ...
+          0 AsyncLLM(identifier='qwen2.5-7b-instruct-1m')
+        >>> model = loaded_models[0]
+        >>> chat = lms.Chat("You answer questions concisely")
+        >>> chat.add_user_message("Tell me three fruits")
+        UserMessage(content=[TextData(text='Tell me three fruits')])
+        >>> print(await model.respond(chat, on_message=chat.append))
+        Apple, banana, and orange.
+        >>> chat.add_user_message("Tell me three more fruits")
+        UserMessage(content=[TextData(text='Tell me three more fruits')])
+        >>> print(await model.respond(chat, on_message=chat.append))
+        Mango, strawberry, and pineapple.
+        >>> chat.add_user_message("How many fruits have you told me?")
+        UserMessage(content=[TextData(text='How many fruits have you told me?')])
+        >>> print(await model.respond(chat, on_message=chat.append))
+        You asked for three fruits initially, then three more, so I’ve listed six fruits in total.
 
 ```

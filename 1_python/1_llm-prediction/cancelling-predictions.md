@@ -55,4 +55,28 @@ an event set by another thread).
             if not cancelled:
                 print(prediction_stream.result())
 
+    "Python (asynchronous API)":
+      language: python
+      code: |
+        # Note: assumes use of an async function or the "python -m asyncio" asynchronous REPL
+        # Requires Python SDK version 1.5.0 or later
+        import lmstudio as lms
+
+        async with lms.AsyncClient() as client:
+            model = await client.llm.model()
+
+            prediction_stream = await model.respond_stream("What is the meaning of life?")
+            cancelled = False
+            async for fragment in prediction_stream:
+                if ...: # Cancellation condition will be app specific
+                    cancelled = True
+                    await prediction_stream.cancel()
+                    # Note: it is recommended to let the iteration complete,
+                    # as doing so allows the partial result to be recorded.
+                    # Breaking the loop *is* permitted, but means the partial result
+                    # and final prediction stats won't be available to the client
+            # The stream allows the prediction result to be retrieved after iteration
+            if not cancelled:
+                print(prediction_stream.result())
+
 ```
