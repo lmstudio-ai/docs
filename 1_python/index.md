@@ -102,3 +102,27 @@ support the asynchronous API.
 
 Some examples are common between the interactive convenience API and the synchronous scoped
 resource API. These examples are listed as "Python (synchronous API)".
+
+## Timeouts in the synchronous API
+
+*Required Python SDK version*: **1.5.0**
+
+Starting in Python SDK version 1.5.0, the synchronous API defaults to timing out after 60 seconds
+with no activity when waiting for a response or streaming event notification from the API server.
+
+The number of seconds to wait for responses and event notifications can be adjusted using the
+`lmstudio.set_sync_api_timeout()` function. Setting the timeout to `None` disables the timeout
+entirely (restoring the behaviour of previous SDK versions).
+
+The current synchronous API timeout can be queried using the `lmstudio.get_sync_api_timeout()`
+function.
+
+## Timeouts in the asynchronous API
+
+*Required Python SDK version*: **1.5.0**
+
+As asynchronous coroutines support cancellation, there is no specific timeout support implemented
+in the asynchronous API. Instead, general purpose async timeout mechanisms, such as
+[`asyncio.wait_for()`](https://docs.python.org/3/library/asyncio-task.html#asyncio.wait_for) or
+[`anyio.move_on_after()`](https://anyio.readthedocs.io/en/stable/cancellation.html#timeouts),
+should be used.
