@@ -49,7 +49,7 @@ example:
 ```
 
 While not primarily intended for use this way, the SDK's asynchronous structured concurrency API
- is compatible with the asynchronous Python REPL that is launched by `python -m asyncio`.
+is compatible with the asynchronous Python REPL that is launched by `python -m asyncio`.
 For example:
 
 ```lms_code_snippet
