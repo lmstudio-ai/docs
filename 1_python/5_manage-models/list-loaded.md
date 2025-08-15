@@ -37,4 +37,18 @@ This will give you results equivalent to using [`lms ps`](../../cli/ps) in the C
 
             print(all_loaded_models)
 
+    "Python (asynchronous API)":
+      language: python
+      code: |
+        # Note: assumes use of an async function or the "python -m asyncio" asynchronous REPL
+        # Requires Python SDK version 1.5.0 or later
+        import lmstudio as lms
+
+        async with lms.AsyncClient() as client:
+            all_loaded_models = await client.list_loaded_models()
+            llm_only = await client.llm.list_loaded()
+            embedding_only = await client.embedding.list_loaded()
+
+            print(all_loaded_models)
+
 ```

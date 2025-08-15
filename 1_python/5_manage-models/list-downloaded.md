@@ -37,6 +37,21 @@ downloaded model reference to be converted in the full SDK handle for a loaded m
         for model in downloaded:
             print(model)
 
+    "Python (asynchronous API)":
+      language: python
+      code: |
+        # Note: assumes use of an async function or the "python -m asyncio" asynchronous REPL
+        # Requires Python SDK version 1.5.0 or later
+        import lmstudio as lms
+
+        async with lms.AsyncClient() as client:
+            downloaded = await client.list_downloaded_models()
+            llm_only = await client.llm.list_downloaded()
+            embedding_only = await client.embedding.list_downloaded()
+
+        for model in downloaded:
+            print(model)
+
 ```
 This will give you results equivalent to using [`lms ls`](../../cli/ls) in the CLI.
 

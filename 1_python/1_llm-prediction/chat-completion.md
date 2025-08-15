@@ -17,6 +17,7 @@ The following snippet shows how to obtain the AI's response to a quick chat prom
       language: python
       code: |
         import lmstudio as lms
+
         model = lms.llm()
         print(model.respond("What is the meaning of life?"))
 
@@ -24,9 +25,22 @@ The following snippet shows how to obtain the AI's response to a quick chat prom
       language: python
       code: |
         import lmstudio as lms
+
         with lms.Client() as client:
             model = client.llm.model()
             print(model.respond("What is the meaning of life?"))
+
+    "Python (asynchronous API)":
+      language: python
+      code: |
+        # Note: assumes use of an async function or the "python -m asyncio" asynchronous REPL
+        # Requires Python SDK version 1.5.0 or later
+        import lmstudio as lms
+
+        async with lms.AsyncClient() as client:
+            model = await client.llm.model()
+            print(await model.respond("What is the meaning of life?"))
+
 ```
 
 ## Streaming a Chat Response
@@ -51,10 +65,25 @@ entire response to be generated before displaying anything).
       language: python
       code: |
         import lmstudio as lms
+
         with lms.Client() as client:
             model = client.llm.model()
 
             for fragment in model.respond_stream("What is the meaning of life?"):
+                print(fragment.content, end="", flush=True)
+            print() # Advance to a new line at the end of the response
+
+    "Python (asynchronous API)":
+      language: python
+      code: |
+        # Note: assumes use of an async function or the "python -m asyncio" asynchronous REPL
+        # Requires Python SDK version 1.5.0 or later
+        import lmstudio as lms
+
+        async with lms.AsyncClient() as client:
+            model = await client.llm.model()
+
+            async for fragment in model.respond_stream("What is the meaning of life?"):
                 print(fragment.content, end="", flush=True)
             print() # Advance to a new line at the end of the response
 
@@ -77,14 +106,26 @@ For example, here is how to use Qwen2.5 7B Instruct.
       language: python
       code: |
         import lmstudio as lms
+
         model = lms.llm("qwen2.5-7b-instruct")
 
     "Python (scoped resource API)":
       language: python
       code: |
         import lmstudio as lms
+
         with lms.Client() as client:
             model = client.llm.model("qwen2.5-7b-instruct")
+
+    "Python (asynchronous API)":
+      language: python
+      code: |
+        # Note: assumes use of an async function or the "python -m asyncio" asynchronous REPL
+        # Requires Python SDK version 1.5.0 or later
+        import lmstudio as lms
+
+        async with lms.AsyncClient() as client:
+            model = await client.llm.model("qwen2.5-7b-instruct")
 
 ```
 
@@ -136,7 +177,7 @@ You can ask the LLM to predict the next response in the chat context using the `
 
 ```lms_code_snippet
   variants:
-    "Non-streaming":
+    "Non-streaming (synchronous API)":
       language: python
       code: |
         # The `chat` object is created in the previous step.
@@ -144,7 +185,7 @@ You can ask the LLM to predict the next response in the chat context using the `
 
         print(result)
 
-    Streaming:
+    "Streaming (synchronous API)":
       language: python
       code: |
         # The `chat` object is created in the previous step.
@@ -153,6 +194,29 @@ You can ask the LLM to predict the next response in the chat context using the `
         for fragment in prediction_stream:
             print(fragment.content, end="", flush=True)
         print() # Advance to a new line at the end of the response
+
+    "Non-streaming (asynchronous API)":
+      language: python
+      code: |
+        # Note: assumes use of an async function or the "python -m asyncio" asynchronous REPL
+        # Requires Python SDK version 1.5.0 or later
+        # The `chat` object is created in the previous step.
+        result = await model.respond(chat)
+
+        print(result)
+
+    "Streaming (asynchronous API)":
+      language: python
+      code: |
+        # Note: assumes use of an async function or the "python -m asyncio" asynchronous REPL
+        # Requires Python SDK version 1.5.0 or later
+        # The `chat` object is created in the previous step.
+        prediction_stream = await model.respond_stream(chat)
+
+        async for fragment in prediction_stream:
+            print(fragment.content, end="", flush=True)
+        print() # Advance to a new line at the end of the response
+
 ```
 
 ## Customize Inferencing Parameters
@@ -161,7 +225,15 @@ You can pass in inferencing parameters via the `config` keyword parameter on `.r
 
 ```lms_code_snippet
   variants:
-    Streaming:
+    "Non-streaming (synchronous API)":
+      language: python
+      code: |
+        result = model.respond(chat, config={
+            "temperature": 0.6,
+            "maxTokens": 50,
+        })
+
+    "Streaming (synchronous API)":
       language: python
       code: |
         prediction_stream = model.respond_stream(chat, config={
@@ -169,13 +241,26 @@ You can pass in inferencing parameters via the `config` keyword parameter on `.r
             "maxTokens": 50,
         })
 
-    "Non-streaming":
+    "Non-streaming (asynchronous API)":
       language: python
       code: |
-        result = model.respond(chat, config={
+        # Note: assumes use of an async function or the "python -m asyncio" asynchronous REPL
+        # Requires Python SDK version 1.5.0 or later
+        result = await model.respond(chat, config={
             "temperature": 0.6,
             "maxTokens": 50,
         })
+
+    "Streaming (asynchronous API)":
+      language: python
+      code: |
+        # Note: assumes use of an async function or the "python -m asyncio" asynchronous REPL
+        # Requires Python SDK version 1.5.0 or later
+        prediction_stream = await model.respond_stream(chat, config={
+            "temperature": 0.6,
+            "maxTokens": 50,
+        })
+
 ```
 
 See [Configuring the Model](./parameters) for more information on what can be configured.
@@ -187,7 +272,16 @@ tokens, time to first token, and stop reason.
 
 ```lms_code_snippet
   variants:
-    Streaming:
+    "Non-streaming":
+      language: python
+      code: |
+        # `result` is the response from the model.
+        print("Model used:", result.model_info.display_name)
+        print("Predicted tokens:", result.stats.predicted_tokens_count)
+        print("Time to first token (seconds):", result.stats.time_to_first_token_sec)
+        print("Stop reason:", result.stats.stop_reason)
+
+    "Streaming":
       language: python
       code: |
         # After iterating through the prediction fragments,
@@ -198,22 +292,22 @@ tokens, time to first token, and stop reason.
         print("Predicted tokens:", result.stats.predicted_tokens_count)
         print("Time to first token (seconds):", result.stats.time_to_first_token_sec)
         print("Stop reason:", result.stats.stop_reason)
-    "Non-streaming":
-      language: python
-      code: |
-        # `result` is the response from the model.
-        print("Model used:", result.model_info.display_name)
-        print("Predicted tokens:", result.stats.predicted_tokens_count)
-        print("Time to first token (seconds):", result.stats.time_to_first_token_sec)
-        print("Stop reason:", result.stats.stop_reason)
+
 ```
+
+Both the non-streaming and streaming result access is consistent across the synchronous and
+asynchronous APIs, as `prediction_stream.result()` is a non-blocking API that raises an exception
+if no result is available (either because the prediction is still running, or because the
+prediction request failed). Prediction streams also offer a blocking (synchronous API) or
+awaitable (asynchronous API) `prediction_stream.wait_for_result()` method that internally handles
+iterating the stream to completion before returning the result.
 
 ## Example: Multi-turn Chat
 
 ```lms_code_snippet
   title: "chatbot.py"
   variants:
-    Python:
+    "Python (convenience API)":
       language: python
       code: |
         import lmstudio as lms
@@ -249,7 +343,7 @@ that receives a float from 0.0-1.0 representing prompt processing progress.
 
 ```lms_code_snippet
   variants:
-    Python (convenience API):
+    "Python (convenience API)":
       language: python
       code: |
         import lmstudio as lms
@@ -261,7 +355,7 @@ that receives a float from 0.0-1.0 representing prompt processing progress.
             on_prompt_processing_progress = (lambda progress: print(f"{progress*100}% complete")),
         )
 
-    Python (scoped resource API):
+    "Python (scoped resource API)":
       language: python
       code: |
         import lmstudio as lms
@@ -273,6 +367,22 @@ that receives a float from 0.0-1.0 representing prompt processing progress.
                 "What is LM Studio?",
                 on_prompt_processing_progress = (lambda progress: print(f"{progress*100}% complete")),
             )
+
+    "Python (asynchronous API)":
+      language: python
+      code: |
+        # Note: assumes use of an async function or the "python -m asyncio" asynchronous REPL
+        # Requires Python SDK version 1.5.0 or later
+        import lmstudio as lms
+
+        async with lms.AsyncClient() as client:
+            llm = await client.llm.model()
+
+            response = await llm.respond(
+                "What is LM Studio?",
+                on_prompt_processing_progress = (lambda progress: print(f"{progress*100}% complete")),
+            )
+
 
 ```
 

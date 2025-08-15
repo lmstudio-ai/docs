@@ -55,6 +55,7 @@ The `.model()` retrieves a handle to a model that has already been loaded, or lo
       language: python
       code: |
         import lmstudio as lms
+
         model = lms.llm("qwen2.5-7b-instruct", config={
             "contextLength": 8192,
             "gpu": {
@@ -66,8 +67,27 @@ The `.model()` retrieves a handle to a model that has already been loaded, or lo
       language: python
       code: |
         import lmstudio as lms
+
         with lms.Client() as client:
             model = client.llm.model(
+                "qwen2.5-7b-instruct",
+                config={
+                    "contextLength": 8192,
+                    "gpu": {
+                      "ratio": 0.5,
+                    }
+                }
+            )
+
+    "Python (asynchronous API)":
+      language: python
+      code: |
+        # Note: assumes use of an async function or the "python -m asyncio" asynchronous REPL
+        # Requires Python SDK version 1.5.0 or later
+        import lmstudio as lms
+
+        async with lms.AsyncClient() as client:
+            model = await client.llm.model(
                 "qwen2.5-7b-instruct",
                 config={
                     "contextLength": 8192,
@@ -92,6 +112,7 @@ The `.load_new_instance()` method creates a new model instance and loads it with
       language: python
       code: |
         import lmstudio as lms
+
         client = lms.get_default_client()
         model = client.llm.load_new_instance("qwen2.5-7b-instruct", config={
             "contextLength": 8192,
@@ -104,8 +125,27 @@ The `.load_new_instance()` method creates a new model instance and loads it with
       language: python
       code: |
         import lmstudio as lms
+
         with lms.Client() as client:
             model = client.llm.load_new_instance(
+                "qwen2.5-7b-instruct",
+                config={
+                    "contextLength": 8192,
+                    "gpu": {
+                      "ratio": 0.5,
+                    }
+                }
+            )
+
+    "Python (asynchronous API)":
+      language: python
+      code: |
+        # Note: assumes use of an async function or the "python -m asyncio" asynchronous REPL
+        # Requires Python SDK version 1.5.0 or later
+        import lmstudio as lms
+
+        async with lms.AsyncClient() as client:
+            model = await client.llm.load_new_instance(
                 "qwen2.5-7b-instruct",
                 config={
                     "contextLength": 8192,

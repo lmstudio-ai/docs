@@ -29,6 +29,19 @@ embedding model reference without requiring any other changes.
             model = client.llm.model()
 
             print(model.get_info())
+
+    "Python (asynchronous API)":
+      language: python
+      code: |
+        # Note: assumes use of an async function or the "python -m asyncio" asynchronous REPL
+        # Requires Python SDK version 1.5.0 or later
+        import lmstudio as lms
+
+        async with lms.AsyncClient() as client:
+            model = await client.llm.model()
+
+            print(await model.get_info())
+
 ```
 
 ## Example output

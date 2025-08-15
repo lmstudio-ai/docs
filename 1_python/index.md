@@ -51,6 +51,19 @@ For the source code and open source contribution, visit [lmstudio-python](https:
             result = model.respond("What is the meaning of life?")
 
             print(result)
+
+    "Python (asynchronous API)":
+      language: python
+      code: |
+        # Note: assumes use of an async function or the "python -m asyncio" asynchronous REPL
+        # Requires Python SDK version 1.5.0 or later
+        import lmstudio as lms
+
+        async with lms.AsyncClient() as client:
+            model = await client.llm.model("llama-3.2-1b-instruct")
+            result = await model.respond("What is the meaning of life?")
+
+            print(result)
 ```
 
 ### Getting Local Models
@@ -64,16 +77,52 @@ lms get llama-3.2-1b-instruct
 
 Read more about `lms get` in LM Studio's CLI [here](./cli/get).
 
-# Interactive Convenience or Deterministic Resource Management?
+# Interactive Convenience, Deterministic Resource Management, or Structured Concurrency?
 
-As shown in the example above, there are two distinct approaches for working
+As shown in the example above, there are three distinct approaches for working
 with the LM Studio Python SDK.
 
 The first is the interactive convenience API (listed as "Python (convenience API)"
 in examples), which focuses on the use of a default LM Studio client instance for
-convenient interactions at a Python prompt, or when using Jupyter notebooks.
+convenient interactions at a synchronous Python prompt, or when using Jupyter notebooks.
 
-The second is a scoped resource API (listed as "Python (scoped resource API)"
+The second is a synchronous scoped resource API (listed as "Python (scoped resource API)"
 in examples), which uses context managers to ensure that allocated resources
 (such as network connections) are released deterministically, rather than
 potentially remaining open until the entire process is terminated.
+
+The last is an asynchronous structured concurrency API (listed as "Python (asynchronous API)" in
+examples), which is designed for use in asynchronous programs that follow the design principles of
+["structured concurrency"](https://vorpus.org/blog/notes-on-structured-concurrency-or-go-statement-considered-harmful/)
+in order to ensure the background tasks handling the SDK's connections to the API server host
+are managed correctly. Asynchronous applications which do not adhere to those design principles
+will need to rely on threaded access to the synchronous scoped resource API rather than attempting
+to use the SDK's native asynchronous API. Python SDK version 1.5.0 is the first version to fully
+support the asynchronous API.
+
+Some examples are common between the interactive convenience API and the synchronous scoped
+resource API. These examples are listed as "Python (synchronous API)".
+
+## Timeouts in the synchronous API
+
+*Required Python SDK version*: **1.5.0**
+
+Starting in Python SDK version 1.5.0, the synchronous API defaults to timing out after 60 seconds
+with no activity when waiting for a response or streaming event notification from the API server.
+
+The number of seconds to wait for responses and event notifications can be adjusted using the
+`lmstudio.set_sync_api_timeout()` function. Setting the timeout to `None` disables the timeout
+entirely (restoring the behaviour of previous SDK versions).
+
+The current synchronous API timeout can be queried using the `lmstudio.get_sync_api_timeout()`
+function.
+
+## Timeouts in the asynchronous API
+
+*Required Python SDK version*: **1.5.0**
+
+As asynchronous coroutines support cancellation, there is no specific timeout support implemented
+in the asynchronous API. Instead, general purpose async timeout mechanisms, such as
+[`asyncio.wait_for()`](https://docs.python.org/3/library/asyncio-task.html#asyncio.wait_for) or
+[`anyio.move_on_after()`](https://anyio.readthedocs.io/en/stable/cancellation.html#timeouts),
+should be used.
