@@ -108,7 +108,7 @@ You can also print prediction metadata, such as the model used for generation, n
         print("Time to first token (seconds):", result.stats.time_to_first_token_sec)
         print("Stop reason:", result.stats.stop_reason)
 
-    "Streaming (synchronous API)":
+    "Streaming":
       language: python
       code: |
         # After iterating through the prediction fragments,
@@ -120,21 +120,14 @@ You can also print prediction metadata, such as the model used for generation, n
         print("Time to first token (seconds):", result.stats.time_to_first_token_sec)
         print("Stop reason:", result.stats.stop_reason)
 
-    "Streaming (asynchronous API)":
-      language: python
-      code: |
-        # Note: assumes use of an async function or the "python -m asyncio" asynchronous REPL
-        # Requires Python SDK version 1.5.0 or later
-        # After iterating through the prediction fragments,
-        # the overall prediction result may be obtained from the stream
-        result = await prediction_stream.result()
-
-        print("Model used:", result.model_info.display_name)
-        print("Predicted tokens:", result.stats.predicted_tokens_count)
-        print("Time to first token (seconds):", result.stats.time_to_first_token_sec)
-        print("Stop reason:", result.stats.stop_reason)
-
 ```
+
+Both the non-streaming and streaming result access is consistent across the synchronous and
+asynchronous APIs, as `prediction_stream.result()` is a non-blocking API that raises an exception
+if no result is available (either because the prediction is still running, or because the
+prediction request failed). Prediction streams also offer a blocking (synchronous API) or
+awaitable (asynchronous API) `prediction_stream.wait_for_result()` method that internally handles
+iterating the stream to completion before returning the result.
 
 ## Example: Get an LLM to Simulate a Terminal
 
