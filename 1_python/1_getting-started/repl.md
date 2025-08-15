@@ -59,6 +59,7 @@ For example:
       language: python
       code: |
         # Note: assumes use of the "python -m asyncio" asynchronous REPL (or equivalent)
+        # Requires Python SDK version 1.5.0 or later
         >>> from contextlib import AsyncExitStack
         >>> import lmstudio as lms
         >>> resources = AsyncExitStack()
