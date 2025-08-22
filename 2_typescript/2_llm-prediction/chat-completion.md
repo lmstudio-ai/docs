@@ -160,7 +160,7 @@ tokens, time to first token, and stop reason.
 
 ## Example: Multi-turn Chat
 
-TODO: Probably needs polish here:
+<!-- TODO: Probably needs polish here: -->
 
 ```lms_code_snippet
   variants:
