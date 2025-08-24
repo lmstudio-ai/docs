@@ -6,11 +6,11 @@ index: 5
 
 `Draft`
 
-[`model.yaml`](https://modelyaml.org) describes a model and all of its variants in a single portable file. Models in LM Studio's [model catalog](https://lmstudio.ai/models) are all described using model.yaml.
+[`model.yaml`](https://modelyaml.org) describes a model and all of its variants in a single portable file. Models in LM Studio's [model catalog](https://lmstudio.ai/models) are all implemented using model.yaml.
 
 This allows abstracting away the underlying format (GGUF, MLX, etc) and presenting a single entry point for a given model. Furthermore, the model.yaml file supports baking in additional metadata, load and inference options, and even custom logic (e.g. enable/disable thinking).
 
-You can clone existing model.yaml files on the LM Studio Hub and even [publish your own](./publish-model-yaml)!
+**You can clone existing model.yaml files on the LM Studio Hub and even [publish your own](./modelyaml/publish)!**
 
 ## Core fields
 

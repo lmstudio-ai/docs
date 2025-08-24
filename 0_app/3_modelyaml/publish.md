@@ -4,7 +4,7 @@ description: Upload your model definition to the LM Studio Hub.
 index: 7
 ---
 
-Share portable models by uploading a [`model.yaml`](./model-yaml) to your page on the LM Studio Hub.
+Share portable models by uploading a [`model.yaml`](./index) to your page on the LM Studio Hub.
 
 After you publish a model.yaml to the LM Studio Hub, it will be available for other users to download with `lms get`.
 

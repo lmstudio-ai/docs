@@ -2,8 +2,6 @@
 title: "`LLMPredictionConfigInput`"
 ---
 
-TODO: What is it
-
 ### Fields
 
 ```lms_params

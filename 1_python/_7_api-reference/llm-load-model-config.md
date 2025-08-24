@@ -2,8 +2,6 @@
 title: "`LLMLoadModelConfig`"
 ---
 
-TODO: What is it
-
 ### Parameters
 
 ```lms_params
