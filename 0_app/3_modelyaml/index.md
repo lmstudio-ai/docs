@@ -2,6 +2,9 @@
 title: "Introduction to `model.yaml`"
 description: Describe models with the cross-platform `model.yaml` specification.
 index: 5
+socialCard: 
+  url: https://files.lmstudio.ai/modelyaml-card.jpg
+  alt: "model.yaml logo"
 ---
 
 `Draft`
