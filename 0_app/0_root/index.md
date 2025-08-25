@@ -42,7 +42,7 @@ To install or manage LM Runtimes, press `⌘` `Shift` `R` on Mac or `Ctrl` `Shif
 
 <hr>
 
-### Run an LLM like `Llama`, `Phi`, or `DeepSeek R1` on your computer
+### Run an LLM like `gpt-oss`, `Llama`, `Qwen`, `Mistral`, or `DeepSeek R1` on your computer
 
 To run an LLM on your computer you first need to download the model weights.
 
