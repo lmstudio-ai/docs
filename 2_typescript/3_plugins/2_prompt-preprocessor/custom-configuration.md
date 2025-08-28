@@ -1,5 +1,6 @@
 ---
 title: "Custom Configuration"
++description: "Access custom configuration options in your prompt preprocessor"
 index: 3
 ---
 

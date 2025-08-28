@@ -1,5 +1,6 @@
 ---
 title: "Introduction"
+description: "Writing prompt preprocessors for LM Studio plugins using TypeScript"
 index: 1
 ---
 

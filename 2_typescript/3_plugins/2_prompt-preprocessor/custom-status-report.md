@@ -1,5 +1,6 @@
 ---
 title: "Custom Status Report"
++description: "Report status updates during prompt preprocessing in your prompt preprocessor"
 index: 4
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: "Multiple Tools"
++description: "Define and use multiple tools in your tools provider"
 index: 4
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: "Text-only Generators"
++description: "Create text-only generators for LM Studio plugins using TypeScript"
 index: 2
 ---
 

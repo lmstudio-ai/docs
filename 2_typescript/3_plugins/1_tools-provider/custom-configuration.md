@@ -1,5 +1,6 @@
 ---
 title: "Custom Configuration"
+description: "Add custom configuration options to your tools provider"
 index: 5
 ---
 

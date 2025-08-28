@@ -1,5 +1,6 @@
 ---
 title: "Status Reports & Warnings"
++description: "Report status updates and warnings during tool execution in your tools provider"
 index: 6
 ---
 

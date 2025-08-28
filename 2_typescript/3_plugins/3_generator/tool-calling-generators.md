@@ -1,5 +1,6 @@
 ---
 title: "Tool calling generators"
++description: "Implement generators that can call tools in your LM Studio plugin"
 index: 3
 ---
 

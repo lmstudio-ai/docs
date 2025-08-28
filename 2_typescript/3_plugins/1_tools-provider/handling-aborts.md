@@ -1,5 +1,6 @@
 ---
 title: "Handling Aborts"
+description: "Gracefully handle user-aborted tool executions in your tools provider"
 index: 7
 ---
 

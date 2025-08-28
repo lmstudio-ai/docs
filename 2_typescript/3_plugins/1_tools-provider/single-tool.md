@@ -1,5 +1,6 @@
 ---
 title: "Single Tool"
++description: "Set up a tools provider with a single tool in your LM Studio plugin"
 index: 3
 ---
 

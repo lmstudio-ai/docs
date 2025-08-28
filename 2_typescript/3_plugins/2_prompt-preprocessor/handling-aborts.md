@@ -1,5 +1,6 @@
 ---
 title: "Handling Aborts"
++description: "Gracefully handle user-aborted generations in your prompt preprocessor"
 index: 5
 ---
 

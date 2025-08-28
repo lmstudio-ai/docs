@@ -1,5 +1,6 @@
 ---
 title: "Defining New Fields"
++description: "Define new configuration fields for your LM Studio plugin"
 index: 4
 ---
 

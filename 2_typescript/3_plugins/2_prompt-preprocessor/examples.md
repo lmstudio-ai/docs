@@ -1,5 +1,6 @@
 ---
 title: "Examples"
++description: "Example prompt preprocessors for LM Studio plugins"
 index: 2
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: "Accessing Configuration"
++description: "Access custom configuration options in your LM Studio plugin"
 index: 3
 ---
 
