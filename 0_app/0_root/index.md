@@ -1,5 +1,5 @@
 ---
-title: About LM Studio
+title: LM Studio Docs
 description: Learn how to run Llama, DeepSeek, Qwen, Phi, and other LLMs locally with LM Studio.
 index: 1
 ---
