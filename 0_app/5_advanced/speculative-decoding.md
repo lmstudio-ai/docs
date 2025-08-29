@@ -1,6 +1,7 @@
 ---
 title: Speculative Decoding
 description: "Speed up generation with a draft model"
+index: 1
 ---
 
 `Advanced`
@@ -8,8 +9,6 @@ description: "Speed up generation with a draft model"
 Speculative decoding is a technique that can substantially increase the generation speed of large language models (LLMs) without reducing response quality.
 
 <hr>
-
-> 🔔 Speculative Decoding requires LM Studio 0.3.10 or newer, currently in beta. [Get it here](https://lmstudio.ai/beta-releases).
 
 ## What is Speculative Decoding
 

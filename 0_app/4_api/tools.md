@@ -8,8 +8,6 @@ Tool use enables LLMs to request calls to external functions and APIs through th
 
 <hr>
 
-> 🔔 Tool use requires LM Studio 0.3.6 or newer, [get it here](https://lmstudio.ai/download)
-
 ## Quick Start
 
 ### 1. Start LM Studio as a server

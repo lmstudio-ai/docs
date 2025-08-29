@@ -1,11 +1,9 @@
 ---
 title: Get started with LM Studio
 sidebar_title: Overview
-description: Download and run Large Language Models (LLMs) like Llama 3.1, Phi-3, and Gemma 2 locally in LM Studio
+description: Download and run Large Language Models like Qwen, Mistral, Gemma, or gpt-oss in LM Studio.
 index: 1
 ---
-
-You can use openly available Large Language Models (LLMs) like Llama 3.1, Phi-3, and Gemma 2 locally in LM Studio, leveraging your computer's CPU and optionally the GPU.
 
 Double check computer meets the minimum [system requirements](/docs/system-requirements).
 

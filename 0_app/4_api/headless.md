@@ -5,13 +5,11 @@ description: "GUI-less operation of LM Studio: run in the background, start on m
 index: 2
 ---
 
-`Advanced`
+LM Studio can be run as a service without the GUI. This is useful for running LM Studio on a server or in the background on your local machine. This works on Mac, Windows, and Linux machines with a graphical user interface.
 
-Starting in v[0.3.5](/blog/lmstudio-v0.3.5), LM Studio can be run as a service without the GUI. This is useful for running LM Studio on a server or in the background on your local machine.
+<br />
 
-<hr>
-
-### Run LM Studio as a service
+## Run LM Studio as a service
 
 Running LM Studio as a service consists of several new features intended to make it more efficient to use LM Studio as a developer tool.
 
@@ -19,9 +17,9 @@ Running LM Studio as a service consists of several new features intended to make
 2. The ability to start the LM Studio LLM server on machine login, headlessly
 3. On-demand model loading
 
-<hr>
+<br />
 
-### Run the LLM service on machine login
+## Run the LLM service on machine login
 
 To enable this, head to app settings (`Cmd` / `Ctrl` + `,`) and check the box to run the LLM server on login.
 
@@ -29,15 +27,15 @@ To enable this, head to app settings (`Cmd` / `Ctrl` + `,`) and check the box to
 
 When this setting is enabled, exiting the app will minimize it to the system tray, and the LLM server will continue to run in the background.
 
-<hr>
+<br />
 
-### Just-In-Time (JIT) model loading for OpenAI endpoints
+## Just-In-Time (JIT) model loading for OpenAI endpoints
 
 Useful when utilizing LM Studio as an LLM service with other frontends or applications.
 
 <img src="/assets/docs/jit-loading.png" style="" data-caption="Load models on demand" />
 
-<hr>
+<br />
 
 #### When JIT loading is ON:
 
@@ -54,9 +52,9 @@ Useful when utilizing LM Studio as an LLM service with other frontends or applic
 As of LM Studio 0.3.5, auto unloading is not yet in place. Models that are loaded via JIT loading will remain in memory until you unload them.
 We expect to implement more sophisticated memory management in the near future. Let us know if you have any feedback or suggestions.
 
-<hr>
+<br />
 
-### Auto Server Start
+## Auto Server Start
 
 Your last server state will be saved and restored on app or service launch.
 
@@ -70,7 +68,7 @@ lms server start
 If you haven't already, bootstrap `lms` on your machine by following the instructions [here](/docs/cli).
 ```
 
-<hr>
+<br />
 
 ### Community
 

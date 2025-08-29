@@ -4,13 +4,7 @@ description: Supported CPU, GPU types for LM Studio on Mac (M1/M2/M3/M4), Window
 index: 3
 ---
 
-Minimum system requirements for running LM Studio.
-
-<hr>
-
-###### We are actively working to add support for more platforms and configurations. If you noticed an error in this page, please let us know by opening an issue on [github](https://github.com/lmstudio-ai/lmstudio-bug-tracker).
-
-### macOS
+## macOS
 
 - Chip: Apple Silicon (M1/M2/M3/M4).
 - macOS 13.4 or newer is required.
@@ -19,7 +13,7 @@ Minimum system requirements for running LM Studio.
   - You may still be able to use LM Studio on 8GB Macs, but stick to smaller models and modest context sizes.
 - Intel-based Macs are currently not supported. Chime in [here](https://github.com/lmstudio-ai/lmstudio-bug-tracker/issues/9) if you are interested in this.
 
-### Windows
+## Windows
 
 LM Studio is supported on both x64 and ARM (Snapdragon X Elite) based systems.
 
@@ -27,7 +21,7 @@ LM Studio is supported on both x64 and ARM (Snapdragon X Elite) based systems.
 - RAM: LLMs can consume a lot of RAM. At least 16GB of RAM is recommended.
 - GPU: at least 4GB of dedicated VRAM is recommended.
 
-### Linux
+## Linux
 
 - LM Studio for Linux is distributed as an AppImage.
 - Ubuntu 20.04 or newer is required
