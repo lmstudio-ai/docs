@@ -1,5 +1,5 @@
 ---
-title: "`lms get` Reference"
+title: "`lms get`"
 sidebar_title: "`lms get`"
 description: Search and download models from the command line.
 index: 4

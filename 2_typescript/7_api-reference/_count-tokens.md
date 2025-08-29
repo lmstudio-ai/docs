@@ -1,5 +1,5 @@
 ---
-title: "`.countTokens()` Reference"
+title: "`.countTokens()`"
 sidebar_title: "`.countTokens()`"
 description: ".countTokens() - API reference for counting tokens in a string using a model's tokenizer"
 ---

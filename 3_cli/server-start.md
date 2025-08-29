@@ -1,5 +1,5 @@
 ---
-title: "`lms server start` Reference"
+title: "`lms server start`"
 sidebar_title: "`lms server start`"
 description: Start the LM Studio local server with customizable port and logging options.
 index: 5

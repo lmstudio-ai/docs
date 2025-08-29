@@ -4,26 +4,22 @@ description: Learn how to run Llama, DeepSeek, Qwen, Phi, and other LLMs locally
 index: 1
 ---
 
-LM Studio is a desktop app for developing and experimenting with LLMs locally on your computer.
-
-**Key functionality**
-
-1. Download and run local LLMs like gpt-oss or Llama, Qwen
-2. Simple and flexible chat interface
-3. Connect MCP servers and use them with local models
-4. Search & download functionality (via Hugging Face 🤗)
-5. Local dev server that serves on OpenAI-like endpoints
-6. Systems for managing local models and configurations
-
-<hr>
-
-## How do I install LM Studio?
-
-Head over to the [Downloads page](/download) and download an installer for your operating system.
+To get LM Studio, head over to the [Downloads page](/download) and download an installer for your operating system.
 
 LM Studio is available for macOS, Windows, and Linux.
 
-<hr>
+<br />
+
+## What can I do with LM Studio?
+
+1. Download and run local LLMs like gpt-oss or Llama, Qwen
+2. Use a simple and flexible chat interface
+3. Connect MCP servers and use them with local models
+4. Search & download functionality (via Hugging Face 🤗)
+5. Serve local models on OpenAI-like endpoints, locally and on the network
+6. Manage your local models, prompts, and configurations
+
+<br />
 
 ## System requirements
 
@@ -31,7 +27,7 @@ LM Studio generally supports Apple Silicon Macs, x64/ARM64 Windows PCs, and x64 
 
 Consult the [System Requirements](app/system-requirements) page for more detailed information.
 
-<hr>
+<br />
 
 ## Run llama.cpp (GGUF) or MLX models
 
@@ -41,7 +37,7 @@ On Apple Silicon Macs, LM Studio also supports running LLMs using Apple's [`MLX`
 
 To install or manage LM Runtimes, press `⌘` `Shift` `R` on Mac or `Ctrl` `Shift` `R` on Windows/Linux.
 
-<hr>
+<br />
 
 ## LM Studio as an MCP client
 
@@ -51,7 +47,7 @@ See the docs for more: [Use MCP server](/docs/app/plugins/mcp).
 
 If you're develping an MCP server, check out [Add to LM Studio Button](/docs/app/plugins/mcp/deeplink).
 
-<hr>
+<br />
 
 ## Run an LLM like `gpt-oss`, `Llama`, `Qwen`, `Mistral`, or `DeepSeek R1` on your computer
 
@@ -59,7 +55,7 @@ To run an LLM on your computer you first need to download the model weights.
 
 You can do this right within LM Studio! See [Download an LLM](app/basics/download-model) for guidance.
 
-<hr>
+<br />
 
 ## Chat with documents entirely offline on your computer
 
@@ -74,7 +70,7 @@ LM Studio provides a REST API that you can use to interact with your local model
 - [OpenAI Compatibility API](api/openai-api)
 - [LM Studio REST API (beta)](api/rest-api)
 
-<hr>
+<br />
 
 ## Community
 

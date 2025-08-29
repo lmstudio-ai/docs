@@ -1,5 +1,5 @@
 ---
-title: "`lms push` Reference"
+title: "`lms push`"
 sidebar_title: "`lms push`"
 description: Upload a plugin, preset, or `model.yaml` to the LM Studio Hub.
 index: 9

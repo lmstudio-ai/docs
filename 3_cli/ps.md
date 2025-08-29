@@ -1,5 +1,5 @@
 ---
-title: "`lms ps` Reference"
+title: "`lms ps`"
 sidebar_title: "`lms ps`"
 description: Show information about currently loaded models from the command line.
 ---
