@@ -1,5 +1,5 @@
 ---
-title: "`.complete()` Reference"
+title: "`.complete()`"
 sidebar_title: "`.complete()`"
 description: ".complete() - API reference for generating text completions from a loaded language model"
 index: 4

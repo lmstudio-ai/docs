@@ -1,5 +1,5 @@
 ---
-title: "`lms unload` Reference"
+title: "`lms unload`"
 sidebar_title: "`lms unload`"
 description: Unload one or all models from memory using the command line.
 index: 3
@@ -7,7 +7,7 @@ index: 3
 
 The `lms unload` command unloads a model from memory. You can optionally specify a model key to unload a specific model, or use the `--all` flag to unload all models.
 
-## Parameters
+### Parameters
 ```lms_params
 - name: "[model_key]"
   type: "string"

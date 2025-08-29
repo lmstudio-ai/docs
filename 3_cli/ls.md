@@ -1,5 +1,5 @@
 ---
-title: "`lms ls` Reference"
+title: "`lms ls`"
 sidebar_title: "`lms ls`"
 description: List all downloaded models in your LM Studio installation.
 index: 8

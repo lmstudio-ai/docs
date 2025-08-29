@@ -1,5 +1,5 @@
 ---
-title: "`lms load` Reference"
+title: "`lms load`"
 sidebar_title: "`lms load`"
 description: Stream logs from LM Studio. Useful for debugging prompts sent to the model.
 index: 2
