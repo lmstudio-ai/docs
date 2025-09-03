@@ -247,7 +247,7 @@ Models with Native tool use support will have a hammer badge in the app, and gen
 
 1. The model has a chat template that supports tool use (usually means the model has been trained for tool use)
    - This is what will be used to format the `tools` array into the system prompt and tell them model how to format tool calls
-   - Example: [Qwen2.5-Instruct chat template](https://huggingface.co/mlx-community/Qwen2.5-7B-Instruct-4bit/blob/c26a38f6a37d0a51b4e9a1eb3026530fa35d9fed/tokenizer_config.json#L197)
+   - Example: [Qwen2.5-Instruct chat template](https://huggingface.co/mlx-community/Qwen2.5-7B-Instruct-4bit?chat_template=default)
 2. LM Studio supports that model's tool use format
    - Required for LM Studio to properly input the chat history into the chat template, and parse the tool calls the model outputs into the `chat.completion` object
 
@@ -720,6 +720,7 @@ def open_safe_url(url: str) -> dict:
     # List of allowed domains (expand as needed)
     SAFE_DOMAINS = {
         "lmstudio.ai",
+        "huggingface.co",
         "github.com",
         "google.com",
         "wikipedia.org",
