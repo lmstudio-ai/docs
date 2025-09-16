@@ -1,4 +1,18 @@
+###### LM Studio 0.3.26 • 2025‑09‑15
+
+### CLI log streaming: server + model
+
+- `lms log stream` now supports multiple sources and filters.
+  - `--source server` streams HTTP server logs (startup, endpoints, status)
+  - `--source model --filter input,output` streams formatted user input and model output
+  - Append `--json` for machine‑readable logs; `--stats` adds tokens/sec and related metrics (model source)
+- See usage and examples: [/docs/cli/log-stream](/docs/cli/log-stream). Full release notes: [/blog/lmstudio-v0.3.26](/blog/lmstudio-v0.3.26).
+
 ---
+
+###### LM Studio 0.3.19 • 2025‑07‑21
+
+### Bug fixes for streaming and tool calls
 title: API Changelog
 description: LM Studio API Changelog - new features and updates
 index: 2
