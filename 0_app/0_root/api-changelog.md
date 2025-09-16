@@ -1,3 +1,9 @@
+---
+title: API Changelog
+description: LM Studio API Changelog - new features and updates
+index: 2
+---
+
 ###### LM Studio 0.3.26 • 2025‑09‑15
 
 ### CLI log streaming: server + model
@@ -10,12 +16,32 @@
 
 ---
 
-###### LM Studio 0.3.19 • 2025‑07‑21
+###### LM Studio 0.3.25 • 2025‑09‑04
 
-### Bug fixes for streaming and tool calls
-title: API Changelog
-description: LM Studio API Changelog - new features and updates
-index: 2
+### New model support (API)
+
+- Added support for NVIDIA Nemotron‑Nano‑v2 with tool‑calling via the OpenAI‑compatible endpoints [‡](/blog/lmstudio-v0.3.25).
+- Added support for Google EmbeddingGemma for the `/v1/embeddings` endpoint [‡](/blog/lmstudio-v0.3.25).
+
+---
+
+###### LM Studio 0.3.24 • 2025‑08‑28
+
+### Seed‑OSS tool‑calling and template fixes
+
+- Added support for ByteDance/Seed‑OSS including tool‑calling and prompt‑template compatibility fixes in the OpenAI‑compatible API [‡](/blog/lmstudio-v0.3.24).
+- Fixed cases where tool calls were not parsed for certain prompt templates [‡](/blog/lmstudio-v0.3.24).
+
+---
+
+###### LM Studio 0.3.23 • 2025‑08‑12
+
+### Reasoning content and tool‑calling reliability
+
+- For `gpt‑oss` on `POST /v1/chat/completions`, reasoning content moves out of `message.content` and into `choices.message.reasoning` (non‑streaming) and `choices.delta.reasoning` (streaming), aligning with `o3‑mini` [‡](/blog/lmstudio-v0.3.23).
+- Tool names are normalized (e.g., snake_case) before being provided to the model to improve tool‑calling reliability [‡](/blog/lmstudio-v0.3.23).
+- Fixed errors for certain tools‑containing requests to `POST /v1/chat/completions` (e.g., "reading 'properties'") and non‑streaming tool‑call failures [‡](/blog/lmstudio-v0.3.23).
+
 ---
 
 ###### LM Studio 0.3.19 • 2025‑07‑21
