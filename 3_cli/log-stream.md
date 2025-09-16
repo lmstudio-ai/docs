@@ -5,9 +5,7 @@ description: Stream logs from LM Studio. Useful for debugging prompts sent to th
 index: -1
 ---
 
-`lms log stream` allows you to inspect the exact input string that goes to the model.
-
-This is particularly useful for debugging prompt template issues and other unexpected LLM behaviors.
+`lms log stream` lets you inspect the exact strings LM Studio sends to and receives from models, and (new in 0.3.26) stream server logs. This is useful for debugging prompt templates, model IO, and server operations.
 
 <hr>
 
@@ -15,31 +13,82 @@ This is particularly useful for debugging prompt template issues and other unexp
 If you haven't already, bootstrap `lms` on your machine by following the instructions [here](/docs/cli).
 ```
 
-### Debug your prompts with `lms log stream`
+### Quick start (model input)
 
-`lms log stream` allows you to inspect the exact input string that goes to the model.
-
-Open a terminal and run the following command:
+By default, `lms log stream` shows the formatted user message that is sent to the model:
 
 ```shell
 lms log stream
 ```
 
-This will start streaming logs from LM Studio. Send a message in the Chat UI or send a request to the local server to see the logs.
+Send a message in Chat or call the local HTTP API to see logs.
 
-### Example output
+### Choose a source
+
+Use `--source` to select which logs to stream:
+
+- `--source model` (default) — model IO
+- `--source server` — HTTP API server logs (startup, endpoints, status)
+
+Example (server logs):
+
+```shell
+lms log stream --source server
+```
+
+### Filter model logs
+
+When streaming `--source model`, filter by direction:
+
+- `--filter input` — formatted user message sent to the model
+- `--filter output` — model output (printed after completion)
+- `--filter input,output` — both user input and model output
+
+Examples:
+
+```shell
+# Only the formatted user input
+lms log stream --source model --filter input
+
+# Only the model output (emitted once the message completes)
+lms log stream --source model --filter output
+
+# Both directions
+lms log stream --source model --filter input,output
+```
+
+Note: model output is queued and printed once the message completes.
+
+### JSON output and stats
+
+- Append `--json` to emit machine‑readable JSON logs:
+
+```shell
+lms log stream --source model --filter input,output --json
+```
+
+- Append `--stats` (model source) to include tokens/sec and related metrics:
+
+```shell
+lms log stream --source model --filter output --stats
+```
+
+### Example (model input and output)
 
 ```bash
-$ lms log stream
-I Streaming logs from LM Studio
+$ lms log stream --source model --filter input,output
+Streaming logs from LM Studio
 
-timestamp: 5/2/2024, 9:49:47 PM
+timestamp: 9/15/2025, 3:16:39 PM
 type: llm.prediction.input
-modelIdentifier: TheBloke/TinyLlama-1.1B-1T-OpenOrca-GGUF/tinyllama-1.1b-1t-openorca.Q2_K.gguf
-modelPath: TheBloke/TinyLlama-1.1B-1T-OpenOrca-GGUF/tinyllama-1.1b-1t-openorca.Q2_K.gguf
-input: "Below is an instruction that describes a task. Write a response that appropriately completes the request.
-### Instruction:
-Hello, what's your name?
-### Response:
-"
+modelIdentifier: gpt-oss-20b-mlx
+modelPath: lmstudio-community/gpt-oss-20b-mlx-8bit
+input:
+<|start|>system<|message|>...<|end|><|start|>user<|message|>hello<|end|><|start|>assistant
+
+timestamp: 9/15/2025, 3:16:40 PM
+type: llm.prediction.output
+modelIdentifier: gpt-oss-20b-mlx
+output:
+Hello! 👋 How can I assist you today?
 ```
