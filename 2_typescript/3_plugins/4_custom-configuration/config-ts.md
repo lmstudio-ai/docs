@@ -51,7 +51,7 @@ By default, the plugin scaffold will create a `config.ts` file in the `src/` dir
           .build();
 ```
 
-If you've added your config schematics manual, you will also need to register the configurations in your plugin's `index.ts` file.
+If you've added your config schematics manually, you will also need to register the configurations in your plugin's `index.ts` file.
 
 This is done by calling `context.withConfigSchematics(configSchematics)` and `context.withGlobalConfigSchematics(globalConfigSchematics)` in the `main` function of your plugin.
 
