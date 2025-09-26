@@ -4,6 +4,18 @@ description: LM Studio API Changelog - new features and updates
 index: 2
 ---
 
+###### LM Studio 0.3.27 • 2025‑09‑24
+
+### CLI: model resource estimates, status, and interrupts
+
+- New: `lms load --estimate-only <model>` prints estimated GPU and total memory before loading. Honors `--context-length` and `--gpu`, and uses an improved estimator that now accounts for flash attention and vision models.
+- `lms chat`: press `Ctrl+C` to interrupt an ongoing prediction.
+- `lms ps --json` now reports each model's generation status and the number of queued prediction requests.
+- CLI color contrast improved for light mode.
+- See docs: [/docs/cli/load](/docs/cli/load). Full release notes: [/blog/lmstudio-v0.3.27](/blog/lmstudio-v0.3.27).
+
+---
+
 ###### LM Studio 0.3.26 • 2025‑09‑15
 
 ### CLI log streaming: server + model
