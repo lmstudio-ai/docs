@@ -1,7 +1,7 @@
 ---
 title: "`lms load`"
 sidebar_title: "`lms load`"
-description: Stream logs from LM Studio. Useful for debugging prompts sent to the model.
+description: Load a model into memory, set context length, GPU offload, TTL, or estimate memory usage without loading.
 index: 2
 ---
 
@@ -29,6 +29,10 @@ The `lms load` command loads a model into memory. You can optionally set paramet
   type: "string"
   optional: true
   description: "The identifier to assign to the loaded model for API reference"
+- name: "--estimate-only"
+  type: "boolean"
+  optional: true
+  description: "Print a resource (memory) estimate and exit without loading the model"
 ```
 
 ## Load a model
@@ -79,6 +83,27 @@ Set an auto-unload timer with the `--ttl` flag (in seconds):
 
 ```shell
 lms load <model_key> --ttl 3600   # Unload after 1 hour of inactivity
+```
+
+### Estimate resources without loading
+
+Preview memory requirements before loading a model using `--estimate-only`:
+
+```shell
+lms load --estimate-only <model_key>
+```
+
+Optional flags such as `--context-length` and `--gpu` are honored and reflected in the estimate. The estimator accounts for factors like context length, flash attention, and whether the model is vision‑enabled.
+
+Example:
+
+```bash
+$ lms load --estimate-only gpt-oss-120b
+Model: openai/gpt-oss-120b
+Estimated GPU Memory:   65.68 GB
+Estimated Total Memory: 65.68 GB
+
+Estimate: This model may be loaded based on your resource guardrails settings.
 ```
 
 ## Operate on a remote LM Studio instance
