@@ -60,7 +60,7 @@ curl http://{{hostname}}:{{port}}/v1/chat/completions \
               "type": "string"
             }
           },
-        "required": ["joke"]
+          "required": ["joke"]
         }
       }
     },
