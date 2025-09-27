@@ -48,6 +48,8 @@ With this in mind, we say that the `.act()` API is an automatic "multi-round" to
         });
 ```
 
+> **_NOTE:_**  Make sure to use zod v3 for this code (and not the latest release v4)!
+
 ### What does it mean for an LLM to "use a tool"?
 
 LLMs are largely text-in, text-out programs. So, you may ask "how can an LLM use a tool?". The answer is that some LLMs are trained to ask the human to call the tool for them, and expect the tool output to to be provided back in some format.
