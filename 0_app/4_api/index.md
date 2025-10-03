@@ -2,6 +2,7 @@
 title: LM Studio as a Local LLM API Server
 sidebar_title: Overview
 description: Run an LLM API server on localhost with LM Studio
+index: 1
 ---
 
 You can serve local LLMs from LM Studio's Developer tab, either on localhost or on the network.

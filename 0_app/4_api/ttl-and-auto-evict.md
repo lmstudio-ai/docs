@@ -1,7 +1,7 @@
 ---
 title: Idle TTL and Auto-Evict
 description: Optionally auto-unload idle models after a certain amount of time (TTL)
-index: 2
+index: 5
 ---
 
 LM Studio 0.3.9 (b1) introduces the ability to set a _time-to-live_ (TTL) for API models, and optionally auto-evict previously loaded models before loading new ones.
