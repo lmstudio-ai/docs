@@ -1,7 +1,6 @@
 ---
-title: OpenAI Compatibility API
+title: Endpoints
 description: Send requests to Chat Completions (text and images), Completions, and Embeddings endpoints
-index: 1
 ---
 
 Send requests to Chat Completions (text and images), Completions, and Embeddings endpoints.
