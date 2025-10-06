@@ -4,6 +4,20 @@ description: LM Studio API Changelog - new features and updates
 index: 2
 ---
 
+###### LM Studio 0.3.29 • 2025‑10‑06
+
+### OpenAI `/v1/responses` and variant listing
+
+- New OpenAI‑compatible endpoint: `POST /v1/responses`.
+  - Stateful interactions via `previous_response_id`.
+  - Custom tool calling and Remote MCP support (opt‑in).
+  - Reasoning support with `reasoning.effort` for `openai/gpt‑oss‑20b`.
+  - Streaming via SSE when `stream: true`.
+- CLI: `lms ls --variants` lists all variants for multi‑variant models.
+- Docs: [/docs/app/api/endpoints/openai](/docs/app/api/endpoints/openai). Full release notes: [/blog/lmstudio-v0.3.29](/blog/lmstudio-v0.3.29).
+
+---
+
 ###### LM Studio 0.3.27 • 2025‑09‑24
 
 ### CLI: model resource estimates, status, and interrupts
