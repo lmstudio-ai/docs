@@ -1,6 +1,7 @@
 ---
 title: "Load a model"
 description: "Load a model into memory with custom configuration for inference"
+index: 4
 ---
 ## Load a model
 
@@ -111,5 +112,3 @@ variants:
       }
 ```
 ````
-
-

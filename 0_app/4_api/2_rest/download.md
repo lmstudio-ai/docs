@@ -1,6 +1,7 @@
 ---
 title: "Download a model"
 description: "Download models from LM Studio Hub or Hugging Face"
+index: 5
 ---
 
 ## Download a model

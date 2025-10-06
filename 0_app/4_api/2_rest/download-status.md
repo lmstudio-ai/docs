@@ -1,6 +1,7 @@
 ---
 title: "Get download status"
 description: "Get the status of model downloads"
+index: 6
 ---
 
 ## Get download status (all jobs)

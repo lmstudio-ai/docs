@@ -1,25 +1,15 @@
 ---
-title: LM Studio REST API
-sidebar_title: v1
-description: "v1"
-index: 1
+title: "Chat with a model"
+description: "Send a chat message to a model and receive a response with optional MCP server integration"
+index: 2
 ---
-
-## Supported Endpoints
-
-- [`POST /api/v1/chat`](#chat-with-a-model) - Chat with a model
-- [`POST /api/v1/models/load`](#load-a-model) - Load a model
-- [`POST /api/v1/models/download`](#download-a-model) - Download a model
-- [`GET /api/v1/models`](#list-your-models) - List your models
-
 ## Chat with a model
-`POST /api/v1/chat`
 
 Send a chat message to a model and receive a response. Provide text input to generate text output. Optionally include remote MCP servers that the model can call.
 
----
-
 ````lms_hstack
+`POST /api/v1/chat`
+
 **Request body**
 ```lms_params
 - name: model
@@ -97,7 +87,7 @@ variants:
       curl http://127.0.0.1:1234/api/v1/chat \
         -H "Content-Type: application/json" \
         -d '{
-          "model": "openai/gpt-oss-20b,
+          "model": "openai/gpt-oss-20b",
           "input": "What is the first sentence of the tiktoken documentation?",
           "mcp_servers": [
             {
@@ -111,30 +101,39 @@ variants:
           "context_length": 5000
         }'
 ```
-
 ````
 
 ---
 
 ````lms_hstack
-**Response**
+**Response fields**
 ```lms_params
 - name: model_instance_id
   type: string
-  optional: false
   description: Identifier of the specific model instance that generated the response.
 - name: output
   type: array<object>
-  optional: false
   description: Sequence of output items generated for this request.
 - name: stats
   type: object
-  optional: false
-  description: Token counts and performance metrics
+  description: Token counts and performance metrics.
+  children:
+    - name: input_tokens
+      type: number
+      description: Number of tokens in the input.
+    - name: total_output_tokens
+      type: number
+      description: Total number of output tokens generated.
+    - name: reasoning_output_tokens
+      type: number
+      description: Number of tokens used for reasoning.
+    - name: tokens_per_second
+      type: number
+      description: Generation speed in tokens per second.
 - name: thread_id
   type: string
   optional: true
-  description: Returned when storing to a thread is enabled; identifier of the associated thread. to use in subsequent requests.
+  description: Returned when storing to a thread is enabled; identifier of the associated thread to use in subsequent requests.
 ```
 :::split:::
 ```lms_code_snippet
@@ -159,7 +158,7 @@ variants:
           },
           {
             "type": "message",
-            "content": "The first sentence of the tiktoken documentation is:\n\n> “tiktoken is a fast BPE tokeniser for use with OpenAI’s models.”"
+            "content": "The first sentence of the tiktoken documentation is:\n\n> "tiktoken is a fast BPE tokeniser for use with OpenAI's models.""
           }
         ],
         "stats": {
@@ -171,21 +170,4 @@ variants:
         "thread_id": "thread_e07fff380975be4d76d7d95bcf2cfb978c79b8baca467e2b"
       }
 ```
-
 ````
-
-
-## Load a model
-`POST /api/v1/models/load`
-
-
-## Download a model
-`POST /api/v1/models/download`
-
-## List your models
-`GET /api/v1/models`
-
-
----
-
-Please report bugs by opening an issue on [Github](https://github.com/lmstudio-ai/lmstudio-bug-tracker/issues).
