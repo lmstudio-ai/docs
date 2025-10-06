@@ -19,26 +19,27 @@ Load a model into memory with custom configuration for inference.
   type: object
   optional: true
   description: Optional configuration object for model loading parameters.
-- name: config.context_length
-  type: number
-  optional: true
-  description: Specifies the maximum context length for the model in number of tokens. If not provided, uses the model's default context length.
-- name: config.eval_batch_size
-  type: number
-  optional: true
-  description: Number of input tokens to process together in a single batch during evaluation. Increasing this value typically improves processing speed and throughput by leveraging parallelization, but requires more memory. Finding the optimal batch size often involves balancing between performance gains and available hardware resources.
-- name: config.flash_attention
-  type: boolean
-  optional: true
-  description: Enables Flash Attention for optimized attention computation.
-- name: config.num_experts
-  type: number
-  optional: true
-  description: Specifies the number of experts for MoE (Mixture of Experts) models.
-- name: config.offload_kv_cache_to_gpu
-  type: boolean
-  optional: true
-  description: Determines whether to offload KV cache to GPU memory.
+  children:
+    - name: context_length
+      type: number
+      optional: true
+      description: Specifies the maximum context length for the model in number of tokens. If not provided, uses the model's default context length.
+    - name: eval_batch_size
+      type: number
+      optional: true
+      description: Number of input tokens to process together in a single batch during evaluation. Increasing this value typically improves processing speed and throughput by leveraging parallelization, but requires more memory. Finding the optimal batch size often involves balancing between performance gains and available hardware resources.
+    - name: flash_attention
+      type: boolean
+      optional: true
+      description: Enables Flash Attention for optimized attention computation.
+    - name: num_experts
+      type: number
+      optional: true
+      description: Specifies the number of experts for MoE (Mixture of Experts) models.
+    - name: offload_kv_cache_to_gpu
+      type: boolean
+      optional: true
+      description: Determines whether to offload KV cache to GPU memory.
 ```
 :::split:::
 ```lms_code_snippet
@@ -70,6 +71,22 @@ variants:
 - name: config
   type: object
   description: The actual configuration used for loading the model (includes defaults).
+  children:
+    - name: context_length
+      type: number
+      description: The maximum context length for the model in number of tokens.
+    - name: eval_batch_size
+      type: number
+      description: Number of input tokens to process together in a single batch during evaluation.
+    - name: flash_attention
+      type: boolean
+      description: Whether Flash Attention is enabled for optimized attention computation.
+    - name: num_experts
+      type: number
+      description: The number of experts for MoE (Mixture of Experts) models.
+    - name: offload_kv_cache_to_gpu
+      type: boolean
+      description: Whether KV cache is offloaded to GPU memory.
 - name: load_time_seconds
   type: number
   description: Time taken to load the model in seconds.
@@ -95,31 +112,4 @@ variants:
 ```
 ````
 
----
 
-#### Config Structure
-
-Optional configuration object for model loading parameters.
-
-```lms_params
-- name: context_length
-  type: number
-  optional: true
-  description: Specifies the maximum context length for the model in number of tokens. If not provided, uses the model's default context length.
-- name: eval_batch_size
-  type: number
-  optional: true
-  description: Number of input tokens to process together in a single batch during evaluation. Increasing this value typically improves processing speed and throughput by leveraging parallelization, but requires more memory. Finding the optimal batch size often involves balancing between performance gains and available hardware resources.
-- name: flash_attention
-  type: boolean
-  optional: true
-  description: Enables Flash Attention for optimized attention computation.
-- name: num_experts
-  type: number
-  optional: true
-  description: Specifies the number of experts for MoE (Mixture of Experts) models.
-- name: offload_kv_cache_to_gpu
-  type: boolean
-  optional: true
-  description: Determines whether to offload KV cache to GPU memory.
-```

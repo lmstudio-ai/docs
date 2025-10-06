@@ -25,40 +25,98 @@ variants:
 ````lms_hstack
 **Response fields**
 
-Returns an array of download job status objects. The response varies based on the download status.
+Returns an object with separate arrays for different download job statuses. The response varies based on the download status.
 
 ```lms_params
-- name: job_id
-  type: string
-  description: Unique identifier for the download job.
-- name: status
-  type: string
-  description: Current status of the download. Possible values are `downloading`, `paused`, `completed`, `failed`, `already_downloaded`.
-- name: items
+- name: downloading
   type: array
-  description: Array of items being downloaded (model files and metadata). See Item Structure below.
-- name: total_size_bytes
-  type: number
-  description: Total size of the download in bytes.
-- name: downloaded_bytes
-  type: number
-  description: Number of bytes downloaded so far.
-- name: bytes_per_second
-  type: number
-  optional: true
-  description: Current download speed in bytes per second (when status is `downloading`).
-- name: estimated_completion
-  type: string
-  optional: true
-  description: Estimated completion time in ISO 8601 format (when status is `downloading`).
-- name: started_at
-  type: string
-  optional: true
-  description: Download start time in ISO 8601 format.
-- name: completed_at
-  type: string
-  optional: true
-  description: Download completion time in ISO 8601 format (when status is `completed`).
+  description: Array of currently downloading jobs.
+  children:
+    - name: job_id
+      type: string
+      description: Unique identifier for the download job.
+    - name: status
+      type: '"downloading"'
+      description: Status of the job.
+    - name: downloaded_bytes
+      type: number
+      description: Number of bytes downloaded so far.
+    - name: total_size_bytes
+      type: number
+      description: Total size of the download in bytes.
+    - name: started_at
+      type: string
+      optional: true
+      description: Download start time in ISO 8601 format.
+    - name: bytes_per_second
+      type: number
+      description: Current download speed in bytes per second.
+    - name: estimated_completion
+      type: string
+      description: Estimated completion time in ISO 8601 format.
+- name: completed
+  type: array
+  description: Array of completed jobs.
+  children:
+    - name: job_id
+      type: string
+      description: Unique identifier for the download job.
+    - name: status
+      type: '"completed"'
+      description: Status of the job.
+    - name: downloaded_bytes
+      type: number
+      description: Number of bytes downloaded so far.
+    - name: total_size_bytes
+      type: number
+      description: Total size of the download in bytes.
+    - name: started_at
+      type: string
+      optional: true
+      description: Download start time in ISO 8601 format.
+    - name: completed_at
+      type: string
+      description: Download completion time in ISO 8601 format.
+- name: failed
+  type: array
+  description: Array of failed jobs.
+  children:
+    - name: job_id
+      type: string
+      description: Unique identifier for the download job.
+    - name: status
+      type: '"failed"'
+      description: Status of the job.
+    - name: downloaded_bytes
+      type: number
+      description: Number of bytes downloaded so far.
+    - name: total_size_bytes
+      type: number
+      description: Total size of the download in bytes.
+    - name: started_at
+      type: string
+      optional: true
+      description: Download start time in ISO 8601 format.
+- name: paused
+  type: array
+  description: Array of paused jobs.
+  children:
+    - name: job_id
+      type: string
+      description: Unique identifier for the download job.
+    - name: status
+      type: '"paused"'
+      description: Status of the job.
+    - name: downloaded_bytes
+      type: number
+      description: Number of bytes downloaded so far.
+    - name: total_size_bytes
+      type: number
+      description: Total size of the download in bytes.
+    - name: started_at
+      type: string
+      optional: true
+      description: Download start time in ISO 8601 format.
 ```
 :::split:::
 ```lms_code_snippet
@@ -67,36 +125,30 @@ variants:
   json:
     language: json
     code: |
-      [
-        {
-          "job_id": "job_493c7c9ded",
-          "status": "downloading",
-          "total_size_bytes": 2279145003,
-          "downloaded_bytes": 1048576,
-          "items": [
-            {
-              "type": "model_yaml",
-              "size_bytes": 171008,
-              "id": "qwen/qwen3-4b-2507/model.yaml"
-            },
-            {
-              "type": "model",
-              "publisher": "qwen",
-              "id": "qwen/qwen3-4b-2507",
-              "display_name": "Qwen3 4B Instruct 2507",
-              "url": "https://lmstudio.ai/models/qwen/qwen3-4b-2507",
-              "size_bytes": 2279145003,
-              "quantization": {
-                "name": "4BIT"
-              },
-              "format": "mlx"
-            }
-          ],
-          "bytes_per_second": 7834.710743801653,
-          "estimated_completion": "2025-10-07T00:21:47.030Z",
-          "started_at": "2025-10-03T15:33:23.496Z"
-        }
-      ]
+      {
+        "downloading": [
+          {
+            "job_id": "job_c0b7159ee6",
+            "downloaded_bytes": 2423265340,
+            "total_size_bytes": 124196907504,
+            "started_at": "2025-10-06T18:43:08.019Z",
+            "bytes_per_second": 9834240.879725136,
+            "estimated_completion": "2025-10-06T22:24:29.908Z",
+            "status": "downloading"
+          }
+        ],
+        "completed": [],
+        "failed": [],
+        "paused": [
+          {
+            "job_id": "job_222ebe6763",
+            "downloaded_bytes": 12028808,
+            "total_size_bytes": 22256526743,
+            "started_at": "2025-10-06T18:43:53.605Z",
+            "status": "paused"
+          }
+        ]
+      }
 ```
 ````
 
@@ -137,33 +189,32 @@ Returns a single download job status object. The response varies based on the do
   type: string
   description: Unique identifier for the download job.
 - name: status
-  type: string
-  description: Current status of the download. Possible values are `downloading`, `paused`, `completed`, `failed`, `already_downloaded`.
-- name: items
-  type: array
-  description: Array of items being downloaded (model files and metadata). See Item Structure below.
-- name: total_size_bytes
-  type: number
-  description: Total size of the download in bytes.
-- name: downloaded_bytes
-  type: number
-  description: Number of bytes downloaded so far.
+  type: '"downloading" | "paused" | "completed" | "failed"'
+  description: Current status of the download.
 - name: bytes_per_second
   type: number
   optional: true
-  description: Current download speed in bytes per second (when status is `downloading`).
+  description: Current download speed in bytes per second. Present when `status` is `downloading`.
 - name: estimated_completion
   type: string
   optional: true
-  description: Estimated completion time in ISO 8601 format (when status is `downloading`).
+  description: Estimated completion time in ISO 8601 format. Present when `status` is `downloading`.
+- name: completed_at
+  type: string
+  optional: true
+  description: Download completion time in ISO 8601 format. Present when `status` is `completed`.
+- name: total_size_bytes
+  type: number
+  optional: true
+  description: Total size of the download in bytes.
+- name: downloaded_bytes
+  type: number
+  optional: true
+  description: Number of bytes downloaded so far.
 - name: started_at
   type: string
   optional: true
   description: Download start time in ISO 8601 format.
-- name: completed_at
-  type: string
-  optional: true
-  description: Download completion time in ISO 8601 format (when status is `completed`).
 ```
 :::split:::
 ```lms_code_snippet
@@ -177,66 +228,8 @@ variants:
         "status": "completed",
         "total_size_bytes": 2279145003,
         "downloaded_bytes": 2279145003,
-        "items": [
-          {
-            "type": "model_yaml",
-            "size_bytes": 171008,
-            "id": "qwen/qwen3-4b-2507/model.yaml"
-          },
-          {
-            "type": "model",
-            "publisher": "qwen",
-            "id": "qwen/qwen3-4b-2507",
-            "display_name": "Qwen3 4B Instruct 2507",
-            "url": "https://lmstudio.ai/models/qwen/qwen3-4b-2507",
-            "size_bytes": 2279145003,
-            "quantization": {
-              "name": "4BIT"
-            },
-            "format": "mlx"
-          }
-        ],
         "started_at": "2025-10-03T15:33:23.496Z",
         "completed_at": "2025-10-03T15:43:12.102Z"
       }
 ```
 ````
-
-
----
-
-#### Item Structure
-
-Each item in the `items` array represents a file being downloaded. If `type` is `model`, the item represents the actual model files being downloaded. If `type` is `model_yaml`, the item represents the [model.yaml](https://modelyaml.org/) and associated metadata.
-
-```lms_params
-- name: type
-  type: string
-  description: Type of the item (e.g., `model_yaml`, `model`).
-- name: id
-  type: string
-  description: Unique identifier for the item.
-- name: size_bytes
-  type: number
-  description: Size of the item in bytes.
-- name: publisher
-  type: string
-  optional: true
-  description: Publisher of the model (for model items).
-- name: display_name
-  type: string
-  optional: true
-  description: Human-readable name of the model (for model items).
-- name: url
-  type: string
-  optional: true
-  description: URL to the model page (for model items).
-- name: quantization
-  type: object
-  optional: true
-  description: Quantization information object (for model items).
-- name: format
-  type: string
-  optional: true
-  description: Model format (e.g., `mlx`) (for model items).
-```
