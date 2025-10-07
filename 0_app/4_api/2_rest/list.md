@@ -73,7 +73,6 @@ variants:
           children:
             - name: context_length
               type: number
-              optional: true
               description: The maximum context length for the model in number of tokens.
             - name: eval_batch_size
               type: number
