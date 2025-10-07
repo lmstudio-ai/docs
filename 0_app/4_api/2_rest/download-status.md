@@ -4,10 +4,6 @@ description: "Get the status of model downloads"
 index: 6
 ---
 
-## Get download status (all jobs)
-
-Retrieves the status of all model download jobs.
-
 ````lms_hstack
 `GET /api/v1/models/download/status`
 
@@ -19,7 +15,8 @@ variants:
   curl:
     language: bash
     code: |
-      curl http://127.0.0.1:1234/api/v1/models/download/status
+      curl \
+        http://127.0.0.1:1234/api/v1/models/download/status
 ```
 ````
 
@@ -155,10 +152,6 @@ variants:
 
 ---
 
-## Get download status (by job ID)
-
-Retrieves the status of a specific model download job by its job ID.
-
 ````lms_hstack
 `GET /api/v1/models/download/status/:job_id`
 
@@ -176,7 +169,8 @@ variants:
   curl:
     language: bash
     code: |
-      curl http://127.0.0.1:1234/api/v1/models/download/status/job_493c7c9ded
+      curl \
+        http://127.0.0.1:1234/api/v1/models/download/status/job_493c7c9ded
 ```
 ````
 

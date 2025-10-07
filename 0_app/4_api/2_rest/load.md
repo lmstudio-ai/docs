@@ -1,12 +1,8 @@
 ---
 title: "Load a model"
-description: "Load a model into memory with custom configuration for inference"
+description: "Load a llm or embedding into memory with custom configuration for inference"
 index: 4
 ---
-## Load a model
-
-Load a model into memory with custom configuration for inference.
-
 ````lms_hstack
 `POST /api/v1/models/load`
 
@@ -28,19 +24,19 @@ Load a model into memory with custom configuration for inference.
     - name: eval_batch_size
       type: number
       optional: true
-      description: Number of input tokens to process together in a single batch during evaluation. Increasing this value typically improves processing speed and throughput by leveraging parallelization, but requires more memory. Finding the optimal batch size often involves balancing between performance gains and available hardware resources.
+      description: Number of input tokens to process together in a single batch during evaluation. Increasing this value typically improves processing speed and throughput by leveraging parallelization, but requires more memory. Finding the optimal batch size often involves balancing between performance gains and available hardware resources. Only applicable for LLMs.
     - name: flash_attention
       type: boolean
       optional: true
-      description: Enables Flash Attention for optimized attention computation.
+      description: Enables Flash Attention for optimized attention computation. Only applicable for LLMs.
     - name: num_experts
       type: number
       optional: true
-      description: Specifies the number of experts for MoE (Mixture of Experts) models.
+      description: Specifies the number of experts for MoE (Mixture of Experts) models. Only applicable for LLMs.
     - name: offload_kv_cache_to_gpu
       type: boolean
       optional: true
-      description: Determines whether to offload KV cache to GPU memory.
+      description: Determines whether to offload KV cache to GPU memory. Only applicable for LLMs.
 ```
 :::split:::
 ```lms_code_snippet
@@ -75,19 +71,24 @@ variants:
   children:
     - name: context_length
       type: number
+      optional: true
       description: The maximum context length for the model in number of tokens.
     - name: eval_batch_size
       type: number
-      description: Number of input tokens to process together in a single batch during evaluation.
+      optional: true
+      description: Number of input tokens to process together in a single batch during evaluation. Only present for LLMs.
     - name: flash_attention
       type: boolean
-      description: Whether Flash Attention is enabled for optimized attention computation.
+      optional: true
+      description: Whether Flash Attention is enabled for optimized attention computation. Only present for LLMs.
     - name: num_experts
       type: number
-      description: The number of experts for MoE (Mixture of Experts) models.
+      optional: true
+      description: The number of experts for MoE (Mixture of Experts) models. Only present for LLMs.
     - name: offload_kv_cache_to_gpu
       type: boolean
-      description: Whether KV cache is offloaded to GPU memory.
+      optional: true
+      description: Whether KV cache is offloaded to GPU memory. Only present for LLMs.
 - name: load_time_seconds
   type: number
   description: Time taken to load the model in seconds.

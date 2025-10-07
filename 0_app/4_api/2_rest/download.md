@@ -4,10 +4,6 @@ description: "Download models from LM Studio Hub or Hugging Face"
 index: 5
 ---
 
-## Download a model
-
-Download a model from LM Studio Hub or Hugging Face. Supports model names from `lmstudio.ai/models`, `lmstudio.ai/models` URLs, and `huggingface.co` URLs with specifying quantizations.
-
 ````lms_hstack
 `POST /api/v1/models/download`
 

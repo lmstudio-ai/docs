@@ -3,9 +3,7 @@ title: "Chat with a model"
 description: "Send a chat message to a model and receive a response with optional MCP server integration"
 index: 2
 ---
-## Chat with a model
 
-Send a chat message to a model and receive a response. Provide text input to generate text output. Optionally include remote MCP servers that the model can call.
 
 ````lms_hstack
 `POST /api/v1/chat`
@@ -113,14 +111,38 @@ variants:
   description: Identifier of the specific model instance that generated the response.
 - name: output
   type: array<object>
-  description: Sequence of output items generated for this request.
+  description: Sequence of output items generated for this request. Each item can be one of three types.
+  children:
+    - name: type
+      type: string
+      description: One of `"mcp_call"`, `"message"`, or `"reasoning"`.
+    - name: content
+      type: string
+      optional: true
+      description: Present when type is `"message"` or `"reasoning"`. The text content.
+    - name: server_label
+      type: string
+      optional: true
+      description: Present when type is `"mcp_call"`. Label of the MCP server.
+    - name: tool
+      type: string
+      optional: true
+      description: Present when type is `"mcp_call"`. Name of the tool called.
+    - name: arguments
+      type: object
+      optional: true
+      description: Present when type is `"mcp_call"`. Arguments passed to the tool.
+    - name: output
+      type: string
+      optional: true
+      description: Present when type is `"mcp_call"`. Result returned from the tool.
 - name: stats
   type: object
   description: Token counts and performance metrics.
   children:
     - name: input_tokens
       type: number
-      description: Number of tokens in the input.
+      description: Number of input tokens to the /api/v1/chat request's prediction. Includes formatting and any prior messages in the thread.
     - name: total_output_tokens
       type: number
       description: Total number of output tokens generated.
@@ -133,7 +155,7 @@ variants:
 - name: thread_id
   type: string
   optional: true
-  description: Returned when storing to a thread is enabled; identifier of the associated thread to use in subsequent requests.
+  description: Returned when storing to a thread is enabled; identifier of the associated thread to use in subsequent requests. Starts with `"thread_"`.
 ```
 :::split:::
 ```lms_code_snippet
