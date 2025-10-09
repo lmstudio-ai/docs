@@ -2,7 +2,7 @@
 title: "Run LM Studio as a service (headless)"
 sidebar_title: "Headless Mode"
 description: "GUI-less operation of LM Studio: run in the background, start on machine login, and load models on demand"
-index: 2
+index: 4
 ---
 
 LM Studio can be run as a service without the GUI. This is useful for running LM Studio on a server or in the background on your local machine. This works on Mac, Windows, and Linux machines with a graphical user interface.
