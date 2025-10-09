@@ -36,14 +36,14 @@ variants:
       description: Model publisher name.
     - name: key
       type: string
-      description: Unique model key identifier.
+      description: Unique identifier for the model.
     - name: display_name
       type: string
       description: Human-readable model name.
     - name: architecture
       type: string | null
       optional: true
-      description: Model architecture (e.g., "llama", "mistral"). Only present for type `llm`.
+      description: Model architecture (e.g., "llama", "mistral"). Absent for embedding models.
     - name: quantization
       type: object | null
       description: Quantization information for the model.
@@ -56,7 +56,7 @@ variants:
           description: Bits per weight for the quantization.
     - name: size_bytes
       type: number
-      description: Model size in bytes.
+      description: Size of the model in bytes.
     - name: params_string
       type: string | null
       description: Human-readable parameter count (e.g., "7B", "13B").
@@ -66,7 +66,7 @@ variants:
       children:
         - name: id
           type: string
-          description: Unique identifier for the loaded instance.
+          description: Unique identifier for the loaded model instance.
         - name: config
           type: object
           description: Configuration for the loaded instance.
@@ -77,29 +77,29 @@ variants:
             - name: eval_batch_size
               type: number
               optional: true
-              description: Number of input tokens to process together in a single batch during evaluation. Only present for type `llm`.
+              description: Number of input tokens to process together in a single batch during evaluation. Absent for embedding models.
             - name: flash_attention
               type: boolean
               optional: true
-              description: Whether Flash Attention is enabled for optimized attention computation. Only present for type `llm`.
+              description: Whether Flash Attention is enabled for optimized attention computation. Absent for embedding models.
             - name: num_experts
               type: number
               optional: true
-              description: The number of experts for MoE (Mixture of Experts) models. Only present for type `llm`.
+              description: Number of experts for MoE (Mixture of Experts) models. Absent for embedding models.
             - name: offload_kv_cache_to_gpu
               type: boolean
               optional: true
-              description: Whether KV cache is offloaded to GPU memory. Only present for type `llm`.
+              description: Whether KV cache is offloaded to GPU memory. Absent for embedding models.
     - name: max_context_length
       type: number
-      description: Maximum context length supported by the model.
+      description: Maximum context length supported by the model in number of tokens.
     - name: format
       type: '"gguf" | "mlx" | null'
       description: Model file format.
     - name: capabilities
       type: object
       optional: true
-      description: Model capabilities. Only present for type `llm`.
+      description: Model capabilities. Absent for embedding models.
       children:
         - name: vision
           type: boolean
@@ -110,7 +110,7 @@ variants:
     - name: description
       type: string | null
       optional: true
-      description: Model description. Only present for type `llm`.
+      description: Model description. Absent for embedding models.
 ```
 :::split:::
 ```lms_code_snippet

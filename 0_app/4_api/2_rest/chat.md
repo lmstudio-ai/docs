@@ -13,27 +13,43 @@ index: 2
 - name: model
   type: string
   optional: false
-  description: Model identifier to use for the chat.
+  description: Unique identifier for the model to use.
 - name: input
   type: string
   optional: false
-  description: User message to send to the model.
+  description: Message to send to the model.
 - name: system_prompt
   type: string
   optional: true
-  description: System message that sets behavior or instructions.
+  description: System message that sets model behavior or instructions.
 - name: mcp_servers
   type: array<object>
   optional: true
-  description: Optional list of remote MCP servers that the model can call.
+  description: List of remote MCP servers that the model can call.
+  children:
+    - name: server_label
+      type: string
+      description: Label to identify the MCP server.
+    - name: server_url
+      type: string
+      optional: true
+      description: URL of the remote MCP server.
+    - name: allowed_tools
+      type: array<string>
+      optional: true
+      description: List of tool names the model can call from this server.
+    - name: headers
+      type: object
+      optional: true
+      description: Custom HTTP headers to send with requests to the server.
 - name: stream
   type: boolean
   optional: true
-  description: Stream partial outputs via SSE. Default `false`.
+  description: Whether to stream partial outputs via SSE. Default `false`.
 - name: temperature
   type: number
   optional: true
-  description: How much randomness to introduce in the next selected token. 0 will yield the same tokens to the same input every time, higher values increase creativity and variance [0,1].
+  description: Randomness in token selection. 0 is deterministic, higher values increase creativity [0,1].
 - name: top_p
   type: number
   optional: true
@@ -41,7 +57,7 @@ index: 2
 - name: top_k
   type: integer
   optional: true
-  description: Limits the next token to one of the top-k most probable tokens.
+  description: Limits next token selection to top-k most probable tokens.
 - name: min_p
   type: number
   optional: true
@@ -49,23 +65,23 @@ index: 2
 - name: repeat_penalty
   type: number
   optional: true
-  description: How much to penalize the model for repeating token sequences. 1 is no penalty, higher values strongly discourage repetition.
+  description: Penalty for repeating token sequences. 1 is no penalty, higher values discourage repetition.
 - name: max_output_tokens
   type: integer
   optional: true
-  description: Maximum tokens to generate.
+  description: Maximum number of tokens to generate.
 - name: reasoning_effort
   type: string
   optional: true
-  description: For compatible models, set the reasoning effort level. One of `"low"`, `"medium"`, or `"high"`. Ignored if the model does not support it.
+  description: Reasoning effort level. One of `"low"`, `"medium"`, or `"high"`. Ignored if model does not support it.
 - name: enable_thinking
   type: boolean
   optional: true
-  description: For compatible models, enable or disable thinking. Ignored if the model does not support it.
+  description: Whether to enable thinking. Ignored if model does not support it.
 - name: context_length
   type: integer
   optional: true
-  description: The number of tokens to consider as context when generating text. Higher values recommended for use with MCP.
+  description: Number of tokens to consider as context. Higher values recommended for MCP usage.
 - name: store
   type: boolean
   optional: true
@@ -73,7 +89,7 @@ index: 2
 - name: thread_id
   type: string
   optional: true
-  description: Existing thread to append to. Must start with `"thread_"`.
+  description: Identifier of existing thread to append to. Must start with `"thread_"`.
 ```
 :::split:::
 ```lms_code_snippet
@@ -108,41 +124,41 @@ variants:
 ```lms_params
 - name: model_instance_id
   type: string
-  description: Identifier of the specific model instance that generated the response.
+  description: Unique identifier for the loaded model instance that generated the response.
 - name: output
   type: array<object>
-  description: Sequence of output items generated for this request. Each item can be one of three types.
+  description: Array of output items generated. Each item can be one of three types.
   children:
     - name: type
       type: string
-      description: One of `"mcp_call"`, `"message"`, or `"reasoning"`.
+      description: Type of output item. One of `"mcp_call"`, `"message"`, or `"reasoning"`.
     - name: content
       type: string
       optional: true
-      description: Present when type is `"message"` or `"reasoning"`. The text content.
+      description: Text content. Present when `type` is `"message"` or `"reasoning"`.
     - name: server_label
       type: string
       optional: true
-      description: Present when type is `"mcp_call"`. Label of the MCP server.
+      description: Label of the MCP server. Present when `type` is `"mcp_call"`.
     - name: tool
       type: string
       optional: true
-      description: Present when type is `"mcp_call"`. Name of the tool called.
+      description: Name of the tool called. Present when `type` is `"mcp_call"`.
     - name: arguments
       type: object
       optional: true
-      description: Present when type is `"mcp_call"`. Arguments passed to the tool.
+      description: Arguments passed to the tool. Present when `type` is `"mcp_call"`.
     - name: output
       type: string
       optional: true
-      description: Present when type is `"mcp_call"`. Result returned from the tool.
+      description: Result returned from the tool. Present when `type` is `"mcp_call"`.
 - name: stats
   type: object
-  description: Token counts and performance metrics.
+  description: Token usage and performance metrics.
   children:
     - name: input_tokens
       type: number
-      description: Number of input tokens to the /api/v1/chat request's prediction. Includes formatting and any prior messages in the thread.
+      description: Number of input tokens. Includes formatting and prior messages in the thread.
     - name: total_output_tokens
       type: number
       description: Total number of output tokens generated.
@@ -155,7 +171,7 @@ variants:
 - name: thread_id
   type: string
   optional: true
-  description: Returned when storing to a thread is enabled; identifier of the associated thread to use in subsequent requests. Starts with `"thread_"`.
+  description: Identifier of the thread for subsequent requests. Starts with `"thread_"`. Present when `store` is `true`.
 ```
 :::split:::
 ```lms_code_snippet

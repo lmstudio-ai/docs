@@ -1,11 +1,14 @@
 ---
 title: LM Studio REST API
-sidebar_title: Supported Endpoints
-description: "v1"
+sidebar_title: Overview
 index: 1
 ---
 
-## Supported Endpoints
+LM Studio offers a powerful REST API with first-class support for local model management and inference. In addition to our native API, we provide full OpenAI compatibility mode ([learn more](/docs/app/api/endpoints/openai)).
+
+Our REST API handles local LLM workflows with model downloading, loading, configuration, and inference. Get performance stats like tokens per second, model status, context length, quantization info, and more. Configure loading parameters to customize how models initialize.
+
+## Endpoints
 
 - [`POST /api/v1/chat`](/docs/app/api/rest/chat) - Chat with a model
 - [`GET /api/v1/models`](/docs/app/api/rest/list) - List your models

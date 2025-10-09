@@ -28,14 +28,14 @@ Returns an object with separate arrays for different download job statuses. The 
 ```lms_params
 - name: downloading
   type: array
-  description: Array of currently downloading jobs.
+  description: Array of jobs currently downloading.
   children:
     - name: job_id
       type: string
       description: Unique identifier for the download job.
     - name: status
       type: '"downloading"'
-      description: Status of the job.
+      description: Current status of the download.
     - name: downloaded_bytes
       type: number
       description: Number of bytes downloaded so far.
@@ -61,7 +61,7 @@ Returns an object with separate arrays for different download job statuses. The 
       description: Unique identifier for the download job.
     - name: status
       type: '"completed"'
-      description: Status of the job.
+      description: Current status of the download.
     - name: downloaded_bytes
       type: number
       description: Number of bytes downloaded so far.
@@ -84,7 +84,7 @@ Returns an object with separate arrays for different download job statuses. The 
       description: Unique identifier for the download job.
     - name: status
       type: '"failed"'
-      description: Status of the job.
+      description: Current status of the download.
     - name: downloaded_bytes
       type: number
       description: Number of bytes downloaded so far.
@@ -104,7 +104,7 @@ Returns an object with separate arrays for different download job statuses. The 
       description: Unique identifier for the download job.
     - name: status
       type: '"paused"'
-      description: Status of the job.
+      description: Current status of the download.
     - name: downloaded_bytes
       type: number
       description: Number of bytes downloaded so far.

@@ -42,7 +42,7 @@ Returns a download job status object. The response varies based on the download 
 - name: job_id
   type: string
   optional: true
-  description: Unique identifier for the download job. Present for all statuses except `already_downloaded`.
+  description: Unique identifier for the download job. Absent when `status` is `already_downloaded`.
 - name: status
   type: '"downloading" | "paused" | "completed" | "failed" | "already_downloaded"'
   description: Current status of the download.
@@ -61,15 +61,15 @@ Returns a download job status object. The response varies based on the download 
 - name: total_size_bytes
   type: number
   optional: true
-  description: Total size of the download in bytes. Present for all statuses except `already_downloaded`.
+  description: Total size of the download in bytes. Absent when `status` is `already_downloaded`.
 - name: downloaded_bytes
   type: number
   optional: true
-  description: Number of bytes downloaded so far. Present for all statuses except `already_downloaded`.
+  description: Number of bytes downloaded so far. Absent when `status` is `already_downloaded`.
 - name: items
   type: array
   optional: true
-  description: Array of items being downloaded. Present for all statuses except `already_downloaded`.
+  description: Array of items being downloaded. Absent when `status` is `already_downloaded`.
   children:
     - name: type
       type: '"model" | "model_yaml"'
@@ -107,7 +107,7 @@ Returns a download job status object. The response varies based on the download 
 - name: started_at
   type: string
   optional: true
-  description: Download start time in ISO 8601 format. Present for all statuses except `already_downloaded`.
+  description: Download start time in ISO 8601 format. Absent when `status` is `already_downloaded`.
 ```
 :::split:::
 ```lms_code_snippet
