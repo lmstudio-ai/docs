@@ -70,14 +70,10 @@ index: 2
   type: integer
   optional: true
   description: Maximum number of tokens to generate.
-- name: reasoning_effort
+- name: reasoning
   type: string
   optional: true
-  description: Reasoning effort level. One of `"low"`, `"medium"`, or `"high"`. Ignored if model does not support it.
-- name: enable_thinking
-  type: boolean
-  optional: true
-  description: Whether to enable thinking. Ignored if model does not support it.
+  description: Reasoning w/ effort levels. One of `"off"`, `"low"`, `"medium"`, or `"high"` or `"on"` (uses default). Ignored if model does not support it.
 - name: context_length
   type: integer
   optional: true
@@ -168,6 +164,9 @@ variants:
     - name: tokens_per_second
       type: number
       description: Generation speed in tokens per second.
+    - name: time_to_first_token_seconds
+      type: number
+      description: Time in seconds to generate the first token.
 - name: thread_id
   type: string
   optional: true
@@ -203,7 +202,8 @@ variants:
           "input_tokens": 159,
           "total_output_tokens": 74,
           "reasoning_output_tokens": 12,
-          "tokens_per_second": 43.506416908993025
+          "tokens_per_second": 43.506416908993025,
+          "time_to_first_token_seconds": 2.855
         },
         "thread_id": "thread_e07fff380975be4d76d7d95bcf2cfb978c79b8baca467e2b"
       }
