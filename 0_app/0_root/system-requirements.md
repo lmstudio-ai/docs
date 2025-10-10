@@ -1,6 +1,6 @@
 ---
 title: System Requirements
-description: Supported CPU, GPU types for LM Studio on Mac (M1/M2/M3/M4), Windows (x64/ARM), and Linux (x64)
+description: Supported CPU, GPU types for LM Studio on Mac (M1/M2/M3/M4), Windows (x64/ARM), and Linux (x64/ARM64)
 index: 3
 ---
 
@@ -23,9 +23,10 @@ LM Studio is supported on both x64 and ARM (Snapdragon X Elite) based systems.
 
 ## Linux
 
+LM Studio is supported on both x64 and ARM64 (aarch64) based systems.
+
 - LM Studio for Linux is distributed as an AppImage.
 - Ubuntu 20.04 or newer is required
-- x64 only, aarch64 not yet supported
 - Ubuntu versions newer than 22 are not well tested. Let us know if you're running into issues by opening a bug [here](https://github.com/lmstudio-ai/lmstudio-bug-tracker).
 - CPU:
-  - LM Studio ships with AVX2 support by default
+  - On x64, LM Studio ships with AVX2 support by default
