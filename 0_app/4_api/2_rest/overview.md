@@ -4,7 +4,7 @@ sidebar_title: Overview
 index: 1
 ---
 
-LM Studio offers a powerful REST API with first-class support for local model management and inference. In addition to our native API, we provide full OpenAI compatibility mode ([learn more](/docs/app/api/endpoints/openai)).
+LM Studio offers a powerful REST API with first-class support for local model management and inference. In addition to our native API, we provide full OpenAI compatibility mode ([learn more](/docs/app/api/openai-rest-api/overview)).
 
 Our REST API handles local LLM workflows with model downloading, loading, configuration, and inference. Get performance stats like tokens per second, model status, context length, quantization info, and more. Configure loading parameters to customize how models initialize.
 
