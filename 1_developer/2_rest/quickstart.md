@@ -35,7 +35,19 @@ variants:
         }'
 ```
 
-The response will return a `job_id` that you can use to track download progress. See the [download](/docs/developer/rest/download) and [download status](/docs/developer/rest/download-status) docs for more details.
+The response will return a `job_id` that you can use to track download progress. 
+
+```lms_code_snippet
+title: Track download
+variants:
+  curl:
+    language: bash
+    code: |
+      curl \
+        http://127.0.0.1:1234/api/v1/models/download/status/{job_id}
+```
+
+See the [download](/docs/developer/rest/download) and [download status](/docs/developer/rest/download-status) docs for more details.
 
 ### Chat with a model
 
