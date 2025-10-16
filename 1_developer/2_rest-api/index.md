@@ -1,5 +1,5 @@
 ---
-title: REST API
+title: Getting Started
 description: Overview of LM Studio's native REST API.
 index: 1
 ---
