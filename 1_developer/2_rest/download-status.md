@@ -3,6 +3,8 @@ title: "Get download status"
 description: "Get the status of model downloads"
 fullPage: true
 index: 6
+api_info:
+  method: GET
 ---
 
 ````lms_hstack

@@ -7,13 +7,13 @@ index: 1
 
 ### Supported endpoints
 
-| Endpoint               | Method | Docs                                                               |
-| ---------------------- | ------ | ------------------------------------------------------------------ |
-| `/v1/models`           | GET    | [Models](/docs/developer/openai-compat/models)                     |
-| `/v1/responses`        | POST   | [Responses](/docs/developer/openai-compat/responses)               |
-| `/v1/chat/completions` | POST   | [Chat Completions](/docs/developer/openai-compat/chat-completions) |
-| `/v1/embeddings`       | POST   | [Embeddings](/docs/developer/openai-compat/embeddings)             |
-| `/v1/completions`      | POST   | [Completions](/docs/developer/openai-compat/completions)           |
+| Endpoint               | Method                      | Docs                                                               |
+| ---------------------- | --------------------------- | ------------------------------------------------------------------ |
+| `/v1/models`           | <apimethod method="GET" />  | [Models](/docs/developer/openai-compat/models)                     |
+| `/v1/responses`        | <apimethod method="POST" /> | [Responses](/docs/developer/openai-compat/responses)               |
+| `/v1/chat/completions` | <apimethod method="POST" /> | [Chat Completions](/docs/developer/openai-compat/chat-completions) |
+| `/v1/embeddings`       | <apimethod method="POST" /> | [Embeddings](/docs/developer/openai-compat/embeddings)             |
+| `/v1/completions`      | <apimethod method="POST" /> | [Completions](/docs/developer/openai-compat/completions)           |
 
 <hr>
 

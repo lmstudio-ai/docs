@@ -2,6 +2,8 @@
 title: Embeddings
 description: Generate embedding vectors from input text.
 index: 5
+api_info:
+  method: POST
 ---
 
 - Method: `POST`

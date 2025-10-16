@@ -2,6 +2,8 @@
 title: List Models
 description: List available models via the OpenAI-compatible endpoint.
 index: 2
+api_info:
+  method: GET
 ---
 
 - Method: `GET`

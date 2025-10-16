@@ -3,6 +3,8 @@ title: "List your models"
 description: "Get a list of available models on your system, including both LLMs and embedding models."
 fullPage: true
 index: 3
+api_info:
+  method: GET
 ---
 
 ````lms_hstack
