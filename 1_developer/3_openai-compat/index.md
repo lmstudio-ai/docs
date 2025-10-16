@@ -1,35 +1,29 @@
 ---
 title: OpenAI Compatibility Endpoints
 sidebar_title: Overview
-description: Send requests to Responses, Chat Completions (text and images), Completions, and Embeddings endpoints
+description: Send requests to Responses, Chat Completions (text and images), Completions, and Embeddings endpoints.
 index: 1
 ---
 
 ### Supported endpoints
 
-```
-GET  /v1/models
-POST /v1/responses
-POST /v1/chat/completions
-POST /v1/embeddings
-POST /v1/completions
-```
-
-###### See below for more info about each endpoint
+| Endpoint               | Method | Docs                                                               |
+| ---------------------- | ------ | ------------------------------------------------------------------ |
+| `/v1/models`           | GET    | [Models](/docs/developer/openai-compat/models)                     |
+| `/v1/responses`        | POST   | [Responses](/docs/developer/openai-compat/responses)               |
+| `/v1/chat/completions` | POST   | [Chat Completions](/docs/developer/openai-compat/chat-completions) |
+| `/v1/embeddings`       | POST   | [Embeddings](/docs/developer/openai-compat/embeddings)             |
+| `/v1/completions`      | POST   | [Completions](/docs/developer/openai-compat/completions)           |
 
 <hr>
 
-### Re-using an existing OpenAI client
+## Set the `base url` to point to LM Studio
 
-```lms_protip
 You can reuse existing OpenAI clients (in Python, JS, C#, etc) by switching up the "base URL" property to point to your LM Studio instead of OpenAI's servers.
-```
 
-#### Switching up the `base url` to point to LM Studio
+Note: The following examples assume the server port is `1234`
 
-###### Note: The following examples assume the server port is `1234`
-
-##### Python
+### Python Example
 
 ```diff
 from openai import OpenAI
@@ -41,7 +35,7 @@ client = OpenAI(
 # ... the rest of your code ...
 ```
 
-##### Typescript
+### Typescript Example
 
 ```diff
 import OpenAI from 'openai';
@@ -53,7 +47,7 @@ const client = new OpenAI({
 // ... the rest of your code ...
 ```
 
-##### cURL
+### cURL Example
 
 ```diff
 - curl https://api.openai.com/v1/chat/completions \
@@ -67,178 +61,8 @@ const client = new OpenAI({
    }'
 ```
 
-<hr>
+---
 
-### Endpoints overview
+Other OpenAI client libraries should have similar options to set the base URL.
 
-#### `/v1/models`
-
-- `GET` request
-- Lists the currently **loaded** models.
-
-##### cURL example
-
-```bash
-curl http://localhost:1234/v1/models
-```
-
-#### `/v1/responses`
-
-- `POST` request
-- Create responses with an `input` field. Supports streaming, tool calling, reasoning, and stateful interactions via `previous_response_id`.
-- See OpenAI docs: https://platform.openai.com/docs/api-reference/responses
-
-##### cURL example (non‑streaming)
-
-```bash
-curl http://localhost:1234/v1/responses \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "openai/gpt-oss-20b",
-    "input": "Provide a prime number less than 50",
-    "reasoning": { "effort": "low" }
-  }'
-```
-
-##### Stateful follow‑up
-
-Use the `id` from the previous response as `previous_response_id`.
-
-```bash
-curl http://localhost:1234/v1/responses \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "openai/gpt-oss-20b",
-    "input": "Multiply it by 2",
-    "previous_response_id": "resp_123"
-  }'
-```
-
-##### Streaming
-
-```bash
-curl http://localhost:1234/v1/responses \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "openai/gpt-oss-20b",
-    "input": "Hello",
-    "stream": true
-  }'
-```
-
-You will receive SSE events like `response.created`, `response.output_text.delta`, and `response.completed`.
-
-##### Tools and Remote MCP (opt‑in)
-
-Enable remote MCP in the app (Developer → Settings). Example payload using an MCP server tool:
-
-```bash
-curl http://localhost:1234/v1/responses \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "openai/gpt-oss-20b",
-    "tools": [{
-      "type": "mcp",
-      "server_label": "tiktoken",
-      "server_url": "https://gitmcp.io/openai/tiktoken",
-      "allowed_tools": ["fetch_tiktoken_documentation"]
-    }],
-    "input": "What is the first sentence of the tiktoken documentation?"
-  }'
-```
-
-#### `/v1/chat/completions`
-
-- `POST` request
-- Send a chat history and receive the assistant's response
-- Prompt template is applied automatically
-- You can provide inference parameters such as temperature in the payload. See [supported parameters](#supported-payload-parameters)
-- See [OpenAI's documentation](https://platform.openai.com/docs/api-reference/chat) for more information
-- As always, keep a terminal window open with [`lms log stream`](/docs/cli/log-stream) to see what input the model receives
-
-##### Python example
-
-```python
-# Example: reuse your existing OpenAI setup
-from openai import OpenAI
-
-# Point to the local server
-client = OpenAI(base_url="http://localhost:1234/v1", api_key="lm-studio")
-
-completion = client.chat.completions.create(
-  model="model-identifier",
-  messages=[
-    {"role": "system", "content": "Always answer in rhymes."},
-    {"role": "user", "content": "Introduce yourself."}
-  ],
-  temperature=0.7,
-)
-
-print(completion.choices[0].message)
-```
-
-#### `/v1/embeddings`
-
-- `POST` request
-- Send a string or array of strings and get an array of text embeddings (integer token IDs)
-- See [OpenAI's documentation](https://platform.openai.com/docs/api-reference/embeddings) for more information
-
-##### Python example
-
-```python
-# Make sure to `pip install openai` first
-from openai import OpenAI
-client = OpenAI(base_url="http://localhost:1234/v1", api_key="lm-studio")
-
-def get_embedding(text, model="model-identifier"):
-   text = text.replace("\n", " ")
-   return client.embeddings.create(input = [text], model=model).data[0].embedding
-
-print(get_embedding("Once upon a time, there was a cat."))
-```
-
-#### `/v1/completions`
-
-```lms_warning
-This OpenAI-like endpoint is no longer supported by OpenAI.  LM Studio continues to support it.
-
-Using this endpoint with chat-tuned models might result in unexpected behavior such as extraneous role tokens being emitted by the model.
-
-
-For best results, utilize a base model.
-```
-
-- `POST` request
-- Send a string and get the model's continuation of that string
-- See [supported payload parameters](#supported-payload-parameters)
-- Prompt template will NOT be applied, even if the model has one
-- See [OpenAI's documentation](https://platform.openai.com/docs/api-reference/completions) for more information
-- As always, keep a terminal window open with [`lms log stream`](/docs/cli/log-stream) to see what input the model receives
-
-<hr>
-
-### Supported payload parameters
-
-For an explanation for each parameter, see https://platform.openai.com/docs/api-reference/chat/create.
-
-```py
-model
-top_p
-top_k
-messages
-temperature
-max_tokens
-stream
-stop
-presence_penalty
-frequency_penalty
-logit_bias
-repeat_penalty
-seed
-```
-
-<hr>
-
-### Community
-
-Chat with other LM Studio developers, discuss LLMs, hardware, and more on the [LM Studio Discord server](https://discord.gg/aPQfnNkxGC).
+If you're running into trouble, hop onto our [Discord](https://discord.gg/lmstudio) and enter the `#🔨-developers` channel.
