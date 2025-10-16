@@ -1,6 +1,6 @@
 ---
 title: "Chat with a model"
-description: "Send a chat message to a model and receive a response with optional MCP server integration"
+description: "Send a message to a model and receive a response. Supports MCP integration."
 fullPage: true
 index: 2
 api_info:
@@ -24,7 +24,7 @@ api_info:
   type: string
   optional: true
   description: System message that sets model behavior or instructions.
-- name: mcp_servers
+- name: remote_mcp_servers
   type: array<object>
   optional: true
   description: List of remote MCP servers that the model can call.
@@ -34,7 +34,6 @@ api_info:
       description: Label to identify the MCP server.
     - name: server_url
       type: string
-      optional: true
       description: URL of the remote MCP server.
     - name: allowed_tools
       type: array<string>
@@ -44,10 +43,30 @@ api_info:
       type: object
       optional: true
       description: Custom HTTP headers to send with requests to the server.
+- name: plugins
+  type: array<string | object>
+  optional: true
+  description: Plugins to use tools from (e.g., `mcp.json` defined MCP servers like `mcp/playwright`). Each item can be a plugin identifier string, or an object plugin specification.
+  children:
+    - name: Plugin identifier string
+      type: string
+      description: Identifier of the plugin.
+    - name: Plugin specification
+      type: object
+      description: Object form to specify allowed tools.
+      children:
+        - name: id
+          type: string
+          optional: true
+          description: Identifier of the plugin.
+        - name: allowed_tools
+          type: array<string> | null
+          optional: true
+          description: Restrict which tools from the plugin can be used.
 - name: stream
   type: boolean
   optional: true
-  description: Whether to stream partial outputs via SSE. Default `false`.
+  description: Whether to stream partial outputs via SSE. Default `false`. See [streaming events](/docs/developer/rest/streaming-events) for more information.
 - name: temperature
   type: number
   optional: true
@@ -73,9 +92,9 @@ api_info:
   optional: true
   description: Maximum number of tokens to generate.
 - name: reasoning
-  type: string
+  type: '"off" | "low" | "medium" | "high" | "on"'
   optional: true
-  description: Reasoning w/ effort levels. One of `"off"`, `"low"`, `"medium"`, or `"high"` or `"on"` (uses default). Ignored if model does not support it.
+  description: Reasoning setting. Will error if the model being used does not support the reasoning setting using. Defaults to the automatically chosen setting for the model.
 - name: context_length
   type: integer
   optional: true
@@ -98,19 +117,16 @@ variants:
     code: |
       curl http://127.0.0.1:1234/api/v1/chat \
         -H "Content-Type: application/json" \
-        -d '{
+        -d '{    
           "model": "openai/gpt-oss-20b",
-          "input": "What is the first sentence of the tiktoken documentation?",
-          "mcp_servers": [
-            {
-              "server_label": "tiktoken",
-              "server_url": "https://gitmcp.io/openai/tiktoken",
-              "allowed_tools": ["fetch_tiktoken_documentation"]
-            }
-          ],
-          "reasoning_effort": "low",
-          "temperature": 0.7,
-          "context_length": 5000
+          "input": "What is the top trending model on huggingface?",
+          "remote_mcp_servers": [
+            {                   
+              "server_label": "huggingface", 
+              "server_url": "https://huggingface.co/mcp",
+              "allowed_tools": ["model_search"]
+            }                    
+          ]
         }'
 ```
 ````
@@ -127,36 +143,64 @@ variants:
   type: array<object>
   description: Array of output items generated. Each item can be one of three types.
   children:
-    - name: type
-      type: string
-      description: Type of output item. One of `"mcp_call"`, `"message"`, or `"reasoning"`.
-    - name: content
-      type: string
-      optional: true
-      description: Text content. Present when `type` is `"message"` or `"reasoning"`.
-    - name: server_label
-      type: string
-      optional: true
-      description: Label of the MCP server. Present when `type` is `"mcp_call"`.
-    - name: tool
-      type: string
-      optional: true
-      description: Name of the tool called. Present when `type` is `"mcp_call"`.
-    - name: arguments
+    - name: Message
       type: object
-      optional: true
-      description: Arguments passed to the tool. Present when `type` is `"mcp_call"`.
-    - name: output
-      type: string
-      optional: true
-      description: Result returned from the tool. Present when `type` is `"mcp_call"`.
+      description: A text message from the model.
+      children:
+        - name: type
+          type: '"message"'
+          description: Type of output item.
+        - name: content
+          type: string
+          description: Text content of the message.
+    - name: Tool call
+      type: object
+      description: A tool call made by the model.
+      children:
+        - name: type
+          type: '"tool_call"'
+          description: Type of output item.
+        - name: tool
+          type: string
+          description: Name of the tool called.
+        - name: arguments
+          type: object
+          description: Arguments passed to the tool. Can have any keys/values depending on the tool definition.
+        - name: output
+          type: string
+          description: Result returned from the tool.
+        - name: provider_info
+          type: object
+          description: Information about the tool provider.
+          children:
+            - name: type
+              type: '"plugin" | "remote_mcp"'
+              description: Provider type.
+            - name: plugin_id
+              type: string
+              optional: true
+              description: Identifier of the plugin (when `type` is `"plugin"`).
+            - name: server_label
+              type: string
+              optional: true
+              description: Label of the MCP server (when `type` is `"remote_mcp"`).
+    - name: Reasoning
+      type: object
+      description: Reasoning content from the model.
+      children:
+        - name: type
+          type: '"reasoning"'
+          description: Type of output item.
+        - name: content
+          type: string
+          description: Text content of the reasoning.
 - name: stats
   type: object
   description: Token usage and performance metrics.
   children:
     - name: input_tokens
       type: number
-      description: Number of input tokens. Includes formatting and prior messages in the thread.
+      description: Number of input tokens. Includes formatting, tool definitions, and prior messages in the thread.
     - name: total_output_tokens
       type: number
       description: Total number of output tokens generated.
@@ -186,28 +230,34 @@ variants:
         "output": [
           {
             "type": "reasoning",
-            "content": "We need to fetch doc from GitHub. Use function."
+            "content": "Need to call function."
           },
           {
-            "type": "mcp_call",
-            "server_label": "tiktoken",
-            "tool": "fetch_tiktoken_documentation",
-            "arguments": {},
-            "output": "[{\"type\":\"text\",\"text\":\"# ⏳ tiktoken\\n\\ntiktoken is a fast [BPE](https://en.wikipedia.org/wiki/Byte_pair_encoding) tokeniser for use with\\nOpenAI's models....}]"
+            "type": "tool_call",
+            "tool": "model_search",
+            "arguments": {
+              "sort": "trendingScore",
+              "limit": 1
+            },
+            "output": "[{\"type\":\"text\",\"text\":\"Showing first 1 models...\"}]",
+            "provider_info": {
+              "type": "remote_mcp"
+              "server_label": "huggingface",
+            }
           },
           {
             "type": "message",
-            "content": "The first sentence of the tiktoken documentation is:\n\n> "tiktoken is a fast BPE tokeniser for use with OpenAI's models.""
+            "content": "The current top‑trending model is..."
           }
         ],
         "stats": {
-          "input_tokens": 159,
-          "total_output_tokens": 74,
-          "reasoning_output_tokens": 12,
-          "tokens_per_second": 43.506416908993025,
-          "time_to_first_token_seconds": 2.855
+          "input_tokens": 329,
+          "total_output_tokens": 268,
+          "reasoning_output_tokens": 5,
+          "tokens_per_second": 43.73263766917279,
+          "time_to_first_token_seconds": 0.781
         },
-        "thread_id": "thread_e07fff380975be4d76d7d95bcf2cfb978c79b8baca467e2b"
+        "thread_id": "thread_02b2017dbc06c12bfc353a2ed6c2b802f8cc682884bb5716"
       }
 ```
 ````

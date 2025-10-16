@@ -77,22 +77,6 @@ variants:
             - name: context_length
               type: number
               description: The maximum context length for the model in number of tokens.
-            - name: eval_batch_size
-              type: number
-              optional: true
-              description: Number of input tokens to process together in a single batch during evaluation. Absent for embedding models.
-            - name: flash_attention
-              type: boolean
-              optional: true
-              description: Whether Flash Attention is enabled for optimized attention computation. Absent for embedding models.
-            - name: num_experts
-              type: number
-              optional: true
-              description: Number of experts for MoE (Mixture of Experts) models. Absent for embedding models.
-            - name: offload_kv_cache_to_gpu
-              type: boolean
-              optional: true
-              description: Whether KV cache is offloaded to GPU memory. Absent for embedding models.
     - name: max_context_length
       type: number
       description: Maximum context length supported by the model in number of tokens.
