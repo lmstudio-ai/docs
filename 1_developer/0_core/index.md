@@ -1,12 +1,18 @@
 ---
-title: Local Server
-description: Core capabilities for building with LM Studio.
-index: 1
+title: LM Studio as a Local LLM API Server
+sidebar_title: Local Server
+description: Run an LLM API server on localhost with LM Studio
 ---
 
-This section collects foundational developer topics for LM Studio:
+You can serve local LLMs from LM Studio's Developer tab, either on localhost or on the network.
 
-- Headless Mode
-- Idle TTL and Auto‑Evict
-- Structured Output
-- Tools and Function Calling
+LM Studio's APIs can be used through an [OpenAI compatibility mode](/docs/app/api/endpoints/openai), enhanced [REST API](/docs/app/api/endpoints/rest), or through a client library like [lmstudio-js](/docs/api/sdk).
+
+#### API options
+
+- [TypeScript SDK](/docs/typescript) - `lmstudio-js`
+- [Python SDK](/docs/python) - `lmstudio-python`
+- [LM Studio REST API](/docs/app/api/endpoints/rest) (new, in beta)
+- [OpenAI Compatibility endpoints](/docs/app/api/endpoints/openai)
+
+<img src="/assets/docs/server.png" style="" data-caption="Load and server LLMs from LM Studio" />
