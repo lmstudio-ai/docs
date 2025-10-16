@@ -33,8 +33,6 @@ Try to copy and paste the following into the link generator above.
 }
 ```
 
-<br>
-
 ### Deeplink format
 
 ```bash

@@ -8,6 +8,7 @@ You can enforce a particular response format from an LLM by providing a JSON sch
 <hr>
 
 ### Start LM Studio as a server
+
 To use LM Studio programmatically from your own code, run LM Studio as a local server.
 
 You can turn on the server from the "Developer" tab in LM Studio, or via the `lms` CLI:
@@ -15,11 +16,10 @@ You can turn on the server from the "Developer" tab in LM Studio, or via the `lm
 ```
 lms server start
 ```
+
 ###### Install `lms` by running `npx lmstudio install-cli`
 
 This will allow you to interact with LM Studio via an OpenAI-like REST API. For an intro to LM Studio's OpenAI-like API, see [Running LM Studio as a server](/docs/basics/server).
-
-<br>
 
 ### Structured Output
 
@@ -75,6 +75,7 @@ All parameters recognized by `/v1/chat/completions` will be honored, and the JSO
 The JSON object will be provided in `string` form in the typical response field, `choices[0].message.content`, and will need to be parsed into a JSON object.
 
 **Example using `python`**
+
 ```python
 from openai import OpenAI
 import json
@@ -138,11 +139,12 @@ Check the model card README if you are unsure if the model supports structured o
 ### Structured output engine
 
 - For `GGUF` models: utilize `llama.cpp`'s grammar-based sampling APIs.
-- For `MLX` models: using [Outlines](https://github.com/dottxt-ai/outlines). 
+- For `MLX` models: using [Outlines](https://github.com/dottxt-ai/outlines).
 
 The MLX implementation is available on Github: [lmstudio-ai/mlx-engine](https://github.com/lmstudio-ai/mlx-engine).
 
 <hr>
 
 ### Community
+
 Chat with other LM Studio users, discuss LLMs, hardware, and more on the [LM Studio Discord server](https://discord.gg/aPQfnNkxGC).

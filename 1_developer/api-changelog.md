@@ -218,16 +218,3 @@ You can now download models directly from the terminal using a keyword
 
 ```bash
 lms get deepseek-r1
-```
-
-or a full Hugging Face URL
-
-```bash
-lms get <hugging face url>
-```
-
-To filter for MLX models only, add `--mlx` to the command.
-
-```bash
-lms get deepseek-r1 --mlx
-```

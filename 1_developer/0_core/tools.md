@@ -41,8 +41,6 @@ lms load
   - [Multi-Turn Example](#multi-turn-example)
   - [Advanced Agent Example](#advanced-agent-example)
 
-<br>
-
 ## Tool Use
 
 ### What really is "Tool Use"?
@@ -100,50 +98,50 @@ We will use [lmstudio-community/Qwen2.5-7B-Instruct-GGUF](https://model.lmstudio
 1. You provide a list of tools to an LLM. These are the tools that the model can _request_ calls to.
    For example:
 
-   ```json
-   // the list of tools is model-agnostic
-   [
-     {
-       "type": "function",
-       "function": {
-         "name": "get_delivery_date",
-         "description": "Get the delivery date for a customer's order",
-         "parameters": {
-           "type": "object",
-           "properties": {
-             "order_id": {
-               "type": "string"
-             }
-           },
-           "required": ["order_id"]
-         }
-       }
-     }
-   ]
-   ```
+```json
+// the list of tools is model-agnostic
+[
+  {
+    "type": "function",
+    "function": {
+      "name": "get_delivery_date",
+      "description": "Get the delivery date for a customer's order",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "order_id": {
+            "type": "string"
+          }
+        },
+        "required": ["order_id"]
+      }
+    }
+  }
+]
+```
 
-   This list will be injected into the `system` prompt of the model depending on the model's chat template. For `Qwen2.5-Instruct`, this looks like:
+This list will be injected into the `system` prompt of the model depending on the model's chat template. For `Qwen2.5-Instruct`, this looks like:
 
-   ```json
-   <|im_start|>system
-   You are Qwen, created by Alibaba Cloud. You are a helpful assistant.
+```json
+<|im_start|>system
+You are Qwen, created by Alibaba Cloud. You are a helpful assistant.
 
-   # Tools
+# Tools
 
-   You may call one or more functions to assist with the user query.
+You may call one or more functions to assist with the user query.
 
-   You are provided with function signatures within <tools></tools> XML tags:
-   <tools>
-   {"type": "function", "function": {"name": "get_delivery_date", "description": "Get the delivery date for a customer's order", "parameters": {"type": "object", "properties": {"order_id": {"type": "string"}}, "required": ["order_id"]}}}
-   </tools>
+You are provided with function signatures within <tools></tools> XML tags:
+<tools>
+{"type": "function", "function": {"name": "get_delivery_date", "description": "Get the delivery date for a customer's order", "parameters": {"type": "object", "properties": {"order_id": {"type": "string"}}, "required": ["order_id"]}}}
+</tools>
 
-   For each function call, return a json object with function name and arguments within <tool_call></tool_call> XML tags:
-   <tool_call>
-   {"name": <function-name>, "arguments": <args-json-object>}
-   </tool_call><|im_end|>
-   ```
+For each function call, return a json object with function name and arguments within <tool_call></tool_call> XML tags:
+<tool_call>
+{"name": <function-name>, "arguments": <args-json-object>}
+</tool_call><|im_end|>
+```
 
-   **Important**: The model can only _request_ calls to these tools because LLMs _cannot_ directly call functions, APIs, or any other tools. They can only output text, which can then be parsed to programmatically call the functions.
+**Important**: The model can only _request_ calls to these tools because LLMs _cannot_ directly call functions, APIs, or any other tools. They can only output text, which can then be parsed to programmatically call the functions.
 
 2. When prompted, the LLM can then decide to either:
 
@@ -230,8 +228,6 @@ We will use [lmstudio-community/Qwen2.5-7B-Instruct-GGUF](https://model.lmstudio
 6. The loop continues back at step 2 of the flow
 
 Note: This is the `pedantic` flow for tool use. However, you can certainly experiment with this flow to best fit your use case.
-
-<br>
 
 ## Supported Models
 
@@ -354,8 +350,6 @@ Then LM Studio will be able to parse those tool calls into the `chat.completions
 
 All models that don't have native tool use support will have default tool use support.
 
-<br>
-
 ## Example using `curl`
 
 This example demonstrates a model requesting a tool call using the `curl` utility.
@@ -454,8 +448,6 @@ In plain english, the above response can be thought of as the model saying:
 > and give me back the results"
 
 The `tool_calls` field will need to be parsed to call actual functions/APIs. The below examples demonstrate how.
-
-<br>
 
 ## Examples using `python`
 

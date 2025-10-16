@@ -24,8 +24,6 @@ Switch to the "Program" tab in the right hand sidebar. Click `Install > Edit mcp
 
 <img src="/assets/docs/install-mcp.png"  data-caption="" style="width: 80%;" className="" />
 
-<br>
-
 This will open the `mcp.json` file in the in-app editor. You can add MCP servers by editing this file.
 
 <img src="/assets/docs/mcp-editor.png"  data-caption="Edit mcp.json using the in-app editor" style="width: 100%;" className="" />
