@@ -1,7 +1,6 @@
 ---
 title: REST API v0 (deprecated)
 description: "The REST API includes enhanced stats such as Token / Second and Time To First Token (TTFT), as well as rich information about models such as loaded vs unloaded, max context, quantization, and more."
-fullPage: true
 ---
 
 ```lms_warning

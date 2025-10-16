@@ -2,6 +2,8 @@
 title: Responses
 description: Create responses with support for streaming, reasoning, prior response state, and optional Remote MCP tools.
 index: 3
+api_info:
+  method: POST
 ---
 
 - Method: `POST`

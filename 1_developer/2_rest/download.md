@@ -3,6 +3,8 @@ title: "Download a model"
 description: "Download models from LM Studio Hub or Hugging Face"
 fullPage: true
 index: 5
+api_info:
+  method: POST
 ---
 
 ````lms_hstack

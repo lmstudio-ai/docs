@@ -2,6 +2,8 @@
 title: Completions (Legacy)
 description: Text completion for base models (legacy OpenAI endpoint).
 index: 6
+api_info:
+  method: POST
 ---
 
 ```lms_warning

@@ -3,8 +3,9 @@ title: "Chat with a model"
 description: "Send a chat message to a model and receive a response with optional MCP server integration"
 fullPage: true
 index: 2
+api_info:
+  method: POST
 ---
-
 
 ````lms_hstack
 `POST /api/v1/chat`
