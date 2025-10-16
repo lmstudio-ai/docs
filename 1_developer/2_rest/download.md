@@ -101,7 +101,7 @@ Returns a download job status object. The response varies based on the download 
       description: Quantization information object. Present when `type` is `model`.
       children:
         - name: name
-          type: string
+          type: string | null
           description: The quantization level (e.g., `4BIT`).
     - name: format
       type: string | null
