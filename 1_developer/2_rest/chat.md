@@ -2,7 +2,7 @@
 title: "Chat with a model"
 description: "Send a message to a model and receive a response. Supports MCP integration."
 fullPage: true
-index: 2
+index: 3
 api_info:
   method: POST
 ---
