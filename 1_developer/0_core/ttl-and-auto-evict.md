@@ -36,8 +36,6 @@ When JIT loading is enabled, the **first request** to a model will load it into 
 
 This works for requests targeting both the [OpenAI compatibility API](openai-api) and the [LM Studio's REST API](rest-api):
 
-<br>
-
 ```diff
 curl http://localhost:1234/api/v0/chat/completions \
   -H "Content-Type: application/json" \

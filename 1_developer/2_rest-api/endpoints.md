@@ -1,9 +1,11 @@
 ---
-title: LM Studio REST API (beta)
+title: REST API v0 (deprecated)
 description: "The REST API includes enhanced stats such as Token / Second and Time To First Token (TTFT), as well as rich information about models such as loaded vs unloaded, max context, quantization, and more."
 ---
 
-`Experimental`
+```lms_warning
+LM Studio now has a v1 REST API! Please migrate to the new API.
+```
 
 ##### Requires [LM Studio 0.3.6](/download) or newer. Still WIP, endpoints may change.
 
