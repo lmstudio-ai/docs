@@ -1,6 +1,7 @@
 ---
 title: "Get download status"
 description: "Get the status of model downloads"
+fullPage: true
 index: 6
 ---
 

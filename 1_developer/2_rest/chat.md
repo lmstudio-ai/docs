@@ -1,6 +1,7 @@
 ---
 title: "Chat with a model"
 description: "Send a chat message to a model and receive a response with optional MCP server integration"
+fullPage: true
 index: 2
 ---
 

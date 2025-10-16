@@ -1,6 +1,7 @@
 ---
 title: "Load a model"
 description: "Load a llm or embedding into memory with custom configuration for inference"
+fullPage: true
 index: 4
 ---
 ````lms_hstack
