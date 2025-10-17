@@ -7,7 +7,7 @@ fullPage: false
 
 You can serve local LLMs from LM Studio's Developer tab, either on localhost or on the network.
 
-LM Studio's APIs can be used through [REST API](/docs/developer/rest), client libraries like [lmstudio-js](/docs/api/sdk) and [lmstudio-python](/docs/python), and [OpenAI compatibility endpoints](/docs/developer/openai-compat)
+LM Studio's APIs can be used through [REST API](/docs/developer/rest), client libraries like [lmstudio-js](/docs/typescript) and [lmstudio-python](/docs/python), and [OpenAI compatibility endpoints](/docs/developer/openai-compat)
 
 ### API options
 

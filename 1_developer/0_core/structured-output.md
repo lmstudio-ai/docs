@@ -19,7 +19,7 @@ lms server start
 
 ###### Install `lms` by running `npx lmstudio install-cli`
 
-This will allow you to interact with LM Studio via an OpenAI-like REST API. For an intro to LM Studio's OpenAI-like API, see [Running LM Studio as a server](/docs/basics/server).
+This will allow you to interact with LM Studio via the REST API. For an intro to LM Studio's REST API, see [REST API Overview](/docs/developer/rest).
 
 ### Structured Output
 

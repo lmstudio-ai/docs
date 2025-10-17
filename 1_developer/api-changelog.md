@@ -14,7 +14,7 @@ index: 2
   - Reasoning support with `reasoning.effort` for `openai/gpt‑oss‑20b`.
   - Streaming via SSE when `stream: true`.
 - CLI: `lms ls --variants` lists all variants for multi‑variant models.
-- Docs: [/docs/app/api/endpoints/openai](/docs/app/api/endpoints/openai). Full release notes: [/blog/lmstudio-v0.3.29](/blog/lmstudio-v0.3.29).
+- Docs: [/docs/developer/openai-compat](/docs/developer/openai-compat). Full release notes: [/blog/lmstudio-v0.3.29](/blog/lmstudio-v0.3.29).
 
 ---
 
@@ -172,7 +172,7 @@ Responses now include a `stats` object for speculative decoding:
 
 ### Idle TTL and Auto Evict
 
-Set a TTL (in seconds) for models loaded via API requests (docs article: [Idle TTL and Auto-Evict](/docs/api/ttl-and-auto-evict))
+Set a TTL (in seconds) for models loaded via API requests (docs article: [Idle TTL and Auto-Evict](/docs/developer/core/ttl-and-auto-evict))
 
 ```diff
 curl http://localhost:1234/api/v0/chat/completions \
@@ -206,7 +206,7 @@ Turn this on in App Settings > Developer.
 
 Use any LLM that supports Tool Use and Function Calling through the OpenAI-like API.
 
-Docs: [Tool Use and Function Calling](/docs/api/tools).
+Docs: [Tool Use and Function Calling](/docs/developer/core/tools).
 
 ---
 
