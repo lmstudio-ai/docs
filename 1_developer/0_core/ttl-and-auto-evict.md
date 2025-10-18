@@ -4,10 +4,6 @@ description: Optionally auto-unload idle models after a certain amount of time (
 index: 4
 ---
 
-LM Studio 0.3.9 (b1) introduces the ability to set a _time-to-live_ (TTL) for API models, and optionally auto-evict previously loaded models before loading new ones.
-
-These features complement LM Studio's [on-demand model loading (JIT)](https://lmstudio.ai/blog/lmstudio-v0.3.5#on-demand-model-loading) to automate efficient memory management and reduce the need for manual intervention.
-
 ## Background
 
 - `JIT loading` makes it easy to use your LM Studio models in other apps: you don't need to manually load the model first before being able to use it. However, this also means that models can stay loaded in memory even when they're not being used. `[Default: enabled]`

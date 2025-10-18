@@ -26,7 +26,7 @@ The SDK provides you a set of programmatic tools to interact with LLMs, embeddin
         pnpm add @lmstudio/sdk
 ```
 
-For the source code and open source contribution, visit [lmstudio.js](https://github.com/lmstudio-ai/lmstudio.js) on GitHub.
+For the source code and open source contribution, visit [lmstudio-js](https://github.com/lmstudio-ai/lmstudio-js) on GitHub.
 
 ## Features
 

@@ -1,6 +1,7 @@
 ---
 title: Working with Chats
 description: APIs for representing a chat conversation with an LLM
+index: 3
 ---
 
 SDK methods such as `model.respond()`, `model.applyPromptTemplate()`, or `model.act()`

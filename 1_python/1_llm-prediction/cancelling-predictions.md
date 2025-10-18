@@ -1,6 +1,7 @@
 ---
 title: Cancelling Predictions
 description: Stop an ongoing prediction in `lmstudio-python`
+index: 4
 ---
 
 One benefit of using the streaming API is the ability to cancel the

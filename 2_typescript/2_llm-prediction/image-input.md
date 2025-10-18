@@ -1,7 +1,7 @@
 ---
 title: Image Input
 description: API for passing images as input to the model
-index: 2
+index: 4
 ---
 
 Some models, known as VLMs (Vision-Language Models), can accept images as input. You can pass images to the model using the `.respond()` method.

@@ -4,7 +4,7 @@ description: API to use a draft model in speculative decoding in `lmstudio-pytho
 index: 5
 ---
 
-*Required Python SDK version*: **1.2.0**
+_Required Python SDK version_: **1.2.0**
 
 Speculative decoding is a technique that can substantially increase the generation speed of large language models (LLMs) without reducing response quality. See [Speculative Decoding](./../../app/advanced/speculative-decoding) for more info.
 

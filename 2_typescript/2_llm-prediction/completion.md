@@ -1,6 +1,7 @@
 ---
-title: Text Completions
+title: Generate Completions
 description: "Provide a string input for the model to complete"
+index: 6
 ---
 
 Use `llm.complete(...)` to generate text completions from a loaded language model. Text completions mean sending an non-formatted string to the model with the expectation that the model will complete the text.

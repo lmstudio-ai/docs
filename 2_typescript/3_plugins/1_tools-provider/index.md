@@ -1,5 +1,5 @@
 ---
-title: "Introduction"
+title: "Introduction to Tools Provider"
 description: "Writing tools providers for LM Studio plugins using TypeScript"
 index: 1
 ---

@@ -21,7 +21,7 @@ The REST API includes enhanced stats such as Token / Second and Time To First To
 - [`POST /api/v0/completions`](#post-apiv0completions) - Text Completions (prompt -> completion)
 - [`POST /api/v0/embeddings`](#post-apiv0embeddings) - Text Embeddings (text -> embedding)
 
-###### 🚧 We are in the process of developing this interface. Let us know what's important to you on [Github](https://github.com/lmstudio-ai/lmstudio.js/issues) or by [email](mailto:bugs@lmstudio.ai).
+###### 🚧 We are in the process of developing this interface. Let us know what's important to you on [Github](https://github.com/lmstudio-ai/lmstudio-js/issues) or by [email](mailto:bugs@lmstudio.ai).
 
 ---
 

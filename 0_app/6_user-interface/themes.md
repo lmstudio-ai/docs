@@ -3,18 +3,10 @@ title: Color Themes
 description: Customize LM Studio's color theme
 ---
 
-LM Studio comes with a few built-in themes for app-wide color palettes.
-
-<hr>
-
 ### Selecting a Theme
 
-You can choose a theme in the Settings tab. 
+Press `Cmd` + `K` then `T` (macOS) or `Ctrl` + `K` then `T` (Windows/Linux) to open the theme selector.
+
+You can also choose a theme in the Settings tab (`Cmd` + `,` on macOS or `Ctrl` + `,` on Windows/Linux).
 
 Choosing the "Auto" option will automatically switch between Light and Dark themes based on your system settings.
-
-```lms_protip
-You can jump to Settings from anywhere in the app by pressing `cmd` + `,` on macOS or `ctrl` + `,` on Windows/Linux.
-```
-###### To get to the Settings page, you need to be on [Power User mode](/docs/modes) or higher.
-
