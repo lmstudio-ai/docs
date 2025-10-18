@@ -1,7 +1,9 @@
 ---
 title: API Changelog
-description: LM Studio API Changelog - new features and updates
+description: Updates and changes to the LM Studio API.
 index: 2
+---
+
 ---
 
 ###### LM Studio 0.3.29 • 2025‑10‑06
@@ -198,8 +200,6 @@ Turn this on in App Settings > Developer.
 
 ---
 
-<br>
-
 ###### [👾 LM Studio 0.3.6](blog/lmstudio-v0.3.6) • 2025-01-06
 
 ### Tool and Function Calling API
@@ -209,8 +209,6 @@ Use any LLM that supports Tool Use and Function Calling through the OpenAI-like 
 Docs: [Tool Use and Function Calling](/docs/developer/core/tools).
 
 ---
-
-<br>
 
 ###### [👾 LM Studio 0.3.5](blog/lmstudio-v0.3.5) • 2024-10-22
 
