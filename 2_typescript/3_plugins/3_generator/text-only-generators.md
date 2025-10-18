@@ -4,10 +4,6 @@ title: "Text-only Generators"
 index: 2
 ---
 
-```lms_private_beta
-Plugin support is currently in private beta. [Join the beta here](https://forms.gle/ZPfGLMvVC6DbSRQm9).
-```
-
 Generators take in the the generator controller and the current conversation state, start the generation, and then report the generated text using the `ctl.fragmentGenerated` method.
 
 The following is an example of a simple generator that echos back the last user message with 200 ms delay between each word:

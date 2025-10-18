@@ -4,10 +4,6 @@ title: "Defining New Fields"
 index: 4
 ---
 
-```lms_private_beta
-Plugin support is currently in private beta. [Join the beta here](https://forms.gle/ZPfGLMvVC6DbSRQm9).
-```
-
 We support the following field types:
 
 - `string`: A text input field.

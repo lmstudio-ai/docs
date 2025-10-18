@@ -4,10 +4,6 @@ description: "Gracefully handle user-aborted tool executions in your tools provi
 index: 7
 ---
 
-```lms_private_beta
-Plugin support is currently in private beta. [Join the beta here](https://forms.gle/ZPfGLMvVC6DbSRQm9).
-```
-
 A prediction may be aborted by the user while your tool is still running. In such cases, you should handle the abort gracefully by handling the `AbortSignal` object passed as the second parameter to the tool's implementation function.
 
 ```lms_code_snippet

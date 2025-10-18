@@ -4,10 +4,6 @@ title: "Custom Status Report"
 index: 4
 ---
 
-```lms_private_beta
-Plugin support is currently in private beta. [Join the beta here](https://forms.gle/ZPfGLMvVC6DbSRQm9).
-```
-
 Depending on the task, the prompt preprocessor may take some time to complete, for example, it may need to fetch some data from the internet or perform some heavy computation. In such cases, you can report the status of the preprocessing using `ctl.setStatus`.
 
 ```lms_code_snippet

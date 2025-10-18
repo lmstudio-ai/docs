@@ -4,10 +4,6 @@ description: "A brief introduction to making plugins for LM Studio using TypeScr
 index: 1
 ---
 
-```lms_private_beta
-Plugin support is currently in private beta. [Join the beta here](https://forms.gle/ZPfGLMvVC6DbSRQm9).
-```
-
 Plugins extend LM Studio's functionality by providing "hook functions" that execute at specific points during operation.
 
 Plugins are currently written in JavaScript/TypeScript and run on Node.js v20.18.0. Python support is in development.

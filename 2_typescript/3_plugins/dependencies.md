@@ -4,10 +4,6 @@ description: "How to use npm packages in LM Studio plugins"
 index: 6
 ---
 
-```lms_private_beta
-Plugin support is currently in private beta. [Join the beta here](https://forms.gle/ZPfGLMvVC6DbSRQm9).
-```
-
 ## Add dependencies to your plugin with `npm`
 
 LM Studio plugins supports `npm` packages. You can just install them using `npm install`.
