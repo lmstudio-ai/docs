@@ -4,10 +4,6 @@ description: "Writing prompt preprocessors for LM Studio plugins using TypeScrip
 index: 1
 ---
 
-```lms_private_beta
-Plugin support is currently in private beta. [Join the beta here](https://forms.gle/ZPfGLMvVC6DbSRQm9).
-```
-
 Prompt Preprocessor is a function that is called upon the user hitting the "Send" button. It receives the user input and can modify it before it reaches the model. If multiple prompt preprocessors are registered, they will be chained together, with each one receiving the output of the previous one.
 
 The modified result will be saved in the chat history, meaning that even if your plugin is disabled afterwards, the modified input will still be used.

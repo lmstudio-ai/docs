@@ -4,10 +4,6 @@ title: "Multiple Tools"
 index: 4
 ---
 
-```lms_private_beta
-Plugin support is currently in private beta. [Join the beta here](https://forms.gle/ZPfGLMvVC6DbSRQm9).
-```
-
 A tools provider can define multiple tools for the model to use. Simply create additional tool instances and add them to the tools array.
 
 In the example below, we add a second tool to read the content of a file:

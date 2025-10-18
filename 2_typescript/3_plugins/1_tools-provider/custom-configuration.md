@@ -4,10 +4,6 @@ description: "Add custom configuration options to your tools provider"
 index: 5
 ---
 
-```lms_private_beta
-Plugin support is currently in private beta. [Join the beta here](https://forms.gle/ZPfGLMvVC6DbSRQm9).
-```
-
 You can add custom configuration options to your tools provider, so the user of plugin can customize the behavior without modifying the code.
 
 In the example below, we will ask the user to specify a folder name, and we will create files inside that folder within the working directory.

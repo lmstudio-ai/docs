@@ -1,6 +1,7 @@
 ---
 title: Cancelling Predictions
 description: Stop an ongoing prediction in `lmstudio-js`
+index: 4
 ---
 
 Sometimes you may want to halt a prediction before it finishes. For example, the user might change their mind or your UI may navigate away. `lmstudio-js` provides two simple ways to cancel a running prediction.

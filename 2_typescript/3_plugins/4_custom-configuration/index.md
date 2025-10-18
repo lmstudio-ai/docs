@@ -4,10 +4,6 @@ description: "Add custom configurations to LM Studio plugins using TypeScript"
 index: 1
 ---
 
-```lms_private_beta
-Plugin support is currently in private beta. [Join the beta here](https://forms.gle/ZPfGLMvVC6DbSRQm9).
-```
-
 LM Studio plugins support custom configurations. That is, you can define a configuration schema and LM Studio will present a UI to the user so they can configure your plugin without having to edit any code.
 
 There are two types of configurations:

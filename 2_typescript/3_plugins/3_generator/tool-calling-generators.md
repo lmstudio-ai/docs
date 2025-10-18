@@ -4,10 +4,6 @@ title: "Tool calling generators"
 index: 3
 ---
 
-```lms_private_beta
-Plugin support is currently in private beta. [Join the beta here](https://forms.gle/ZPfGLMvVC6DbSRQm9).
-```
-
 To enable tool use, it is slightly more involved. To see a comprehensive example that adapts OpenAI API, see the [openai-compat-endpoint plugin](https://lmstudio.ai/lmstudio/openai-compat-endpoint).
 
 You can read the definition of tools available using `ctl.getToolDefinitions()`. For example, if you are making an online model adapter, you need to pass the tool definition to the model.

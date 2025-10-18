@@ -5,7 +5,7 @@ description: "Set up your `lmstudio-js` app or script."
 index: 2
 ---
 
-`@lmstudio/sdk` is a library published on npm that allows you to use `lmstudio-js` in your own projects. It is open source and it's developed on GitHub. You can find the source code [here](https://github.com/lmstudio-ai/lmstudio.js).
+`@lmstudio/sdk` is a library published on npm that allows you to use `lmstudio-js` in your own projects. It is open source and it's developed on GitHub. You can find the source code [here](https://github.com/lmstudio-ai/lmstudio-js).
 
 ## Creating a New `node` Project
 
@@ -42,4 +42,3 @@ If you have already created a project and would like to use `lmstudio-js` in it,
       code: |
         pnpm add @lmstudio/sdk
 ```
-

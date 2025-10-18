@@ -4,15 +4,7 @@ sidebar_title: UI Modes
 description: Hide or reveal advanced features
 ---
 
-Starting LM Studio 0.3.0, you can switch between the following modes:
-
-- **User**
-- **Power User**
-- **Developer**
-
-<hr>
-
-### Selecting a Mode
+### Selecting a UI Mode
 
 You can configure LM Studio to run in increasing levels of configurability.
 

@@ -4,10 +4,6 @@ title: "Examples"
 index: 2
 ---
 
-```lms_private_beta
-Plugin support is currently in private beta. [Join the beta here](https://forms.gle/ZPfGLMvVC6DbSRQm9).
-```
-
 ### Example: Inject Current Time
 
 The following is an example preprocessor that injects the current time before each user message.

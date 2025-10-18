@@ -4,10 +4,6 @@ title: "Accessing Configuration"
 index: 3
 ---
 
-```lms_private_beta
-Plugin support is currently in private beta. [Join the beta here](https://forms.gle/ZPfGLMvVC6DbSRQm9).
-```
-
 You can access the configuration using the method `ctl.getPluginConfig(configSchematics)` and `ctl.getGlobalConfig(globalConfigSchematics)` respectively.
 
 For example, here is how to access the config within the promptPreprocessor:

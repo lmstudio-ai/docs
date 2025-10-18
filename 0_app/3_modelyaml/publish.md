@@ -23,7 +23,7 @@ lms clone qwen/qwen3-8b
 This will result in a local copy `model.yaml`, `README` and other metadata files. Importantly, this does NOT download the model weights.
 
 ```lms_terminal
-➜ ls
+$ ls
 README.md     manifest.json    model.yaml    thumbnail.png
 ```
 

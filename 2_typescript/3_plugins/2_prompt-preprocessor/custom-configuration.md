@@ -4,10 +4,6 @@ title: "Custom Configuration"
 index: 3
 ---
 
-```lms_private_beta
-Plugin support is currently in private beta. [Join the beta here](https://forms.gle/ZPfGLMvVC6DbSRQm9).
-```
-
 You can access custom configurations via `ctl.getPluginConfig` and `ctl.getGlobalPluginConfig`. See [Custom Configurations](./configurations) for more details.
 
 The following is an example of how you can make the `specialInstructions` and `triggerWord` configurable:

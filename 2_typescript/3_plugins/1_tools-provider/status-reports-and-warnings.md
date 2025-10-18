@@ -4,10 +4,6 @@ title: "Status Reports & Warnings"
 index: 6
 ---
 
-```lms_private_beta
-Plugin support is currently in private beta. [Join the beta here](https://forms.gle/ZPfGLMvVC6DbSRQm9).
-```
-
 Sometimes, a tool may take a long time to execute. In such cases, it will be helpful to provide status updates, so the user knows what is happening. In order times, you may want to warn the user about potential issues.
 
 You can use `status` and `warn` methods on the second parameter of the tool's implementation function to send status updates and warnings.

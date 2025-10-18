@@ -4,10 +4,6 @@ title: "`config.ts` File"
 index: 2
 ---
 
-```lms_private_beta
-Plugin support is currently in private beta. [Join the beta here](https://forms.gle/ZPfGLMvVC6DbSRQm9).
-```
-
 By default, the plugin scaffold will create a `config.ts` file in the `src/` directory which will contain the schematics of the configurations. If the files does not exist, you can create it manually:
 
 ```lms_code_snippet
