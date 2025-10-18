@@ -82,6 +82,6 @@ For example:
         >>> chat.add_user_message("How many fruits have you told me?")
         UserMessage(content=[TextData(text='How many fruits have you told me?')])
         >>> print(await model.respond(chat, on_message=chat.append))
-        You asked for three fruits initially, then three more, so I’ve listed six fruits in total.
+        You asked for three fruits initially, then three more, so I've listed six fruits in total.
 
 ```

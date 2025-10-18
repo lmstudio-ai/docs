@@ -1,6 +1,6 @@
 ---
 title: Chat Completions
-description: Send a chat history and get the assistant’s response.
+description: Send a chat history and get the assistant's response.
 index: 4
 api_info:
   method: POST
