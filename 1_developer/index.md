@@ -5,14 +5,15 @@ description: Build with LM Studio's local APIs and SDKs — TypeScript, Python, 
 index: 1
 ---
 
-Build local‑first AI apps with LM Studio. Run models on your machine, serve an API locally or on your network, and integrate using SDKs or HTTP.
-
-## Choose your path
+```lms_hstack
+## Get to know the stack
 
 - TypeScript SDK: [lmstudio-js](/docs/typescript)
 - Python SDK: [lmstudio-python](/docs/python)
-- REST API (beta): [Endpoints overview](/docs/developer/rest)
 - OpenAI‑compatible: [Chat, Responses, Embeddings](/docs/developer/openai-compat)
+- LM Studio CLI: [`lms`](/docs/cli)
+
+:::split:::
 
 ## What you can build
 
@@ -21,10 +22,11 @@ Build local‑first AI apps with LM Studio. Run models on your machine, serve an
 - Tool calling and local agents
 - Embeddings and tokenization
 - Model management (JIT load, TTL, auto‑evict)
+```
 
 ## Super quick start
 
-### TypeScript (lmstudio-js)
+### TypeScript (`lmstudio-js`)
 
 ```bash
 npm install @lmstudio/sdk
@@ -34,15 +36,15 @@ npm install @lmstudio/sdk
 import { LMStudioClient } from "@lmstudio/sdk";
 
 const client = new LMStudioClient();
-const model = await client.llm.model("llama-3.2-1b-instruct");
-const result = await model.respond("Hello from LM Studio");
+const model = await client.llm.model("openai/gpt-oss-20b");
+const result = await model.respond("Who are you, and what can you do?");
 
 console.info(result.content);
 ```
 
-Full docs: [lmstudio-js](/docs/typescript)
+Full docs: [lmstudio-js](/docs/typescript), Source: [GitHub](https://github.com/lmstudio-ai/lmstudio-js)
 
-### Python (lmstudio-python)
+### Python (`lmstudio-python`)
 
 ```bash
 pip install lmstudio
@@ -52,12 +54,12 @@ pip install lmstudio
 import lmstudio as lms
 
 with lms.Client() as client:
-    model = client.llm.model("llama-3.2-1b-instruct")
-    result = model.respond("Hello from LM Studio")
+    model = client.llm.model("openai/gpt-oss-20b")
+    result = model.respond("Who are you, and what can you do?")
     print(result)
 ```
 
-Full docs: [lmstudio-python](/docs/python)
+Full docs: [lmstudio-python](/docs/python), Source: [GitHub](https://github.com/lmstudio-ai/lmstudio-python)
 
 ### Try a minimal HTTP request (OpenAI‑compatible)
 
@@ -69,8 +71,8 @@ lms server start --port 1234
 curl http://localhost:1234/v1/chat/completions \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "llama-3.2-1b-instruct",
-    "messages": [{"role": "user", "content": "Hello from LM Studio"}]
+    "model": "openai/gpt-oss-20b",
+    "messages": [{"role": "user", "content": "Who are you, and what can you do?"}]
   }'
 ```
 
@@ -81,4 +83,4 @@ Full docs: [OpenAI‑compatible endpoints](/docs/developer/openai-compat)
 - API Changelog: [/docs/developer/api-changelog](/docs/developer/api-changelog)
 - Local server basics: [/docs/developer/core](/docs/developer/core)
 - CLI reference: [/docs/cli](/docs/cli)
-- Community: [Discord](https://discord.gg/aPQfnNkxGC)
+- Community: [Discord](https://discord.gg/lmstudio)

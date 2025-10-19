@@ -8,18 +8,20 @@ AI models are huge. It can take a while to load them into memory. LM Studio's SD
 
 **Model namespaces:**
 
-  - LLMs are accessed through the `client.llm` namespace
-  - Embedding models are accessed through the `client.embedding` namespace
-  - `lmstudio.llm` is equivalent to `client.llm.model` on the default client
-  - `lmstudio.embedding_model` is equivalent to `client.embedding.model` on the default client
+- LLMs are accessed through the `client.llm` namespace
+- Embedding models are accessed through the `client.embedding` namespace
+- `lmstudio.llm` is equivalent to `client.llm.model` on the default client
+- `lmstudio.embedding_model` is equivalent to `client.embedding.model` on the default client
 
 **Most commonly:**
-  - Use `.model()` to get any currently loaded model
-  - Use `.model("model-key")` to use a specific model
+
+- Use `.model()` to get any currently loaded model
+- Use `.model("model-key")` to use a specific model
 
 **Advanced (manual model management):**
-  - Use `.load_new_instance("model-key")` to load a new instance of a model
-  - Use `.unload("model-key")` or `model_handle.unload()` to unload a model from memory
+
+- Use `.load_new_instance("model-key")` to load a new instance of a model
+- Use `.unload("model-key")` or `model_handle.unload()` to unload a model from memory
 
 ## Get the Current Model with `.model()`
 
@@ -60,6 +62,7 @@ you can use it by calling `.model()` without any arguments.
 If you want to use a specific model, you can provide the model key as an argument to `.model()`.
 
 #### Get if Loaded, or Load if not
+
 Calling `.model("model-key")` will load the model if it's not already loaded, or return the existing instance if it is.
 
 ```lms_code_snippet
@@ -69,7 +72,7 @@ Calling `.model("model-key")` will load the model if it's not already loaded, or
       code: |
         import lmstudio as lms
 
-        model = lms.llm("llama-3.2-1b-instruct")
+        model = lms.llm("qwen/qwen3-4b-2507")
 
     "Python (scoped resource API)":
       language: python
@@ -77,7 +80,7 @@ Calling `.model("model-key")` will load the model if it's not already loaded, or
         import lmstudio as lms
 
         with lms.Client() as client:
-            model = client.llm.model("llama-3.2-1b-instruct")
+            model = client.llm.model("qwen/qwen3-4b-2507")
 
     "Python (asynchronous API)":
       language: python
@@ -87,7 +90,7 @@ Calling `.model("model-key")` will load the model if it's not already loaded, or
         import lmstudio as lms
 
         async with lms.AsyncClient() as client:
-            model = await client.llm.model("llama-3.2-1b-instruct")
+            model = await client.llm.model("qwen/qwen3-4b-2507")
 
 ```
 
@@ -108,8 +111,8 @@ This allows you to have multiple instances of the same or different models loade
         import lmstudio as lms
 
         client = lms.get_default_client()
-        llama = client.llm.load_new_instance("llama-3.2-1b-instruct")
-        another_llama = client.llm.load_new_instance("llama-3.2-1b-instruct", "second-llama")
+        model = client.llm.load_new_instance("qwen/qwen3-4b-2507")
+        another_model = client.llm.load_new_instance("qwen/qwen3-4b-2507", "my-second-model")
 
     "Python (scoped resource API)":
       language: python
@@ -117,8 +120,8 @@ This allows you to have multiple instances of the same or different models loade
         import lmstudio as lms
 
         with lms.Client() as client:
-            llama = client.llm.load_new_instance("llama-3.2-1b-instruct")
-            another_llama = client.llm.load_new_instance("llama-3.2-1b-instruct", "second-llama")
+            model = client.llm.load_new_instance("qwen/qwen3-4b-2507")
+            another_model = client.llm.load_new_instance("qwen/qwen3-4b-2507", "my-second-model")
 
     "Python (asynchronous API)":
       language: python
@@ -128,8 +131,8 @@ This allows you to have multiple instances of the same or different models loade
         import lmstudio as lms
 
         async with lms.AsyncClient() as client:
-            llama = await client.llm.load_new_instance("llama-3.2-1b-instruct")
-            another_llama = await client.llm.load_new_instance("llama-3.2-1b-instruct", "second-llama")
+            model = await client.llm.load_new_instance("qwen/qwen3-4b-2507")
+            another_model = await client.llm.load_new_instance("qwen/qwen3-4b-2507", "my-second-model")
 
 ```
 
@@ -181,7 +184,7 @@ Once you no longer need a model, you can unload it by simply calling `unload()` 
 
 ## Set Custom Load Config Parameters
 
-You can also specify the same load-time configuration options when loading a model, such as Context Length and GPU offload. 
+You can also specify the same load-time configuration options when loading a model, such as Context Length and GPU offload.
 
 See [load-time configuration](../llm-prediction/parameters) for more.
 
@@ -202,7 +205,7 @@ a new instance, and will _not_ retroactively change the TTL of an existing insta
       code: |
         import lmstudio as lms
 
-        llama = lms.llm("llama-3.2-1b-instruct", ttl=3600)
+        model = lms.llm("qwen/qwen3-4b-2507", ttl=3600)
 
     "Python (scoped resource API)":
       language: python
@@ -210,7 +213,7 @@ a new instance, and will _not_ retroactively change the TTL of an existing insta
         import lmstudio as lms
 
         with lms.Client() as client:
-            llama = client.llm.model("llama-3.2-1b-instruct", ttl=3600)
+            model = client.llm.model("qwen/qwen3-4b-2507", ttl=3600)
 
     "Python (asynchronous API)":
       language: python
@@ -220,7 +223,7 @@ a new instance, and will _not_ retroactively change the TTL of an existing insta
         import lmstudio as lms
 
         async with lms.AsyncClient() as client:
-            llama = await client.llm.model("llama-3.2-1b-instruct", ttl=3600)
+            model = await client.llm.model("qwen/qwen3-4b-2507", ttl=3600)
 
 ```
 

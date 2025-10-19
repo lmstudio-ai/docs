@@ -41,7 +41,7 @@ You have 47 models, taking up 160.78 GB of disk space.
 
 LLMs (Large Language Models)                       PARAMS      ARCHITECTURE           SIZE
 lmstudio-community/meta-llama-3.1-8b-instruct          8B         Llama            4.92 GB
-hugging-quants/llama-3.2-1b-instruct                   1B         Llama            1.32 GB
+hugging-quants/qwen/qwen3-4b-2507                   1B         Llama            1.32 GB
 mistral-7b-instruct-v0.3                                         Mistral           4.08 GB
 zeta                                                   7B         Qwen2            4.09 GB
 

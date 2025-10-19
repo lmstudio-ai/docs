@@ -36,7 +36,7 @@ For the source code and open source contribution, visit [lmstudio-python](https:
       code: |
         import lmstudio as lms
 
-        model = lms.llm("llama-3.2-1b-instruct")
+        model = lms.llm("qwen/qwen3-4b-2507")
         result = model.respond("What is the meaning of life?")
 
         print(result)
@@ -47,7 +47,7 @@ For the source code and open source contribution, visit [lmstudio-python](https:
         import lmstudio as lms
 
         with lms.Client() as client:
-            model = client.llm.model("llama-3.2-1b-instruct")
+            model = client.llm.model("qwen/qwen3-4b-2507")
             result = model.respond("What is the meaning of life?")
 
             print(result)
@@ -60,7 +60,7 @@ For the source code and open source contribution, visit [lmstudio-python](https:
         import lmstudio as lms
 
         async with lms.AsyncClient() as client:
-            model = await client.llm.model("llama-3.2-1b-instruct")
+            model = await client.llm.model("qwen/qwen3-4b-2507")
             result = await model.respond("What is the meaning of life?")
 
             print(result)
@@ -72,7 +72,7 @@ The above code requires the Llama 3.2 1B model.
 If you don't have the model, run the following command in the terminal to download it.
 
 ```bash
-lms get llama-3.2-1b-instruct
+lms get qwen/qwen3-4b-2507
 ```
 
 Read more about `lms get` in LM Studio's CLI [here](./cli/get).
