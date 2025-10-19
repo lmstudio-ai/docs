@@ -68,7 +68,7 @@ For the source code and open source contribution, visit [lmstudio-python](https:
 
 ### Getting Local Models
 
-The above code requires the Llama 3.2 1B model.
+The above code requires the [qwen3-4b-2507](https://lmstudio.ai/models/qwen/qwen3-4b-2507) model.
 If you don't have the model, run the following command in the terminal to download it.
 
 ```bash
@@ -105,7 +105,7 @@ resource API. These examples are listed as "Python (synchronous API)".
 
 ## Timeouts in the synchronous API
 
-*Required Python SDK version*: **1.5.0**
+_Required Python SDK version_: **1.5.0**
 
 Starting in Python SDK version 1.5.0, the synchronous API defaults to timing out after 60 seconds
 with no activity when waiting for a response or streaming event notification from the API server.
@@ -119,7 +119,7 @@ function.
 
 ## Timeouts in the asynchronous API
 
-*Required Python SDK version*: **1.5.0**
+_Required Python SDK version_: **1.5.0**
 
 As asynchronous coroutines support cancellation, there is no specific timeout support implemented
 in the asynchronous API. Instead, general purpose async timeout mechanisms, such as

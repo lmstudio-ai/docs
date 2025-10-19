@@ -55,7 +55,7 @@ For the source code and open source contribution, visit [lmstudio-js](https://gi
 
 ### Getting Local Models
 
-The above code requires the Llama 3.2 1B. If you don't have the model, run the following command in the terminal to download it.
+The above code requires the [qwen3-4b-2507](https://lmstudio.ai/models/qwen/qwen3-4b-2507). If you don't have the model, run the following command in the terminal to download it.
 
 ```bash
 lms get qwen/qwen3-4b-2507
