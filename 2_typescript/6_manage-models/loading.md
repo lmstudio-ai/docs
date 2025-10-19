@@ -47,7 +47,7 @@ Calling `.model("model-key")` will load the model if it's not already loaded, or
         import { LMStudioClient } from "@lmstudio/sdk";
         const client = new LMStudioClient();
 
-        const model = await client.llm.model("llama-3.2-1b-instruct");
+        const model = await client.llm.model("qwen/qwen3-4b-2507");
 ```
 
 <!-- Learn more about the `.model()` method and the parameters it accepts in the [API Reference](../api-reference/model). -->
@@ -64,8 +64,8 @@ Use `load()` to load a new instance of a model, even if one already exists. This
         import { LMStudioClient } from "@lmstudio/sdk";
         const client = new LMStudioClient();
 
-        const llama = await client.llm.load("llama-3.2-1b-instruct");
-        const another_llama = await client.llm.load("llama-3.2-1b-instruct", {
+        const llama = await client.llm.load("qwen/qwen3-4b-2507");
+        const another_llama = await client.llm.load("qwen/qwen3-4b-2507", {
           identifier: "second-llama"
         });
 ```
@@ -115,7 +115,7 @@ after the last request until the model unloads. See [Idle TTL](/docs/api/ttl-and
 
         const client = new LMStudioClient();
 
-        const model = await client.llm.load("llama-3.2-1b-instruct", {
+        const model = await client.llm.load("qwen/qwen3-4b-2507", {
           ttl: 300, // 300 seconds
         });
     "Using .model":
@@ -125,7 +125,7 @@ after the last request until the model unloads. See [Idle TTL](/docs/api/ttl-and
 
         const client = new LMStudioClient();
 
-        const model = await client.llm.model("llama-3.2-1b-instruct", {
+        const model = await client.llm.model("qwen/qwen3-4b-2507", {
           // Note: specifying ttl in `.model` will only set the TTL for the model if the model is
           // loaded from this call. If the model was already loaded, the TTL will not be updated.
           ttl: 300, // 300 seconds

@@ -8,6 +8,7 @@ index: 8
 The `lms ls` command displays a list of all models downloaded to your machine, including their size, architecture, and parameters.
 
 ### Parameters
+
 ```lms_params
 - name: "--llm"
   type: "flag"
@@ -36,6 +37,7 @@ lms ls
 ```
 
 Example output:
+
 ```
 You have 47 models, taking up 160.78 GB of disk space.
 
@@ -55,11 +57,13 @@ text-embedding-bge-small-en-v1.5                     33M           BERT         
 ### Filter by model type
 
 List only LLM models:
+
 ```shell
 lms ls --llm
 ```
 
 List only embedding models:
+
 ```shell
 lms ls --embedding
 ```
@@ -67,11 +71,13 @@ lms ls --embedding
 ### Additional output formats
 
 Get detailed information about models:
+
 ```shell
 lms ls --detailed
 ```
 
 Output in JSON format:
+
 ```shell
 lms ls --json
 ```
