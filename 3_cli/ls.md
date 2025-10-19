@@ -8,6 +8,7 @@ index: 8
 The `lms ls` command displays a list of all models downloaded to your machine, including their size, architecture, and parameters.
 
 ### Parameters
+
 ```lms_params
 - name: "--llm"
   type: "flag"
@@ -36,12 +37,13 @@ lms ls
 ```
 
 Example output:
+
 ```
 You have 47 models, taking up 160.78 GB of disk space.
 
 LLMs (Large Language Models)                       PARAMS      ARCHITECTURE           SIZE
 lmstudio-community/meta-llama-3.1-8b-instruct          8B         Llama            4.92 GB
-hugging-quants/qwen/qwen3-4b-2507                   1B         Llama            1.32 GB
+hugging-quants/llama-3.2-1b-instruct                   1B         Llama            1.32 GB
 mistral-7b-instruct-v0.3                                         Mistral           4.08 GB
 zeta                                                   7B         Qwen2            4.09 GB
 
@@ -55,11 +57,13 @@ text-embedding-bge-small-en-v1.5                     33M           BERT         
 ### Filter by model type
 
 List only LLM models:
+
 ```shell
 lms ls --llm
 ```
 
 List only embedding models:
+
 ```shell
 lms ls --embedding
 ```
@@ -67,11 +71,13 @@ lms ls --embedding
 ### Additional output formats
 
 Get detailed information about models:
+
 ```shell
 lms ls --detailed
 ```
 
 Output in JSON format:
+
 ```shell
 lms ls --json
 ```
