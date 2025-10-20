@@ -26,7 +26,7 @@ lms server start
 ```
 
 
-### Allow network access to the server
+### Serve on Local Network
 
 You can choose to serve the API server on your local network by enabling the "Server on Local Network" option. This allows other devices connected to the same network to access the LM Studio API server running on your machine.
 
