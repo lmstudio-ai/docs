@@ -34,7 +34,7 @@ Then, the URL to access the server will be updated, which you can use in your ap
 
 <img src="/assets/docs/serve-local-network.png" style="" data-caption="Serve LM Studio API Server on Local Network" />
 
-## Configuring other server settings
+### Configuring other server settings
 
 You can configure other server settings, such as the port number, whether to allow websites to access the server and MCP features.
 
@@ -42,7 +42,7 @@ You can configure other server settings, such as the port number, whether to all
 
 
 
-## API options
+### API options
 
 - [LM Studio REST API](/docs/developer/rest)
 - [TypeScript SDK](/docs/typescript) - `lmstudio-js`
