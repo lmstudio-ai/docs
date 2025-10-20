@@ -1,7 +1,7 @@
 ---
 title: Idle TTL and Auto-Evict
 description: Optionally auto-unload idle models after a certain amount of time (TTL)
-index: 4
+index: 1
 ---
 
 ## Background

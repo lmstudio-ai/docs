@@ -2,6 +2,7 @@
 title: Tool Use
 sidebar_title: Tools and Function Calling
 description: Enable LLMs to interact with external functions and APIs.
+index: 4
 ---
 
 Tool use enables LLMs to request calls to external functions and APIs through the `/v1/chat/completions` endpoint, via LM Studio's REST API (or via any OpenAI client). This expands their functionality far beyond text output.
