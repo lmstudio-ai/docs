@@ -21,7 +21,7 @@ You can configure server settings, such as the port number, whether to allow oth
   unstyledName: true
 - name: Serve on Local Network
   type: Switch
-  description: Allow other devices on the same local network to access the API server. Learn more in the [Serve on Local Network](/docs/developer/core/server/serve-on-local) section.
+  description: Allow other devices on the same local network to access the API server. Learn more in the [Serve on Local Network](/docs/developer/core/server/serve-on-network) section.
   unstyledName: true
 - name: Allow Per Request Remote MCPs
   type: Switch
