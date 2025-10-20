@@ -6,7 +6,7 @@ fullPage: false
 index: 2
 ---
 
-You can configure server settings, such as the port number, whether to allow other API clients  to access the server and MCP features.
+You can configure server settings, such as the port number, whether to allow other API clients to access the server and MCP features.
 
 <img src="/assets/docs/server-config.png" style="" data-caption="Configure LM Studio API Server settings" />
 
