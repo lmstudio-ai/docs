@@ -1,6 +1,7 @@
 ---
 title: Structured Output
 description: Enforce LLM response formats using JSON schemas.
+index: 3
 ---
 
 You can enforce a particular response format from an LLM by providing a JSON schema to the `/v1/chat/completions` endpoint, via LM Studio's REST API (or via any OpenAI client).
