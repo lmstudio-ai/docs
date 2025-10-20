@@ -42,7 +42,7 @@ You can configure other server settings, such as the port number, whether to all
 
 
 
-### API options
+## API options
 
 - [LM Studio REST API](/docs/developer/rest)
 - [TypeScript SDK](/docs/typescript) - `lmstudio-js`
