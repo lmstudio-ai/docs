@@ -32,11 +32,11 @@ To create API Tokens, click on Manage Tokens in the Server Settings. It will ope
 
 Create a token by clicking on the Create Token button. Provide a name for the token and select the desired permissions.
 
-<img src="/assets/docs/create-john-token.png" style="width: 75%;" data-caption="Creating an API Token" />
+<img src="/assets/docs/create-dave-token.png" style="width: 75%;" data-caption="Creating an API Token" />
 
 Once created, make sure to copy the token as it will not be shown again.
 
-<img src="/assets/docs/created-john-token.png" style="width: 75%;" data-caption="API token created" />
+<img src="/assets/docs/created-dave-token.png" style="width: 75%;" data-caption="API token created" />
 
 
 ### Configuring API Token Permissions
@@ -50,13 +50,18 @@ To edit the permissions of an existing API Token, click on the Edit button next 
 
 ### Using API Tokens with REST API:
 
+```lms_noticechill
+The example below requires [allowing calling servers from mcp.json](/docs/developer/core/server/settings) to be enabled and the [tiktoken](https://gitmcp.io/openai/tiktoken) plugin in mcp.json.
+```
+
+
 ```bash
 curl --request POST \
   --url http://localhost:1234/api/v1/chat \
   --header 'authorization: Bearer <GENERATED_API_TOKEN>' \
   --header 'content-type: application/json' \
   --data '{
-  "model": "gpt-oss-20b",
+  "model": "gpt-oss-20b",s
   "input": "What is the first line in the tiktoken documentation?",
   "plugins": [
     {
