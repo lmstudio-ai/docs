@@ -111,7 +111,6 @@ variants:
       curl http://127.0.0.1:1234/api/v1/chat \
         -H "Authorization: Bearer <GENERATED_LM_API_TOKEN>" \
         -H "Content-Type: application/json" \
-        -H "X-LM-API-Token: <GENERATED_LM_API_TOKEN>" \
         -d '{
           "model": "qwen/qwen3-4b-2507",
           "input": "Navigate to lmstudio.ai",
