@@ -18,7 +18,8 @@ variants:
   curl:
     language: bash
     code: |
-      curl http://127.0.0.1:1234/api/v1/models
+      curl http://127.0.0.1:1234/api/v1/models \
+        -H "Authorization: Bearer <GENERATED_LM_API_TOKEN>"
 ```
 ````
 

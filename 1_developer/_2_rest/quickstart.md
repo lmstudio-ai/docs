@@ -29,6 +29,7 @@ variants:
     language: bash
     code: |
       curl http://127.0.0.1:1234/api/v1/models/download \
+        -H "Authorization: Bearer <GENERATED_LM_API_TOKEN>" \
         -H "Content-Type: application/json" \
         -d '{
           "model": "qwen/qwen3-4b-2507"
@@ -43,7 +44,7 @@ variants:
   curl:
     language: bash
     code: |
-      curl \
+      curl -H "Authorization: Bearer <GENERATED_LM_API_TOKEN>" \
         http://127.0.0.1:1234/api/v1/models/download/status/{job_id}
 ```
 
@@ -62,6 +63,7 @@ variants:
     language: bash
     code: |
       curl http://127.0.0.1:1234/api/v1/chat \
+        -H "Authorization: Bearer <GENERATED_LM_API_TOKEN>" \
         -H "Content-Type: application/json" \
         -d '{
           "model": "qwen/qwen3-4b-2507",
@@ -83,6 +85,7 @@ variants:
     language: bash
     code: |
       curl http://127.0.0.1:1234/api/v1/chat \
+        -H "Authorization: Bearer <GENERATED_LM_API_TOKEN>" \
         -H "Content-Type: application/json" \
         -d '{    
           "model": "qwen/qwen3-4b-2507",
@@ -106,8 +109,9 @@ variants:
     language: bash
     code: |
       curl http://127.0.0.1:1234/api/v1/chat \
+        -H "Authorization: Bearer <GENERATED_LM_API_TOKEN>" \
         -H "Content-Type: application/json" \
-        -H "X-LM-API-Token: $LM_API_TOKEN" \
+        -H "X-LM-API-Token: <GENERATED_LM_API_TOKEN>" \
         -d '{
           "model": "qwen/qwen3-4b-2507",
           "input": "Navigate to lmstudio.ai",

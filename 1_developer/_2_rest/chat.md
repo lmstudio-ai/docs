@@ -116,6 +116,7 @@ variants:
     language: bash
     code: |
       curl http://127.0.0.1:1234/api/v1/chat \
+        -H "Authorization: Bearer <GENERATED_LM_API_TOKEN>" \
         -H "Content-Type: application/json" \
         -d '{    
           "model": "openai/gpt-oss-20b",

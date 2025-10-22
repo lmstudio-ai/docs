@@ -17,7 +17,7 @@ To enable API Token authentication, create tokens and control granular permissio
 
 There are two ways to provide the API Token when creating an instance of `LMStudioClient`:
 
-1. **Environment Variable (Recommended)**: Set the `LM_STUDIO_API_TOKEN` environment variable, and the SDK will automatically read it.
+1. **Environment Variable (Recommended)**: Set the `LM_API_TOKEN` environment variable, and the SDK will automatically read it.
 2. **Function Argument**: Pass the token directly as the `apiToken` parameter in the constructor.
 
 ```lms_code_snippet
