@@ -51,7 +51,7 @@ To edit the permissions of an existing API Token, click on the Edit button next 
 ### Using API Tokens with REST API:
 
 ```lms_noticechill
-The example below requires [allowing calling servers from mcp.json](/docs/developer/core/server/settings) to be enabled and the [tiktoken](https://gitmcp.io/openai/tiktoken) plugin in mcp.json.
+The example below requires [allowing calling servers from mcp.json](/docs/developer/core/server/settings) to be enabled and the [tiktoken MCP](https://gitmcp.io/openai/tiktoken) in mcp.json.
 ```
 
 
