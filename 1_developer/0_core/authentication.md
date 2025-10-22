@@ -79,7 +79,7 @@ curl --request POST \
 
 ### Using API Tokens with Python SDK
 
-To use API tokens with the Python SDK, see the [Python SDK guide](/docs/python/authentication).
+To use API tokens with the Python SDK, see the [Python SDK guide](/docs/python/getting-started/authentication).
 
 ### Using API Tokens with TypeScript SDK
 
