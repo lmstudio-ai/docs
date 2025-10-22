@@ -52,7 +52,6 @@ const client = new OpenAI({
 ```diff
 - curl https://api.openai.com/v1/chat/completions \
 + curl http://localhost:1234/v1/chat/completions \
-+  -H "Authorization: Bearer <GENERATED_LM_API_TOKEN>" \
   -H "Content-Type: application/json" \
   -d '{
 -     "model": "gpt-4o-mini",
