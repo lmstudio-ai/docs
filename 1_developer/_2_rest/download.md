@@ -29,7 +29,7 @@ variants:
     language: bash
     code: |
       curl http://127.0.0.1:1234/api/v1/models/download \
-        -H "Authorization: Bearer <GENERATED_LM_API_TOKEN>" \
+        -H "Authorization: Bearer <YOUR_LM_API_TOKEN>" \
         -H "Content-Type: application/json" \
         -d '{
           "model": "qwen/qwen3-4b-2507"

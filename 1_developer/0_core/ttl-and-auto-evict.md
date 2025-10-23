@@ -34,7 +34,7 @@ This works for requests targeting both the [OpenAI compatibility API](openai-api
 
 ```diff
 curl http://localhost:1234/api/v0/chat/completions \
-  -H "Authorization: Bearer <GENERATED_LM_API_TOKEN>" \
+  -H "Authorization: Bearer <YOUR_LM_API_TOKEN>" \
   -H "Content-Type: application/json" \
   -d '{
     "model": "deepseek-r1-distill-qwen-7b",

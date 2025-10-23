@@ -58,7 +58,7 @@ The example below requires [allowing calling servers from mcp.json](/docs/develo
 ```bash
 curl --request POST \
   --url http://localhost:1234/api/v1/chat \
-  -H 'Authorization: Bearer <GENERATED_LM_API_TOKEN>' \
+  -H 'Authorization: Bearer <YOUR_LM_API_TOKEN>' \
   -H 'Content-Type: application/json' \
   --data '{
   "model": "gpt-oss-20b",

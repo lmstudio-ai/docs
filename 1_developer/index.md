@@ -69,7 +69,7 @@ lms server start --port 1234
 
 ```bash
 curl http://localhost:1234/v1/chat/completions \
-  -H "Authorization: Bearer <GENERATED_LM_API_TOKEN>" \
+  -H "Authorization: Bearer <YOUR_LM_API_TOKEN>" \
   -H "Content-Type: application/json" \
   -d '{
     "model": "openai/gpt-oss-20b",

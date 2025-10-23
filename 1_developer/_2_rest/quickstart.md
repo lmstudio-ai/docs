@@ -29,14 +29,14 @@ variants:
     language: bash
     code: |
       curl http://127.0.0.1:1234/api/v1/models/download \
-        -H "Authorization: Bearer <GENERATED_LM_API_TOKEN>" \
+        -H "Authorization: Bearer <YOUR_LM_API_TOKEN>" \
         -H "Content-Type: application/json" \
         -d '{
           "model": "qwen/qwen3-4b-2507"
         }'
 ```
 
-The response will return a `job_id` that you can use to track download progress. 
+The response will return a `job_id` that you can use to track download progress.
 
 ```lms_code_snippet
 title: Track download
@@ -44,7 +44,7 @@ variants:
   curl:
     language: bash
     code: |
-      curl -H "Authorization: Bearer <GENERATED_LM_API_TOKEN>" \
+      curl -H "Authorization: Bearer <YOUR_LM_API_TOKEN>" \
         http://127.0.0.1:1234/api/v1/models/download/status/{job_id}
 ```
 
@@ -63,7 +63,7 @@ variants:
     language: bash
     code: |
       curl http://127.0.0.1:1234/api/v1/chat \
-        -H "Authorization: Bearer <GENERATED_LM_API_TOKEN>" \
+        -H "Authorization: Bearer <YOUR_LM_API_TOKEN>" \
         -H "Content-Type: application/json" \
         -d '{
           "model": "qwen/qwen3-4b-2507",
@@ -85,17 +85,17 @@ variants:
     language: bash
     code: |
       curl http://127.0.0.1:1234/api/v1/chat \
-        -H "Authorization: Bearer <GENERATED_LM_API_TOKEN>" \
+        -H "Authorization: Bearer <YOUR_LM_API_TOKEN>" \
         -H "Content-Type: application/json" \
-        -d '{    
+        -d '{
           "model": "qwen/qwen3-4b-2507",
           "input": "What is the top trending model on huggingface?",
           "remote_mcp_servers": [
-            {                   
-              "server_label": "huggingface", 
+            {
+              "server_label": "huggingface",
               "server_url": "https://huggingface.co/mcp",
               "allowed_tools": ["model_search"]
-            }                    
+            }
           ]
         }'
 ```
@@ -109,7 +109,7 @@ variants:
     language: bash
     code: |
       curl http://127.0.0.1:1234/api/v1/chat \
-        -H "Authorization: Bearer <GENERATED_LM_API_TOKEN>" \
+        -H "Authorization: Bearer <YOUR_LM_API_TOKEN>" \
         -H "Content-Type: application/json" \
         -d '{
           "model": "qwen/qwen3-4b-2507",
