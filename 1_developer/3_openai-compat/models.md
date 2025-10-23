@@ -12,5 +12,5 @@ api_info:
 ##### cURL
 
 ```bash
-curl -H "Authorization: Bearer $LM_API_TOKEN" http://localhost:1234/v1/models
+curl http://localhost:1234/v1/models
 ```
