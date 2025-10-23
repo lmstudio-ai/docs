@@ -46,7 +46,7 @@ List all loaded and downloaded models
 **Example request**
 
 ```bash
-curl -H "Authorization: Bearer <YOUR_LM_API_TOKEN>" http://localhost:1234/api/v0/models
+curl -H "Authorization: Bearer $LM_API_TOKEN" http://localhost:1234/api/v0/models
 ```
 
 **Response format**
@@ -101,7 +101,7 @@ Get info about one specific model
 **Example request**
 
 ```bash
-curl -H "Authorization: Bearer <YOUR_LM_API_TOKEN>" http://localhost:1234/api/v0/models/qwen2-vl-7b-instruct
+curl -H "Authorization: Bearer $LM_API_TOKEN" http://localhost:1234/api/v0/models/qwen2-vl-7b-instruct
 ```
 
 **Response format**
@@ -130,7 +130,7 @@ Chat Completions API. You provide a messages array and receive the next assistan
 
 ```bash
 curl http://localhost:1234/api/v0/chat/completions \
-  -H "Authorization: Bearer <YOUR_LM_API_TOKEN>" \
+  -H "Authorization: Bearer $LM_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
     "model": "granite-3.0-2b-instruct",
@@ -198,7 +198,7 @@ Text Completions API. You provide a prompt and receive a completion.
 
 ```bash
 curl http://localhost:1234/api/v0/completions \
-  -H "Authorization: Bearer <YOUR_LM_API_TOKEN>" \
+  -H "Authorization: Bearer $LM_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
     "model": "granite-3.0-2b-instruct",
@@ -261,7 +261,7 @@ Text Embeddings API. You provide a text and a representation of the text as an e
 
 ```bash
 curl http://127.0.0.1:1234/api/v0/embeddings \
-  -H "Authorization: Bearer <YOUR_LM_API_TOKEN>" \
+  -H "Authorization: Bearer $LM_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
     "model": "text-embedding-nomic-embed-text-v1.5",

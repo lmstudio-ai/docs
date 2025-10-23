@@ -7,12 +7,9 @@ index: 1
 
 LM Studio, from version 0.4.0 (REPLACE WITH CORRECT VERSION), supports API Tokens for authentication, providing a secure and convenient way to access the LM Studio API.
 
-
 ### Require Authentication for each request
 
 By default, LM Studio does not require authentication for API requests. To enable authentication so that only requests with a valid API Token are accepted, toggle the switch in the Developers Page > Server Settings.
-
-
 
 ```lms_info
 Once enabled, all requests made through the REST API, Python SDK, or Typescript SDK will need to include a valid API Token. See usage [below](#usage-of-api-tokens)
@@ -21,8 +18,6 @@ Once enabled, all requests made through the REST API, Python SDK, or Typescript 
 <img src="/assets/docs/require-auth.png" style="width: 75%;" data-caption="Enable authentication to require valid API tokens for all requests" />
 
 <img src="/assets/docs/multiple-tokens.png" style="width: 75%;" data-caption="Managing tokens in the server settings" />
-
-
 
 ### Creating API Tokens
 
@@ -38,13 +33,11 @@ Once created, make sure to copy the token as it will not be shown again.
 
 <img src="/assets/docs/created-dave-token.png" style="width: 75%;" data-caption="API token created" />
 
-
 ### Configuring API Token Permissions
 
 To edit the permissions of an existing API Token, click on the Edit button next to the token in the API Tokens modal. You can modify the name and permissions of the token.
 
 <img src="/assets/docs/edit-token.png" style="width: 75%;" data-caption="Editing an API Token" />
-
 
 ## Usage of API Tokens
 
@@ -54,13 +47,12 @@ To edit the permissions of an existing API Token, click on the Edit button next 
 The example below requires [allowing calling servers from mcp.json](/docs/developer/core/server/settings) to be enabled and the [tiktoken MCP](https://gitmcp.io/openai/tiktoken) in mcp.json.
 ```
 
-
 ```bash
-curl --request POST \
-  --url http://localhost:1234/api/v1/chat \
-  -H 'Authorization: Bearer <YOUR_LM_API_TOKEN>' \
-  -H 'Content-Type: application/json' \
-  --data '{
+curl -X POST \
+ http://localhost:1234/api/v1/chat \
+ -H 'Authorization: Bearer $LM_API_TOKEN' \
+ -H 'Content-Type: application/json' \
+ -d '{
   "model": "gpt-oss-20b",
   "input": "What is the first line in the tiktoken documentation?",
   "plugins": [
@@ -70,10 +62,9 @@ curl --request POST \
         "fetch_tiktoken_documentation"
       ]
     }
-  ],
+  ]
 }'
 ```
-
 
 ### Using API Tokens with Python SDK
 
