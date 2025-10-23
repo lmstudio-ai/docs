@@ -7,6 +7,9 @@ api_info:
   method: POST
 ---
 
+This endpoint allows you to download models from LM Studio Hub or Hugging Face directly to your LM Studio instance.
+
+
 ````lms_hstack
 `POST /api/v1/models/download`
 
@@ -23,9 +26,8 @@ api_info:
 ```
 :::split:::
 ```lms_code_snippet
-title: Example Request
 variants:
-  curl:
+  LM Studio Hub:
     language: bash
     code: |
       curl http://127.0.0.1:1234/api/v1/models/download \
@@ -33,6 +35,15 @@ variants:
         -d '{
           "model": "qwen/qwen3-4b-2507"
         }'
+  Hugging Face:
+    language: bash
+    code: |
+      curl http://127.0.0.1:1234/api/v1/models/download \
+        -H "Content-Type: application/json" \
+        -d '{
+          "model": "https://huggingface.co/lmstudio-community/Qwen3-4B-Instruct-2507-GGUF",
+          "quantization": "Q4_K_M"
+          }'
 ```
 ````
 
@@ -114,9 +125,8 @@ Returns a download job status object. The response varies based on the download 
 ```
 :::split:::
 ```lms_code_snippet
-title: Response
 variants:
-  json:
+  LM Studio Hub:
     language: json
     code: |
       {
@@ -146,6 +156,32 @@ variants:
         "bytes_per_second": 7834.710743801653,
         "estimated_completion": "2025-10-07T00:21:47.030Z",
         "started_at": "2025-10-03T15:33:23.496Z"
+      }
+  Hugging Face:
+    language: json
+    code: |
+      {
+        "job_id": "job_580c1ba793",
+        "status": "downloading",
+        "total_size_bytes": 2497280448,
+        "downloaded_bytes": 2362576918,
+        "bytes_per_second": 37135757.90631877,
+        "estimated_completion": "2025-10-23T00:03:06.254Z",
+        "items": [
+          {
+            "type": "model",
+            "publisher": "lmstudio-community",
+            "id": "lmstudio-community/Qwen3-4B-Instruct-2507-GGUF/Qwen3-4B-Instruct-2507-Q4_K_M.gguf",
+            "display_name": "Qwen3 4B Instruct 2507",
+            "size_bytes": 2497280448,
+            "quantization": {
+              "name": "Q4_K_M"
+            },
+            "format": "gguf",
+            "url": "https://huggingface.co/lmstudio-community/Qwen3-4B-Instruct-2507-GGUF"
+          }
+        ],
+        "started_at": "2025-10-23T00:01:59.004Z"
       }
 ```
 ````
