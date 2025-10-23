@@ -178,6 +178,7 @@ Set a TTL (in seconds) for models loaded via API requests (docs article: [Idle T
 
 ```diff
 curl http://localhost:1234/api/v0/chat/completions \
++  -H "Authorization: Bearer $LM_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
     "model": "deepseek-r1-distill-qwen-7b",
