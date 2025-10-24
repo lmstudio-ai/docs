@@ -24,45 +24,54 @@ api_info:
   type: string
   optional: true
   description: System message that sets model behavior or instructions.
-- name: remote_mcp_servers
-  type: array<object>
-  optional: true
-  description: List of remote MCP servers that the model can call.
-  children:
-    - name: server_label
-      type: string
-      description: Label to identify the MCP server.
-    - name: server_url
-      type: string
-      description: URL of the remote MCP server.
-    - name: allowed_tools
-      type: array<string>
-      optional: true
-      description: List of tool names the model can call from this server.
-    - name: headers
-      type: object
-      optional: true
-      description: Custom HTTP headers to send with requests to the server.
-- name: plugins
+- name: integrations
   type: array<string | object>
   optional: true
-  description: Plugins to use tools from (e.g., `mcp.json` defined MCP servers like `mcp/playwright`). Each item can be a plugin identifier string, or an object plugin specification.
+  description: List of integrations (plugins, ephemeral MCP servers, etc...) to enable for this request.
   children:
-    - name: Plugin identifier string
+    - name: Plugin id
       type: string
-      description: Identifier of the plugin.
-    - name: Plugin specification
+      description: Unique identifier of a plugin to use. Plugins contain `mcp.json` installed MCP servers (id `mcp/<server_label>`). Shorthand for plugin object with no custom configuration.
+    - name: Plugin
       type: object
-      description: Object form to specify allowed tools.
+      description: Specification of a plugin to use. Plugins contain `mcp.json` installed MCP servers (id `mcp/<server_label>`).
       children:
+        - name: type
+          type: '"plugin"'
+          optional: false
+          description: Type of integration.
         - name: id
           type: string
-          optional: true
-          description: Identifier of the plugin.
+          optional: false
+          description: Unique identifier of the plugin.
         - name: allowed_tools
-          type: array<string> | null
+          type: array<string>
           optional: true
-          description: Restrict which tools from the plugin can be used.
+          description: List of tool names the model can call from this plugin. If not provided, all tools from the plugin are allowed.
+    - name: Ephemeral MCP server specification
+      type: object
+      description: Specification of an ephemeral MCP server. Allows defining MCP servers on-the-fly without needing to pre-configure them in your `mcp.json`.
+      children:
+        - name: type
+          type: '"ephemeral_mcp"'
+          optional: false
+          description: Type of integration.
+        - name: server_label
+          type: string
+          optional: false
+          description: Label to identify the MCP server.
+        - name: server_url
+          type: string
+          optional: false
+          description: URL of the MCP server.
+        - name: allowed_tools
+          type: array<string>
+          optional: true
+          description: List of tool names the model can call from this server. If not provided, all tools from the server are allowed.
+        - name: headers
+          type: object
+          optional: true
+          description: Custom HTTP headers to send with requests to the server.
 - name: stream
   type: boolean
   optional: true
