@@ -30,9 +30,11 @@ api_info:
   description: List of integrations (plugins, ephemeral MCP servers, etc...) to enable for this request.
   children:
     - name: Plugin id
+      unstyledName: true
       type: string
       description: Unique identifier of a plugin to use. Plugins contain `mcp.json` installed MCP servers (id `mcp/<server_label>`). Shorthand for plugin object with no custom configuration.
     - name: Plugin
+      unstyledName: true
       type: object
       description: Specification of a plugin to use. Plugins contain `mcp.json` installed MCP servers (id `mcp/<server_label>`).
       children:
@@ -49,6 +51,7 @@ api_info:
           optional: true
           description: List of tool names the model can call from this plugin. If not provided, all tools from the plugin are allowed.
     - name: Ephemeral MCP server specification
+      unstyledName: true
       type: object
       description: Specification of an ephemeral MCP server. Allows defining MCP servers on-the-fly without needing to pre-configure them in your `mcp.json`.
       children:
@@ -154,6 +157,7 @@ variants:
   description: Array of output items generated. Each item can be one of three types.
   children:
     - name: Message
+      unstyledName: true
       type: object
       description: A text message from the model.
       children:
@@ -164,6 +168,7 @@ variants:
           type: string
           description: Text content of the message.
     - name: Tool call
+      unstyledName: true
       type: object
       description: A tool call made by the model.
       children:
@@ -195,6 +200,7 @@ variants:
               optional: true
               description: Label of the MCP server (when `type` is `"remote_mcp"`).
     - name: Reasoning
+      unstyledName: true
       type: object
       description: Reasoning content from the model.
       children:
