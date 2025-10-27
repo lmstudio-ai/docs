@@ -196,7 +196,7 @@ variants:
           description: Information about the tool provider.
           children:
             - name: type
-              type: '"plugin" | "remote_mcp"'
+              type: '"plugin" | "ephemeral_mcp"'
               description: Provider type.
             - name: plugin_id
               type: string
@@ -205,7 +205,7 @@ variants:
             - name: server_label
               type: string
               optional: true
-              description: Label of the MCP server (when `type` is `"remote_mcp"`).
+              description: Label of the MCP server (when `type` is `"ephemeral_mcp"`).
     - name: Reasoning
       unstyledName: true
       type: object

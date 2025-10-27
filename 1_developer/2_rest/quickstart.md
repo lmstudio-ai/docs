@@ -76,10 +76,10 @@ See the full [chat](/docs/developer/rest/chat) docs for more details.
 ## Use MCP servers
 
 
-Enable the model interact with remote Model Context Protocol (MCP) servers in `api/v1/chat` by specifying servers in the `integrations` field.
+Enable the model interact with ephemeral Model Context Protocol (MCP) servers in `api/v1/chat` by specifying servers in the `integrations` field.
 
 ```lms_code_snippet
-title: Use a remote MCP server
+title: Use an ephemeral MCP server
 variants:
   curl:
     language: bash

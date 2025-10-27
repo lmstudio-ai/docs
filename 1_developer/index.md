@@ -10,6 +10,7 @@ index: 1
 
 - TypeScript SDK: [lmstudio-js](/docs/typescript)
 - Python SDK: [lmstudio-python](/docs/python)
+- LM Studio REST API: [Chat, List, Load, Download models ](/docs/developer/rest)
 - OpenAI‑compatible: [Chat, Responses, Embeddings](/docs/developer/openai-compat)
 - LM Studio CLI: [`lms`](/docs/cli)
 

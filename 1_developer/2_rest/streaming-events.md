@@ -139,12 +139,12 @@ Emitted when the model starts a tool call.
         - name: plugin_id
           type: string
           description: Identifier of the plugin.
-    - name: Remote MCP provider info
+    - name: Ephemeral MCP provider info
       type: object
-      description: Present when the tool is provided by a remote MCP server.
+      description: Present when the tool is provided by a ephemeral MCP server.
       children:
         - name: type
-          type: '"remote_mcp"'
+          type: '"ephemeral_mcp"'
           description: Provider type.
         - name: server_label
           type: string
@@ -164,7 +164,7 @@ variants:
         "type": "tool_call.start",
         "tool": "model_search",
         "provider_info": {
-          "type": "remote_mcp",
+          "type": "ephemeral_mcp",
           "server_label": "huggingface"
         }
       }
@@ -195,12 +195,12 @@ Arguments streamed for the current tool call.
         - name: plugin_id
           type: string
           description: Identifier of the plugin.
-    - name: Remote MCP provider info
+    - name: Ephemeral MCP provider info
       type: object
-      description: Present when the tool is provided by a remote MCP server.
+      description: Present when the tool is provided by a ephemeral MCP server.
       children:
         - name: type
-          type: '"remote_mcp"'
+          type: '"ephemeral_mcp"'
           description: Provider type.
         - name: server_label
           type: string
@@ -224,7 +224,7 @@ variants:
           "limit": 1
         },
         "provider_info": {
-          "type": "remote_mcp",
+          "type": "ephemeral_mcp",
           "server_label": "huggingface"
         }
       }
@@ -258,12 +258,12 @@ Result of the tool call, along with the arguments used.
         - name: plugin_id
           type: string
           description: Identifier of the plugin.
-    - name: Remote MCP provider info
+    - name: Ephemeral MCP provider info
       type: object
-      description: Present when the tool is provided by a remote MCP server.
+      description: Present when the tool is provided by a ephemeral MCP server.
       children:
         - name: type
-          type: '"remote_mcp"'
+          type: '"ephemeral_mcp"'
           description: Provider type.
         - name: server_label
           type: string
@@ -288,7 +288,7 @@ variants:
         },
         "output": "[{\"type\":\"text\",\"text\":\"Showing first 1 models...\"}]",
         "provider_info": {
-          "type": "remote_mcp",
+          "type": "ephemeral_mcp",
           "server_label": "huggingface"
         }
       }
@@ -436,7 +436,7 @@ variants:
               "tool": "model_search",
               "arguments": { "sort": "trendingScore", "limit": 1 },
               "output": "[{\"type\":\"text\",\"text\":\"Showing first 1 models...\"}]",
-              "provider_info": { "type": "remote_mcp", "server_label": "huggingface" }
+              "provider_info": { "type": "ephemeral_mcp", "server_label": "huggingface" }
             },
             { "type": "message", "content": "The current top‑trending model is..." }
           ],
