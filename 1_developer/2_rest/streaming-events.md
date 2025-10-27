@@ -1,7 +1,7 @@
 ---
 title: "Streaming events"
 description: "When you chat with a model with `stream` set to `true`, the response is sent as a stream of events using Server-Sent Events (SSE)."
-index: 7
+index: 4
 ---
 
 Streaming events let you render chat responses incrementally over Server‑Sent Events (SSE). When you call `POST /api/v1/chat` with `stream: true`, the server emits a series of named events that you can consume. These events arrive in order and may include multiple deltas (for reasoning and message content), tool call boundaries and payloads, and any errors encountered. The stream always begins with `chat.start` and concludes with `chat.end`, which contains the aggregated result equivalent to a non‑streaming response.

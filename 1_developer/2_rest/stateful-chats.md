@@ -2,7 +2,7 @@
 title: Stateful Chats
 sidebar_title: Stateful Chats
 description: Learn how to maintain conversation context across multiple requests
-index: 8
+index: 3
 ---
 
 The `/api/v1/chat` endpoint is stateful by default. This means you don't need to pass the full conversation history in every request — LM Studio automatically stores and manages the context for you.
@@ -17,13 +17,14 @@ variants:
   curl:
     language: bash
     code: |
-      curl http://127.0.0.1:1234/api/v1/chat \
+      # store is true by default
+      curl http://localhost:1234/api/v1/chat \
         -H "Authorization: Bearer $LM_API_TOKEN" \
         -H "Content-Type: application/json" \
         -d '{
           "model": "qwen/qwen3-4b-2507",
           "input": "My favorite color is blue.",
-          "store": true  // true by default
+          "store": true
         }'
 ```
 
@@ -63,14 +64,15 @@ variants:
   curl:
     language: bash
     code: |
-      curl http://127.0.0.1:1234/api/v1/chat \
+      # store is true by default
+      curl http://localhost:1234/api/v1/chat \
         -H "Authorization: Bearer $LM_API_TOKEN" \
         -H "Content-Type: application/json" \
         -d '{
           "model": "qwen/qwen3-4b-2507",
           "input": "What color did I just mention?",
           "thread_id": "thread_abc123xyz...",
-          "store": true  // true by default
+          "store": true
         }'
 ```
 
@@ -86,7 +88,7 @@ variants:
   curl:
     language: bash
     code: |
-      curl http://127.0.0.1:1234/api/v1/chat \
+      curl http://localhost:1234/api/v1/chat \
         -H "Authorization: Bearer $LM_API_TOKEN" \
         -H "Content-Type: application/json" \
         -d '{

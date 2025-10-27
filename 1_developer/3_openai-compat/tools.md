@@ -2,7 +2,7 @@
 title: Tool Use
 sidebar_title: Tools and Function Calling
 description: Enable LLMs to interact with external functions and APIs.
-index: 4
+index: 2
 ---
 
 Tool use enables LLMs to request calls to external functions and APIs through the `/v1/chat/completions` and `v1/responses` endpoint, via LM Studio's REST API (or via any OpenAI client). This expands their functionality far beyond text output.
@@ -1042,7 +1042,7 @@ The below example shows how to create a simple tool-enhanced chatbot through the
 from openai import OpenAI
 import time
 
-client = OpenAI(base_url="http://127.0.0.1:1234/v1", api_key="lm-studio")
+client = OpenAI(base_url="http://localhost:1234/v1", api_key="lm-studio")
 MODEL = "lmstudio-community/qwen2.5-7b-instruct"
 
 TIME_TOOL = {

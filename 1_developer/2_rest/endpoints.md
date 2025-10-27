@@ -260,7 +260,7 @@ Text Embeddings API. You provide a text and a representation of the text as an e
 **Example request**
 
 ```bash
-curl http://127.0.0.1:1234/api/v0/embeddings \
+curl http://localhost:1234/api/v0/embeddings \
   -H "Authorization: Bearer $LM_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{

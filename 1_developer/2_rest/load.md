@@ -2,7 +2,7 @@
 title: "Load a model"
 description: "Load an LLM or Embedding model into memory with custom configuration for inference"
 fullPage: true
-index: 4
+index: 7
 api_info:
   method: POST
 ---
@@ -47,7 +47,7 @@ variants:
   curl:
     language: bash
     code: |
-      curl http://127.0.0.1:1234/api/v1/models/load \
+      curl http://localhost:1234/api/v1/models/load \
         -H "Authorization: Bearer $LM_API_TOKEN" \
         -H "Content-Type: application/json" \
         -d '{

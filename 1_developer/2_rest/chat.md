@@ -2,7 +2,7 @@
 title: "Chat with a model"
 description: "Send a message to a model and receive a response. Supports MCP integration."
 fullPage: true
-index: 3
+index: 5
 api_info:
   method: POST
 ---
@@ -127,7 +127,7 @@ variants:
   curl:
     language: bash
     code: |
-      curl http://127.0.0.1:1234/api/v1/chat \
+      curl http://localhost:1234/api/v1/chat \
         -H "Authorization: Bearer $LM_API_TOKEN" \
         -H "Content-Type: application/json" \
         -d '{
