@@ -55,14 +55,13 @@ curl -X POST \
  -d '{
   "model": "gpt-oss-20b",
   "input": "What is the first line in the tiktoken documentation?",
-  "plugins": [
+  "integrations": [
     {
-      "id": "mcp/tiktoken",
-      "allowed_tools": [
-        "fetch_tiktoken_documentation"
-      ]
+        "type": "plugin",
+        "id": "mcp/playwright",
+        "allowed_tools": ["browser_navigate"]
     }
-  ]
+  ],
 }'
 ```
 

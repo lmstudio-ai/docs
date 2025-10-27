@@ -8,7 +8,7 @@ index: 2
 
 You can configure server settings, such as the port number, whether to allow other API clients to access the server and MCP features.
 
-<img src="/assets/docs/server-config.png" style="" data-caption="Configure LM Studio API Server settings" />
+<img src="/assets/docs/server-settings.png" style="" data-caption="Configure LM Studio API Server settings" />
 
 
 ### Settings information
@@ -19,13 +19,21 @@ You can configure server settings, such as the port number, whether to allow oth
   optional: false
   description: Port number on which the LM Studio API server listens for incoming connections.
   unstyledName: true
+- name: Require Authentication
+  type: Switch
+  description: Require API clients to provide a valid API token via the `Authorization` header. Learn more in the [Authentication](/docs/developer/core/authentication) section.
+  unstyledName: true
 - name: Serve on Local Network
   type: Switch
   description: Allow other devices on the same local network to access the API server. Learn more in the [Serve on Local Network](/docs/developer/core/server/serve-on-network) section.
   unstyledName: true
-- name: Allow Per Request Remote MCPs
+- name: Allow Ephemeral Remote MCPs
   type: Switch
   description: Enable sending requests to remote MCP (Model Control Protocol) servers on a per-request basis.
+  unstyledName: true
+- name: Allow calling servers from mcp.json
+  type: Switch
+  description: Enable using MCP servers defined in the `mcp.json` configuration file.
   unstyledName: true
 - name: Enable CORS
   type: Switch

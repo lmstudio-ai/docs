@@ -66,7 +66,7 @@ variants:
         -H "Authorization: Bearer $LM_API_TOKEN" \
         -H "Content-Type: application/json" \
         -d '{
-          "model": "qwen/qwen3-4b-2507",
+          "model": "qwen/qwen3-30b-a3b-2507",
           "input": "Write a short haiku about sunrise."
         }'
 ```
@@ -76,7 +76,7 @@ See the full [chat](/docs/developer/rest/chat) docs for more details.
 ## Use MCP servers
 
 
-Enable the model interact with remote Model Context Protocol (MCP) servers in `api/v1/chat` by specifying servers in the `remote_mcp_servers` field.
+Enable the model interact with remote Model Context Protocol (MCP) servers in `api/v1/chat` by specifying servers in the `integrations` field.
 
 ```lms_code_snippet
 title: Use a remote MCP server
@@ -88,19 +88,21 @@ variants:
         -H "Authorization: Bearer $LM_API_TOKEN" \
         -H "Content-Type: application/json" \
         -d '{
-          "model": "qwen/qwen3-4b-2507",
-          "input": "What is the top trending model on huggingface?",
-          "remote_mcp_servers": [
+          "model": "qwen/qwen3-30b-a3b-2507",
+          "input": "What are the top 5 trending models on huggingface right now?",
+          "integrations": [
             {
+              "type": "ephemeral_mcp",
               "server_label": "huggingface",
               "server_url": "https://huggingface.co/mcp",
               "allowed_tools": ["model_search"]
-            }
-          ]
+            },
+          ],
+          "context_length": 10000
         }'
 ```
 
-You can also use locally configured MCP plugins (from your `mcp.json`) via the `plugins` field. Using locally run MCP plugins requires authentication via an API token passed through the `X-LM-API-Token` header. Read more about authentication [here](/docs/developer/core/authentication).
+You can also use locally configured MCP plugins (from your `mcp.json`) via the `integrations` field. Using locally run MCP plugins requires authentication via an API token passed through the `Authorization` header. Read more about authentication [here](/docs/developer/core/authentication).
 
 ```lms_code_snippet
 title: Use an MCP plugin
@@ -112,14 +114,16 @@ variants:
         -H "Authorization: Bearer $LM_API_TOKEN" \
         -H "Content-Type: application/json" \
         -d '{
-          "model": "qwen/qwen3-4b-2507",
-          "input": "Navigate to lmstudio.ai",
-          "plugins": [
+          "model": "qwen/qwen3-30b-a3b-2507",
+          "input": "Take me to the page for the top trending model on huggingface",
+          "integrations": [
             {
+              "type": "plugin",
               "id": "mcp/playwright",
               "allowed_tools": ["browser_navigate"]
             }
-          ]
+          ],
+          "context_length": 10000
         }'
 ```
 
