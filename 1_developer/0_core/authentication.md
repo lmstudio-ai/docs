@@ -12,7 +12,7 @@ LM Studio, from version 0.4.0, supports API Tokens for authentication, providing
 By default, LM Studio does not require authentication for API requests. To enable authentication so that only requests with a valid API Token are accepted, toggle the switch in the Developers Page > Server Settings.
 
 ```lms_info
-Once enabled, all requests made through the REST API, Python SDK, or Typescript SDK will need to include a valid API Token. See usage [below](#usage-of-api-tokens)
+Once enabled, all requests made through the REST API, Python SDK, or Typescript SDK will need to include a valid API Token. See usage [below](#api-token-usage)
 ```
 
 <img src="/assets/docs/require-auth.png" style="width: 75%;" data-caption="Enable authentication to require valid API tokens for all requests" />
@@ -39,7 +39,7 @@ To edit the permissions of an existing API Token, click on the Edit button next 
 
 <img src="/assets/docs/edit-token.png" style="width: 75%;" data-caption="Editing an API Token" />
 
-## Usage of API Tokens
+## API Token Usage
 
 ### Using API Tokens with REST API:
 
