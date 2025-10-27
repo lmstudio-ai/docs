@@ -81,6 +81,6 @@ Full docs: [OpenAI‑compatible endpoints](/docs/developer/openai-compat)
 ## Helpful links
 
 - API Changelog: [/docs/developer/api-changelog](/docs/developer/api-changelog)
-- Local server basics: [/docs/developer/core](/docs/developer/core)
+- Local server basics: [/docs/developer/core](/docs/developer/core/server)
 - CLI reference: [/docs/cli](/docs/cli)
 - Community: [Discord](https://discord.gg/lmstudio)
