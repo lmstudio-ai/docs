@@ -286,7 +286,7 @@ variants:
           },
           {
             "type": "message",
-            "content": "Here is the page for the current top‑trending model on Hugging Face:\n\n**Model:** `deepseek-ai/DeepSeek-OCR`  \n**Task:** Image‑Text‑to‑Text (OCR)  \n**Downloads (last month):** 487 k  \n**Likes:** 1.73 k  \n**Trending Score:** 1.73 k  \n\n[Open the model page on Hugging Face](https://hf.co/deepseek-ai/DeepSeek-OCR)  \n\nFeel free to explore the model card, files, usage instructions, and related resources directly from that page."
+            "content": "Here is the page for the current top‑trending model..."
           }
         ],
         "stats": {
