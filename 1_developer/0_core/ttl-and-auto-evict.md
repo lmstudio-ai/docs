@@ -30,7 +30,7 @@ By default, JIT-loaded models have a TTL of 60 minutes. You can configure a defa
 
 When JIT loading is enabled, the **first request** to a model will load it into memory. You can specify a TTL for that model in the request payload.
 
-This works for requests targeting both the [OpenAI compatibility API](openai-api) and the [LM Studio's REST API](/docs/developer/rest):
+This works for requests targeting both the [OpenAI compatibility API](/docs/developer/openai-api) and the [LM Studio's REST API](/docs/developer/rest):
 
 ```diff
 curl http://localhost:1234/api/v0/chat/completions \
