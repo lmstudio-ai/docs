@@ -11,12 +11,23 @@ LM Studio supports Model Control Protocol (MCP) usage via API starting from vers
 
 MCP servers provide tools that models can call during chat requests. You can enable MCP servers in two ways: as ephemeral servers defined per-request, or as pre-configured servers in your `mcp.json` file.
 
+
+## Ephemeral vs mcp.json servers
+
+| Feature | Ephemeral | mcp.json |
+|---------|-----------|--------|
+| How to specify in request | `integrations` -> `"type": "ephemeral_mcp"` | `integrations` -> `"type": "plugin"` |
+| Configuration | Only defined per-request | Pre-configured in `mcp.json` |
+| Use case | One-off requests, remote MCP tool execution | MCP servers that require `command`, frequently used servers |
+| Server ID | Specified via `server_label` in integration | Specified via `id` (e.g., `mcp/playwright`) in integration |
+| Custom headers | Supported via `headers` field | Configured in `mcp.json` |
+
 ## Ephemeral MCP servers
 
 Ephemeral MCP servers are defined on-the-fly in each request. This is useful for testing or when you don't want to pre-configure servers.
 
 ```lms_info
-Ephemeral MCP servers require the "Allow Ephemeral Remote MCPs" setting to be enabled in [Server Settings](/docs/developer/core/server/settings).
+Ephemeral MCP servers require the "Allow per-request MCPs" setting to be enabled in [Server Settings](/docs/developer/core/server/settings).
 ```
 
 ```lms_code_snippet
@@ -125,11 +136,7 @@ variants:
           }
         ],
         "stats": {
-          "input_tokens": 308,
-          "total_output_tokens": 118,
-          "reasoning_output_tokens": 0,
-          "tokens_per_second": 49.44322495154522,
-          "time_to_first_token_seconds": 0.217
+          ...
         },
         "thread_id": "thread_0014d69c854c74594fb9bfef9ac4b3a6c8a776fad1f7c3d1"
       }
@@ -137,7 +144,7 @@ variants:
 
 ## MCP servers from mcp.json
 
-MCP servers can be pre-configured in your `mcp.json` file. This is the recommended approach for servers you use frequently.
+MCP servers can be pre-configured in your `mcp.json` file. This is the recommended approach for using MCP servers that take actions on your computer (like [microsoft/playwright-mcp](https://github.com/microsoft/playwright-mcp)) and servers that you use frequently.
 
 ```lms_info
 MCP servers from mcp.json require the "Allow calling servers from mcp.json" setting to be enabled in [Server Settings](/docs/developer/core/server/settings).
@@ -226,28 +233,15 @@ variants:
           }
         ],
         "stats": {
-          "input_tokens": 1428,
-          "total_output_tokens": 460,
-          "reasoning_output_tokens": 354,
-          "tokens_per_second": 42.7891711368994,
-          "time_to_first_token_seconds": 2.806
+          ...
         },
         "thread_id": "thread_d26d96a8f3c0c15601f12fde1c682f24b65bb5b302c81795"
       }
 ```
 
-## Ephemeral vs mcp.json servers
-
-| Feature | Ephemeral | mcp.json |
-|---------|-----------|--------|
-| Configuration | Defined in each request | Pre-configured in `mcp.json` |
-| Use case | Testing, one-off requests | Frequent use, stable servers |
-| Server ID | Specified via `server_label` | Specified via `id` (e.g., `mcp/playwright`) |
-| Custom headers | Supported via `headers` field | Configured in `mcp.json` |
-
 ## Restricting tool access
 
-For both ephemeral and mcp.json servers, you can limit which tools the model can call using the `allowed_tools` field:
+For both ephemeral and mcp.json servers, you can limit which tools the model can call using the `allowed_tools` field. This is useful if you do not want certain tools from an MCP server to be used, and can speed up prompt processing due to the model receiving fewer tool definitions.
 
 ```lms_code_snippet
 variants:

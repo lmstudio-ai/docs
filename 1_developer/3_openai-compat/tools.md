@@ -5,7 +5,7 @@ description: Enable LLMs to interact with external functions and APIs.
 index: 2
 ---
 
-Tool use enables LLMs to request calls to external functions and APIs through the `/v1/chat/completions` and `v1/responses` endpoint, via LM Studio's REST API (or via any OpenAI client). This expands their functionality far beyond text output.
+Tool use enables LLMs to request calls to external functions and APIs through the `/v1/chat/completions` and `v1/responses` endpoints ([Learn more](/docs/developer/openai-compat)), via LM Studio's REST API (or via any OpenAI client). This expands their functionality far beyond text output.
 
 <hr>
 

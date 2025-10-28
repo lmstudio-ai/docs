@@ -131,22 +131,22 @@ variants:
         -H "Authorization: Bearer $LM_API_TOKEN" \
         -H "Content-Type: application/json" \
         -d '{
-            "model": "openai/gpt-oss-20b",
-            "input": "Take me to the page for the top trending model on huggingface",
-            "integrations": [
-                {
-                    "type": "ephemeral_mcp",
-                    "server_label": "huggingface",
-                    "server_url": "https://huggingface.co/mcp",
-                    "allowed_tools": ["model_search"]
-                },
-                {
-                    "type": "plugin",
-                    "id": "mcp/playwright",
-                    "allowed_tools": ["browser_navigate"]
-                }
-            ],
-            "context_length": 20000
+          "model": "openai/gpt-oss-20b",
+          "input": "Take me to the page for the top trending model on huggingface",
+          "integrations": [
+            {
+              "type": "ephemeral_mcp",
+              "server_label": "huggingface",
+              "server_url": "https://huggingface.co/mcp",
+              "allowed_tools": ["model_search"]
+            },
+            {
+              "type": "plugin",
+              "id": "mcp/playwright",
+              "allowed_tools": ["browser_navigate"]
+            }
+          ],
+          "context_length": 20000
         }'
 ```
 ````

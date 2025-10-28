@@ -1,15 +1,11 @@
 ---
 title: "Download a model"
-description: "Download models from the [model catalog](https://lmstudio.ai/models)"
+description: "Download LLMs and embedding models"
 fullPage: true
 index: 8
 api_info:
   method: POST
 ---
-
-```lms_protip
-This endpoint also allows you to download models from Hugging Face with specific quantization levels.
-```
 
 ````lms_hstack
 `POST /api/v1/models/download`
@@ -19,11 +15,11 @@ This endpoint also allows you to download models from Hugging Face with specific
 - name: model
   type: string
   optional: false
-  description: The model to download.
+  description: The model to download. Accepts [model catalog](https://lmstudio.ai/models) identifiers (e.g., `openai/gpt-oss-20b`) and exact Hugging Face links (e.g., `https://huggingface.co/lmstudio-community/gpt-oss-20b-GGUF`)
 - name: quantization
   type: string
   optional: true
-  description: Specifies the quantization level for the hugging face model download. Example `Q4_K_M`.
+  description: Quantization level of the model to download (e.g., `Q4_K_M`). Only supported for hugging face links.
 ```
 :::split:::
 ```lms_code_snippet

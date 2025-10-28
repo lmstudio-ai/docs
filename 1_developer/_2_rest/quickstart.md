@@ -27,9 +27,9 @@ lms get qwen/qwen3-4b-2507
 
 ## API Authentication
 
-By default, the LM Studio API server does not require authentication. However, it is recommended to enable authentication in the [server settings](/docs/developer/core/server/settings) for security.
+By default, the LM Studio API server does **not** require authentication. You can configure the server to require authentication by API token in the [server settings](/docs/developer/core/server/settings) for added security.
 
-To authenticate API requests, generate an API token from the Developer page in LM Studio, and include it in the `Authorization` header of your requests as follows: `Authorization: Bearer $LM_API_TOKEN`.
+To authenticate API requests, generate an API token from the Developer page in LM Studio, and include it in the `Authorization` header of your requests as follows: `Authorization: Bearer $LM_API_TOKEN`. To authenticate API requests, generate an API token from the Developer page in LM Studio, and include it in the `Authorization` header of your requests as follows: `Authorization: Bearer $LM_API_TOKEN`. Read more about authentication [here](/docs/developer/core/authentication).
 
 
 ## Chat with a model
@@ -55,7 +55,7 @@ variants:
     code: |
       import os
       import requests
-      
+
       response = requests.post(
           "http://localhost:1234/api/v1/chat",
           headers={
@@ -88,7 +88,7 @@ variants:
 
 See the full [chat](/docs/developer/rest/chat) docs for more details.
 
-## Use MCP servers
+## Use MCP servers via API
 
 
 Enable the model interact with ephemeral Model Context Protocol (MCP) servers in `api/v1/chat` by specifying servers in the `integrations` field.
@@ -103,7 +103,7 @@ variants:
         -H "Content-Type: application/json" \
         -d '{
           "model": "qwen/qwen3-4b-2507",
-          "input": "What are the top 5 trending models on huggingface right now?",
+          "input": "What is the top trending model on hugging face right now?",
           "integrations": [
             {
               "type": "ephemeral_mcp",
@@ -119,7 +119,7 @@ variants:
     code: |
       import os
       import requests
-      
+
       response = requests.post(
           "http://localhost:1234/api/v1/chat",
           headers={
@@ -128,7 +128,7 @@ variants:
           },
           json={
               "model": "qwen/qwen3-4b-2507",
-              "input": "What are the top 5 trending models on huggingface right now?",
+              "input": "What is the top trending model on hugging face right now?",
               "integrations": [
                   {
                       "type": "ephemeral_mcp",
@@ -152,7 +152,7 @@ variants:
         },
         body: JSON.stringify({
           model: "qwen/qwen3-4b-2507",
-          input: "What are the top 5 trending models on huggingface right now?",
+          input: "What is the top trending model on hugging face right now?",
           integrations: [
             {
               type: "ephemeral_mcp",
@@ -195,7 +195,7 @@ variants:
     code: |
       import os
       import requests
-      
+
       response = requests.post(
           "http://localhost:1234/api/v1/chat",
           headers={
@@ -264,7 +264,7 @@ variants:
     code: |
       import os
       import requests
-      
+
       response = requests.post(
           "http://localhost:1234/api/v1/models/download",
           headers={
@@ -305,7 +305,7 @@ variants:
     code: |
       import os
       import requests
-      
+
       job_id = "your-job-id"
       response = requests.get(
           f"http://localhost:1234/api/v1/models/download/status/{job_id}",

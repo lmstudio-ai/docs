@@ -10,17 +10,12 @@ api_info:
 ````lms_hstack
 `GET /api/v1/models/download/status/:job_id`
 
-```lms_info
-You get the `job_id` when you initiate a model download using the [Download Model API](/docs/developer/rest/download).
-```
-
-
 **Path parameters**
 ```lms_params
 - name: job_id
   type: string
   optional: false
-  description: The unique identifier of the download job.
+  description: The unique identifier of the download job. `job_id` is returned by the [download](/docs/developer/rest/download) endpoint when a download is initiated.
 ```
 :::split:::
 ```lms_code_snippet
