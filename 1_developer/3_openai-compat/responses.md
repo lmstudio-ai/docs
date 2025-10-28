@@ -13,7 +13,6 @@ api_info:
 
 ```bash
 curl http://localhost:1234/v1/responses \
-  -H "Authorization: Bearer $LM_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
     "model": "openai/gpt-oss-20b",
@@ -28,7 +27,6 @@ Use the `id` from a previous response as `previous_response_id`.
 
 ```bash
 curl http://localhost:1234/v1/responses \
-  -H "Authorization: Bearer $LM_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
     "model": "openai/gpt-oss-20b",
@@ -41,7 +39,6 @@ curl http://localhost:1234/v1/responses \
 
 ```bash
 curl http://localhost:1234/v1/responses \
-  -H "Authorization: Bearer $LM_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
     "model": "openai/gpt-oss-20b",
@@ -58,7 +55,6 @@ Enable Remote MCP in the app (Developer → Settings). Example payload using an 
 
 ```bash
 curl http://localhost:1234/v1/responses \
-  -H "Authorization: Bearer $LM_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
     "model": "openai/gpt-oss-20b",

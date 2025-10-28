@@ -36,7 +36,6 @@ To run this example on Mac or Linux, use any terminal. On Windows, use [Git Bash
 
 ```bash
 curl http://{{hostname}}:{{port}}/v1/chat/completions \
-  -H "Authorization: Bearer $LM_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
     "model": "{{model}}",
