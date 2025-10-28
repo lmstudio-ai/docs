@@ -150,6 +150,9 @@ MCP servers can be pre-configured in your `mcp.json` file. This is the recommend
 MCP servers from mcp.json require the "Allow calling servers from mcp.json" setting to be enabled in [Server Settings](/docs/developer/core/server/settings).
 ```
 
+<img src="/assets/docs/mcp-editor.png" style="" data-caption="Editing mcp.json in LM Studio" />
+
+
 ```lms_code_snippet
 variants:
   curl:
