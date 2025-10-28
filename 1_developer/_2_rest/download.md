@@ -19,7 +19,7 @@ api_info:
 - name: quantization
   type: string
   optional: true
-  description: Quantization level of the model to download (e.g., `Q4_K_M`). Only supported for hugging face links.
+  description: Quantization level of the model to download (e.g., `Q4_K_M`). Only supported for Hugging Face links.
 ```
 :::split:::
 ```lms_code_snippet
