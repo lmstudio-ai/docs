@@ -11,14 +11,42 @@ LM Studio offers a powerful REST API with first-class support for local model ma
 Our REST API handles local LLM workflows with model downloading, loading, configuration, and inference. Get performance stats like tokens per second, model status, context length, quantization info, and more. Configure loading parameters to customize how models initialize.
 
 ### Supported endpoints
-
-| Endpoint                         | Method                          | Docs                                             |
-| -------------------------------- | ------------------------------- | ------------------------------------------------ |
-| `/api/v1/chat`                   | <apimethod method="POST" />     | [Chat](/docs/developer/rest/chat)               |
-| `/api/v1/models`                 | <apimethod method="GET" />      | [List Models](/docs/developer/rest/list)        |
-| `/api/v1/models/load`            | <apimethod method="POST" />     | [Load](/docs/developer/rest/load)               |
-| `/api/v1/models/download`        | <apimethod method="POST" />     | [Download](/docs/developer/rest/download)       |
-| `/api/v1/models/download/status` | <apimethod method="GET" />      | [Download Status](/docs/developer/rest/download-status) |
+<table class="flexible-cols">
+  <thead>
+    <tr>
+      <th>Endpoint</th>
+      <th>Method</th>
+      <th>Docs</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>/api/v1/chat</code></td>
+      <td><apimethod method="POST" /></td>
+      <td><a href="/docs/developer/rest/chat">Chat</a></td>
+    </tr>
+    <tr>
+      <td><code>/api/v1/models</code></td>
+      <td><apimethod method="GET" /></td>
+      <td><a href="/docs/developer/rest/list">List Models</a></td>
+    </tr>
+    <tr>
+      <td><code>/api/v1/models/load</code></td>
+      <td><apimethod method="POST" /></td>
+      <td><a href="/docs/developer/rest/load">Load</a></td>
+    </tr>
+    <tr>
+      <td><code>/api/v1/models/download</code></td>
+      <td><apimethod method="POST" /></td>
+      <td><a href="/docs/developer/rest/download">Download</a></td>
+    </tr>
+    <tr>
+      <td><code>/api/v1/models/download/status</code></td>
+      <td><apimethod method="GET" /></td>
+      <td><a href="/docs/developer/rest/download-status">Download Status</a></td>
+    </tr>
+  </tbody>
+</table>
 
 ---
 
