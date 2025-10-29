@@ -14,13 +14,42 @@ MCP servers provide tools that models can call during chat requests. You can ena
 
 ## Ephemeral vs mcp.json servers
 
-| Feature | Ephemeral | mcp.json |
-|---------|-----------|--------|
-| How to specify in request | `integrations` -> `"type": "ephemeral_mcp"` | `integrations` -> `"type": "plugin"` |
-| Configuration | Only defined per-request | Pre-configured in `mcp.json` |
-| Use case | One-off requests, remote MCP tool execution | MCP servers that require `command`, frequently used servers |
-| Server ID | Specified via `server_label` in integration | Specified via `id` (e.g., `mcp/playwright`) in integration |
-| Custom headers | Supported via `headers` field | Configured in `mcp.json` |
+<table class="flexible-cols">
+  <thead>
+    <tr>
+      <th>Feature</th>
+      <th>Ephemeral</th>
+      <th>mcp.json</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>How to specify in request</td>
+      <td><code>integrations</code> -> <code>"type": "ephemeral_mcp"</code></td>
+      <td><code>integrations</code> -> <code>"type": "plugin"</code></td>
+    </tr>
+    <tr>
+      <td>Configuration</td>
+      <td>Only defined per-request</td>
+      <td>Pre-configured in <code>mcp.json</code></td>
+    </tr>
+    <tr>
+      <td>Use case</td>
+      <td>One-off requests, remote MCP tool execution</td>
+      <td>MCP servers that require <code>command</code>, frequently used servers</td>
+    </tr>
+    <tr>
+      <td>Server ID</td>
+      <td>Specified via <code>server_label</code> in integration</td>
+      <td>Specified via <code>id</code> (e.g., <code>mcp/playwright</code>) in integration</td>
+    </tr>
+    <tr>
+      <td>Custom headers</td>
+      <td>Supported via <code>headers</code> field</td>
+      <td>Configured in <code>mcp.json</code></td>
+    </tr>
+  </tbody>
+</table>
 
 ## Ephemeral MCP servers
 
