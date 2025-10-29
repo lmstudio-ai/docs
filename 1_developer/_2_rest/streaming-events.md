@@ -8,6 +8,12 @@ Streaming events let you render chat responses incrementally over Server‑Sent 
 
 List of event types that can be sent in an `api/v1/chat` response stream:
 - `chat.start`
+- `model_load.start`
+- `model_load.progress`
+- `model_load.end`
+- `prompt_processing.start`
+- `prompt_processing.progress`
+- `prompt_processing.end`
 - `reasoning.start`
 - `reasoning.delta`
 - `reasoning.end`
@@ -47,6 +53,156 @@ variants:
       {
         "type": "chat.start",
         "model_instance_id": "openai/gpt-oss-20b"
+      }
+```
+````
+
+### `model_load.start`
+````lms_hstack
+Signals the start of a model being loaded to fulfill the chat request. Will not be emitted if the requested model is already loaded.
+```lms_params
+- name: model_instance_id
+  type: string
+  description: Unique identifier for the model instance being loaded.
+- name: type
+  type: '"model_load.start"'
+  description: The type of the event. Always `model_load.start`.
+```
+:::split:::
+```lms_code_snippet
+title: Example Event Data
+variants:
+  json:
+    language: json
+    code: |
+      {
+        "type": "model_load.start",
+        "model_instance_id": "openai/gpt-oss-20b"
+      }
+```
+````
+
+### `model_load.progress`
+````lms_hstack
+Progress of the model load.
+```lms_params
+- name: model_instance_id
+  type: string
+  description: Unique identifier for the model instance being loaded.
+- name: progress
+  type: number
+  description: Progress of the model load as a float between `0` and `1`.
+- name: type
+  type: '"model_load.progress"'
+  description: The type of the event. Always `model_load.progress`.
+```
+:::split:::
+```lms_code_snippet
+title: Example Event Data
+variants:
+  json:
+    language: json
+    code: |
+      {
+        "type": "model_load.progress",
+        "model_instance_id": "openai/gpt-oss-20b",
+        "progress": 0.65
+      }
+```
+````
+
+### `model_load.end`
+````lms_hstack
+Signals a successfully completed model load.
+```lms_params
+- name: model_instance_id
+  type: string
+  description: Unique identifier for the model instance that was loaded.
+- name: load_time_seconds
+  type: number
+  description: Time taken to load the model in seconds.
+- name: type
+  type: '"model_load.end"'
+  description: The type of the event. Always `model_load.end`.
+```
+:::split:::
+```lms_code_snippet
+title: Example Event Data
+variants:
+  json:
+    language: json
+    code: |
+      {
+        "type": "model_load.end",
+        "model_instance_id": "openai/gpt-oss-20b",
+        "load_time_seconds": 12.34
+      }
+```
+````
+
+### `prompt_processing.start`
+````lms_hstack
+Signals the start of the model processing a prompt.
+```lms_params
+- name: type
+  type: '"prompt_processing.start"'
+  description: The type of the event. Always `prompt_processing.start`.
+```
+:::split:::
+```lms_code_snippet
+title: Example Event Data
+variants:
+  json:
+    language: json
+    code: |
+      {
+        "type": "prompt_processing.start"
+      }
+```
+````
+
+### `prompt_processing.progress`
+````lms_hstack
+Progress of the model processing a prompt.
+```lms_params
+- name: progress
+  type: number
+  description: Progress of the prompt processing as a float between `0` and `1`.
+- name: type
+  type: '"prompt_processing.progress"'
+  description: The type of the event. Always `prompt_processing.progress`.
+```
+:::split:::
+```lms_code_snippet
+title: Example Event Data
+variants:
+  json:
+    language: json
+    code: |
+      {
+        "type": "prompt_processing.progress",
+        "progress": 0.5
+      }
+```
+````
+
+### `prompt_processing.end`
+````lms_hstack
+Signals the end of the model processing a prompt.
+```lms_params
+- name: type
+  type: '"prompt_processing.end"'
+  description: The type of the event. Always `prompt_processing.end`.
+```
+:::split:::
+```lms_code_snippet
+title: Example Event Data
+variants:
+  json:
+    language: json
+    code: |
+      {
+        "type": "prompt_processing.end"
       }
 ```
 ````
