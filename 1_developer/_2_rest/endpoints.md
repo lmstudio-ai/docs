@@ -4,10 +4,10 @@ description: "The REST API includes enhanced stats such as Token / Second and Ti
 ---
 
 ```lms_warning
-LM Studio now has a v1 REST API! Please migrate to the new API.
+LM Studio now has a [v1 REST API](/docs/developer/rest)! Please migrate to the new API.
 ```
 
-##### Requires [LM Studio 0.3.6](/download) or newer. Still WIP, endpoints may change.
+##### Requires [LM Studio 0.3.6](/download) or newer.
 
 LM Studio now has its own REST API, in addition to OpenAI compatibility mode ([learn more](/docs/developer/openai-compat)).
 
@@ -20,8 +20,6 @@ The REST API includes enhanced stats such as Token / Second and Time To First To
 - [`POST /api/v0/chat/completions`](#post-apiv0chatcompletions) - Chat Completions (messages -> assistant response)
 - [`POST /api/v0/completions`](#post-apiv0completions) - Text Completions (prompt -> completion)
 - [`POST /api/v0/embeddings`](#post-apiv0embeddings) - Text Embeddings (text -> embedding)
-
-###### 🚧 We are in the process of developing this interface. Let us know what's important to you on [Github](https://github.com/lmstudio-ai/lmstudio-js/issues) or by [email](mailto:bugs@lmstudio.ai).
 
 ---
 
