@@ -236,6 +236,10 @@ variants:
     - name: time_to_first_token_seconds
       type: number
       description: Time in seconds to generate the first token.
+    - name: model_load_time_seconds
+      type: number
+      optional: true
+      description: Time taken to load the model for this request in seconds. Present only if the model was not already loaded.
 - name: thread_id
   type: string
   optional: true
