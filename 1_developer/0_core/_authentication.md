@@ -5,14 +5,16 @@ description: Using API Tokens in LM Studio
 index: 1
 ---
 
-LM Studio, from version 0.4.0 (REPLACE WITH CORRECT VERSION), supports API Tokens for authentication, providing a secure and convenient way to access the LM Studio API.
+##### Requires [LM Studio 0.4.0](/download) or newer.
+
+LM Studio supports API Tokens for authentication, providing a secure and convenient way to access the LM Studio API.
 
 ### Require Authentication for each request
 
 By default, LM Studio does not require authentication for API requests. To enable authentication so that only requests with a valid API Token are accepted, toggle the switch in the Developers Page > Server Settings.
 
 ```lms_info
-Once enabled, all requests made through the REST API, Python SDK, or Typescript SDK will need to include a valid API Token. See usage [below](#usage-of-api-tokens)
+Once enabled, all requests made through the REST API, Python SDK, or Typescript SDK will need to include a valid API Token. See usage [below](#api-token-usage).
 ```
 
 <img src="/assets/docs/require-auth.png" style="width: 75%;" data-caption="Enable authentication to require valid API tokens for all requests" />
@@ -39,7 +41,7 @@ To edit the permissions of an existing API Token, click on the Edit button next 
 
 <img src="/assets/docs/edit-token.png" style="width: 75%;" data-caption="Editing an API Token" />
 
-## Usage of API Tokens
+## API Token Usage
 
 ### Using API Tokens with REST API:
 
@@ -55,14 +57,13 @@ curl -X POST \
  -d '{
   "model": "gpt-oss-20b",
   "input": "What is the first line in the tiktoken documentation?",
-  "plugins": [
+  "integrations": [
     {
+      "type": "plugin",
       "id": "mcp/tiktoken",
-      "allowed_tools": [
-        "fetch_tiktoken_documentation"
-      ]
+      "allowed_tools": ["fetch_tiktoken_documentation"]
     }
-  ]
+  ],
 }'
 ```
 

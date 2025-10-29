@@ -7,13 +7,42 @@ index: 1
 
 ### Supported endpoints
 
-| Endpoint               | Method                      | Docs                                                               |
-| ---------------------- | --------------------------- | ------------------------------------------------------------------ |
-| `/v1/models`           | <apimethod method="GET" />  | [Models](/docs/developer/openai-compat/models)                     |
-| `/v1/responses`        | <apimethod method="POST" /> | [Responses](/docs/developer/openai-compat/responses)               |
-| `/v1/chat/completions` | <apimethod method="POST" /> | [Chat Completions](/docs/developer/openai-compat/chat-completions) |
-| `/v1/embeddings`       | <apimethod method="POST" /> | [Embeddings](/docs/developer/openai-compat/embeddings)             |
-| `/v1/completions`      | <apimethod method="POST" /> | [Completions](/docs/developer/openai-compat/completions)           |
+<table class="flexible-cols">
+  <thead>
+    <tr>
+      <th>Endpoint</th>
+      <th>Method</th>
+      <th>Docs</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>/v1/models</code></td>
+      <td><apimethod method="GET" /></td>
+      <td><a href="/docs/developer/openai-compat/models">Models</a></td>
+    </tr>
+    <tr>
+      <td><code>/v1/responses</code></td>
+      <td><apimethod method="POST" /></td>
+      <td><a href="/docs/developer/openai-compat/responses">Responses</a></td>
+    </tr>
+    <tr>
+      <td><code>/v1/chat/completions</code></td>
+      <td><apimethod method="POST" /></td>
+      <td><a href="/docs/developer/openai-compat/chat-completions">Chat Completions</a></td>
+    </tr>
+    <tr>
+      <td><code>/v1/embeddings</code></td>
+      <td><apimethod method="POST" /></td>
+      <td><a href="/docs/developer/openai-compat/embeddings">Embeddings</a></td>
+    </tr>
+    <tr>
+      <td><code>/v1/completions</code></td>
+      <td><apimethod method="POST" /></td>
+      <td><a href="/docs/developer/openai-compat/completions">Completions</a></td>
+    </tr>
+  </tbody>
+</table>
 
 <hr>
 

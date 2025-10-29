@@ -1,8 +1,8 @@
 ---
 title: "Download a model"
-description: "Download models from LM Studio Hub or Hugging Face"
+description: "Download LLMs and embedding models"
 fullPage: true
-index: 5
+index: 8
 api_info:
   method: POST
 ---
@@ -15,11 +15,11 @@ api_info:
 - name: model
   type: string
   optional: false
-  description: The model to download.
+  description: The model to download. Accepts [model catalog](https://lmstudio.ai/models) identifiers (e.g., `openai/gpt-oss-20b`) and exact Hugging Face links (e.g., `https://huggingface.co/lmstudio-community/gpt-oss-20b-GGUF`)
 - name: quantization
   type: string
   optional: true
-  description: Specifies the quantization level for the hugging face model download. Example `Q4_K_M`.
+  description: Quantization level of the model to download (e.g., `Q4_K_M`). Only supported for Hugging Face links.
 ```
 :::split:::
 ```lms_code_snippet
@@ -28,7 +28,7 @@ variants:
   curl:
     language: bash
     code: |
-      curl http://127.0.0.1:1234/api/v1/models/download \
+      curl http://localhost:1234/api/v1/models/download \
         -H "Authorization: Bearer $LM_API_TOKEN" \
         -H "Content-Type: application/json" \
         -d '{
@@ -70,44 +70,6 @@ Returns a download job status object. The response varies based on the download 
   type: number
   optional: true
   description: Number of bytes downloaded so far. Absent when `status` is `already_downloaded`.
-- name: items
-  type: array
-  optional: true
-  description: Array of items being downloaded. Absent when `status` is `already_downloaded`.
-  children:
-    - name: type
-      type: '"model" | "model_yaml"'
-      description: Type of item being downloaded.
-    - name: id
-      type: string
-      description: Unique identifier for the item.
-    - name: size_bytes
-      type: number
-      description: Size of the item in bytes.
-    - name: publisher
-      type: string
-      optional: true
-      description: Model owner or repo owner for HF. Present when `type` is `model`.
-    - name: display_name
-      type: string
-      optional: true
-      description: Model display name. Present when `type` is `model`.
-    - name: url
-      type: string
-      optional: true
-      description: URL to the model page. Present when `type` is `model`.
-    - name: quantization
-      type: object | null
-      optional: true
-      description: Quantization information object. Present when `type` is `model`.
-      children:
-        - name: name
-          type: string | null
-          description: The quantization level (e.g., `4BIT`).
-    - name: format
-      type: string | null
-      optional: true
-      description: Model format (e.g., `mlx`). Present when `type` is `model`.
 - name: started_at
   type: string
   optional: true
@@ -125,25 +87,6 @@ variants:
         "status": "downloading",
         "total_size_bytes": 2279145003,
         "downloaded_bytes": 948,
-        "items": [
-          {
-            "type": "model_yaml",
-            "size_bytes": 171008,
-            "id": "qwen/qwen3-4b-2507/model.yaml"
-          },
-          {
-            "type": "model",
-            "publisher": "qwen",
-            "id": "qwen/qwen3-4b-2507",
-            "display_name": "Qwen3 4B Instruct 2507",
-            "url": "https://lmstudio.ai/models/qwen/qwen3-4b-2507",
-            "size_bytes": 2279145003,
-            "quantization": {
-              "name": "4BIT"
-            },
-            "format": "mlx"
-          }
-        ],
         "bytes_per_second": 7834.710743801653,
         "estimated_completion": "2025-10-07T00:21:47.030Z",
         "started_at": "2025-10-03T15:33:23.496Z"

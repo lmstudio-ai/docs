@@ -2,7 +2,7 @@
 title: "Get download status"
 description: "Get the status of model downloads"
 fullPage: true
-index: 6
+index: 9
 api_info:
   method: GET
 ---
@@ -10,17 +10,12 @@ api_info:
 ````lms_hstack
 `GET /api/v1/models/download/status/:job_id`
 
-```lms_info
-You get the `job_id` when you initiate a model download using the [Download Model API](/docs/developer/rest/download).
-```
-
-
 **Path parameters**
 ```lms_params
 - name: job_id
   type: string
   optional: false
-  description: The unique identifier of the download job.
+  description: The unique identifier of the download job. `job_id` is returned by the [download](/docs/developer/rest/download) endpoint when a download is initiated.
 ```
 :::split:::
 ```lms_code_snippet
@@ -30,7 +25,7 @@ variants:
     language: bash
     code: |
       curl -H "Authorization: Bearer $LM_API_TOKEN" \
-        http://127.0.0.1:1234/api/v1/models/download/status/job_493c7c9ded
+        http://localhost:1234/api/v1/models/download/status/job_493c7c9ded
 ```
 ````
 

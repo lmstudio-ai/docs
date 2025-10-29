@@ -5,7 +5,9 @@ description: Using API Tokens in LM Studio
 index: 2
 ---
 
-LM Studio, from version 0.4.0 (REPLACE WITH CORRECT VERSION), supports API Tokens for authentication, providing a secure and convenient way to access the LM Studio API.
+##### Requires [LM Studio 0.4.0](/download) or newer.
+
+LM Studio supports API Tokens for authentication, providing a secure and convenient way to access the LM Studio API.
 
 By default, the LM Studio API runs **without enforcing authentication**. For production or shared environments, enable API Token authentication for secure access.
 

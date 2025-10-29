@@ -2,7 +2,7 @@
 title: "List your models"
 description: "Get a list of available models on your system, including both LLMs and embedding models."
 fullPage: true
-index: 4
+index: 6
 api_info:
   method: GET
 ---
@@ -18,7 +18,7 @@ variants:
   curl:
     language: bash
     code: |
-      curl http://127.0.0.1:1234/api/v1/models \
+      curl http://localhost:1234/api/v1/models \
         -H "Authorization: Bearer $LM_API_TOKEN"
 ```
 ````

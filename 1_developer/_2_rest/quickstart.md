@@ -16,39 +16,21 @@ Then ensure the server is running through the toggle at the top left of the Deve
 lms server start
 ```
 
-By default, the server is available at `http://127.0.0.1:1234`.
+By default, the server is available at `http://localhost:1234`.
 
-## Download a model
+If you don't have a model downloaded yet, you can download the model:
 
-Use the download endpoint to download models by identifier from the [LM Studio model catalog](https://lmstudio.ai/models), or by Hugging Face model URL.
-
-```lms_code_snippet
-title: Download Qwen 3
-variants:
-  curl:
-    language: bash
-    code: |
-      curl http://127.0.0.1:1234/api/v1/models/download \
-        -H "Authorization: Bearer $LM_API_TOKEN" \
-        -H "Content-Type: application/json" \
-        -d '{
-          "model": "qwen/qwen3-4b-2507"
-        }'
+```bash
+lms get qwen/qwen3-4b-2507
 ```
 
-The response will return a `job_id` that you can use to track download progress.
 
-```lms_code_snippet
-title: Track download
-variants:
-  curl:
-    language: bash
-    code: |
-      curl -H "Authorization: Bearer $LM_API_TOKEN" \
-        http://127.0.0.1:1234/api/v1/models/download/status/{job_id}
-```
+## API Authentication
 
-See the [download](/docs/developer/rest/download) and [download status](/docs/developer/rest/download-status) docs for more details.
+By default, the LM Studio API server does **not** require authentication. You can configure the server to require authentication by API token in the [server settings](/docs/developer/core/server/settings) for added security.
+
+To authenticate API requests, generate an API token from the Developer page in LM Studio, and include it in the `Authorization` header of your requests as follows: `Authorization: Bearer $LM_API_TOKEN`. Read more about authentication [here](/docs/developer/core/authentication).
+
 
 ## Chat with a model
 
@@ -57,70 +39,293 @@ Use the chat endpoint to send a message to a model. By default, the model will b
 The `/api/v1/chat` endpoint is stateful, which means you do not need to pass the full history in every request. Read more about it [here](/docs/developer/rest/stateful-chats).
 
 ```lms_code_snippet
-title: Simple chat
 variants:
   curl:
     language: bash
     code: |
-      curl http://127.0.0.1:1234/api/v1/chat \
+      curl http://localhost:1234/api/v1/chat \
         -H "Authorization: Bearer $LM_API_TOKEN" \
         -H "Content-Type: application/json" \
         -d '{
           "model": "qwen/qwen3-4b-2507",
           "input": "Write a short haiku about sunrise."
         }'
+  Python:
+    language: python
+    code: |
+      import os
+      import requests
+
+      response = requests.post(
+          "http://localhost:1234/api/v1/chat",
+          headers={
+              "Authorization": f"Bearer {os.environ['LM_API_TOKEN']}",
+              "Content-Type": "application/json"
+          },
+          json={
+              "model": "qwen/qwen3-4b-2507",
+              "input": "Write a short haiku about sunrise."
+          }
+      )
+      print(response.json())
+  TypeScript:
+    language: typescript
+    code: |
+      const response = await fetch("http://localhost:1234/api/v1/chat", {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${process.env.LM_API_TOKEN}`,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          model: "qwen/qwen3-4b-2507",
+          input: "Write a short haiku about sunrise."
+        })
+      });
+      const data = await response.json();
+      console.log(data);
 ```
 
 See the full [chat](/docs/developer/rest/chat) docs for more details.
 
-## Use MCP servers
+## Use MCP servers via API
 
 
-Enable the model interact with remote Model Context Protocol (MCP) servers in `api/v1/chat` by specifying servers in the `remote_mcp_servers` field.
+Enable the model interact with ephemeral Model Context Protocol (MCP) servers in `api/v1/chat` by specifying servers in the `integrations` field.
 
 ```lms_code_snippet
-title: Use a remote MCP server
 variants:
   curl:
     language: bash
     code: |
-      curl http://127.0.0.1:1234/api/v1/chat \
+      curl http://localhost:1234/api/v1/chat \
         -H "Authorization: Bearer $LM_API_TOKEN" \
         -H "Content-Type: application/json" \
         -d '{
           "model": "qwen/qwen3-4b-2507",
-          "input": "What is the top trending model on huggingface?",
-          "remote_mcp_servers": [
+          "input": "What is the top trending model on hugging face right now?",
+          "integrations": [
             {
+              "type": "ephemeral_mcp",
               "server_label": "huggingface",
               "server_url": "https://huggingface.co/mcp",
               "allowed_tools": ["model_search"]
-            }
-          ]
+            },
+          ],
+          "context_length": 10000
         }'
+  Python:
+    language: python
+    code: |
+      import os
+      import requests
+
+      response = requests.post(
+          "http://localhost:1234/api/v1/chat",
+          headers={
+              "Authorization": f"Bearer {os.environ['LM_API_TOKEN']}",
+              "Content-Type": "application/json"
+          },
+          json={
+              "model": "qwen/qwen3-4b-2507",
+              "input": "What is the top trending model on hugging face right now?",
+              "integrations": [
+                  {
+                      "type": "ephemeral_mcp",
+                      "server_label": "huggingface",
+                      "server_url": "https://huggingface.co/mcp",
+                      "allowed_tools": ["model_search"]
+                  }
+              ],
+              "context_length": 10000
+          }
+      )
+      print(response.json())
+  TypeScript:
+    language: typescript
+    code: |
+      const response = await fetch("http://localhost:1234/api/v1/chat", {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${process.env.LM_API_TOKEN}`,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          model: "qwen/qwen3-4b-2507",
+          input: "What is the top trending model on hugging face right now?",
+          integrations: [
+            {
+              type: "ephemeral_mcp",
+              server_label: "huggingface",
+              server_url: "https://huggingface.co/mcp",
+              allowed_tools: ["model_search"]
+            }
+          ],
+          context_length: 10000
+        })
+      });
+      const data = await response.json();
+      console.log(data);
 ```
 
-You can also use locally configured MCP plugins (from your `mcp.json`) via the `plugins` field. Using locally run MCP plugins requires authentication via an API token passed through the `X-LM-API-Token` header. Read more about authentication [here](/docs/developer/core/authentication).
+You can also use locally configured MCP plugins (from your `mcp.json`) via the `integrations` field. Using locally run MCP plugins requires authentication via an API token passed through the `Authorization` header. Read more about authentication [here](/docs/developer/core/authentication).
 
 ```lms_code_snippet
-title: Use an MCP plugin
 variants:
   curl:
     language: bash
     code: |
-      curl http://127.0.0.1:1234/api/v1/chat \
+      curl http://localhost:1234/api/v1/chat \
         -H "Authorization: Bearer $LM_API_TOKEN" \
         -H "Content-Type: application/json" \
         -d '{
           "model": "qwen/qwen3-4b-2507",
-          "input": "Navigate to lmstudio.ai",
-          "plugins": [
+          "input": "Take me to the page for the top trending model on huggingface",
+          "integrations": [
             {
+              "type": "plugin",
               "id": "mcp/playwright",
               "allowed_tools": ["browser_navigate"]
             }
-          ]
+          ],
+          "context_length": 10000
         }'
+  Python:
+    language: python
+    code: |
+      import os
+      import requests
+
+      response = requests.post(
+          "http://localhost:1234/api/v1/chat",
+          headers={
+              "Authorization": f"Bearer {os.environ['LM_API_TOKEN']}",
+              "Content-Type": "application/json"
+          },
+          json={
+              "model": "qwen/qwen3-4b-2507",
+              "input": "Take me to the page for the top trending model on huggingface",
+              "integrations": [
+                  {
+                      "type": "plugin",
+                      "id": "mcp/playwright",
+                      "allowed_tools": ["browser_navigate"]
+                  }
+              ],
+              "context_length": 10000
+          }
+      )
+      print(response.json())
+  TypeScript:
+    language: typescript
+    code: |
+      const response = await fetch("http://localhost:1234/api/v1/chat", {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${process.env.LM_API_TOKEN}`,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          model: "qwen/qwen3-4b-2507",
+          input: "Take me to the page for the top trending model on huggingface",
+          integrations: [
+            {
+              type: "plugin",
+              id: "mcp/playwright",
+              allowed_tools: ["browser_navigate"]
+            }
+          ],
+          context_length: 10000
+        })
+      });
+      const data = await response.json();
+      console.log(data);
 ```
 
 See the full [chat](/docs/developer/rest/chat) docs for more details.
+
+## Download a model
+
+Use the download endpoint to download models by identifier from the [LM Studio model catalog](https://lmstudio.ai/models), or by Hugging Face model URL.
+
+```lms_code_snippet
+variants:
+  curl:
+    language: bash
+    code: |
+      curl http://localhost:1234/api/v1/models/download \
+        -H "Authorization: Bearer $LM_API_TOKEN" \
+        -H "Content-Type: application/json" \
+        -d '{
+          "model": "qwen/qwen3-4b-2507"
+        }'
+  Python:
+    language: python
+    code: |
+      import os
+      import requests
+
+      response = requests.post(
+          "http://localhost:1234/api/v1/models/download",
+          headers={
+              "Authorization": f"Bearer {os.environ['LM_API_TOKEN']}",
+              "Content-Type": "application/json"
+          },
+          json={"model": "qwen/qwen3-4b-2507"}
+      )
+      print(response.json())
+  TypeScript:
+    language: typescript
+    code: |
+      const response = await fetch("http://localhost:1234/api/v1/models/download", {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${process.env.LM_API_TOKEN}`,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          model: "qwen/qwen3-4b-2507"
+        })
+      });
+      const data = await response.json();
+      console.log(data);
+```
+
+The response will return a `job_id` that you can use to track download progress.
+
+```lms_code_snippet
+variants:
+  curl:
+    language: bash
+    code: |
+      curl -H "Authorization: Bearer $LM_API_TOKEN" \
+        http://localhost:1234/api/v1/models/download/status/{job_id}
+  Python:
+    language: python
+    code: |
+      import os
+      import requests
+
+      job_id = "your-job-id"
+      response = requests.get(
+          f"http://localhost:1234/api/v1/models/download/status/{job_id}",
+          headers={"Authorization": f"Bearer {os.environ['LM_API_TOKEN']}"}
+      )
+      print(response.json())
+  TypeScript:
+    language: typescript
+    code: |
+      const jobId = "your-job-id";
+      const response = await fetch(
+        `http://localhost:1234/api/v1/models/download/status/${jobId}`,
+        {
+          headers: {
+            "Authorization": `Bearer ${process.env.LM_API_TOKEN}`
+          }
+        }
+      );
+      const data = await response.json();
+      console.log(data);
+```
+
+See the [download](/docs/developer/rest/download) and [download status](/docs/developer/rest/download-status) docs for more details.

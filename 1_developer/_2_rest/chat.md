@@ -2,7 +2,7 @@
 title: "Chat with a model"
 description: "Send a message to a model and receive a response. Supports MCP integration."
 fullPage: true
-index: 3
+index: 5
 api_info:
   method: POST
 ---
@@ -127,19 +127,26 @@ variants:
   curl:
     language: bash
     code: |
-      curl http://127.0.0.1:1234/api/v1/chat \
+      curl http://localhost:1234/api/v1/chat \
         -H "Authorization: Bearer $LM_API_TOKEN" \
         -H "Content-Type: application/json" \
         -d '{
           "model": "openai/gpt-oss-20b",
-          "input": "What is the top trending model on huggingface?",
-          "remote_mcp_servers": [
+          "input": "Take me to the page for the top trending model on huggingface",
+          "integrations": [
             {
+              "type": "ephemeral_mcp",
               "server_label": "huggingface",
               "server_url": "https://huggingface.co/mcp",
               "allowed_tools": ["model_search"]
+            },
+            {
+              "type": "plugin",
+              "id": "mcp/playwright",
+              "allowed_tools": ["browser_navigate"]
             }
-          ]
+          ],
+          "context_length": 20000
         }'
 ```
 ````
@@ -189,7 +196,7 @@ variants:
           description: Information about the tool provider.
           children:
             - name: type
-              type: '"plugin" | "remote_mcp"'
+              type: '"plugin" | "ephemeral_mcp"'
               description: Provider type.
             - name: plugin_id
               type: string
@@ -198,7 +205,7 @@ variants:
             - name: server_label
               type: string
               optional: true
-              description: Label of the MCP server (when `type` is `"remote_mcp"`).
+              description: Label of the MCP server (when `type` is `"ephemeral_mcp"`).
     - name: Reasoning
       unstyledName: true
       type: object
@@ -246,7 +253,7 @@ variants:
         "output": [
           {
             "type": "reasoning",
-            "content": "Need to call function."
+            "content": "Need to search for top trending. Use function model_search with sort trendingScore limit 1."
           },
           {
             "type": "tool_call",
@@ -255,25 +262,41 @@ variants:
               "sort": "trendingScore",
               "limit": 1
             },
-            "output": "[{\"type\":\"text\",\"text\":\"Showing first 1 models...\"}]",
+            "output": "[{\"type\":\"text\",\"text\":\"Showing first 1 models matching sorted by <TRUNCATED> deepseek-ai/DeepSeek-OCR](https://hf.co/deepseek-ai/DeepSeek-OCR)\\n\\n---\\n\"}]",
             "provider_info": {
-              "type": "remote_mcp"
               "server_label": "huggingface",
+              "type": "ephemeral_mcp"
+            }
+          },
+          {
+            "type": "reasoning",
+            "content": "We need to navigate."
+          },
+          {
+            "type": "tool_call",
+            "tool": "browser_navigate",
+            "arguments": {
+              "url": "https://hf.co/deepseek-ai/DeepSeek-OCR"
+            },
+            "output": "<PLAYWRIGHT_OUTPUT>",
+            "provider_info": {
+              "plugin_id": "mcp/playwright",
+              "type": "plugin"
             }
           },
           {
             "type": "message",
-            "content": "The current top‑trending model is..."
+            "content": "Here is the page for the current top‑trending model..."
           }
         ],
         "stats": {
-          "input_tokens": 329,
-          "total_output_tokens": 268,
-          "reasoning_output_tokens": 5,
-          "tokens_per_second": 43.73263766917279,
-          "time_to_first_token_seconds": 0.781
+          "input_tokens": 359,
+          "total_output_tokens": 218,
+          "reasoning_output_tokens": 24,
+          "tokens_per_second": 41.097718386623356,
+          "time_to_first_token_seconds": 1.367
         },
-        "thread_id": "thread_02b2017dbc06c12bfc353a2ed6c2b802f8cc682884bb5716"
+        "thread_id": "thread_46665e1bd0ca7f261ef77344c7ee4b8b969e66c417fbf443"
       }
 ```
 ````
