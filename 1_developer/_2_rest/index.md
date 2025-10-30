@@ -57,14 +57,14 @@ The following endpoints are available in LM Studio's v1 REST API.
 </table>
 
 ## Inference endpoint comparison
-The table below compares the features of LM Studio's `api/v1/chat` endpoint with the OpenAI-compatible `v1/responses` and `v1/chat/completions` endpoints.
+The table below compares the features of LM Studio's `/api/v1/chat` endpoint with the OpenAI-compatible `/v1/responses` and `/v1/chat/completions` endpoints.
 <table class="flexible-cols">
   <thead>
     <tr>
       <th>Feature</th>
-      <th><code>api/v1/chat</code></th>
-      <th><code>v1/responses</code></th>
-      <th><code>v1/chat/completions</code></th>
+      <th><code>/api/v1/chat</code></th>
+      <th><code>/v1/responses</code></th>
+      <th><code>/v1/chat/completions</code></th>
     </tr>
   </thead>
   <tbody>
