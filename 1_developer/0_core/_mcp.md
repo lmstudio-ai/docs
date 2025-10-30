@@ -69,7 +69,7 @@ variants:
         -H "Content-Type: application/json" \
         -d '{
           "model": "qwen/qwen3-8b",
-          "input": "What is top trending model",
+          "input": "What is the top trending model on hugging face?",
           "integrations": [
             {
               "type": "ephemeral_mcp",
@@ -93,7 +93,7 @@ variants:
               },
               json={
                   "model": "qwen/qwen3-8b",
-                  "input": "What is top trending model",
+                  "input": "What is the top trending model on hugging face?",
                   "integrations": [
                       {
                           "type": "ephemeral_mcp",
@@ -116,7 +116,7 @@ variants:
         },
         body: JSON.stringify({
           "model": "qwen/qwen3-8b",
-          "input": "What is top trending model",
+          "input": "What is the top trending model on hugging face?",
           "integrations": [
             {
               "type": "ephemeral_mcp",
@@ -310,7 +310,7 @@ variants:
         -H "Content-Type: application/json" \
         -d '{
           "model": "qwen/qwen3-8b",
-          "input": "What is top trending model",
+          "input": "What is the top trending model on hugging face?",
           "integrations": [
             {
               "type": "ephemeral_mcp",
@@ -335,7 +335,7 @@ variants:
           },
           json={
               "model": "qwen/qwen3-8b",
-              "input": "What is top trending model",
+              "input": "What is the top trending model on hugging face?",
               "integrations": [
                   {
                       "type": "ephemeral_mcp",
@@ -359,7 +359,7 @@ variants:
         },
         body: JSON.stringify({
           "model": "qwen/qwen3-8b",
-          "input": "What is top trending model",
+          "input": "What is the top trending model on hugging face?",
           "integrations": [
             {
               "type": "ephemeral_mcp",
