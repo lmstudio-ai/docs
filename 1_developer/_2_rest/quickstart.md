@@ -149,17 +149,17 @@ variants:
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          "model": "qwen/qwen3-8b",
-          "input": "What is the top trending model on hugging face?",
-          "integrations": [
+          model: "qwen/qwen3-8b",
+          input: "What is the top trending model on hugging face?",
+          integrations: [
             {
-              "type": "ephemeral_mcp",
-              "server_label": "huggingface",
-              "server_url": "https://huggingface.co/mcp"
+              type: "ephemeral_mcp",
+              server_label: "huggingface",
+              server_url: "https://huggingface.co/mcp"
             }
           ],
-          "context_length": 8000
-        });
+          context_length: 8000
+        })
       const data = await response.json();
       console.log(data);
 ```
@@ -220,16 +220,17 @@ variants:
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          "model": "qwen/qwen3-8b",
-          "input": "Open this link https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-          "integrations": [
+          model: "qwen/qwen3-8b",
+          input: "Open this link https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+          integrations: [
             {
-              "type": "plugin",
-              "id": "mcp/playwright"
+              type: "plugin",
+              id: "mcp/playwright"
             }
           ],
-          "context_length": 8000
-        });
+          context_length: 8000
+        })
+      });
       const data = await response.json();
       console.log(data);
 ```

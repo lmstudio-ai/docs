@@ -236,10 +236,10 @@ variants:
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          "model": "qwen/qwen3-8b",
-          "input": "Open this link https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-          "integrations": ["mcp/playwright"],
-          "context_length": 8000
+          model: "qwen/qwen3-8b",
+          input: "Open this link https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+          integrations: ["mcp/playwright"],
+          context_length: 8000
         })
       });
       const data = await response.json();
@@ -358,17 +358,17 @@ variants:
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          "model": "qwen/qwen3-8b",
-          "input": "What is the top trending model on hugging face?",
-          "integrations": [
+          model: "qwen/qwen3-8b",
+          input: "What is the top trending model on hugging face?",
+          integrations: [
             {
-              "type": "ephemeral_mcp",
-              "server_label": "huggingface",
-              "server_url": "https://huggingface.co/mcp",
-              "allowed_tools": ["model_search"]
+              type: "ephemeral_mcp",
+              server_label: "huggingface",
+              server_url: "https://huggingface.co/mcp",
+              allowed_tools: ["model_search"]
             }
           ],
-          "context_length": 8000
+          context_length: 8000
         })
       });
       const data = await response.json();
@@ -445,21 +445,21 @@ variants:
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          "model": "qwen/qwen3-8b",
-          "input": "Give me details about my SUPER-SECRET-PRIVATE Hugging face model",
-          "integrations": [
+          model: "qwen/qwen3-8b",
+          input: "Give me details about my SUPER-SECRET-PRIVATE Hugging face model",
+          integrations: [
             {
-              "type": "ephemeral_mcp",
-              "server_label": "huggingface",
-              "server_url": "https://huggingface.co/mcp",
-              "allowed_tools": ["model_search"],
-              "headers": {
-                "Authorization": "Bearer <YOUR_HF_TOKEN>"
+              type: "ephemeral_mcp",
+              server_label: "huggingface",
+              server_url: "https://huggingface.co/mcp",
+              allowed_tools: ["model_search"],
+              headers: {
+                Authorization: "Bearer <YOUR_HF_TOKEN>"
               }
             }
           ],
-          "context_length": 8000
-        });
+          context_length: 8000
+        })
       const data = await response.json();
       console.log(data);
 ```
