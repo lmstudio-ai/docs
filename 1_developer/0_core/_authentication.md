@@ -51,20 +51,22 @@ The example below requires [allowing calling servers from mcp.json](/docs/develo
 
 ```bash
 curl -X POST \
- http://localhost:1234/api/v1/chat \
- -H 'Authorization: Bearer $LM_API_TOKEN' \
- -H 'Content-Type: application/json' \
- -d '{
-  "model": "gpt-oss-20b",
-  "input": "What is the first line in the tiktoken documentation?",
-  "integrations": [
-    {
-      "type": "plugin",
-      "id": "mcp/tiktoken",
-      "allowed_tools": ["fetch_tiktoken_documentation"]
-    }
-  ],
-}'
+  http://localhost:1234/api/v1/chat \
+  -H 'Authorization: Bearer $LM_API_TOKEN' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "model": "qwen/qwen3-8b",
+    "input": "What is the first line in the tiktoken documentation?",
+    "integrations": [
+      {
+        "type": "plugin",
+        "id": "mcp/tiktoken",
+        "allowed_tools": [
+          "fetch_tiktoken_documentation"
+        ]
+      }
+    ]
+  }'
 ```
 
 ### Using API Tokens with Python SDK

@@ -131,7 +131,7 @@ variants:
         -H "Authorization: Bearer $LM_API_TOKEN" \
         -H "Content-Type: application/json" \
         -d '{
-          "model": "openai/gpt-oss-20b",
+          "model": "qwen/qwen3-8b",
           "input": "Take me to the page for the top trending model on huggingface",
           "integrations": [
             {
@@ -143,10 +143,9 @@ variants:
             {
               "type": "plugin",
               "id": "mcp/playwright",
-              "allowed_tools": ["browser_navigate"]
             }
           ],
-          "context_length": 20000
+          "context_length": 10000
         }'
 ```
 ````
@@ -253,11 +252,11 @@ variants:
     language: json
     code: |
       {
-        "model_instance_id": "openai/gpt-oss-20b",
+        "model_instance_id": "qwen3/qwen3-8b",
         "output": [
           {
             "type": "reasoning",
-            "content": "Need to search for top trending. Use function model_search with sort trendingScore limit 1."
+            "content": "..."
           },
           {
             "type": "tool_call",
@@ -266,7 +265,7 @@ variants:
               "sort": "trendingScore",
               "limit": 1
             },
-            "output": "[{\"type\":\"text\",\"text\":\"Showing first 1 models matching sorted by <TRUNCATED> deepseek-ai/DeepSeek-OCR](https://hf.co/deepseek-ai/DeepSeek-OCR)\\n\\n---\\n\"}]",
+            "output": "...",
             "provider_info": {
               "server_label": "huggingface",
               "type": "ephemeral_mcp"
@@ -280,7 +279,7 @@ variants:
             "type": "tool_call",
             "tool": "browser_navigate",
             "arguments": {
-              "url": "https://hf.co/deepseek-ai/DeepSeek-OCR"
+              "url": "https://hf.co/...."
             },
             "output": "<PLAYWRIGHT_OUTPUT>",
             "provider_info": {

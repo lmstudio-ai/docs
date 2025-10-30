@@ -22,7 +22,7 @@ variants:
         -H "Authorization: Bearer $LM_API_TOKEN" \
         -H "Content-Type: application/json" \
         -d '{
-          "model": "qwen/qwen3-4b-2507",
+          "model": "qwen/qwen3-8b",
           "input": "My favorite color is blue.",
           "store": true
         }'
@@ -41,7 +41,7 @@ variants:
     language: json
     code: |
       {
-        "model_instance_id": "qwen/qwen3-4b-2507",
+        "model_instance_id": "qwen/qwen3-8b",
         "output": [
           {
             "type": "message",
@@ -69,7 +69,7 @@ variants:
         -H "Authorization: Bearer $LM_API_TOKEN" \
         -H "Content-Type: application/json" \
         -d '{
-          "model": "qwen/qwen3-4b-2507",
+          "model": "qwen/qwen3-8b",
           "input": "What color did I just mention?",
           "thread_id": "thread_abc123xyz...",
           "store": true
@@ -92,7 +92,7 @@ variants:
         -H "Authorization: Bearer $LM_API_TOKEN" \
         -H "Content-Type: application/json" \
         -d '{
-          "model": "qwen/qwen3-4b-2507",
+          "model": "qwen/qwen3-8b",
           "input": "Tell me a joke.",
           "store": false
         }'

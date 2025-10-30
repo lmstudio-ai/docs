@@ -21,7 +21,7 @@ By default, the server is available at `http://localhost:1234`.
 If you don't have a model downloaded yet, you can download the model:
 
 ```bash
-lms get qwen/qwen3-4b-2507
+lms get qwen/qwen3-8b
 ```
 
 
@@ -47,7 +47,7 @@ variants:
         -H "Authorization: Bearer $LM_API_TOKEN" \
         -H "Content-Type: application/json" \
         -d '{
-          "model": "qwen/qwen3-4b-2507",
+          "model": "qwen/qwen3-8b",
           "input": "Write a short haiku about sunrise."
         }'
   Python:
@@ -63,7 +63,7 @@ variants:
               "Content-Type": "application/json"
           },
           json={
-              "model": "qwen/qwen3-4b-2507",
+              "model": "qwen/qwen3-8b",
               "input": "Write a short haiku about sunrise."
           }
       )
@@ -78,7 +78,7 @@ variants:
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          model: "qwen/qwen3-4b-2507",
+          model: "qwen/qwen3-8b",
           input: "Write a short haiku about sunrise."
         })
       });
@@ -102,17 +102,16 @@ variants:
         -H "Authorization: Bearer $LM_API_TOKEN" \
         -H "Content-Type: application/json" \
         -d '{
-          "model": "qwen/qwen3-4b-2507",
-          "input": "What is the top trending model on hugging face right now?",
+          "model": "qwen/qwen3-8b",
+          "input": "What is top trending model",
           "integrations": [
             {
               "type": "ephemeral_mcp",
               "server_label": "huggingface",
-              "server_url": "https://huggingface.co/mcp",
-              "allowed_tools": ["model_search"]
-            },
+              "server_url": "https://huggingface.co/mcp"
+            }
           ],
-          "context_length": 10000
+          "context_length": 8000
         }'
   Python:
     language: python
@@ -127,17 +126,16 @@ variants:
               "Content-Type": "application/json"
           },
           json={
-              "model": "qwen/qwen3-4b-2507",
-              "input": "What is the top trending model on hugging face right now?",
+              "model": "qwen/qwen3-8b",
+              "input": "What is top trending model",
               "integrations": [
                   {
                       "type": "ephemeral_mcp",
                       "server_label": "huggingface",
-                      "server_url": "https://huggingface.co/mcp",
-                      "allowed_tools": ["model_search"]
+                      "server_url": "https://huggingface.co/mcp"
                   }
               ],
-              "context_length": 10000
+              "context_length": 8000
           }
       )
       print(response.json())
@@ -151,19 +149,17 @@ variants:
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          model: "qwen/qwen3-4b-2507",
-          input: "What is the top trending model on hugging face right now?",
-          integrations: [
+          "model": "qwen/qwen3-8b",
+          "input": "What is top trending model",
+          "integrations": [
             {
-              type: "ephemeral_mcp",
-              server_label: "huggingface",
-              server_url: "https://huggingface.co/mcp",
-              allowed_tools: ["model_search"]
+              "type": "ephemeral_mcp",
+              "server_label": "huggingface",
+              "server_url": "https://huggingface.co/mcp"
             }
           ],
-          context_length: 10000
-        })
-      });
+          "context_length": 8000
+        });
       const data = await response.json();
       console.log(data);
 ```
@@ -179,16 +175,15 @@ variants:
         -H "Authorization: Bearer $LM_API_TOKEN" \
         -H "Content-Type: application/json" \
         -d '{
-          "model": "qwen/qwen3-4b-2507",
-          "input": "Take me to the page for the top trending model on huggingface",
+          "model": "qwen/qwen3-8b",
+          "input": "Open this link https://www.youtube.com/watch?v=dQw4w9WgXcQ",
           "integrations": [
             {
               "type": "plugin",
-              "id": "mcp/playwright",
-              "allowed_tools": ["browser_navigate"]
+              "id": "mcp/playwright"
             }
           ],
-          "context_length": 10000
+          "context_length": 8000
         }'
   Python:
     language: python
@@ -203,17 +198,16 @@ variants:
               "Content-Type": "application/json"
           },
           json={
-              "model": "qwen/qwen3-4b-2507",
-              "input": "Take me to the page for the top trending model on huggingface",
+              "model": "qwen/qwen3-8b",
+              "input": "Open this link https://www.youtube.com/watch?v=dQw4w9WgXcQ",
               "integrations": [
                   {
                       "type": "plugin",
-                      "id": "mcp/playwright",
-                      "allowed_tools": ["browser_navigate"]
+                      "id": "mcp/playwright"
                   }
               ],
-              "context_length": 10000
-          }
+              "context_length": 8000
+        }
       )
       print(response.json())
   TypeScript:
@@ -226,18 +220,16 @@ variants:
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          model: "qwen/qwen3-4b-2507",
-          input: "Take me to the page for the top trending model on huggingface",
-          integrations: [
+          "model": "qwen/qwen3-8b",
+          "input": "Open this link https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+          "integrations": [
             {
-              type: "plugin",
-              id: "mcp/playwright",
-              allowed_tools: ["browser_navigate"]
+              "type": "plugin",
+              "id": "mcp/playwright"
             }
           ],
-          context_length: 10000
-        })
-      });
+          "context_length": 8000
+        });
       const data = await response.json();
       console.log(data);
 ```
@@ -257,7 +249,7 @@ variants:
         -H "Authorization: Bearer $LM_API_TOKEN" \
         -H "Content-Type: application/json" \
         -d '{
-          "model": "qwen/qwen3-4b-2507"
+          "model": "qwen/qwen3-8b"
         }'
   Python:
     language: python
@@ -271,7 +263,7 @@ variants:
               "Authorization": f"Bearer {os.environ['LM_API_TOKEN']}",
               "Content-Type": "application/json"
           },
-          json={"model": "qwen/qwen3-4b-2507"}
+          json={"model": "qwen/qwen3-8b"}
       )
       print(response.json())
   TypeScript:
@@ -284,7 +276,7 @@ variants:
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          model: "qwen/qwen3-4b-2507"
+          model: "qwen/qwen3-8b"
         })
       });
       const data = await response.json();
