@@ -2,10 +2,12 @@
 title: Using MCP via API
 sidebar_title: Using MCP via API
 description: Learn how to use Model Control Protocol (MCP) servers with LM Studio API.
-index: 4
+index: 3
 ---
 
-LM Studio supports Model Control Protocol (MCP) usage via API starting from version 0.4.0. MCP allows models to interact with external tools and services through standardized servers.
+##### Requires [LM Studio 0.4.0](/download) or newer.
+
+LM Studio supports Model Control Protocol (MCP) usage via API. MCP allows models to interact with external tools and services through standardized servers.
 
 ## How it works
 
