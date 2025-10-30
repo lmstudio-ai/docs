@@ -132,20 +132,26 @@ variants:
         -H "Content-Type: application/json" \
         -d '{
           "model": "qwen/qwen3-8b",
-          "input": "Take me to the page for the top trending model on huggingface",
+          "input": "Tell me the top trending model on hugging face and navigate to https://lmstudio.ai",
           "integrations": [
             {
               "type": "ephemeral_mcp",
               "server_label": "huggingface",
               "server_url": "https://huggingface.co/mcp",
-              "allowed_tools": ["model_search"]
+              "allowed_tools": [
+                "model_search"
+              ]
             },
             {
               "type": "plugin",
               "id": "mcp/playwright",
+              "allowed_tools": [
+                "browser_navigate"
+              ]
             }
           ],
-          "context_length": 10000
+          "context_length": 8000,
+          "temperature": 0
         }'
 ```
 ````

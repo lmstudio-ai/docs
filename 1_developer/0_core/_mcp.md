@@ -204,7 +204,8 @@ variants:
           "model": "qwen/qwen3-8b",
           "input": "Open this link https://www.youtube.com/watch?v=dQw4w9WgXcQ",
           "integrations": ["mcp/playwright"],
-          "context_length": 8000
+          "context_length": 8000,
+          "temperature": 0
         }'
   Python:
     language: python
@@ -222,7 +223,8 @@ variants:
               "model": "qwen/qwen3-8b",
               "input": "Open this link https://www.youtube.com/watch?v=dQw4w9WgXcQ",
               "integrations": ["mcp/playwright"],
-              "context_length": 8000
+              "context_length": 8000,
+              "temperature": 0
           }
       )
       print(response.json())
@@ -239,7 +241,8 @@ variants:
           model: "qwen/qwen3-8b",
           input: "Open this link https://www.youtube.com/watch?v=dQw4w9WgXcQ",
           integrations: ["mcp/playwright"],
-          context_length: 8000
+          context_length: 8000,
+          temperature: 0
         })
       });
       const data = await response.json();
