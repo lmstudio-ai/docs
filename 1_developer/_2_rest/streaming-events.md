@@ -569,7 +569,7 @@ Final event containing the full aggregated response, equivalent to the non-strea
 ```lms_params
 - name: result
   type: object
-  description: Final response with `model_instance_id`, `output`, `stats`, and optional `thread_id`. See [non-streaming chat docs](/docs/developer/rest/chat) for more details.
+  description: Final response with `model_instance_id`, `output`, `stats`, and optional `response_id`. See [non-streaming chat docs](/docs/developer/rest/chat) for more details.
 - name: type
   type: '"chat.end"'
   description: The type of the event. Always `chat.end`.
@@ -603,7 +603,7 @@ variants:
             "tokens_per_second": 43.73,
             "time_to_first_token_seconds": 0.781
           },
-          "thread_id": "thread_02b2017dbc06c12bfc353a2ed6c2b802f8cc682884bb5716"
+          "response_id": "resp_02b2017dbc06c12bfc353a2ed6c2b802f8cc682884bb5716"
         }
       }
 ```

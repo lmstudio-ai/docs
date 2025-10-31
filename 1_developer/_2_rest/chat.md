@@ -114,11 +114,11 @@ api_info:
 - name: store
   type: boolean
   optional: true
-  description: Whether to store the chat/thread. If set, response will return a `"thread_id"` field. Default `true`.
-- name: thread_id
+  description: Whether to store the chat. If set, response will return a `"response_id"` field. Default `true`.
+- name: previous_response_id
   type: string
   optional: true
-  description: Identifier of existing thread to append to. Must start with `"thread_"`.
+  description: Identifier of existing response to append to. Must start with `"resp_"`.
 ```
 :::split:::
 ```lms_code_snippet
@@ -228,7 +228,7 @@ variants:
   children:
     - name: input_tokens
       type: number
-      description: Number of input tokens. Includes formatting, tool definitions, and prior messages in the thread.
+      description: Number of input tokens. Includes formatting, tool definitions, and prior messages in the chat.
     - name: total_output_tokens
       type: number
       description: Total number of output tokens generated.
@@ -245,10 +245,10 @@ variants:
       type: number
       optional: true
       description: Time taken to load the model for this request in seconds. Present only if the model was not already loaded.
-- name: thread_id
+- name: response_id
   type: string
   optional: true
-  description: Identifier of the thread for subsequent requests. Starts with `"thread_"`. Present when `store` is `true`.
+  description: Identifier of the response for subsequent requests. Starts with `"resp_"`. Present when `store` is `true`.
 ```
 :::split:::
 ```lms_code_snippet
@@ -305,7 +305,7 @@ variants:
           "tokens_per_second": 41.097718386623356,
           "time_to_first_token_seconds": 1.367
         },
-        "thread_id": "thread_46665e1bd0ca7f261ef77344c7ee4b8b969e66c417fbf443"
+        "response_id": "resp_46665e1bd0ca7f261ef77344c7ee4b8b969e66c417fbf443"
       }
 ```
 ````
