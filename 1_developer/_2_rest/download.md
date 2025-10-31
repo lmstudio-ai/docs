@@ -32,7 +32,7 @@ variants:
         -H "Authorization: Bearer $LM_API_TOKEN" \
         -H "Content-Type: application/json" \
         -d '{
-          "model": "qwen/qwen3-4b-2507"
+          "model": "ibm/granite-4-micro"
         }'
 ```
 ````

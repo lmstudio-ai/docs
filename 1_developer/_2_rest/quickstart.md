@@ -21,7 +21,7 @@ By default, the server is available at `http://localhost:1234`.
 If you don't have a model downloaded yet, you can download the model:
 
 ```bash
-lms get qwen/qwen3-4b-2507
+lms get ibm/granite-4-micro
 ```
 
 
@@ -47,7 +47,7 @@ variants:
         -H "Authorization: Bearer $LM_API_TOKEN" \
         -H "Content-Type: application/json" \
         -d '{
-          "model": "qwen/qwen3-4b-2507",
+          "model": "ibm/granite-4-micro",
           "input": "Write a short haiku about sunrise."
         }'
   Python:
@@ -55,19 +55,20 @@ variants:
     code: |
       import os
       import requests
+      import json
 
       response = requests.post(
-          "http://localhost:1234/api/v1/chat",
-          headers={
-              "Authorization": f"Bearer {os.environ['LM_API_TOKEN']}",
-              "Content-Type": "application/json"
-          },
-          json={
-              "model": "qwen/qwen3-4b-2507",
-              "input": "Write a short haiku about sunrise."
-          }
+        "http://localhost:1234/api/v1/chat",
+        headers={
+          "Authorization": f"Bearer {os.environ['LM_API_TOKEN']}",
+          "Content-Type": "application/json"
+        },
+        json={
+          "model": "ibm/granite-4-micro",
+          "input": "Write a short haiku about sunrise."
+        }
       )
-      print(response.json())
+      print(json.dumps(response.json(), indent=2))
   TypeScript:
     language: typescript
     code: |
@@ -78,7 +79,7 @@ variants:
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          model: "qwen/qwen3-4b-2507",
+          model: "ibm/granite-4-micro",
           input: "Write a short haiku about sunrise."
         })
       });
@@ -102,45 +103,46 @@ variants:
         -H "Authorization: Bearer $LM_API_TOKEN" \
         -H "Content-Type: application/json" \
         -d '{
-          "model": "qwen/qwen3-4b-2507",
-          "input": "What is the top trending model on hugging face right now?",
+          "model": "ibm/granite-4-micro",
+          "input": "What is the top trending model on hugging face?",
           "integrations": [
             {
               "type": "ephemeral_mcp",
               "server_label": "huggingface",
               "server_url": "https://huggingface.co/mcp",
               "allowed_tools": ["model_search"]
-            },
+            }
           ],
-          "context_length": 10000
+          "context_length": 8000
         }'
   Python:
     language: python
     code: |
       import os
       import requests
+      import json
 
       response = requests.post(
-          "http://localhost:1234/api/v1/chat",
-          headers={
-              "Authorization": f"Bearer {os.environ['LM_API_TOKEN']}",
-              "Content-Type": "application/json"
-          },
-          json={
-              "model": "qwen/qwen3-4b-2507",
-              "input": "What is the top trending model on hugging face right now?",
-              "integrations": [
-                  {
-                      "type": "ephemeral_mcp",
-                      "server_label": "huggingface",
-                      "server_url": "https://huggingface.co/mcp",
-                      "allowed_tools": ["model_search"]
-                  }
-              ],
-              "context_length": 10000
-          }
+        "http://localhost:1234/api/v1/chat",
+        headers={
+          "Authorization": f"Bearer {os.environ['LM_API_TOKEN']}",
+          "Content-Type": "application/json"
+        },
+        json={
+          "model": "ibm/granite-4-micro",
+          "input": "What is the top trending model on hugging face?",
+          "integrations": [
+            {
+              "type": "ephemeral_mcp",
+              "server_label": "huggingface",
+              "server_url": "https://huggingface.co/mcp",
+              "allowed_tools": ["model_search"]
+            }
+          ],
+          "context_length": 8000
+        }
       )
-      print(response.json())
+      print(json.dumps(response.json(), indent=2))
   TypeScript:
     language: typescript
     code: |
@@ -151,8 +153,8 @@ variants:
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          model: "qwen/qwen3-4b-2507",
-          input: "What is the top trending model on hugging face right now?",
+          model: "ibm/granite-4-micro",
+          input: "What is the top trending model on hugging face?",
           integrations: [
             {
               type: "ephemeral_mcp",
@@ -161,9 +163,8 @@ variants:
               allowed_tools: ["model_search"]
             }
           ],
-          context_length: 10000
+          context_length: 8000
         })
-      });
       const data = await response.json();
       console.log(data);
 ```
@@ -179,8 +180,8 @@ variants:
         -H "Authorization: Bearer $LM_API_TOKEN" \
         -H "Content-Type: application/json" \
         -d '{
-          "model": "qwen/qwen3-4b-2507",
-          "input": "Take me to the page for the top trending model on huggingface",
+          "model": "ibm/granite-4-micro",
+          "input": "Open lmstudio.ai",
           "integrations": [
             {
               "type": "plugin",
@@ -188,34 +189,35 @@ variants:
               "allowed_tools": ["browser_navigate"]
             }
           ],
-          "context_length": 10000
+          "context_length": 8000
         }'
   Python:
     language: python
     code: |
       import os
       import requests
+      import json
 
       response = requests.post(
-          "http://localhost:1234/api/v1/chat",
-          headers={
-              "Authorization": f"Bearer {os.environ['LM_API_TOKEN']}",
-              "Content-Type": "application/json"
-          },
-          json={
-              "model": "qwen/qwen3-4b-2507",
-              "input": "Take me to the page for the top trending model on huggingface",
-              "integrations": [
-                  {
-                      "type": "plugin",
-                      "id": "mcp/playwright",
-                      "allowed_tools": ["browser_navigate"]
-                  }
-              ],
-              "context_length": 10000
-          }
+        "http://localhost:1234/api/v1/chat",
+        headers={
+          "Authorization": f"Bearer {os.environ['LM_API_TOKEN']}",
+          "Content-Type": "application/json"
+        },
+        json={
+          "model": "ibm/granite-4-micro",
+          "input": "Open lmstudio.ai",
+          "integrations": [
+            {
+              "type": "plugin",
+              "id": "mcp/playwright".
+              "allowed_tools": ["browser_navigate"]
+            }
+          ],
+          "context_length": 8000
+        }
       )
-      print(response.json())
+      print(json.dumps(response.json(), indent=2))
   TypeScript:
     language: typescript
     code: |
@@ -226,8 +228,8 @@ variants:
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          model: "qwen/qwen3-4b-2507",
-          input: "Take me to the page for the top trending model on huggingface",
+          model: "ibm/granite-4-micro",
+          input: "Open lmstudio.ai",
           integrations: [
             {
               type: "plugin",
@@ -235,7 +237,7 @@ variants:
               allowed_tools: ["browser_navigate"]
             }
           ],
-          context_length: 10000
+          context_length: 8000
         })
       });
       const data = await response.json();
@@ -257,23 +259,24 @@ variants:
         -H "Authorization: Bearer $LM_API_TOKEN" \
         -H "Content-Type: application/json" \
         -d '{
-          "model": "qwen/qwen3-4b-2507"
+          "model": "ibm/granite-4-micro"
         }'
   Python:
     language: python
     code: |
       import os
       import requests
+      import json
 
       response = requests.post(
-          "http://localhost:1234/api/v1/models/download",
-          headers={
-              "Authorization": f"Bearer {os.environ['LM_API_TOKEN']}",
-              "Content-Type": "application/json"
-          },
-          json={"model": "qwen/qwen3-4b-2507"}
+        "http://localhost:1234/api/v1/models/download",
+        headers={
+          "Authorization": f"Bearer {os.environ['LM_API_TOKEN']}",
+          "Content-Type": "application/json"
+        },
+        json={"model": "ibm/granite-4-micro"}
       )
-      print(response.json())
+      print(json.dumps(response.json(), indent=2))
   TypeScript:
     language: typescript
     code: |
@@ -284,7 +287,7 @@ variants:
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          model: "qwen/qwen3-4b-2507"
+          model: "ibm/granite-4-micro"
         })
       });
       const data = await response.json();
@@ -305,13 +308,14 @@ variants:
     code: |
       import os
       import requests
+      import json
 
       job_id = "your-job-id"
       response = requests.get(
-          f"http://localhost:1234/api/v1/models/download/status/{job_id}",
-          headers={"Authorization": f"Bearer {os.environ['LM_API_TOKEN']}"}
+        f"http://localhost:1234/api/v1/models/download/status/{job_id}",
+        headers={"Authorization": f"Bearer {os.environ['LM_API_TOKEN']}"}
       )
-      print(response.json())
+      print(json.dumps(response.json(), indent=2))
   TypeScript:
     language: typescript
     code: |
