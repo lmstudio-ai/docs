@@ -52,7 +52,7 @@ The example below requires [allowing calling servers from mcp.json](/docs/develo
 ```bash
 curl -X POST \
   http://localhost:1234/api/v1/chat \
-  -H 'Authorization: Bearer $LM_API_TOKEN' \
+  -H "Authorization: Bearer $LM_API_TOKEN" \
   -H 'Content-Type: application/json' \
   -d '{
     "model": "qwen/qwen3-8b",
