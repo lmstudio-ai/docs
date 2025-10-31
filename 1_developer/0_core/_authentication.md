@@ -55,7 +55,7 @@ curl -X POST \
   -H "Authorization: Bearer $LM_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "qwen/qwen3-8b",
+    "model": "ibm/granite-4-micro",
     "input": "What is the first line in the tiktoken documentation?",
     "integrations": [
       {

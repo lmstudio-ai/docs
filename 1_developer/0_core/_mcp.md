@@ -68,13 +68,14 @@ variants:
         -H "Authorization: Bearer $LM_API_TOKEN" \
         -H "Content-Type: application/json" \
         -d '{
-          "model": "qwen/qwen3-8b",
+          "model": "ibm/granite-4-micro",
           "input": "What is the top trending model on hugging face?",
           "integrations": [
             {
               "type": "ephemeral_mcp",
               "server_label": "huggingface",
-              "server_url": "https://huggingface.co/mcp"
+              "server_url": "https://huggingface.co/mcp",
+              "allowed_tools": ["model_search"]
             }
           ],
           "context_length": 8000
@@ -84,27 +85,29 @@ variants:
     code: |
       import os
       import requests
+      import json
 
       response = requests.post(
-          "http://localhost:1234/api/v1/chat",
-          headers={
-              "Authorization": f"Bearer {os.environ['LM_API_TOKEN']}",
-              "Content-Type": "application/json"
-              },
-              json={
-                  "model": "qwen/qwen3-8b",
-                  "input": "What is the top trending model on hugging face?",
-                  "integrations": [
-                      {
-                          "type": "ephemeral_mcp",
-                          "server_label": "huggingface",
-                          "server_url": "https://huggingface.co/mcp"
-                      }
-                  ],
-                  "context_length": 8000
-              }
+        "http://localhost:1234/api/v1/chat",
+        headers={
+          "Authorization": f"Bearer {os.environ['LM_API_TOKEN']}",
+          "Content-Type": "application/json"
+        },
+        json={
+          "model": "ibm/granite-4-micro",
+          "input": "What is the top trending model on hugging face?",
+          "integrations": [
+            {
+              "type": "ephemeral_mcp",
+              "server_label": "huggingface",
+              "server_url": "https://huggingface.co/mcp",
+              "allowed_tools": ["model_search"]
+            }
+          ],
+          "context_length": 8000
+        }
       )
-      print(response.json())
+      print(json.dumps(response.json(), indent=2))
   TypeScript:
     language: typescript
     code: |
@@ -115,13 +118,14 @@ variants:
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          "model": "qwen/qwen3-8b",
+          "model": "ibm/granite-4-micro",
           "input": "What is the top trending model on hugging face?",
           "integrations": [
             {
               "type": "ephemeral_mcp",
               "server_label": "huggingface",
-              "server_url": "https://huggingface.co/mcp"
+              "server_url": "https://huggingface.co/mcp",
+              "allowed_tools": ["model_search"]
             }
           ],
           "context_length": 8000
@@ -138,7 +142,7 @@ variants:
     language: json
     code: |
       {
-        "model_instance_id": "qwen/qwen3-8b",
+        "model_instance_id": "ibm/granite-4-micro",
         "output": [
           {
             "type": "reasoning",
@@ -201,8 +205,8 @@ variants:
         -H "Authorization: Bearer $LM_API_TOKEN" \
         -H "Content-Type: application/json" \
         -d '{
-          "model": "qwen/qwen3-8b",
-          "input": "Open this link https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+          "model": "ibm/granite-4-micro",
+          "input": "Open lmstudio.ai",
           "integrations": ["mcp/playwright"],
           "context_length": 8000,
           "temperature": 0
@@ -212,22 +216,23 @@ variants:
     code: |
       import os
       import requests
+      import json
 
       response = requests.post(
-          "http://localhost:1234/api/v1/chat",
-          headers={
-              "Authorization": f"Bearer {os.environ['LM_API_TOKEN']}",
-              "Content-Type": "application/json"
-          },
-          json={
-              "model": "qwen/qwen3-8b",
-              "input": "Open this link https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-              "integrations": ["mcp/playwright"],
-              "context_length": 8000,
-              "temperature": 0
-          }
+        "http://localhost:1234/api/v1/chat",
+        headers={
+          "Authorization": f"Bearer {os.environ['LM_API_TOKEN']}",
+          "Content-Type": "application/json"
+        },
+        json={
+          "model": "ibm/granite-4-micro",
+          "input": "Open lmstudio.ai",
+          "integrations": ["mcp/playwright"],
+          "context_length": 8000,
+          "temperature": 0
+        }
       )
-      print(response.json())
+      print(json.dumps(response.json(), indent=2))
   TypeScript:
     language: typescript
     code: |
@@ -238,8 +243,8 @@ variants:
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          model: "qwen/qwen3-8b",
-          input: "Open this link https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+          model: "ibm/granite-4-micro",
+          input: "Open lmstudio.ai",
           integrations: ["mcp/playwright"],
           context_length: 8000,
           temperature: 0
@@ -257,7 +262,7 @@ variants:
     language: json
     code: |
       {
-        "model_instance_id": "qwen/qwen3-8b",
+        "model_instance_id": "ibm/granite-4-micro",
         "output": [
           {
             "type": "reasoning",
@@ -312,7 +317,7 @@ variants:
         -H "Authorization: Bearer $LM_API_TOKEN" \
         -H "Content-Type: application/json" \
         -d '{
-          "model": "qwen/qwen3-8b",
+          "model": "ibm/granite-4-micro",
           "input": "What is the top trending model on hugging face?",
           "integrations": [
             {
@@ -329,28 +334,29 @@ variants:
     code: |
       import os
       import requests
+      import json
 
       response = requests.post(
-          "http://localhost:1234/api/v1/chat",
-          headers={
-              "Authorization": f"Bearer {os.environ['LM_API_TOKEN']}",
-              "Content-Type": "application/json"
-          },
-          json={
-              "model": "qwen/qwen3-8b",
-              "input": "What is the top trending model on hugging face?",
-              "integrations": [
-                  {
-                      "type": "ephemeral_mcp",
-                      "server_label": "huggingface",
-                      "server_url": "https://huggingface.co/mcp",
-                      "allowed_tools": ["model_search"]
-                  }
-              ],
-              "context_length": 8000
+        "http://localhost:1234/api/v1/chat",
+        headers={
+          "Authorization": f"Bearer {os.environ['LM_API_TOKEN']}",
+          "Content-Type": "application/json"
+        },
+        json={
+          "model": "ibm/granite-4-micro",
+          "input": "What is the top trending model on hugging face?",
+          "integrations": [
+            {
+              "type": "ephemeral_mcp",
+              "server_label": "huggingface",
+              "server_url": "https://huggingface.co/mcp",
+              "allowed_tools": ["model_search"]
+            }
+          ],
+          "context_length": 8000
         }
       )
-      print(response.json())
+      print(json.dumps(response.json(), indent=2))
   TypeScript:
     language: typescript
     code: |
@@ -361,7 +367,7 @@ variants:
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          model: "qwen/qwen3-8b",
+          model: "ibm/granite-4-micro",
           input: "What is the top trending model on hugging face?",
           integrations: [
             {
@@ -393,7 +399,7 @@ variants:
         -H "Authorization: Bearer $LM_API_TOKEN" \
         -H "Content-Type: application/json" \
         -d '{
-          "model": "qwen/qwen3-8b",
+          "model": "ibm/granite-4-micro",
           "input": "Give me details about my SUPER-SECRET-PRIVATE Hugging face model",
           "integrations": [
             {
@@ -413,31 +419,32 @@ variants:
     code: |
       import os
       import requests
+      import json
 
       response = requests.post(
-          "http://localhost:1234/api/v1/chat",
-          headers={
-              "Authorization": f"Bearer {os.environ['LM_API_TOKEN']}",
-              "Content-Type": "application/json"
-          },
-          json={
-              "model": "qwen/qwen3-8b",
-              "input": "Give me details about my SUPER-SECRET-PRIVATE Hugging face model",
-              "integrations": [
-                  {
-                      "type": "ephemeral_mcp",
-                      "server_label": "huggingface",
-                      "server_url": "https://huggingface.co/mcp",
-                      "allowed_tools": ["model_search"],
-                      "headers": {
-                          "Authorization": "Bearer <YOUR_HF_TOKEN>"
-                      }
-                  }
-              ],
-              "context_length": 8000
-          }
+        "http://localhost:1234/api/v1/chat",
+        headers={
+          "Authorization": f"Bearer {os.environ['LM_API_TOKEN']}",
+          "Content-Type": "application/json"
+        },
+        json={
+          "model": "ibm/granite-4-micro",
+          "input": "Give me details about my SUPER-SECRET-PRIVATE Hugging face model",
+          "integrations": [
+            {
+              "type": "ephemeral_mcp",
+              "server_label": "huggingface",
+              "server_url": "https://huggingface.co/mcp",
+              "allowed_tools": ["model_search"],
+              "headers": {
+                "Authorization": "Bearer <YOUR_HF_TOKEN>"
+              }
+            }
+          ],
+          "context_length": 8000
+        }
       )
-      print(response.json())
+      print(json.dumps(response.json(), indent=2))
   TypeScript:
     language: typescript
     code: |
@@ -448,7 +455,7 @@ variants:
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          model: "qwen/qwen3-8b",
+          model: "ibm/granite-4-micro",
           input: "Give me details about my SUPER-SECRET-PRIVATE Hugging face model",
           integrations: [
             {

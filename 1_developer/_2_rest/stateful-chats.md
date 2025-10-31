@@ -17,14 +17,12 @@ variants:
   curl:
     language: bash
     code: |
-      # store is true by default
       curl http://localhost:1234/api/v1/chat \
         -H "Authorization: Bearer $LM_API_TOKEN" \
         -H "Content-Type: application/json" \
         -d '{
-          "model": "qwen/qwen3-8b",
-          "input": "My favorite color is blue.",
-          "store": true
+          "model": "ibm/granite-4-micro",
+          "input": "My favorite color is blue."
         }'
 ```
 
@@ -41,7 +39,7 @@ variants:
     language: json
     code: |
       {
-        "model_instance_id": "qwen/qwen3-8b",
+        "model_instance_id": "ibm/granite-4-micro",
         "output": [
           {
             "type": "message",
@@ -64,15 +62,13 @@ variants:
   curl:
     language: bash
     code: |
-      # store is true by default
       curl http://localhost:1234/api/v1/chat \
         -H "Authorization: Bearer $LM_API_TOKEN" \
         -H "Content-Type: application/json" \
         -d '{
-          "model": "qwen/qwen3-8b",
+          "model": "ibm/granite-4-micro",
           "input": "What color did I just mention?",
-          "previous_response_id": "resp_abc123xyz...",
-          "store": true
+          "previous_response_id": "resp_abc123xyz..."
         }'
 ```
 
@@ -92,7 +88,7 @@ variants:
         -H "Authorization: Bearer $LM_API_TOKEN" \
         -H "Content-Type: application/json" \
         -d '{
-          "model": "qwen/qwen3-8b",
+          "model": "ibm/granite-4-micro",
           "input": "Tell me a joke.",
           "store": false
         }'
