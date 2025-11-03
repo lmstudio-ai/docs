@@ -258,17 +258,14 @@ variants:
     language: json
     code: |
       {
-        "model_instance_id": "qwen3/qwen3-8b",
+        "model_instance_id": "ibm/granite-4-micro",
         "output": [
-          {
-            "type": "reasoning",
-            "content": "..."
-          },
           {
             "type": "tool_call",
             "tool": "model_search",
             "arguments": {
               "sort": "trendingScore",
+              "query": "",
               "limit": 1
             },
             "output": "...",
@@ -278,16 +275,16 @@ variants:
             }
           },
           {
-            "type": "reasoning",
-            "content": "We need to navigate."
+            "type": "message",
+            "content": "..."
           },
           {
             "type": "tool_call",
             "tool": "browser_navigate",
             "arguments": {
-              "url": "https://hf.co/...."
+              "url": "https://lmstudio.ai"
             },
-            "output": "<PLAYWRIGHT_OUTPUT>",
+            "output": "...",
             "provider_info": {
               "plugin_id": "mcp/playwright",
               "type": "plugin"
@@ -295,17 +292,18 @@ variants:
           },
           {
             "type": "message",
-            "content": "Here is the page for the current top‑trending model..."
+            "content": "**Top Trending Model on Hugging Face** ... Below is a quick snapshot of what’s on the landing page ... more details on the model or LM Studio itself!"
           }
         ],
         "stats": {
-          "input_tokens": 359,
-          "total_output_tokens": 218,
-          "reasoning_output_tokens": 24,
-          "tokens_per_second": 41.097718386623356,
-          "time_to_first_token_seconds": 1.367
+          "input_tokens": 646,
+          "total_output_tokens": 586,
+          "reasoning_output_tokens": 0,
+          "tokens_per_second": 29.753900615398926,
+          "time_to_first_token_seconds": 1.088,
+          "model_load_time_seconds": 2.656
         },
-        "response_id": "resp_46665e1bd0ca7f261ef77344c7ee4b8b969e66c417fbf443"
+        "response_id": "resp_4ef013eba0def1ed23f19dde72b67974c579113f544086de"
       }
 ```
 ````
