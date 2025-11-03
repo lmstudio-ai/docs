@@ -9,7 +9,7 @@ The `/api/v1/chat` endpoint is stateful by default. This means you don't need to
 
 ## How it works
 
-When you send a chat request, LM Studio stores the conversation in a thread and returns a `thread_id` in the response. Use this `thread_id` in subsequent requests to continue the conversation.
+When you send a chat request, LM Studio stores the conversation in a chat thread and returns a `response_id` in the response. Use this `response_id` in subsequent requests to continue the conversation.
 
 ```lms_code_snippet
 title: Start a new conversation
@@ -17,21 +17,19 @@ variants:
   curl:
     language: bash
     code: |
-      # store is true by default
       curl http://localhost:1234/api/v1/chat \
         -H "Authorization: Bearer $LM_API_TOKEN" \
         -H "Content-Type: application/json" \
         -d '{
-          "model": "qwen/qwen3-4b-2507",
-          "input": "My favorite color is blue.",
-          "store": true
+          "model": "ibm/granite-4-micro",
+          "input": "My favorite color is blue."
         }'
 ```
 
-The response includes a `thread_id`:
+The response includes a `response_id`:
 
 ```lms_info
-Every response includes an unique `thread_id` that you can use to reference that specific point in the conversation for future requests. This allows you to branch conversations.
+Every response includes an unique `response_id` that you can use to reference that specific point in the conversation for future requests. This allows you to branch conversations.
 ```
 
 ```lms_code_snippet
@@ -41,20 +39,20 @@ variants:
     language: json
     code: |
       {
-        "model_instance_id": "qwen/qwen3-4b-2507",
+        "model_instance_id": "ibm/granite-4-micro",
         "output": [
           {
             "type": "message",
             "content": "That's great! Blue is a beautiful color..."
           }
         ],
-        "thread_id": "thread_abc123xyz..."
+        "response_id": "resp_abc123xyz..."
       }
 ```
 
 ## Continue a conversation
 
-Pass the `thread_id` in your next request to continue the conversation. The model will remember the previous context.
+Pass the `previous_response_id` in your next request to continue the conversation. The model will remember the previous context.
 
 
 
@@ -64,23 +62,21 @@ variants:
   curl:
     language: bash
     code: |
-      # store is true by default
       curl http://localhost:1234/api/v1/chat \
         -H "Authorization: Bearer $LM_API_TOKEN" \
         -H "Content-Type: application/json" \
         -d '{
-          "model": "qwen/qwen3-4b-2507",
+          "model": "ibm/granite-4-micro",
           "input": "What color did I just mention?",
-          "thread_id": "thread_abc123xyz...",
-          "store": true
+          "previous_response_id": "resp_abc123xyz..."
         }'
 ```
 
-The model can reference the previous message without you needing to resend it and will return a new `thread_id` for further continuation.
+The model can reference the previous message without you needing to resend it and will return a new `response_id` for further continuation.
 
 ## Disable stateful storage
 
-If you don't want to store the conversation, set `store` to `false`. The response will not include a `thread_id`.
+If you don't want to store the conversation, set `store` to `false`. The response will not include a `response_id`.
 
 ```lms_code_snippet
 title: Stateless chat
@@ -92,7 +88,7 @@ variants:
         -H "Authorization: Bearer $LM_API_TOKEN" \
         -H "Content-Type: application/json" \
         -d '{
-          "model": "qwen/qwen3-4b-2507",
+          "model": "ibm/granite-4-micro",
           "input": "Tell me a joke.",
           "store": false
         }'

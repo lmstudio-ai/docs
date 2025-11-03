@@ -35,7 +35,7 @@ This example demonstrates a structured output request using the `curl` utility.
 To run this example on Mac or Linux, use any terminal. On Windows, use [Git Bash](https://git-scm.com/download/win).
 
 ```bash
-curl http://{{hostname}}:{{port}}/v1/chat/completions \
+curl http://localhost:1234/v1/chat/completions \
   -H "Content-Type: application/json" \
   -d '{
     "model": "{{model}}",

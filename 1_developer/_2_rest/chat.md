@@ -114,11 +114,11 @@ api_info:
 - name: store
   type: boolean
   optional: true
-  description: Whether to store the chat/thread. If set, response will return a `"thread_id"` field. Default `true`.
-- name: thread_id
+  description: Whether to store the chat. If set, response will return a `"response_id"` field. Default `true`.
+- name: previous_response_id
   type: string
   optional: true
-  description: Identifier of existing thread to append to. Must start with `"thread_"`.
+  description: Identifier of existing response to append to. Must start with `"resp_"`.
 ```
 :::split:::
 ```lms_code_snippet
@@ -131,22 +131,27 @@ variants:
         -H "Authorization: Bearer $LM_API_TOKEN" \
         -H "Content-Type: application/json" \
         -d '{
-          "model": "openai/gpt-oss-20b",
-          "input": "Take me to the page for the top trending model on huggingface",
+          "model": "ibm/granite-4-micro",
+          "input": "Tell me the top trending model on hugging face and navigate to https://lmstudio.ai",
           "integrations": [
             {
               "type": "ephemeral_mcp",
               "server_label": "huggingface",
               "server_url": "https://huggingface.co/mcp",
-              "allowed_tools": ["model_search"]
+              "allowed_tools": [
+                "model_search"
+              ]
             },
             {
               "type": "plugin",
               "id": "mcp/playwright",
-              "allowed_tools": ["browser_navigate"]
+              "allowed_tools": [
+                "browser_navigate"
+              ]
             }
           ],
-          "context_length": 20000
+          "context_length": 8000,
+          "temperature": 0
         }'
 ```
 ````
@@ -223,7 +228,7 @@ variants:
   children:
     - name: input_tokens
       type: number
-      description: Number of input tokens. Includes formatting, tool definitions, and prior messages in the thread.
+      description: Number of input tokens. Includes formatting, tool definitions, and prior messages in the chat.
     - name: total_output_tokens
       type: number
       description: Total number of output tokens generated.
@@ -240,10 +245,10 @@ variants:
       type: number
       optional: true
       description: Time taken to load the model for this request in seconds. Present only if the model was not already loaded.
-- name: thread_id
+- name: response_id
   type: string
   optional: true
-  description: Identifier of the thread for subsequent requests. Starts with `"thread_"`. Present when `store` is `true`.
+  description: Identifier of the response for subsequent requests. Starts with `"resp_"`. Present when `store` is `true`.
 ```
 :::split:::
 ```lms_code_snippet
@@ -253,36 +258,33 @@ variants:
     language: json
     code: |
       {
-        "model_instance_id": "openai/gpt-oss-20b",
+        "model_instance_id": "ibm/granite-4-micro",
         "output": [
-          {
-            "type": "reasoning",
-            "content": "Need to search for top trending. Use function model_search with sort trendingScore limit 1."
-          },
           {
             "type": "tool_call",
             "tool": "model_search",
             "arguments": {
               "sort": "trendingScore",
+              "query": "",
               "limit": 1
             },
-            "output": "[{\"type\":\"text\",\"text\":\"Showing first 1 models matching sorted by <TRUNCATED> deepseek-ai/DeepSeek-OCR](https://hf.co/deepseek-ai/DeepSeek-OCR)\\n\\n---\\n\"}]",
+            "output": "...",
             "provider_info": {
               "server_label": "huggingface",
               "type": "ephemeral_mcp"
             }
           },
           {
-            "type": "reasoning",
-            "content": "We need to navigate."
+            "type": "message",
+            "content": "..."
           },
           {
             "type": "tool_call",
             "tool": "browser_navigate",
             "arguments": {
-              "url": "https://hf.co/deepseek-ai/DeepSeek-OCR"
+              "url": "https://lmstudio.ai"
             },
-            "output": "<PLAYWRIGHT_OUTPUT>",
+            "output": "...",
             "provider_info": {
               "plugin_id": "mcp/playwright",
               "type": "plugin"
@@ -290,17 +292,18 @@ variants:
           },
           {
             "type": "message",
-            "content": "Here is the page for the current top‑trending model..."
+            "content": "**Top Trending Model on Hugging Face** ... Below is a quick snapshot of what’s on the landing page ... more details on the model or LM Studio itself!"
           }
         ],
         "stats": {
-          "input_tokens": 359,
-          "total_output_tokens": 218,
-          "reasoning_output_tokens": 24,
-          "tokens_per_second": 41.097718386623356,
-          "time_to_first_token_seconds": 1.367
+          "input_tokens": 646,
+          "total_output_tokens": 586,
+          "reasoning_output_tokens": 0,
+          "tokens_per_second": 29.753900615398926,
+          "time_to_first_token_seconds": 1.088,
+          "model_load_time_seconds": 2.656
         },
-        "thread_id": "thread_46665e1bd0ca7f261ef77344c7ee4b8b969e66c417fbf443"
+        "response_id": "resp_4ef013eba0def1ed23f19dde72b67974c579113f544086de"
       }
 ```
 ````
