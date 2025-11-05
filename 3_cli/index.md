@@ -45,26 +45,53 @@ This is the current output you will get:
 
 ```bash
 $ lms
-lms - LM Studio CLI - v0.2.22
-GitHub: https://github.com/lmstudio-ai/lmstudio-cli
+
+   __   __  ___  ______          ___        _______   ____
+  / /  /  |/  / / __/ /___ _____/ (_)__    / ___/ /  /  _/
+ / /__/ /|_/ / _\ \/ __/ // / _  / / _ \  / /__/ /___/ /
+/____/_/  /_/ /___/\__/\_,_/\_,_/_/\___/  \___/____/___/
+
+lms - LM Studio CLI - v0.0.47
+GitHub: https://github.com/lmstudio-ai/lms
 
 Usage
-lms <subcommand>
+Usage: lms [options] [command]
 
-where <subcommand> can be one of:
+LM Studio CLI
 
-- status - Prints the status of LM Studio
-- server - Commands for managing the local server
-- ls - List all downloaded models
-- ps - List all loaded models
-- load - Load a model
-- unload - Unload a model
-- create - Create a new project with scaffolding
-- log - Log operations. Currently only supports streaming logs from LM Studio via `lms log stream`
-- version - Prints the version of the CLI
-- bootstrap - Bootstrap the CLI
+Options:
+      -h, --help  display help for command
 
-For more help, try running `lms <subcommand> --help`
+Manage Models:
+      get         Searching and downloading a model from online.
+      import      Import a model file into LM Studio
+      ls          List all downloaded models
+
+Use Models:
+      chat        Open an interactive chat with the currently loaded model.
+      load        Load a model
+      ps          List all loaded models
+      server      Commands for managing the local server
+      unload      Unload a model
+
+Develop & Publish Artifacts:
+      clone       Clone an artifact from LM Studio Hub to a local folder.
+      create      Create a new project with scaffolding
+      dev         Starts the development server for the plugin in the current folder.
+      login       Authenticate with LM Studio
+      push        Uploads the plugin in the current folder to LM Studio Hub.
+
+System Management:
+      bootstrap   Bootstrap the CLI
+      flags       Set or get experiment flags
+      log         Log operations. Currently only supports streaming logs from LM Studio via `lms log
+                  stream`
+      runtime     Manage runtime engines
+      status      Prints the status of LM Studio
+      version     Prints the version of the CLI
+
+Commands:
+      help        display help for command
 ```
 
 ### Use `lms` to automate and debug your workflows
