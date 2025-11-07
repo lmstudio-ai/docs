@@ -10,6 +10,7 @@ index: 1
 
 - TypeScript SDK: [lmstudio-js](/docs/typescript)
 - Python SDK: [lmstudio-python](/docs/python)
+- LM Studio REST API: [Stateful Chats, MCPs via API](/docs/developer/rest)
 - OpenAI‑compatible: [Chat, Responses, Embeddings](/docs/developer/openai-compat)
 - LM Studio CLI: [`lms`](/docs/cli)
 
@@ -18,10 +19,10 @@ index: 1
 ## What you can build
 
 - Chat and text generation with streaming
+- Tool calling and local agents with MCP
 - Structured output (JSON schema)
-- Tool calling and local agents
 - Embeddings and tokenization
-- Model management (JIT load, TTL, auto‑evict)
+- Model management (load, download, list)
 ```
 
 ## Super quick start
@@ -61,26 +62,27 @@ with lms.Client() as client:
 
 Full docs: [lmstudio-python](/docs/python), Source: [GitHub](https://github.com/lmstudio-ai/lmstudio-python)
 
-### Try a minimal HTTP request (OpenAI‑compatible)
+### HTTP (LM Studio REST API)
 
 ```bash
 lms server start --port 1234
 ```
 
 ```bash
-curl http://localhost:1234/v1/chat/completions \
+curl http://localhost:1234/api/v1/chat \
   -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $LM_API_TOKEN" \
   -d '{
     "model": "openai/gpt-oss-20b",
-    "messages": [{"role": "user", "content": "Who are you, and what can you do?"}]
+    "input": "Who are you, and what can you do?"
   }'
 ```
 
-Full docs: [OpenAI‑compatible endpoints](/docs/developer/openai-compat)
+Full docs: [LM Studio REST API](/docs/developer/rest)
 
 ## Helpful links
 
-- API Changelog: [/docs/developer/api-changelog](/docs/developer/api-changelog)
-- Local server basics: [/docs/developer/core](/docs/developer/core)
-- CLI reference: [/docs/cli](/docs/cli)
-- Community: [Discord](https://discord.gg/lmstudio)
+- [API Changelog](/docs/developer/api-changelog)
+- [Local server basics](/docs/developer/core)
+- [CLI reference](/docs/cli)
+- [Discord Community](https://discord.gg/lmstudio)

@@ -6,6 +6,19 @@ index: 2
 
 ---
 
+###### LM Studio 0.4.0
+
+### LM Studio native v1 REST API
+
+- Official release of LM Studio's native v1 REST API at `/api/v1/*` endpoints.
+  - [MCP via API](/docs/developer/core/mcp)
+  - [Stateful chats](/docs/developer/rest/stateful-chats)
+  - [Authentication](/docs/developer/core/authentication) configuration with API tokens
+  - Model [download](/docs/developer/rest/download) and [load](/docs/developer/rest/load) endpoints
+  - See [overview](/docs/developer/rest) page for more details and [comparison](/docs/developer/rest#inference-endpoint-comparison) with OpenAI-compatible endpoints.
+
+---
+
 ###### LM Studio 0.3.29 • 2025‑10‑06
 
 ### OpenAI `/v1/responses` and variant listing
