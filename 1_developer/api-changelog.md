@@ -6,7 +6,7 @@ index: 2
 
 ---
 
-###### LM Studio 0.4.0 • Placeholder Date
+###### LM Studio 0.4.0
 
 ### LM Studio native v1 REST API
 
