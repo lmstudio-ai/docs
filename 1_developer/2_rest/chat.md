@@ -17,9 +17,45 @@ api_info:
   optional: false
   description: Unique identifier for the model to use.
 - name: input
-  type: string
+  type: string | array<object>
   optional: false
   description: Message to send to the model.
+  children:
+    - name: Input text
+      unstyledName: true
+      type: string
+      description: Text content of the message.
+    - name: Input object
+      unstyledName: true
+      type: object
+      description: Object representing a message with additional metadata.
+      children:
+        - name: Text Input
+          type: object
+          optional: true
+          description: Text input to provide user messages
+          children:
+            - name: type
+              type: '"message"'
+              optional: false
+              description: Type of input item.
+            - name: content
+              type: string
+              description: Text content of the message.
+              optional: false
+        - name: Image Input
+          type: object
+          optional: true
+          description: Image input to provide user messages
+          children:
+            - name: type
+              type: '"image"'
+              optional: false
+              description: Type of input item.
+            - name: data_url
+              type: string
+              description: Image data as a base64-encoded data URL.
+              optional: false
 - name: system_prompt
   type: string
   optional: true
@@ -122,9 +158,8 @@ api_info:
 ```
 :::split:::
 ```lms_code_snippet
-title: Example Request
 variants:
-  curl:
+  Request with MCP:
     language: bash
     code: |
       curl http://localhost:1234/api/v1/chat \
@@ -151,6 +186,28 @@ variants:
             }
           ],
           "context_length": 8000,
+          "temperature": 0
+        }'
+  Request with Images:
+    language: bash
+    code: |
+      # Image is a small red square encoded as a base64 data URL
+      curl http://localhost:1234/api/v1/chat \
+        -H "Authorization: Bearer $LM_API_TOKEN" \
+        -H "Content-Type: application/json" \
+        -d '{
+          "model": "qwen/qwen3-vl-4b",
+          "input": [
+            {
+              "type": "text",
+              "content": "Describe this image in two sentences"
+            },
+            {
+              "type": "image",
+              "data_url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFUlEQVR42mP8z8BQz0AEYBxVSF+FABJADveWkH6oAAAAAElFTkSuQmCC"
+            }
+          ],
+          "context_length": 2048,
           "temperature": 0
         }'
 ```
@@ -222,6 +279,47 @@ variants:
         - name: content
           type: string
           description: Text content of the reasoning.
+    - name: Invalid tool call
+      unstyledName: true
+      type: object
+      description: An invalid tool call made by the model - due to invalid tool name or tool arguments.
+      children:
+        - name: type
+          type: '"invalid_tool_call"'
+          description: Type of output item.
+        - name: reason
+          type: string
+          description: Reason why the tool call was invalid.
+        - name: metadata
+          type: object
+          description: Metadata about the invalid tool call.
+          children:
+            - name: type
+              type: '"invalid_name" | "invalid_arguments"'
+              description: Type of error that occurred.
+            - name: tool_name
+              type: string
+              description: Name of the tool that was attempted to be called.
+            - name: arguments
+              type: object
+              optional: true
+              description: Arguments that were passed to the tool (only present for `invalid_arguments` errors).
+            - name: provider_info
+              type: object
+              optional: true
+              description: Information about the tool provider (only present for `invalid_arguments` errors).
+              children:
+                - name: type
+                  type: '"plugin" | "ephemeral_mcp"'
+                  description: Provider type.
+                - name: plugin_id
+                  type: string
+                  optional: true
+                  description: Identifier of the plugin (when `type` is `"plugin"`).
+                - name: server_label
+                  type: string
+                  optional: true
+                  description: Label of the MCP server (when `type` is `"ephemeral_mcp"`).
 - name: stats
   type: object
   description: Token usage and performance metrics.
@@ -252,9 +350,8 @@ variants:
 ```
 :::split:::
 ```lms_code_snippet
-title: Response
 variants:
-  json:
+  Request with MCP:
     language: json
     code: |
       {
@@ -304,6 +401,26 @@ variants:
           "model_load_time_seconds": 2.656
         },
         "response_id": "resp_4ef013eba0def1ed23f19dde72b67974c579113f544086de"
+      }
+  Request with Images:
+    language: json
+    code: |
+      {
+        "model_instance_id": "qwen/qwen3-vl-4b",
+        "output": [
+          {
+            "type": "message",
+            "content": "This image is a solid, vibrant red square that fills the entire frame, with no discernible texture, pattern, or other elements. It presents a minimalist, uniform visual field of pure red, evoking a sense of boldness or urgency."
+          }
+        ],
+        "stats": {
+          "input_tokens": 17,
+          "total_output_tokens": 50,
+          "reasoning_output_tokens": 0,
+          "tokens_per_second": 51.03762685242662,
+          "time_to_first_token_seconds": 0.814
+        },
+        "response_id": "resp_0182bd7c479d7451f9a35471f9c26b34de87a7255856b9a4"
       }
 ```
 ````

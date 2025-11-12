@@ -19,7 +19,8 @@ List of event types that can be sent in an `/api/v1/chat` response stream:
 - `reasoning.end`
 - `tool_call.start`
 - `tool_call.arguments`
-- `tool_call.result`
+- `tool_call.success`
+- `tool_call.failure`
 - `message.start`
 - `message.delta`
 - `message.end`
@@ -387,7 +388,7 @@ variants:
 ```
 ````
 
-### `tool_call.result`
+### `tool_call.success`
 ````lms_hstack
 Result of the tool call, along with the arguments used.
 ```lms_params
@@ -425,8 +426,8 @@ Result of the tool call, along with the arguments used.
           type: string
           description: Label of the MCP server.
 - name: type
-  type: '"tool_call.result"'
-  description: The type of the event. Always `tool_call.result`.
+  type: '"tool_call.success"'
+  description: The type of the event. Always `tool_call.success`.
 ```
 :::split:::
 ```lms_code_snippet
@@ -436,7 +437,7 @@ variants:
     language: json
     code: |
       {
-        "type": "tool_call.result",
+        "type": "tool_call.success",
         "tool": "model_search",
         "arguments": {
           "sort": "trendingScore",
@@ -446,6 +447,66 @@ variants:
         "provider_info": {
           "type": "ephemeral_mcp",
           "server_label": "huggingface"
+        }
+      }
+```
+````
+
+
+### `tool_call.failure`
+````lms_hstack
+Indicates that the tool call failed.
+```lms_params
+- name: reason
+  type: string
+  description: Reason for the tool call failure.
+- name: metadata
+  type: object
+  description: Metadata about the invalid tool call.
+  children:
+    - name: type
+      type: '"invalid_name" | "invalid_arguments"'
+      description: Type of error that occurred.
+    - name: tool_name
+      type: string
+      description: Name of the tool that was attempted to be called.
+    - name: arguments
+      type: object
+      optional: true
+      description: Arguments that were passed to the tool (only present for `invalid_arguments` errors).
+    - name: provider_info
+      type: object
+      optional: true
+      description: Information about the tool provider (only present for `invalid_arguments` errors).
+      children:
+        - name: type
+          type: '"plugin" | "ephemeral_mcp"'
+          description: Provider type.
+        - name: plugin_id
+          type: string
+          optional: true
+          description: Identifier of the plugin (when `type` is `"plugin"`).
+        - name: server_label
+          type: string
+          optional: true
+          description: Label of the MCP server (when `type` is `"ephemeral_mcp"`).
+- name: type
+  type: '"tool_call.failure"'
+  description: The type of the event. Always `tool_call.failure`.
+```
+:::split:::
+```lms_code_snippet
+title: Example Event Data
+variants:
+  json:
+    language: json
+    code: |
+      {
+        "type": "tool_call.failure",
+        "reason": "Cannot find tool with name open_browser.",
+        "metadata": {
+          "type": "invalid_name",
+          "tool_name": "open_browser"
         }
       }
 ```
