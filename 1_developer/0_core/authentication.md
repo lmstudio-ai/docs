@@ -46,7 +46,7 @@ To edit the permissions of an existing API Token, click on the Edit button next 
 ### Using API Tokens with REST API:
 
 ```lms_noticechill
-The example below requires [allowing calling servers from mcp.json](/docs/developer/core/server/settings) to be enabled and the [Exa MCP](https://github.com/exa-labs/exa-mcp-server) in mcp.json.
+The example below requires [allowing calling servers from mcp.json](/docs/developer/core/server/settings) to be enabled and the [Playwright MCP](https://github.com/microsoft/playwright-mcp) in mcp.json.
 ```
 
 ```bash
@@ -56,17 +56,10 @@ curl -X POST \
   -H "Content-Type: application/json" \
   -d '{
     "model": "ibm/granite-4-micro",
-    "input": "What is the main header of lmstudio.ai website?",
-    "integrations": [
-      {
-        "type": "ephemeral_mcp",
-        "server_label": "exa",
-        "server_url": "https://mcp.exa.ai/mcp",
-        "allowed_tools": [
-          "web_search_exa"
-        ]
-      }
-    ]
+    "input": "Open lmstudio.ai",
+    "integrations": ["mcp/playwright"],
+    "context_length": 8000,
+    "temperature": 0
   }'
 ```
 
