@@ -93,6 +93,12 @@ The table below compares the features of LM Studio's `/api/v1/chat` endpoint wit
       <td>✅</td>
     </tr>
     <tr>
+      <td>Include assistant messages in the request</td>
+      <td>❌</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
       <td>Model load streaming events</td>
       <td>✅</td>
       <td>❌</td>
