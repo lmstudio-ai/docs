@@ -58,8 +58,7 @@ curl -X POST \
     "model": "ibm/granite-4-micro",
     "input": "Open lmstudio.ai",
     "integrations": ["mcp/playwright"],
-    "context_length": 8000,
-    "temperature": 0
+    "context_length": 8000
   }'
 ```
 
