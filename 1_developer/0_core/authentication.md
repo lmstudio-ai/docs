@@ -57,7 +57,13 @@ curl -X POST \
   -d '{
     "model": "ibm/granite-4-micro",
     "input": "Open lmstudio.ai",
-    "integrations": ["mcp/playwright"],
+    "integrations": [
+      {
+        "type": "plugin",
+        "id": "mcp/playwright",
+        "allowed_tools": ["browser_navigate"]
+      }
+    ],
     "context_length": 8000
   }'
 ```
