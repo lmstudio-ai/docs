@@ -50,14 +50,6 @@ Returns a download job status object. The response varies based on the download 
 - name: status
   type: '"downloading" | "paused" | "completed" | "failed" | "already_downloaded"'
   description: Current status of the download.
-- name: bytes_per_second
-  type: number
-  optional: true
-  description: Current download speed in bytes per second. Present when `status` is `downloading`.
-- name: estimated_completion
-  type: string
-  optional: true
-  description: Estimated completion time in ISO 8601 format. Present when `status` is `downloading`.
 - name: completed_at
   type: string
   optional: true
@@ -66,10 +58,6 @@ Returns a download job status object. The response varies based on the download 
   type: number
   optional: true
   description: Total size of the download in bytes. Absent when `status` is `already_downloaded`.
-- name: downloaded_bytes
-  type: number
-  optional: true
-  description: Number of bytes downloaded so far. Absent when `status` is `already_downloaded`.
 - name: started_at
   type: string
   optional: true
@@ -86,9 +74,6 @@ variants:
         "job_id": "job_493c7c9ded",
         "status": "downloading",
         "total_size_bytes": 2279145003,
-        "downloaded_bytes": 948,
-        "bytes_per_second": 7834.710743801653,
-        "estimated_completion": "2025-10-07T00:21:47.030Z",
         "started_at": "2025-10-03T15:33:23.496Z"
       }
 ```

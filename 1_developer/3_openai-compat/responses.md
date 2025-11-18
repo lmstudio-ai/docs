@@ -57,13 +57,17 @@ Enable Remote MCP in the app (Developer → Settings). Example payload using an 
 curl http://localhost:1234/v1/responses \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "openai/gpt-oss-20b",
-    "tools": [{
-      "type": "mcp",
-      "server_label": "tiktoken",
-      "server_url": "https://gitmcp.io/openai/tiktoken",
-      "allowed_tools": ["fetch_tiktoken_documentation"]
-    }],
-    "input": "What is the first sentence of the tiktoken documentation?"
+    "model": "ibm/granite-4-micro",
+    "input": "What is the top trending model on hugging face?",
+    "tools": [
+      {
+        "type": "mcp",
+        "server_label": "huggingface",
+        "server_url": "https://huggingface.co/mcp",
+        "allowed_tools": [
+          "model_search"
+        ]
+      }
+    ]
   }'
 ```

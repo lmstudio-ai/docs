@@ -210,7 +210,7 @@ variants:
           "integrations": [
             {
               "type": "plugin",
-              "id": "mcp/playwright".
+              "id": "mcp/playwright",
               "allowed_tools": ["browser_navigate"]
             }
           ],
