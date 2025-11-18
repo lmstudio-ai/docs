@@ -46,7 +46,7 @@ To edit the permissions of an existing API Token, click on the Edit button next 
 ### Using API Tokens with REST API:
 
 ```lms_noticechill
-The example below requires [allowing calling servers from mcp.json](/docs/developer/core/server/settings) to be enabled and the [tiktoken MCP](https://gitmcp.io/openai/tiktoken) in mcp.json.
+The example below requires [allowing calling servers from mcp.json](/docs/developer/core/server/settings) to be enabled and the [Exa MCP](https://github.com/exa-labs/exa-mcp-server) in mcp.json.
 ```
 
 ```bash
@@ -56,13 +56,14 @@ curl -X POST \
   -H "Content-Type: application/json" \
   -d '{
     "model": "ibm/granite-4-micro",
-    "input": "What is the first line in the tiktoken documentation?",
+    "input": "What is the main header of lmstudio.ai website?",
     "integrations": [
       {
-        "type": "plugin",
-        "id": "mcp/tiktoken",
+        "type": "ephemeral_mcp",
+        "server_label": "exa",
+        "server_url": "https://mcp.exa.ai/mcp",
         "allowed_tools": [
-          "fetch_tiktoken_documentation"
+          "web_search_exa"
         ]
       }
     ]

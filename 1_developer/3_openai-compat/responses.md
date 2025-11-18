@@ -58,12 +58,16 @@ curl http://localhost:1234/v1/responses \
   -H "Content-Type: application/json" \
   -d '{
     "model": "openai/gpt-oss-20b",
-    "tools": [{
-      "type": "mcp",
-      "server_label": "tiktoken",
-      "server_url": "https://gitmcp.io/openai/tiktoken",
-      "allowed_tools": ["fetch_tiktoken_documentation"]
-    }],
-    "input": "What is the first sentence of the tiktoken documentation?"
+    "input": "What is the main header on lmstudio.ai?",
+    "tools": [
+      {
+        "type": "mcp",
+        "server_label": "exa",
+        "server_url": "https://mcp.exa.ai/mcp",
+        "allowed_tools": [
+          "web_search_exa"
+        ]
+      }
+    ]
   }'
 ```
