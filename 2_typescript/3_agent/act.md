@@ -48,7 +48,7 @@ With this in mind, we say that the `.act()` API is an automatic "multi-round" to
         });
 ```
 
-> **_NOTE:_**  Make sure to use zod v3 for this code (and not the latest release v4)!
+> **_NOTE:_**  at this time, this code expects zod v3
 
 ### What does it mean for an LLM to "use a tool"?
 
