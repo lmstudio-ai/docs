@@ -2,7 +2,7 @@
 title: "`lms log stream`"
 sidebar_title: "`lms log stream`"
 description: Stream logs from LM Studio. Useful for debugging prompts sent to the model.
-index: -1
+index: 4
 ---
 
 `lms log stream` lets you inspect the exact strings LM Studio sends to and receives from models, and (new in 0.3.26) stream server logs. This is useful for debugging prompt templates, model IO, and server operations.

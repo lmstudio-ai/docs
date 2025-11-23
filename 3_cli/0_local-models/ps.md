@@ -2,6 +2,7 @@
 title: "`lms ps`"
 sidebar_title: "`lms ps`"
 description: Show information about currently loaded models from the command line.
+index: 5
 ---
 
 The `lms ps` command displays information about all models currently loaded in memory.

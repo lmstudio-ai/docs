@@ -2,7 +2,7 @@
 title: "`lms ls`"
 sidebar_title: "`lms ls`"
 description: List all downloaded models in your LM Studio installation.
-index: 8
+index: 4
 ---
 
 The `lms ls` command displays a list of all models downloaded to your machine, including their size, architecture, and parameters.

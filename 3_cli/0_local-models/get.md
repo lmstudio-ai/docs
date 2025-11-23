@@ -2,7 +2,7 @@
 title: "`lms get`"
 sidebar_title: "`lms get`"
 description: Search and download models from the command line.
-index: 4
+index: 2
 ---
 
 The `lms get` command allows you to search and download models from online repositories. If no model is specified, it shows staff-picked recommendations.
@@ -11,34 +11,30 @@ Models you download via `lms get` will be stored in your LM Studio model directo
 
 ### Parameters
 ```lms_params
-- name: "[search term]"
+- name: "[modelName]"
   type: "string"
   optional: true
-  description: "The model to download. For specific quantizations, append '@' (e.g., 'llama-3.1-8b@q4_k_m')"
+  description: "The model to download. If omitted, staff picks are shown. For models with multiple quantizations, append '@' (e.g., 'llama-3.1-8b@q4_k_m')."
 - name: "--mlx"
   type: "flag"
   optional: true
-  description: "Include MLX models in search results"
+  description: "Include only MLX models in search results. If either '--mlx' or '--gguf' is set, only matching formats are shown; otherwise results match installed runtimes."
 - name: "--gguf"
   type: "flag"
   optional: true
-  description: "Include GGUF models in search results"
-- name: "--limit"
+  description: "Include only GGUF models in search results. If either '--mlx' or '--gguf' is set, only matching formats are shown; otherwise results match installed runtimes."
+- name: "-n, --limit"
   type: "number"
   optional: true
-  description: "Limit the number of model options shown"
+  description: "Limit the number of model options shown."
 - name: "--always-show-all-results"
   type: "flag"
   optional: true
-  description: "Always show search results, even with exact matches"
-- name: "--always-show-download-options"
+  description: "Always prompt you to choose from search results, even when there's an exact match."
+- name: "-a, --always-show-download-options"
   type: "flag"
   optional: true
-  description: "Always show quantization options, even with exact matches"
-- name: "--yes"
-  type: "flag"
-  optional: true
-  description: "Skip all confirmations. Uses first match and recommended quantization"
+  description: "Always prompt you to choose a quantization, even when an exact match is auto-selected."
 ```
 
 ## Download a model
@@ -80,13 +76,3 @@ Always show all options:
 lms get --always-show-all-results
 lms get --always-show-download-options
 ```
-
-### Automated downloads
-
-For scripting, skip all prompts:
-
-```shell
-lms get llama-3.1-8b --yes
-```
-
-This will automatically select the first matching model and recommended quantization for your hardware.

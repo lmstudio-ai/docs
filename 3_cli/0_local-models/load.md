@@ -1,11 +1,11 @@
 ---
 title: "`lms load`"
 sidebar_title: "`lms load`"
-description: Load a model into memory, set context length, GPU offload, TTL, or estimate memory usage without loading.
-index: 2
+description: Load or unload models, set context length, GPU offload, TTL, or estimate memory usage without loading.
+index: 3
 ---
 
-The `lms load` command loads a model into memory. You can optionally set parameters such as context length, GPU offload, and TTL.
+The `lms load` command loads a model into memory. You can optionally set parameters such as context length, GPU offload, and TTL. This guide also covers unloading models with `lms unload`.
 
 ### Parameters 
 ```lms_params
@@ -43,7 +43,7 @@ Load a model into memory by running the following command:
 lms load <model_key>
 ```
 
-You can find the `model_key` by first running [`lms ls`](/docs/cli/ls) to list your locally downloaded models.
+You can find the `model_key` by first running [`lms ls`](/docs/cli/local-models/ls) to list your locally downloaded models.
 
 ### Set a custom identifier
 
@@ -104,6 +104,46 @@ Estimated GPU Memory:   65.68 GB
 Estimated Total Memory: 65.68 GB
 
 Estimate: This model may be loaded based on your resource guardrails settings.
+```
+
+## Unload models
+
+Use `lms unload` to remove models from memory.
+
+### Parameters
+```lms_params
+- name: "[model_key]"
+  type: "string"
+  optional: true
+  description: "The key of the model to unload. If not provided, you will be prompted to select one"
+- name: "--all"
+  type: "flag"
+  optional: true
+  description: "Unload all currently loaded models"
+- name: "--host"
+  type: "string"
+  optional: true
+  description: "The host address of a remote LM Studio instance to connect to"
+```
+
+### Unload a specific model
+
+```shell
+lms unload <model_key>
+```
+
+If no model key is provided, you will be prompted to select from currently loaded models.
+
+### Unload all models
+
+```shell
+lms unload --all
+```
+
+### Unload from a remote LM Studio instance
+
+```shell
+lms unload <model_key> --host <host>
 ```
 
 ## Operate on a remote LM Studio instance

@@ -28,7 +28,7 @@ index: 2
 - `lms chat`: press `Ctrl+C` to interrupt an ongoing prediction.
 - `lms ps --json` now reports each model's generation status and the number of queued prediction requests.
 - CLI color contrast improved for light mode.
-- See docs: [/docs/cli/load](/docs/cli/load). Full release notes: [/blog/lmstudio-v0.3.27](/blog/lmstudio-v0.3.27).
+- See docs: [/docs/cli/local-models/load](/docs/cli/local-models/load). Full release notes: [/blog/lmstudio-v0.3.27](/blog/lmstudio-v0.3.27).
 
 ---
 
@@ -40,7 +40,7 @@ index: 2
   - `--source server` streams HTTP server logs (startup, endpoints, status)
   - `--source model --filter input,output` streams formatted user input and model output
   - Append `--json` for machine‑readable logs; `--stats` adds tokens/sec and related metrics (model source)
-- See usage and examples: [/docs/cli/log-stream](/docs/cli/log-stream). Full release notes: [/blog/lmstudio-v0.3.26](/blog/lmstudio-v0.3.26).
+- See usage and examples: [/docs/cli/serve/log-stream](/docs/cli/serve/log-stream). Full release notes: [/blog/lmstudio-v0.3.26](/blog/lmstudio-v0.3.26).
 
 ---
 
