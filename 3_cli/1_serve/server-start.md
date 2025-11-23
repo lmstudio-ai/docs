@@ -2,12 +2,12 @@
 title: "`lms server start`"
 sidebar_title: "`lms server start`"
 description: Start the LM Studio local server with customizable port and logging options.
-index: 5
+index: 1
 ---
 
 The `lms server start` command launches the LM Studio local server, allowing you to interact with loaded models via HTTP API calls.
 
-### Parameters
+### Flags 
 ```lms_params
 - name: "--port"
   type: "number"
@@ -47,4 +47,4 @@ Note that enabling CORS may expose your server to security risks, so use it only
 
 ### Check the server status
 
-See [`lms server status`](/docs/cli/server-status) for more information on checking the status of the server.
+See [`lms server status`](/docs/cli/serve/server-status) for more information on checking the status of the server.

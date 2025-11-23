@@ -10,7 +10,7 @@ api_info:
 - Prompt template is applied automatically for chat‑tuned models
 - Provide inference parameters (temperature, top_p, etc.) in the payload
 - See OpenAI docs: https://platform.openai.com/docs/api-reference/chat
-- Tip: keep a terminal open with [`lms log stream`](/docs/cli/log-stream) to inspect model input
+- Tip: keep a terminal open with [`lms log stream`](/docs/cli/serve/log-stream) to inspect model input
 
 ##### Python example
 

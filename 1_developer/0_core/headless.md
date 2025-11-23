@@ -54,10 +54,6 @@ To achieve this programmatically, you can use the following command:
 lms server start
 ```
 
-```lms_protip
-If you haven't already, bootstrap `lms` on your machine by following the instructions [here](/docs/cli).
-```
-
 ### Community
 
 Chat with other LM Studio developers, discuss LLMs, hardware, and more on the [LM Studio Discord server](https://discord.gg/aPQfnNkxGC).
