@@ -7,7 +7,7 @@ index: 1
 
 The `lms server start` command launches the LM Studio local server, allowing you to interact with loaded models via HTTP API calls.
 
-### Parameters
+### Flags 
 ```lms_params
 - name: "--port"
   type: "number"

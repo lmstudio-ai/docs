@@ -96,9 +96,9 @@ You can jump to Settings from anywhere in the app by pressing `cmd` + `,` on mac
 
 ### Params
 
-List of formatted parameters
+List of formatted flags
 
-### Parameters 
+### Flags 
 
 ```lms_params
 - name: "[path]"

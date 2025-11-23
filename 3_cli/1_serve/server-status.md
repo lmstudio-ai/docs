@@ -7,7 +7,7 @@ index: 2
 
 The `lms server status` command displays the current status of the LM Studio local server, including whether it's running and its configuration.
 
-### Parameters
+### Flags 
 ```lms_params
 - name: "--json"
   type: "flag"

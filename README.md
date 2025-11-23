@@ -107,7 +107,7 @@ Second column markdown content here
 List of formatted parameters
 
 ````
-### Parameters 
+### Flags 
 ```lms_params
 - name: "[path]"
   type: "string"

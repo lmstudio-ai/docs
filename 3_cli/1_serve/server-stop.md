@@ -7,10 +7,6 @@ index: 3
 
 The `lms server stop` command gracefully stops the running LM Studio server.
 
-## Stop the server
-
-Stop the running server instance:
-
 ```shell
 lms server stop
 ```

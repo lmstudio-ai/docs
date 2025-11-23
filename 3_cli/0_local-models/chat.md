@@ -7,7 +7,7 @@ index: 1
 
 Use `lms chat` to talk to a local model directly in the terminal. This is handy for quick experiments or scripting.
 
-### Parameters
+### Flags 
 ```lms_params
 - name: "[model]"
   type: "string"

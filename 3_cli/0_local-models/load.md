@@ -7,7 +7,7 @@ index: 3
 
 The `lms load` command loads a model into memory. You can optionally set parameters such as context length, GPU offload, and TTL. This guide also covers unloading models with `lms unload`.
 
-### Parameters 
+### Flags 
 ```lms_params
 - name: "[path]"
   type: "string"
@@ -110,7 +110,7 @@ Estimate: This model may be loaded based on your resource guardrails settings.
 
 Use `lms unload` to remove models from memory.
 
-### Parameters
+### Flags 
 ```lms_params
 - name: "[model_key]"
   type: "string"

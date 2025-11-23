@@ -7,7 +7,7 @@ index: 6
 
 Use `lms import` to bring an existing model file into LM Studio without downloading it.
 
-### Parameters
+### Flags 
 ```lms_params
 - name: "<file-path>"
   type: "string"
