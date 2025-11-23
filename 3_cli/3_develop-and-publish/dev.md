@@ -9,7 +9,7 @@ Use `lms dev` inside a plugin project to run a local dev server that rebuilds an
 
 This feature is a part of LM Studio [Plugins](/docs/typescript/plugins), currently in private beta.
 
-### Run the dev server
+### Run the dev plugin server
 
 ```shell
 lms dev

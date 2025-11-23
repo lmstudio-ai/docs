@@ -15,19 +15,6 @@ For plugins, the CLI will ask for confirmation unless you pass `-y`.
 lms push
 ```
 
-### Publish quietly and keep the revision in manifest.json
-
-```shell
-lms push -y --write-revision
-```
-
-### Override metadata for this upload
-
-```shell
-lms push --description "New beta build" --overrides '{"tags": ["beta"]}'
-```
-
-
 ### Flags
 ```lms_params
 - name: "--description"
@@ -50,4 +37,19 @@ lms push --description "New beta build" --overrides '{"tags": ["beta"]}'
   type: "flag"
   optional: true
   description: "Write the returned revision number to manifest.json"
+```
+
+
+### Advanced 
+
+#### Publish quietly and keep the revision in manifest.json
+
+```shell
+lms push -y --write-revision
+```
+
+#### Override metadata for this upload
+
+```shell
+lms push --description "New beta build" --overrides '{"tags": ["beta"]}'
 ```

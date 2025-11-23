@@ -17,8 +17,11 @@ The CLI opens a browser window for authentication. If a browser cannot be opened
 
 ### "CI style" login with pre-authenticated keys
 
-```shell
-lms login --with-pre-authenticated-keys --key-id KEY --public-key PUBLIC --private-key PRIVATE
+```bash
+lms login --with-pre-authenticated-keys \
+  --key-id <KEY_ID> \
+  --public-key <PUBLIC_KEY> \
+  --private-key <PRIVATE_KEY> 
 ```
 
 ### Advanced Flags

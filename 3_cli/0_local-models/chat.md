@@ -29,10 +29,6 @@ Use `lms chat` to talk to a local model directly in the terminal. This is handy 
   type: "number"
   optional: true
   description: "Seconds to keep the model loaded after the chat ends (default: 3600)"
-- name: "--offline"
-  type: "flag"
-  optional: true
-  description: "Skip fetching remote models or updates (offline mode)"
 ```
 
 ### Start an interactive chat
