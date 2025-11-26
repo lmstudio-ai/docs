@@ -23,7 +23,7 @@ To enable this, head to app settings (`Cmd` / `Ctrl` + `,`) and check the box to
 
 When this setting is enabled, exiting the app will minimize it to the system tray, and the LLM server will continue to run in the background.
 
-## Just-In-Time (JIT) model loading for OpenAI endpoints
+## Just-In-Time (JIT) model loading for REST endpoints
 
 Useful when utilizing LM Studio as an LLM service with other frontends or applications.
 
@@ -31,18 +31,17 @@ Useful when utilizing LM Studio as an LLM service with other frontends or applic
 
 #### When JIT loading is ON:
 
-- Call to `/v1/models` will return all downloaded models, not only the ones loaded into memory
+- Calls to OpenAI-compatible `/v1/models` will return all downloaded models, not only the ones loaded into memory
 - Calls to inference endpoints will load the model into memory if it's not already loaded
 
 #### When JIT loading is OFF:
 
-- Call to `/v1/models` will return only the models loaded into memory
+- Calls to OpenAI-compatible `/v1/models` will return only the models loaded into memory
 - You have to first load the model into memory before being able to use it
 
-##### What about auto unloading?
+#### What about auto unloading?
 
-As of LM Studio 0.3.5, auto unloading is not yet in place. Models that are loaded via JIT loading will remain in memory until you unload them.
-We expect to implement more sophisticated memory management in the near future. Let us know if you have any feedback or suggestions.
+JIT loaded models will be auto-unloaded from memory by default after a set period of inactivity ([learn more](/docs/developer/core/ttl-and-auto-evict)).
 
 ## Auto Server Start
 
