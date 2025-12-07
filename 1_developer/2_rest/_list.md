@@ -85,15 +85,15 @@ variants:
             - name: flash_attention
               type: boolean
               optional: true
-              description: Whether Flash Attention is enabled for optimized attention computation. Absent for embedding models.
+              description: Indicates if Flash Attention is enabled for faster, memory-efficient attention computation. Not applicable for embedding models.
             - name: num_experts
               type: number
               optional: true
-              description: Number of experts for MoE (Mixture of Experts) models. Absent for embedding models.
+              description: Number of experts for MoE (Mixture of Experts) models. Not applicable for embedding models.
             - name: offload_kv_cache_to_gpu
               type: boolean
               optional: true
-              description: Whether KV cache is offloaded to GPU memory. Absent for embedding models.
+              description: Whether KV cache is offloaded to GPU memory. Not applicable for embedding models.
     - name: max_context_length
       type: number
       description: Maximum context length supported by the model in number of tokens.
@@ -110,11 +110,11 @@ variants:
           description: Whether the model supports vision/image inputs.
         - name: trained_for_tool_use
           type: boolean
-          description: Whether the model was trained for tool/function calling.
+          description: Indicates whether the model was trained for tool/function calling.
     - name: description
       type: string | null
       optional: true
-      description: Model description. Absent for embedding models.
+      description: Model description. Not applicable for embedding models.
 ```
 :::split:::
 ```lms_code_snippet
