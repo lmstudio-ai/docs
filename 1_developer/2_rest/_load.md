@@ -1,6 +1,6 @@
 ---
 title: "Load a model"
-description: "Load an LLM or Embedding model into memory with custom configuration for inference"
+description: "Load an LLM or Embedding model into memory with custom configuration for inference."
 fullPage: true
 index: 7
 api_info:
@@ -14,7 +14,7 @@ api_info:
 - name: model
   type: string
   optional: false
-  description: Unique identifier for the model to load. Can be an LLM or embedding model.
+  description: Unique identifier for the model to load. Can be an LLM or an embedding model.
 - name: context_length
   type: number
   optional: true
