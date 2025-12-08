@@ -1,6 +1,6 @@
 ---
 title: "Download a model"
-description: "Download LLMs and embedding models"
+description: "Download LLMs and embedding models."
 fullPage: true
 index: 8
 api_info:
