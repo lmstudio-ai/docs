@@ -15,7 +15,7 @@ The v1 REST API includes enhanced features such as:
 - [MCP via API](/docs/developer/core/mcp)
 - [Stateful chats](/docs/developer/rest/stateful-chats)
 - [Authentication](/docs/developer/core/authentication) configuration with API tokens
-- Model [download](/docs/developer/rest/download), [load](/docs/developer/rest/load) and [unload](/docs/developer/rest/load) endpoints
+- Model [download](/docs/developer/rest/download), [load](/docs/developer/rest/load) and [unload](/docs/developer/rest/unload) endpoints
 
 ## Supported endpoints
 The following endpoints are available in LM Studio's v1 REST API.
@@ -46,7 +46,7 @@ The following endpoints are available in LM Studio's v1 REST API.
     <tr>
         <td><code>/api/v1/models/unload</code></td>
         <td><apimethod method="POST" /></td>
-        <td><a href="/docs/developer/rest/load">Unload</a></td>
+        <td><a href="/docs/developer/rest/unload">Unload</a></td>
     </tr>
     <tr>
       <td><code>/api/v1/models/download</code></td>
