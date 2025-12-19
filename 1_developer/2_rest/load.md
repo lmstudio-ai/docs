@@ -67,7 +67,7 @@ variants:
 - name: type
   type: '"llm" | "embedding"'
   description: Type of the loaded model.
-- name: model_instance_id
+- name: instance_id
   type: string
   description: Unique identifier for the loaded model instance.
 - name: load_time_seconds
@@ -125,7 +125,7 @@ variants:
     code: |
       {
         "type": "llm",
-        "model_instance_id": "openai/gpt-oss-20b",
+        "instance_id": "openai/gpt-oss-20b",
         "load_time_seconds": 9.099,
         "status": "loaded",
         "load_config": {

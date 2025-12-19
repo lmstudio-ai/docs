@@ -14,7 +14,7 @@ index: 2
   - [MCP via API](/docs/developer/core/mcp)
   - [Stateful chats](/docs/developer/rest/stateful-chats)
   - [Authentication](/docs/developer/core/authentication) configuration with API tokens
-  - Model [download](/docs/developer/rest/download) and [load](/docs/developer/rest/load) endpoints
+  - Model [download](/docs/developer/rest/download), [load](/docs/developer/rest/load) and [unload](/docs/developer/rest/unload) endpoints
   - See [overview](/docs/developer/rest) page for more details and [comparison](/docs/developer/rest#inference-endpoint-comparison) with OpenAI-compatible endpoints.
 
 ---
