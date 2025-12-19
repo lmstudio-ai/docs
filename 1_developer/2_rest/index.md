@@ -9,7 +9,7 @@ index: 1
 LM Studio offers a powerful REST API with first-class support for local inference and model management. In addition to our native API, we provide full OpenAI compatibility mode ([learn more](/docs/developer/openai-compat)).
 
 ## What's new
-Previously, there was a [v0 REST API](/docs/developer/rest/endpoints). That API has since been deprecated in favor of the v1 REST API.
+Previously, there was a [v0 REST API](/docs/developer/rest/endpoints). With LM Studio 0.4.0, we have officially released our native v1 REST API at `/api/v1/*` endpoints and recommend using it.
 
 The v1 REST API includes enhanced features such as:
 - [MCP via API](/docs/developer/core/mcp)
