@@ -7,8 +7,7 @@ index: 3
 ## macOS
 
 - Chip: Apple Silicon (M1/M2/M3/M4).
-- macOS 13.4 or newer is required.
-  - For MLX models, macOS 14.0 or newer is required.
+- macOS 14.0 or newer is required.
 - 16GB+ RAM recommended.
   - You may still be able to use LM Studio on 8GB Macs, but stick to smaller models and modest context sizes.
 - Intel-based Macs are currently not supported. Chime in [here](https://github.com/lmstudio-ai/lmstudio-bug-tracker/issues/9) if you are interested in this.
