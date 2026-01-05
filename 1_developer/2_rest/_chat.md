@@ -1,6 +1,6 @@
 ---
 title: "Chat with a model"
-description: "Send a message to a model and receive a response. Supports MCP integration."
+description: "This endpoint allows you to send a message to the currently loaded model and receive a generated response. It also supports MCP integration, allowing you to connect LM Studio’s local inference capabilities with compatible client tools."
 fullPage: true
 index: 5
 api_info:
@@ -23,20 +23,20 @@ api_info:
 - name: system_prompt
   type: string
   optional: true
-  description: System message that sets model behavior or instructions.
+  description: A system message that defines the model’s behavior, tone, or overall instructions for the conversation.
 - name: integrations
   type: array<string | object>
   optional: true
-  description: List of integrations (plugins, ephemeral MCP servers, etc...) to enable for this request.
+  description: A list of integrations (plugins, ephemeral MCP servers, etc.) to enable for this request.
   children:
     - name: Plugin id
       unstyledName: true
       type: string
-      description: Unique identifier of a plugin to use. Plugins contain `mcp.json` installed MCP servers (id `mcp/<server_label>`). Shorthand for plugin object with no custom configuration.
+      description: The unique ID of a plugin to enable. Each plugin includes an mcp.json definition for its installed MCP servers (identified as mcp/<server_label>). Using this field is shorthand for specifying a plugin without any custom settings.
     - name: Plugin
       unstyledName: true
       type: object
-      description: Specification of a plugin to use. Plugins contain `mcp.json` installed MCP servers (id `mcp/<server_label>`).
+      description: Plugin specification to use. Each plugin includes an mcp.json file that defines its installed MCP servers (mcp/<server_label>).
       children:
         - name: type
           type: '"plugin"'
@@ -49,11 +49,11 @@ api_info:
         - name: allowed_tools
           type: array<string>
           optional: true
-          description: List of tool names the model can call from this plugin. If not provided, all tools from the plugin are allowed.
+          description: List of tool names the model can call from this plugin. If not provided, all plugin tools are allowed.
     - name: Ephemeral MCP server specification
       unstyledName: true
       type: object
-      description: Specification of an ephemeral MCP server. Allows defining MCP servers on-the-fly without needing to pre-configure them in your `mcp.json`.
+      description: Specification of an ephemeral MCP server. Defines MCP servers without pre-configuration in `mcp.json`.
       children:
         - name: type
           type: '"ephemeral_mcp"'
@@ -70,7 +70,7 @@ api_info:
         - name: allowed_tools
           type: array<string>
           optional: true
-          description: List of tool names the model can call from this server. If not provided, all tools from the server are allowed.
+          description: List of tool names the model can call from this server. If not provided, all server tools are allowed.
         - name: headers
           type: object
           optional: true
@@ -90,7 +90,7 @@ api_info:
 - name: top_k
   type: integer
   optional: true
-  description: Limits next token selection to top-k most probable tokens.
+  description: Limits next token selection to the top-k most probable tokens. Limits next-token selection to the top-k most probable tokens.
 - name: min_p
   type: number
   optional: true
@@ -98,7 +98,7 @@ api_info:
 - name: repeat_penalty
   type: number
   optional: true
-  description: Penalty for repeating token sequences. 1 is no penalty, higher values discourage repetition.
+  description: Repetition penalty. 1 means no penalty; higher values discourage repeating tokens.
 - name: max_output_tokens
   type: integer
   optional: true
@@ -106,15 +106,15 @@ api_info:
 - name: reasoning
   type: '"off" | "low" | "medium" | "high" | "on"'
   optional: true
-  description: Reasoning setting. Will error if the model being used does not support the reasoning setting using. Defaults to the automatically chosen setting for the model.
+  description: Reasoning setting. Causes an error if the model doesn’t support it. Defaults to the model’s automatic setting.
 - name: context_length
   type: integer
   optional: true
-  description: Number of tokens to consider as context. Higher values recommended for MCP usage.
+  description: Context tokens. Number of tokens considered as context. Higher values recommended for MCP usage.
 - name: store
   type: boolean
   optional: true
-  description: Whether to store the chat. If set, response will return a `"response_id"` field. Default `true`.
+  description: Determines if the chat is saved. Returns a "response_id" when enabled. Default is `true`.
 - name: previous_response_id
   type: string
   optional: true
@@ -186,13 +186,13 @@ variants:
       children:
         - name: type
           type: '"tool_call"'
-          description: Type of output item.
+          description: Type of the output item.
         - name: tool
           type: string
           description: Name of the tool called.
         - name: arguments
           type: object
-          description: Arguments passed to the tool. Can have any keys/values depending on the tool definition.
+          description: Arguments passed to the tool, using key-value pairs as defined by the tool.
         - name: output
           type: string
           description: Result returned from the tool.
@@ -244,7 +244,7 @@ variants:
     - name: model_load_time_seconds
       type: number
       optional: true
-      description: Time taken to load the model for this request in seconds. Present only if the model was not already loaded.
+      description: Model load time in seconds, shown only if not previously loaded.
 - name: response_id
   type: string
   optional: true
