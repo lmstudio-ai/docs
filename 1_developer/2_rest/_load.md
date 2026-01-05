@@ -14,7 +14,7 @@ api_info:
 - name: model
   type: string
   optional: false
-  description: Unique identifier for the model to load. Can be an LLM or embedding model.
+  description: Unique identifier of the model to load, either an LLM or an embedding model.
 - name: context_length
   type: number
   optional: true
@@ -22,19 +22,19 @@ api_info:
 - name: eval_batch_size
   type: number
   optional: true
-  description: Number of input tokens to process together in a single batch during evaluation. Will only have an effect on LLMs loaded by LM Studio's [llama.cpp](https://github.com/ggml-org/llama.cpp)-based engine.
+  description: Number of input tokens processed together in a single batch during evaluation. Applies only to LLMs loaded by LM Studio's [llama.cpp](https://github.com/ggml-org/llama.cpp)-based engine.
 - name: flash_attention
   type: boolean
   optional: true
-  description: Whether to optimize attention computation. Can decrease memory usage and improved generation speed. Will only have an effect on LLMs loaded by LM Studio's [llama.cpp](https://github.com/ggml-org/llama.cpp)-based engine.
+  description: Indicates whether attention computation is optimized to reduce memory usage and improve generation speed. Applies only to LLMs loaded by LM Studio's [llama.cpp](https://github.com/ggml-org/llama.cpp)-based engine.
 - name: num_experts
   type: number
   optional: true
-  description: Number of expert to use during inference for MoE (Mixture of Experts) models. Will only have an effect on MoE LLMs loaded by LM Studio's [llama.cpp](https://github.com/ggml-org/llama.cpp)-based engine.
+  description: Number of experts used during inference for MoE (Mixture of Experts) models. Applies only to MoE LLMs loaded by LM Studio's [llama.cpp](https://github.com/ggml-org/llama.cpp)-based engine.
 - name: offload_kv_cache_to_gpu
   type: boolean
   optional: true
-  description: Whether KV cache is offloaded to GPU memory. If false, KV cache is stored in CPU memory/RAM. Will only have an effect on LLMs loaded by LM Studio's [llama.cpp](https://github.com/ggml-org/llama.cpp)-based engine.
+  description: Indicates if the KV cache is stored in GPU memory; if false, it is stored in CPU memory. Applies only to LLMs loaded by LM Studio's [llama.cpp](https://github.com/ggml-org/llama.cpp)-based engine.
 - name: echo_load_config
   type: boolean
   optional: true
@@ -84,7 +84,7 @@ variants:
     - name: LLM load config
       unstyledName: true
       type: object
-      description: Configuration parameters specific to LLM models. `load_config` will be this type when `"type"` is `"llm"`. Only parameters that applied to the load will be present.
+      description: Configuration parameters specific to LLM models. `load_config` will be this type when `"type"` is `"llm"`. Only parameters relevant to the current model load are included.
       children:
         - name: context_length
           type: number
@@ -93,23 +93,23 @@ variants:
         - name: eval_batch_size
           type: number
           optional: true
-          description: Number of input tokens to process together in a single batch during evaluation. Only present for models loaded with LM Studio's [llama.cpp](https://github.com/ggml-org/llama.cpp)-based engine.
+          description: Number of input tokens processed together during evaluation. Present only for models loaded with LM Studio's [llama.cpp](https://github.com/ggml-org/llama.cpp)-based engine.
         - name: flash_attention
           type: boolean
           optional: true
-          description: Whether Flash Attention is enabled for optimized attention computation. Only present for models loaded with LM Studio's [llama.cpp](https://github.com/ggml-org/llama.cpp)-based engine.
+          description: Indicates if Flash Attention is enabled for optimized attention computation. Present only for models loaded with LM Studio's [llama.cpp](https://github.com/ggml-org/llama.cpp)-based engine.
         - name: num_experts
           type: number
           optional: true
-          description: Number of experts for MoE (Mixture of Experts) models. Only present for MoE models loaded with LM Studio's [llama.cpp](https://github.com/ggml-org/llama.cpp)-based engine.
+          description: Number of experts for Mixture of Experts (MoE) models. Present only for MoE models loaded with LM Studio's [llama.cpp](https://github.com/ggml-org/llama.cpp)-based engine.
         - name: offload_kv_cache_to_gpu
           type: boolean
           optional: true
-          description: Whether KV cache is offloaded to GPU memory. Only present for models loaded with LM Studio's [llama.cpp](https://github.com/ggml-org/llama.cpp)-based engine.
+          description: Indicates if the KV cache is stored in GPU memory. Present only for models loaded with LM Studio's [llama.cpp](https://github.com/ggml-org/llama.cpp)-based engine.
     - name: Embedding model load config
       unstyledName: true
       type: object
-      description: Configuration parameters specific to embedding models. `load_config` will be this type when `"type"` is `"embedding"`. Only parameters that applied to the load will be present.
+      description: Configuration parameters for embedding models. Present only when `"type"` is `"embedding"` and includes only the parameters used for loading.
       children:
         - name: context_length
           type: number
