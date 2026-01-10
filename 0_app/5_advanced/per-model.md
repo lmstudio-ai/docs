@@ -15,7 +15,7 @@ When the model is loaded anywhere in the app (including through [`lms load`](/do
 
 Head to the My Models tab and click on the gear ⚙️ icon to edit the model's default parameters.
 
-<img src="/assets/docs/model-settings-gear.png" style="width:80%" data-caption="Click on the gear icon to edit the default load settings for a model.">
+<img src="/assets/docs/model-settings-gear.webp" style="width:80%" data-caption="Click on the gear icon to edit the default load settings for a model.">
 
 This will open a dialog where you can set the default parameters for the model.
 
