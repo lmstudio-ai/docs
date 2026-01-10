@@ -22,7 +22,7 @@ You will often see several options for any given model named things like `Q3_K_S
 
 Choose a 4-bit option or higher if your machine is capable enough for running it.
 
-<img src="/assets/docs/search.png" style="" data-caption="Hugging Face search results in LM Studio" />
+<img src="/assets/docs/search.webp" style="" data-caption="Hugging Face search results in LM Studio" />
 
 <hr>
 

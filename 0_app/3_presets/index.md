@@ -14,7 +14,7 @@ New in 0.3.15: You can [import](/docs/app/presets/import) Presets from file or U
 
 Below is the anatomy of the Preset manager:
 
-<img src="/assets/docs/preset-widget-anatomy.png" style="width:70%" data-caption="The anatomy of the Preset manager in the settings sidebar.">
+<img src="/assets/docs/preset-widget-anatomy.webp" style="width:70%" data-caption="The anatomy of the Preset manager in the settings sidebar.">
 
 ## Importing, Publishing, and Updating Downloaded Presets
 
