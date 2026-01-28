@@ -3,8 +3,7 @@ title: Parallel Requests
 description: Enable parallel requests via continuous batching
 ---
 
-
-When loading a model, you can now set Max Concurrent Predictions to allow multiple requests to be processed in parallel, instead of queued. This is supported for LM Studio's llama.cpp engine, with MLX coming later. 
+When loading a model, you can now set Max Concurrent Predictions to allow multiple requests to be processed in parallel, instead of queued. This is supported for LM Studio's llama.cpp engine, with MLX coming soon. 
 
 Please make sure your GGUF runtime is upgraded to llama.cpp v2.0.0.
 
