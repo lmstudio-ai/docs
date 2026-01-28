@@ -24,6 +24,12 @@ You can drag and drop chats in and out of folders, and even drag folders into fo
 
 You can duplicate a whole chat conversation by clicking the `•••` menu and selecting "Duplicate". If the chat has any files in it, they will be duplicated too.
 
+### Split view in chat
+
+You can view two chats side by side by dragging and dropping chat tabs to either half of the window. Alternatively, use the split view icon at the top right of a chat window to split left or right. 
+
+Close one side of the split view with the 'x' button in the top right of each pane.
+
 ## FAQ
 
 #### Where are chats stored in the file system?

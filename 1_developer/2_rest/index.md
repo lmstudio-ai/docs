@@ -9,13 +9,13 @@ index: 1
 LM Studio offers a powerful REST API with first-class support for local inference and model management. In addition to our native API, we provide full OpenAI compatibility mode ([learn more](/docs/developer/openai-compat)).
 
 ## What's new
-Previously, there was a [v0 REST API](/docs/developer/rest/endpoints). That API has since been deprecated in favor of the v1 REST API.
+Previously, there was a [v0 REST API](/docs/developer/rest/endpoints). With LM Studio 0.4.0, we have officially released our native v1 REST API at `/api/v1/*` endpoints and recommend using it.
 
 The v1 REST API includes enhanced features such as:
 - [MCP via API](/docs/developer/core/mcp)
 - [Stateful chats](/docs/developer/rest/stateful-chats)
 - [Authentication](/docs/developer/core/authentication) configuration with API tokens
-- Model [download](/docs/developer/rest/download) and [load](/docs/developer/rest/load) endpoints
+- Model [download](/docs/developer/rest/download), [load](/docs/developer/rest/load) and [unload](/docs/developer/rest/unload) endpoints
 
 ## Supported endpoints
 The following endpoints are available in LM Studio's v1 REST API.
@@ -42,6 +42,11 @@ The following endpoints are available in LM Studio's v1 REST API.
       <td><code>/api/v1/models/load</code></td>
       <td><apimethod method="POST" /></td>
       <td><a href="/docs/developer/rest/load">Load</a></td>
+    </tr>
+    <tr>
+        <td><code>/api/v1/models/unload</code></td>
+        <td><apimethod method="POST" /></td>
+        <td><a href="/docs/developer/rest/unload">Unload</a></td>
     </tr>
     <tr>
       <td><code>/api/v1/models/download</code></td>
@@ -88,6 +93,12 @@ The table below compares the features of LM Studio's `/api/v1/chat` endpoint wit
     </tr>
     <tr>
       <td>Custom tools</td>
+      <td>❌</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>Include assistant messages in the request</td>
       <td>❌</td>
       <td>✅</td>
       <td>✅</td>
