@@ -25,6 +25,33 @@ index: 1
 - Model management (load, download, list)
 ```
 
+## Install `llmster` for headless deployments
+
+`llmster` is LM Studio's core, packaged as a daemon for headless deployment on servers, cloud instances, or CI. The daemon runs standalone, and it is not dependent on the LM Studio GUI.
+
+**Mac / Linux**
+
+```bash
+curl -fsSL https://lmstudio.ai/install.sh | bash
+```
+
+**Windows**
+
+```powershell
+irm https://lmstudio.ai/install.ps1 | iex
+```
+
+**Basic usage**
+
+```bash
+lms daemon up          # Start the daemon
+lms get <model>        # Download a model
+lms server start       # Start the local server
+lms chat               # Open an interactive session
+```
+
+Learn more: [Headless deployments](/blog/0.4.0#deploy-on-servers-deploy-in-ci-deploy-anywhere)
+
 ## Super quick start
 
 ### TypeScript (`lmstudio-js`)
