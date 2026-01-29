@@ -6,7 +6,7 @@ index: 1
 
 Plugins extend LM Studio's functionality by providing "hook functions" that execute at specific points during operation.
 
-Plugins are currently written in JavaScript/TypeScript and run on Node.js v20.18.0. Python support is in development.
+Plugins are currently written in JavaScript/TypeScript and run on Node.js v22.21.1. Python support is in development.
 
 ## Getting Started
 
