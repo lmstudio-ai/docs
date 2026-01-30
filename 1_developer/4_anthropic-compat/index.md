@@ -38,7 +38,7 @@ claude --model openai/gpt-oss-20b
 
 ## Authentication headers
 
-When Require Authentication is enabled, LM Studio accepts both `x-api-token` and the standard `Authorization: Bearer <token>` header. To learn more about enabling auth in LM Studio, checkout [Authentication](/docs/developer/core/authentication).
+When Require Authentication is enabled, LM Studio accepts both `x-api-key` and the standard `Authorization: Bearer <token>` header. To learn more about enabling auth in LM Studio, checkout [Authentication](/docs/developer/core/authentication).
 
 ## Set the base URL to point to LM Studio
 
