@@ -1,7 +1,7 @@
 ---
-title: Use Claude Code with LM Studio
-description: Point Claude Code at LM Studio's Anthropic-compatible API to use local models.
-index: 3
+title: Claude Code
+description: Use Claude Code with LM Studio
+index: 2 
 ---
 
 Claude Code can talk to LM Studio via the Anthropic-compatible `POST /v1/messages` endpoint.

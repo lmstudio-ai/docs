@@ -1,7 +1,7 @@
 ---
-title: Use Codex with LM Studio
-description: Point Codex at LM Studio's OpenAI-compatible API to use local models.
-index: 2 
+title: Codex
+description: Use Codex with LM Studio
+index: 3
 ---
 
 Codex can talk to LM Studio via the OpenAI-compatible `POST /v1/responses` endpoint.
