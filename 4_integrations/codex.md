@@ -1,7 +1,7 @@
 ---
-title: Use Codex with LM Studio
-description: Point Codex at LM Studio's OpenAI-compatible API to use local models.
-index: 2 
+title: Codex
+description: Use Codex with LM Studio
+index: 3
 ---
 
 Codex can talk to LM Studio via the OpenAI-compatible `POST /v1/responses` endpoint.
@@ -9,7 +9,7 @@ See: [OpenAI-compatible Responses endpoint](/docs/developer/openai-compat/respon
 
 <img src="/assets/docs/codex.webp" style="width: 100%;" data-caption="Codex configured to use LM Studio via the OpenAI-compatible API" />
 
-## 1) Start LM Studio's local server
+### 1) Start LM Studio's local server
 
 Make sure LM Studio is running as a server (default port `1234`).
 
@@ -19,7 +19,7 @@ You can start it from the app, or from the terminal with `lms`:
 lms server start --port 1234
 ```
 
-## 2) Run Codex against a local model
+### 2) Run Codex against a local model
 
 Run Codex as you normally would, but with the `--oss` flag to point it to LM Studio.
 
