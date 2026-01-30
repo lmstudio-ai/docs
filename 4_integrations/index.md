@@ -11,7 +11,7 @@ Whether you are using an IDE extension or a custom automation script, simply poi
 
 We provide guides below for popular tools and are constantly expanding this list to include new integrations.
 
-## Available Integrations
+### Available Integrations
 
 - [Claude Code](/docs/integrations/claude-code)
 - [Codex](/docs/integrations/codex)

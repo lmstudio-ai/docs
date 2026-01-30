@@ -9,7 +9,7 @@ See: [Anthropic-compatible Messages endpoint](/docs/developer/anthropic-compat/m
 
 <img src="/assets/docs/claude-code.webp" style="width: 100%;" data-caption="Claude Code configured to use LM Studio via the Anthropic-compatible API" />
 
-## 1) Start LM Studio's local server
+### 1) Start LM Studio's local server
 
 Make sure LM Studio is running as a server (default port `1234`).
 
@@ -19,7 +19,7 @@ You can start it from the app, or from the terminal with `lms`:
 lms server start --port 1234
 ```
 
-## 2) Configure Claude Code
+### 2) Configure Claude Code
 
 Set these environment variables so the `claude` CLI points to your local LM Studio:
 
@@ -32,7 +32,7 @@ export ANTHROPIC_AUTH_TOKEN=lmstudio
 Notes:
 - If Require Authentication is enabled, set `ANTHROPIC_AUTH_TOKEN` to your LM Studio API token. To learn more, see: [Authentication](/docs/developer/core/authentication).
 
-## 3) Run Claude Code against a local model
+### 3) Run Claude Code against a local model
 
 ```bash
 claude --model openai/gpt-oss-20b
@@ -42,7 +42,7 @@ claude --model openai/gpt-oss-20b
 Use a model (and server/model settings) with more than ~25k context length. Tools like Claude Code can consume a lot of context.
 ```
 
-## 4) If Require Authentication is enabled, use your LM Studio API token
+### 4) If Require Authentication is enabled, use your LM Studio API token
 
 If you turned on "Require Authentication" in LM Studio, create an API token and set:
 
