@@ -62,21 +62,30 @@ The following endpoints are available in LM Studio's v1 REST API.
 </table>
 
 ## Inference endpoint comparison
-The table below compares the features of LM Studio's `/api/v1/chat` endpoint with OpenAI-compatible `/v1/responses` and `/v1/chat/completions` endpoints.
+The table below compares the features of LM Studio's `/api/v1/chat` endpoint with OpenAI-compatible and Anthropic-compatible inference endpoints.
 <table class="flexible-cols">
   <thead>
     <tr>
       <th>Feature</th>
-      <th><code>/api/v1/chat</code></th>
-      <th><code>/v1/responses</code></th>
-      <th><code>/v1/chat/completions</code></th>
+      <th><a href="/docs/developer/rest/chat"><code>/api/v1/chat</code></a></th>
+      <th><a href="/docs/developer/openai-compat/responses"><code>/v1/responses</code></a></th>
+      <th><a href="/docs/developer/openai-compat/chat-completions"><code>/v1/chat/completions</code></a></th>
+      <th><a href="/docs/developer/anthropic-compat/messages"><code>/v1/messages</code></a></th>
     </tr>
   </thead>
   <tbody>
     <tr>
+      <td>Streaming</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
       <td>Stateful chat</td>
       <td>✅</td>
       <td>✅</td>
+      <td>❌</td>
       <td>❌</td>
     </tr>
     <tr>
@@ -84,16 +93,19 @@ The table below compares the features of LM Studio's `/api/v1/chat` endpoint wit
       <td>✅</td>
       <td>✅</td>
       <td>❌</td>
+      <td>❌</td>
     </tr>
     <tr>
       <td>MCPs you have in LM Studio</td>
       <td>✅</td>
       <td>✅</td>
       <td>❌</td>
+      <td>❌</td>
     </tr>
     <tr>
       <td>Custom tools</td>
       <td>❌</td>
+      <td>✅</td>
       <td>✅</td>
       <td>✅</td>
     </tr>
@@ -102,10 +114,12 @@ The table below compares the features of LM Studio's `/api/v1/chat` endpoint wit
       <td>❌</td>
       <td>✅</td>
       <td>✅</td>
+      <td>✅</td>
     </tr>
     <tr>
       <td>Model load streaming events</td>
       <td>✅</td>
+      <td>❌</td>
       <td>❌</td>
       <td>❌</td>
     </tr>
@@ -114,10 +128,12 @@ The table below compares the features of LM Studio's `/api/v1/chat` endpoint wit
       <td>✅</td>
       <td>❌</td>
       <td>❌</td>
+      <td>❌</td>
     </tr>
     <tr>
       <td>Specify context length in the request</td>
       <td>✅</td>
+      <td>❌</td>
       <td>❌</td>
       <td>❌</td>
     </tr>

@@ -51,6 +51,6 @@ export LM_API_TOKEN=<LMSTUDIO_TOKEN>
 export ANTHROPIC_AUTH_TOKEN=$LM_API_TOKEN
 ```
 
-When Require Authentication is enabled, LM Studio accepts both `x-api-token` and `Authorization: Bearer <token>`.
+When Require Authentication is enabled, LM Studio accepts both `x-api-key` and `Authorization: Bearer <token>`.
 
 If you're running into trouble, hop onto our [Discord](https://discord.gg/lmstudio)

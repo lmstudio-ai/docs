@@ -1,7 +1,7 @@
 ---
 title: LM Studio Developer Docs
 sidebar_title: Introduction
-description: Build with LM Studio's local APIs and SDKs — TypeScript, Python, REST, and OpenAI- and Anthropic-compatible endpoints.
+description: Build with LM Studio's local APIs and SDKs — TypeScript, Python, REST, and OpenAI and Anthropic-compatible endpoints.
 index: 1
 ---
 
