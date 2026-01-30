@@ -6,6 +6,16 @@ index: 2
 
 ---
 
+###### LM Studio 0.4.1
+
+### Anthropic-compatible API
+
+- New Anthropic-compatible endpoint: `POST /v1/messages`.
+  - Use Claude code models with LM Studio
+  - See docs for more details: [/docs/developer/anthropic-compat](/docs/developer/anthropic-compat).
+
+---
+
 ###### LM Studio 0.4.0
 
 ### LM Studio native v1 REST API

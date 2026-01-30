@@ -6,7 +6,7 @@ fullPage: false
 index: 1
 ---
 
-LM Studio offers a powerful REST API with first-class support for local inference and model management. In addition to our native API, we provide full OpenAI compatibility mode ([learn more](/docs/developer/openai-compat)).
+LM Studio offers a powerful REST API with first-class support for local inference and model management. In addition to our native API, we provide OpenAI-compatible endpoints ([learn more](/docs/developer/openai-compat)) and Anthropic-compatible endpoints ([learn more](/docs/developer/anthropic-compat)).
 
 ## What's new
 Previously, there was a [v0 REST API](/docs/developer/rest/endpoints). With LM Studio 0.4.0, we have officially released our native v1 REST API at `/api/v1/*` endpoints and recommend using it.
@@ -62,7 +62,7 @@ The following endpoints are available in LM Studio's v1 REST API.
 </table>
 
 ## Inference endpoint comparison
-The table below compares the features of LM Studio's `/api/v1/chat` endpoint with the OpenAI-compatible `/v1/responses` and `/v1/chat/completions` endpoints.
+The table below compares the features of LM Studio's `/api/v1/chat` endpoint with OpenAI-compatible `/v1/responses` and `/v1/chat/completions` endpoints.
 <table class="flexible-cols">
   <thead>
     <tr>
