@@ -9,7 +9,7 @@ LM Studio now has a [v1 REST API](/docs/developer/rest)! We recommend using the 
 
 ##### Requires [LM Studio 0.3.6](/download) or newer.
 
-LM Studio now has its own REST API, in addition to OpenAI compatibility mode ([learn more](/docs/developer/openai-compat)).
+LM Studio now has its own REST API, in addition to OpenAI-compatible endpoints ([learn more](/docs/developer/openai-compat)) and Anthropic-compatible endpoints ([learn more](/docs/developer/anthropic-compat)).
 
 The REST API includes enhanced stats such as Token / Second and Time To First Token (TTFT), as well as rich information about models such as loaded vs unloaded, max context, quantization, and more.
 

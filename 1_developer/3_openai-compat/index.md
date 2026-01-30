@@ -90,6 +90,13 @@ const client = new OpenAI({
    }'
 ```
 
+
+## Using Codex with LM Studio
+
+Codex is supported because LM Studio implements the OpenAI-compatible `POST /v1/responses` endpoint.
+
+See: [Use Codex with LM Studio](/docs/integrations/codex) and [Responses](/docs/developer/openai-compat/responses).
+
 ---
 
 Other OpenAI client libraries should have similar options to set the base URL.
