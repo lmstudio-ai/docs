@@ -29,7 +29,7 @@ You can configure server settings, such as the port number, whether to allow oth
   unstyledName: true
 - name: Allow per-request MCPs
   type: Switch
-  description: Allow API clients to use MCP (Model Control Protocol) servers that are not in your mcp.json. These MCP connections are ephemeral, only existing as long as the request. At the moment, only remote MCPs are supported.
+  description: Allow API clients to use MCP (Model Context Protocol) servers that are not in your mcp.json. These MCP connections are ephemeral, only existing as long as the request. At the moment, only remote MCPs are supported.
   unstyledName: true
 - name: Allow calling servers from mcp.json
   type: Switch
