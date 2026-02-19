@@ -96,7 +96,7 @@ can essentially turn your LLMs into autonomous agents that can perform tasks on 
             try:
                 dest_path.write_text(content, encoding="utf-8")
             except Exception as exc:
-                return "Error: {exc!r}"
+                return f"Error: {exc!r}"
             return "File created."
 
 ```
