@@ -1,6 +1,6 @@
 ---
-title: "Q&A"
-sidebar_title: "Q&A"
+title: "Frequently Asked Questions"
+sidebar_title: "FAQ"
 description: "Answers to common questions about LM Link."
 index: 3
 ---
@@ -38,5 +38,3 @@ A: No. LM Link only lets LM Studio/llmster talk to each other for model and API 
 
 #### Q: Can I use my existing Tailscale network?
 A: Not at the moment. When you enable LM Link we create a dedicated network programmatically and take full control over the ACL. This will not work well with any existing Tailscale networks. If you wish, you can DIY several aspects of the LM Link feature set yourself.
-
-
