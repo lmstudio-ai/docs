@@ -42,7 +42,7 @@ Your devices will automatically discover each other over the link, and your head
 
 When using LM Link, the same model loader now houses both local and remote models on linked devices. 
 
-Users can filter the model loader to display only local or remote machines, or to display all available models at once. Load and configure parameters for remote models with the same familiar controls, either in the GUI or by using lms in the terminal.
+You can filter the model loader to display only local or remote models, or to display all available models at once. Remote models can be loaded and configured with the same familiar controls, either in the GUI or by using lms in the terminal.
 
 If you have the same model on multiple devices, they will show up as separate entries, with the associated device name identified. If you are loading models via API/SDK, you can set a preferred device from the in-app LM Link page, or use command `lms link set-preferred-device`. Once set, the model will always load on your preferred device.
  
