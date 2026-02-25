@@ -22,7 +22,7 @@ A: Yes. Any model in your LM Link network can be used as if they are local. Just
 A: No. LM Link is an entirely separate and self-contained utilization of Tailscale VPN primitives. LM Link will coexist with other Tailscale utilization on your machine or network, with no interference or interplay. 
 
 #### Q: Can the LM Studio Hub see my chats?
-A: No. LM Studio’s server is only used as a discovery server that helps LM Studio/llmster instances find each other. All communication afterwards, including chats and model listing, happens within Tailscale’s end-to-end encrypted connection.
+A: No. The LM Studio Hub is only used to facilitate discovery between LM Studio/llmster instances. All communication afterwards, including chats and model listing, happens within Tailscale’s end-to-end encrypted connection.
 
 #### Q: How can I disable LM Link?
 A: In the LM Studio app, go to Settings -> LM Link -> Enable LM Link - OFF. If you are using llmster (our headless daemon), run `lms link disable`.
