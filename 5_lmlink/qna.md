@@ -33,8 +33,8 @@ A: LM Link uses end-to-end encrypted tunnels to connect to each other. If a devi
 #### Q: If I have the same model on multiple devices, how do I choose which one to use?
 A: If you are loading the model via LM Studio or `lms load`, the same model on different devices will show up as separate entries, with the device name identified. If you are loading models via API/SDK, you can set a preferred device from the in-app LM Link page, or use command `lms link set-preferred-device`. Once set, the model will always load on your preferred device.
 
-#### Q: Can linked devices access resources on my computer?
-A: No. LM Link does not modify your operating system, and your devices are not exposed to each other. Only LM Studio/llmster instances can communicate with each other through LM Link.
+#### Q: Can linked devices do anything besides LM Studio tasks on my computer?
+A: No. LM Link only lets LM Studio/llmster talk to each other for model and API access. It does not expose your operating system, files, or other services to linked devices.
 
 #### Q: Can I use my existing Tailscale network?
 A: Not at the moment. When you enable LM Link we create a dedicated network programmatically and take full control over the ACL. This will not work well with any existing Tailscale networks. If you wish, you can DIY several aspects of the LM Link feature set yourself.
