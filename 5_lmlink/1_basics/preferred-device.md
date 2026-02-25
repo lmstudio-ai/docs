@@ -7,7 +7,7 @@ index: 2
 
 ## Choosing a preferred device
 
-When the same model is available on multiple devices in the link, LM Link routes requests through the preferred device. Each device on the network can configure its own preferred device independently.
+When the same model is available on multiple devices in the link, LM Link uses the preferred device to load and use the model . Each device on the network can configure its own preferred device independently.
 
 This is especially relevant when accessing remote models via the SDK or REST API.
 
