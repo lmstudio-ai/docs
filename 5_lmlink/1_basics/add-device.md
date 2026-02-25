@@ -1,11 +1,11 @@
 ---
 title: Add a Device
 sidebar_title: Add a device
-description: Add a new device to your LM Link.
+description: Connect a new device to your LM Link.
 index: 2
 ---
 
-## Add a device
+## Add a new device
 
 <img src="/assets/docs/lmlink-adddevice.png" style="" data-caption="Add Device modal in LM Link" />
 
@@ -44,10 +44,6 @@ When using LM Link, the model loader shows both local models and remote models o
 
 You can filter the model loader to display only local or remote models, or to display all available models at once. Remote models can be loaded and configured with the same familiar controls, either in the GUI or by using lms in the terminal.
 
-If you have the same model on multiple devices, they will show up as separate entries, with the associated device name identified. If you are loading models via API/SDK, you can set a preferred device from the in-app LM Link page, or use command `lms link set-preferred-device`. Once set, the model will always load on your preferred device.
- 
+If you have the same model on multiple devices, they will show up as separate entries, with the associated device name identified. If you are loading models via API/SDK, you can [set a preferred device](/docs/lmlink/1_basics/preferred-device) to specify which device to load the model from when multiple options are available.
+
 Using LM Studio’s parallel requests, you can also serve multiple clients simultaneously across your LM Link network.
-
-
-
-
