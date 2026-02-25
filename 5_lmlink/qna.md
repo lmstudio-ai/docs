@@ -21,7 +21,7 @@ A: Yes. Any model in your LM Link network can be used as if they are local. Just
 #### Q: Will LM Link interfere with my existing Tailscale VPN?
 A: No. LM Link is an entirely separate and self-contained utilization of Tailscale VPN primitives. LM Link will coexist with other Tailscale utilization on your machine or network, with no interference or interplay. 
 
-#### Q: Can LM Studio’s server see my chats?
+#### Q: Can the LM Studio Hub see my chats?
 A: No. LM Studio’s server is only used as a discovery server that helps LM Studio/llmster instances find each other. All communication afterwards, including chats and model listing, happens within Tailscale’s end-to-end encrypted connection.
 
 #### Q: How can I disable LM Link?
