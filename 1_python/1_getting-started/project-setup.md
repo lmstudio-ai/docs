@@ -37,8 +37,6 @@ All of the examples in the documentation assume that the server API is running l
 on one of the default application ports (Note: in Python SDK versions prior to 1.5.0, the
 SDK also required that the optional HTTP REST server be enabled).
 
-> LM Link provides an alternative to overriding the server API network location. If you're interested, learn more about LM Link [here](link.lmstudio.ai) 
-
 The network location of the server API can be overridden by
 passing a `"host:port"` string when creating the client instance.
 
