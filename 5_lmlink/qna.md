@@ -37,6 +37,6 @@ A: If you are loading the model via LM Studio or `lms load`, the same model on d
 A: No. LM Link does not modify your operating system, and your devices are not exposed to each other. Only LM Studio/llmster instances can communicate with each other through LM Link.
 
 #### Q: Can I use my existing Tailscale network?
-A: Not at the moment. When you enable LM LInk we create a dedicated network programmatically and take full control over the ACL. This will not work well with any existing Tailscale networks. If you wish, you can DIY several aspects of the LM Link feature set yourself.
+A: Not at the moment. When you enable LM Link we create a dedicated network programmatically and take full control over the ACL. This will not work well with any existing Tailscale networks. If you wish, you can DIY several aspects of the LM Link feature set yourself.
 
 
