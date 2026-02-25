@@ -28,7 +28,7 @@ A: No. LM Studio’s server is only used as a discovery server that helps LM Stu
 A: In the LM Studio app, go to Settings -> LM Link -> Enable LM Link - OFF. If you are using llmster (our headless daemon), run `lms link disable`.
 
 #### Q: Why does a device show up as “disconnected”?
-A: LM Link uses end-to-end encrypted tunnels to connect to each other. If a device shows up as “disconnected”, it is possible that device has crashed but has not reported to the discovery server. Please make sure LM Studio/llmster is indeed running on that device. If the error persists, please report a bug at YYY.
+A: LM Link uses end-to-end encrypted tunnels to connect to each other. If a device shows up as “disconnected”, it is possible that device has crashed but has not reported to the discovery server. Please make sure LM Studio/llmster is indeed running on that device. If the error persists, please report a bug at [bugs@lmstudio.ai](mailto:bugs@lmstudio.ai).
 
 #### Q: If I have the same model on multiple devices, how do I choose which one to use?
 A: If you are loading the model via LM Studio or `lms load`, the same model on different devices will show up as separate entries, with the device name identified. If you are loading models via API/SDK, you can set a preferred device from the in-app LM Link page, or use command `lms link set-preferred-device`. Once set, the model will always load on your preferred device.
