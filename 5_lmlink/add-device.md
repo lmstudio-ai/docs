@@ -40,7 +40,7 @@ Your devices will automatically discover each other over the link, and your head
 
 <img src="/assets/docs/lmlink-useremotemodels.png" style="" data-caption="Load models on remote devices with LM Link" />
 
-When using LM Link, the same model loader now houses both local and remote models on linked devices. 
+When using LM Link, the model loader shows both local models and remote models on linked devices. 
 
 You can filter the model loader to display only local or remote models, or to display all available models at once. Remote models can be loaded and configured with the same familiar controls, either in the GUI or by using lms in the terminal.
 
