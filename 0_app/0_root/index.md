@@ -52,6 +52,12 @@ You can attach documents to your chat messages and interact with them entirely o
 
 Read more about how to use this feature in the [Chat with Documents](app/basics/rag) guide.
 
+## Run LM Studio without the GUI (llmster)
+
+llmster is the headless version of LM Studio, no desktop app required. It's ideal for servers, CI environments, or any machine where you don't need a GUI.
+
+Learn more: [Headless Mode](/docs/developer/core/headless).
+
 ## Use LM Studio's API from your own apps and scripts
 
 LM Studio provides a REST API that you can use to interact with your local models from your own apps and scripts.

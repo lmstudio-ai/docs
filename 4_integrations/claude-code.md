@@ -9,6 +9,10 @@ See: [Anthropic-compatible Messages endpoint](/docs/developer/anthropic-compat/m
 
 <img src="/assets/docs/claude-code.webp" style="width: 100%;" data-caption="Claude Code configured to use LM Studio via the Anthropic-compatible API" />
 
+```lms_protip
+Have a powerful LLM rig? Use [LM Link](/docs/integrations/lmlink) to run Claude Code from your laptop while the model runs on your rig.
+```
+
 ### 1) Start LM Studio's local server
 
 Make sure LM Studio is running as a server (default port `1234`).

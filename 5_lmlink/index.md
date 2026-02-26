@@ -16,4 +16,10 @@ LM Link unlocks the full potential of your hardware by sharing compute across co
 
 LM Link use cases span individuals as well as teams. 
 
-For individuals, manage a private link to keep your prized gaming GPU busy even when you’re on the go. For teams, LM Link allows you to set up local LLM serving for multiple users with just a few clicks.
+For individuals, manage a private link to keep your prized gaming GPU busy even when you're on the go. For teams, LM Link allows you to set up local LLM serving for multiple users with just a few clicks.
+
+## Use LM Link with
+
+- **CLI** — manage LM Link from the terminal with [`lms link`](/docs/cli/link/link-enable)
+- **REST API** — use remote models via the REST API with [LM Link](/docs/rest-api/lmlink)
+- **Integrations** — use remote models with coding tools like Claude Code and Codex via [LM Link](/docs/integrations/lmlink)
