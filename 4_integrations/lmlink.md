@@ -1,8 +1,8 @@
 ---
 title: Using LM Link with Integrations
-sidebar_title: Using LM Link with Integrations
+sidebar_title: Working with LM Link
 description: Use a remote device's model with coding tools like Claude Code and Codex via LM Link
-index: 4
+index: 1
 ---
 
 With [LM Link](/docs/lmlink), your coding tools can run models on a remote device (like a dedicated LLM rig on your network) while you work from your laptop
