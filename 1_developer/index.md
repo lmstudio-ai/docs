@@ -111,6 +111,6 @@ Full docs: [LM Studio REST API](/docs/developer/rest)
 ## Helpful links
 
 - [API Changelog](/docs/developer/api-changelog)
-- [Local server basics](/docs/developer/core)
+- [Local server basics](/docs/developer/core/server)
 - [CLI reference](/docs/cli)
 - [Discord Community](https://discord.gg/lmstudio)

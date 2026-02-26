@@ -38,7 +38,7 @@ lms daemon up
 ```
 
 
-See the [daemon CLI docs](/docs/cli/daemon) for full reference.
+See the [daemon CLI docs](/docs/cli/daemon/daemon-up) for full reference.
 
 For setting up llmster as a startup task on Linux, see [Linux Startup Task](/docs/developer/core/headless_llmster).
 

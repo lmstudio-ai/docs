@@ -21,5 +21,5 @@ For individuals, manage a private link to keep your prized gaming GPU busy even 
 ## Use LM Link with
 
 - **CLI** — manage LM Link from the terminal with [`lms link`](/docs/cli/link/link-enable)
-- **REST API** — use remote models via the REST API with [LM Link](/docs/rest-api/lmlink)
+- **REST API** — use remote models via the REST API with [LM Link](/docs/developer/core/lmlink)
 - **Integrations** — use remote models with coding tools like Claude Code and Codex via [LM Link](/docs/integrations/lmlink)

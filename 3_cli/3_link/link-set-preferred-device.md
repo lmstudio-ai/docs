@@ -23,7 +23,7 @@ lms link set-preferred-device <deviceIdentifier>
 
 Device identifiers are listed in the output of [`lms link status`](/docs/cli/link/link-status).
 
-See [Using LM Link with the REST API](/docs/rest-api/lmlink) for more on how preferred devices affect model routing.
+See [Using LM Link with the REST API](/docs/developer/core/lmlink) for more on how preferred devices affect model routing.
 
 ### Learn more
 

@@ -9,7 +9,7 @@ index: 2
 
 When the same model is available on multiple devices in the link, LM Link uses the preferred device to load and use the model. This setting is per-machine: each device on the link independently controls which remote machine it prefers.
 
-This is especially relevant when accessing remote models via the SDK or [REST API](/docs/developer/rest/lmlink).
+This is especially relevant when accessing remote models via the SDK or [REST API](/docs/developer/core/lmlink).
 
 ### Machines with GUI
 

@@ -13,10 +13,12 @@ When a preferred device is set, the model is loaded there automatically. Request
 
 <img src="/assets/docs/rest-link-diagram.png" data-caption="Sequence diagram: REST API request routed through LM Link to a remote device" />
 
-See [how to set a preferred device](/docs/lmlink/basics/preferred-device) for more details.
+The preferred device setting is per-machine. Each device on the link independently controls which remote machine it prefers. See [how to set a preferred device](/docs/lmlink/basics/preferred-device) for more details.
 
 ## Use the REST API as normal
 
-Once a preferred device is set, use the REST API exactly as you would locally. See the [REST API docs](/docs/rest-api) for usage details.
+Once a preferred device is set, use the REST API exactly as you would locally. See the [REST API docs](/docs/developer/rest) for usage details.
+
+
 
 If you're running into trouble, hop onto our [Discord](https://discord.gg/lmstudio)
