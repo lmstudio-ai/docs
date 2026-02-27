@@ -1,5 +1,5 @@
 ---
-title: Using LM Link with the REST API
+title: Using LM Link
 sidebar_title: Using with LM Link
 description: Use a remote device's model via the REST API with LM Link
 index: 3
@@ -7,7 +7,7 @@ index: 3
 
 ## Overview
 
-With [LM Link](/docs/lmlink), you can use a model loaded on a remote device (e.g. a powerful LLM rig on your network) via the REST API, from any machine on the same link, like your laptop.
+With [LM Link](/docs/lmlink), you can use a model loaded on a remote device (e.g. a powerful LLM rig on your network) via the REST API or SDK, from any machine on the same link, like your laptop.
 
 When a preferred device is set, the model is loaded there automatically. Requests to `localhost` still work as normal. LM Studio internally uses the model on the remote device as if it were loaded locally.
 
