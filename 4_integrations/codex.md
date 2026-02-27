@@ -9,6 +9,10 @@ See: [OpenAI-compatible Responses endpoint](/docs/developer/openai-compat/respon
 
 <img src="/assets/docs/codex.webp" style="width: 100%;" data-caption="Codex configured to use LM Studio via the OpenAI-compatible API" />
 
+```lms_protip
+Have a powerful LLM rig? Use [LM Link](/docs/integrations/lmlink) to run Codex from your laptop while the model runs on your rig.
+```
+
 ### 1) Start LM Studio's local server
 
 Make sure LM Studio is running as a server (default port `1234`).
