@@ -1,31 +1,72 @@
 ---
 title: "Run LM Studio as a service (headless)"
-sidebar_title: "Headless Mode"
+sidebar_title: "`llmster` - Headless Mode"
 description: "GUI-less operation of LM Studio: run in the background, start on machine login, and load models on demand"
 index: 2
 ---
 
-LM Studio can be run as a service without the GUI. This is useful for running LM Studio on a server or in the background on your local machine. This works on Mac, Windows, and Linux machines with a graphical user interface.
+LM Studio can be run as a background service without the GUI. There are two ways to do this:
 
-## Run LM Studio as a service
+1. **llmster** (recommended) — a standalone daemon, no GUI required
+2. **Desktop app in headless mode** — hide the UI and run the desktop app as a service
 
-Running LM Studio as a service consists of several new features intended to make it more efficient to use LM Studio as a developer tool.
+## Option 1: llmster (recommended)
 
-1. The ability to run LM Studio without the GUI
-2. The ability to start the LM Studio LLM server on machine login, headlessly
-3. On-demand model loading
+llmster is the core of the LM Studio desktop app, packaged to be server-native, without reliance on the GUI. It can run on Linux boxes, cloud servers, GPU rigs, or your local machine without the GUI. See the [LM Studio 0.4.0 release post](/blog/0.4.0) for more details.
 
-## Run the LLM service on machine login
+<img src="/assets/blog/0.4.0/llmster@2x.png" alt="llmster" style="" data-caption="" />
 
-To enable this, head to app settings (`Cmd` / `Ctrl` + `,`) and check the box to run the LLM server on login.
+
+### Install llmster
+
+**Linux / Mac**
+
+```bash
+curl -fsSL https://lmstudio.ai/install.sh | bash
+```
+
+**Windows**
+
+```bash
+irm https://lmstudio.ai/install.ps1 | iex
+```
+
+### Start llmster
+
+```bash
+lms daemon up
+```
+
+
+See the [daemon CLI docs](/docs/cli/daemon/daemon-up) for full reference.
+
+For setting up llmster as a startup task on Linux, see [Linux Startup Task](/docs/developer/core/headless_llmster).
+
+## Option 2: Desktop app in headless mode
+
+This works on Mac, Windows, and Linux machines with a graphical user interface. It's useful if you already have the desktop app installed and want it to run as a background service.
+
+### Run the LLM service on machine login
+
+Head to app settings (`Cmd` / `Ctrl` + `,`) and check the box to run the LLM server on login.
 
 <img src="/assets/docs/headless-settings.webp" style="" data-caption="Enable the LLM server to start on machine login" />
 
 When this setting is enabled, exiting the app will minimize it to the system tray, and the LLM server will continue to run in the background.
 
+### Auto Server Start
+
+Your last server state will be saved and restored on app or service launch.
+
+To achieve this programmatically:
+
+```bash
+lms server start
+```
+
 ## Just-In-Time (JIT) model loading for REST endpoints
 
-Useful when utilizing LM Studio as an LLM service with other frontends or applications.
+Applies to both options. Useful when using LM Studio as an LLM service with other frontends or applications.
 
 <img src="/assets/docs/jit-loading.webp" style="" data-caption="Load models on demand" />
 
@@ -42,16 +83,6 @@ Useful when utilizing LM Studio as an LLM service with other frontends or applic
 #### What about auto unloading?
 
 JIT loaded models will be auto-unloaded from memory by default after a set period of inactivity ([learn more](/docs/developer/core/ttl-and-auto-evict)).
-
-## Auto Server Start
-
-Your last server state will be saved and restored on app or service launch.
-
-To achieve this programmatically, you can use the following command:
-
-```bash
-lms server start
-```
 
 ### Community
 

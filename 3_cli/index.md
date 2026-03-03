@@ -29,6 +29,8 @@ lms --help
 | See models loaded into memory | `lms ps` | [Guide](/docs/cli/local-models/ps) |
 | Control the server | `lms server start` | [Guide](/docs/cli/serve/server-start) |
 | Manage the inference runtime | `lms runtime` | [Guide](/docs/cli/runtime) |
+| Manage the headless daemon | `lms daemon` | [Guide](/docs/cli/daemon/daemon-up) |
+| Manage LM Link | `lms link` | [Guide](/docs/cli/link/link-enable) |
 
 
 ### Verify the installation

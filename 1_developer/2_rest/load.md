@@ -54,7 +54,7 @@ variants:
           "model": "openai/gpt-oss-20b",
           "context_length": 16384,
           "flash_attention": true,
-          "echo_load_config": true,
+          "echo_load_config": true
         }'
 ```
 ````
