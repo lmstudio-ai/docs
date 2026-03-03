@@ -11,6 +11,8 @@ With [LM Link](/docs/lmlink), your coding tools can run models on a remote devic
 
 ## Set a preferred device
 
+To use a model on a specific remote device, set the device as the preferred device. This ensures that API requests are routed to the correct machine.
+
 **In the app:** Go to the LM Link page, select the remote device, and toggle "Set as preferred device".
 
 **In the terminal:**
@@ -23,7 +25,7 @@ See [set a preferred device](/docs/lmlink/basics/preferred-device) for more deta
 
 ## Use your integration as normal
 
-Once a preferred device is set, start LM Studio's server on your local machine and configure your tool to point to it. Model loads are routed to the preferred device automatically.
+Start LM Studio's server on your local machine and configure your tool to point to it. Model loads are routed to the device the model is loaded on or the preferred device if set.
 
 ```bash
 lms server start --port 1234
@@ -51,6 +53,6 @@ See the full [Codex](/docs/integrations/codex) guide.
 The preferred device setting is per-machine. Each device on the link independently controls which remote machine it prefers.
 ```
 
-Your laptop handles the API surface at `localhost:1234`, while the model runs on the preferred remote device. No extra configuration needed in the integration itself.
+Your laptop handles the API surface at `localhost:1234`, while the model runs on the device the model is present on.
 
 If you're running into trouble, hop onto our [Discord](https://discord.gg/lmstudio)
