@@ -57,6 +57,8 @@ lms get https://huggingface.co/lmstudio-community/Qwen3.5-9B-GGUF
 
 ## Specify quantization
 
+You can select a quantization by adding the `@` character followed by the desired quantization. Options will depend on what's available in the repository, but popular options are: `q4_k_m` and `q8_0`.
+
 Download a specific quantization:
 
 ```shell
@@ -66,7 +68,7 @@ lms get llama-3.1-8b@q4_k_m
 Download a specific quantization from a Hugging Face URL:
 
 ```shell
-lms get https://huggingface.co/lmstudio-community/Qwen3.5-9B-GGUF@Q4_k_m
+lms get https://huggingface.co/lmstudio-community/Qwen3.5-9B-GGUF@q4_k_m
 ```
 
 ## Filter by format
