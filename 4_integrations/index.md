@@ -13,5 +13,6 @@ We provide guides below for popular tools and are constantly expanding this list
 
 ## Available Integrations
 
+- [Onyx](/docs/integrations/onyx)
 - [Claude Code](/docs/integrations/claude-code)
 - [Codex](/docs/integrations/codex)
