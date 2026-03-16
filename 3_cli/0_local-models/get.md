@@ -9,7 +9,7 @@ The `lms get` command allows you to search and download models from online repos
 
 Models you download via `lms get` will be stored in your LM Studio model directory. 
 
-### Flags 
+### Flags
 ```lms_params
 - name: "[modelName]"
   type: "string"
@@ -35,6 +35,10 @@ Models you download via `lms get` will be stored in your LM Studio model directo
   type: "flag"
   optional: true
   description: "Always prompt you to choose a quantization, even when an exact match is auto-selected."
+- name: "-y, --yes"
+  type: "flag"
+  optional: true
+  description: "Automatically approve prompts (useful for scripting). If multiple models match, the first is used. If multiple download options exist, the recommended option is chosen."
 ```
 
 ## Download a model
@@ -45,15 +49,29 @@ Download a model by name:
 lms get llama-3.1-8b
 ```
 
-### Specify quantization
+Download from a Hugging Face URL:
 
-Download a specific model quantization:
+```shell
+lms get https://huggingface.co/lmstudio-community/Qwen3.5-9B-GGUF
+```
+
+## Specify quantization
+
+You can select a quantization by adding the `@` character followed by the desired quantization. Options will depend on what's available in the repository, but popular options are: `q4_k_m` and `q8_0`.
+
+Download a specific quantization:
 
 ```shell
 lms get llama-3.1-8b@q4_k_m
 ```
 
-### Filter by format
+Download a specific quantization from a Hugging Face URL:
+
+```shell
+lms get https://huggingface.co/lmstudio-community/Qwen3.5-9B-GGUF@q4_k_m
+```
+
+## Filter by format
 
 Show only MLX or GGUF models:
 
@@ -75,4 +93,10 @@ Always show all options:
 ```shell
 lms get --always-show-all-results
 lms get --always-show-download-options
+```
+
+Non-interactive (auto-approve prompts):
+
+```shell
+lms get llama-3.1-8b --yes
 ```
