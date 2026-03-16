@@ -1,7 +1,7 @@
 ---
 title: Onyx
 description: Use Onyx with LM Studio
-index: 2
+index: 4
 ---
 
 [Onyx](https://www.onyx.app/) is an open source AI platform that connects your LLMs to your organization's knowledge and applications. It provides chat, AI agents, internal search, web search, actions, and more — all in one place.

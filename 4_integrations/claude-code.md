@@ -1,7 +1,7 @@
 ---
 title: Claude Code
 description: Use Claude Code with LM Studio
-index: 3
+index: 2
 ---
 
 Claude Code can talk to LM Studio via the Anthropic-compatible `POST /v1/messages` endpoint.

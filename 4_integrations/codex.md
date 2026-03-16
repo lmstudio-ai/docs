@@ -1,7 +1,7 @@
 ---
 title: Codex
 description: Use Codex with LM Studio
-index: 4
+index: 3
 ---
 
 Codex can talk to LM Studio via the OpenAI-compatible `POST /v1/responses` endpoint.
