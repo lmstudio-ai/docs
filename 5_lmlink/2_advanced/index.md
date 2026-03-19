@@ -28,7 +28,7 @@ All communication between linked devices goes exclusively through the tailscale 
 
 ## Where are chats stored when I use LM Link?
 
-When you send a prompt through the encrypted link to a remote device, the prompt is processed on the remote machine and a response is returned to the client device. Chats will always be stored on the disk of the client device.
+When you send a prompt through the encrypted link to a remote device, the prompt is processed on the remote machine and a response is returned to the client device. Chats are stored on the disk of the client device.
 
 ## High level overview
 
