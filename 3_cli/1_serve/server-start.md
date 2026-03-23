@@ -9,6 +9,10 @@ The `lms server start` command launches the LM Studio local server, allowing you
 
 ### Flags 
 ```lms_params
+- name: "--bind"
+  type: "string"
+  optional: true
+  description: "Bind the ip address to run the server on. If not provided, uses the last used address"
 - name: "--port"
   type: "number"
   optional: true
@@ -25,6 +29,11 @@ Start the server with default settings:
 
 ```shell
 lms server start
+```
+### Specify a custom address
+
+```shell
+lms server start --bind 127.0.0.1
 ```
 
 ### Specify a custom port
