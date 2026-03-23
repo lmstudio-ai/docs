@@ -12,7 +12,7 @@ The `lms server start` command launches the LM Studio local server, allowing you
 - name: "--bind"
   type: "string"
   optional: true
-  description: "Bind the ip address to run the server on. If not provided, uses the last used address"
+  description: "Bind the ip address to run the server on."
 - name: "--port"
   type: "number"
   optional: true
