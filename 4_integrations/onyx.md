@@ -65,5 +65,6 @@ Enable your models from the auto-discovered list, save, and you're ready to go!
 
 - Onyx auto-discovers models loaded in LM Studio along with their capabilities (vision, reasoning) and context length.
 - For best results, use a model with strong instruction-following and tool-use capabilities (e.g., Qwen 3.5).
+- Check out the [Onyx docs](https://docs.onyx.app/) for more details on setup and configuration.
 
 If you're running into trouble, hop onto the [LM Studio Discord](https://discord.gg/lmstudio) or the [Onyx Discord](https://discord.gg/Pk3qzRKAEx)!
