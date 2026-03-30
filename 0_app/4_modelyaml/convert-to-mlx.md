@@ -38,8 +38,8 @@ Use the conversion package that corresponds to your model type below.
 ### Text-only models
 
 ```bash
-python -m mlx_lm convert 
-  --hf-path \
+python -m mlx_lm convert \
+  --hf-path <huggingface-model-id> \
   --mlx-path /path/to/output/mlx-model
 ```
 
@@ -52,8 +52,8 @@ python -m mlx_lm convert --hf-path Qwen/Qwen3-0.6B
 ### Vision models 
 
 ```bash
-mlx_vlm.convert
-  --hf-path \ 
+mlx_vlm.convert \
+  --hf-path <huggingface-model-id> \
   --mlx-path /path/to/output/mlx-model
 ```
 
@@ -76,7 +76,7 @@ To directly place the converted model in LM Studio’s model directory, we recom
 For the Qwen2.5-VL-3B-Instruct model above, an example command would look like:
 
 ```bash
-mlx_vlm.convert --hf-path Qwen/Qwen2.5-VL-3B-Instruct –-mlx-path ~/.lmstudio/models/publisher/Qwen2.5-VL-3B-Instruct-MLX
+mlx_vlm.convert --hf-path Qwen/Qwen2.5-VL-3B-Instruct --mlx-path ~/.lmstudio/models/publisher/Qwen2.5-VL-3B-Instruct-MLX
 ```
 
 This way, you’ll see the model in LM Studio as soon as the conversion is complete – no import step needed.
