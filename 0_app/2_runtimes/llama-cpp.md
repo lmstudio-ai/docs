@@ -17,13 +17,19 @@ If you’ve tinkered with open source models, you’ve likely heard of [llama.cp
 
 ## llama.cpp in LM Studio
 
-In the LM Studio app, open Runtime settings (⌘⇧R) to see llama.cpp as the runtime selection for GGUF. When downloading models in LM Studio, you may see <Model-Name>-Q4_K_M.gguf in the model card. Q4_K_M.gguf indicates a Q4 quantized version of the model stored in GGUF format.
+In the LM Studio app, open Runtime settings (⌘⇧R) to see llama.cpp as the runtime selection for GGUF.
+
+<img src="/assets/docs/settings-runtime-llamacpp.png" data-caption="llama.cpp runtime" />
+
+ When downloading models in LM Studio, you may see <Model-Name>-Q4_K_M.gguf in the model card. Q4_K_M.gguf indicates a Q4 quantized version of the model stored in GGUF format.
 
 ## Download a GGUF model 
 
 **From the GUI**
 
 In the app, head to the Model Search tab and filter by GGUF to see only models in that format.
+
+<img src="/assets/docs/modelsearch-gguf.png" data-caption="Filter by GGUF in model search" />
 
 **Using the CLI**
 

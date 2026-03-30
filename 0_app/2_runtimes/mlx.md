@@ -18,6 +18,8 @@ Unlike traditional systems where CPU and GPU maintain separate memory pools, App
 
 If you’re using LM Studio on a Mac, you will see MLX as an available runtime under Runtime Settings (⌘⇧R). 
 
+<img src="/assets/docs/settings-runtime-mlx.png" data-caption="MLX runtime" />
+
 When browsing models in LM Studio, you may see entries like `lmstudio-community/Qwen3-Coder-Next-MLX-4bit`. The LM Studio team maintains our own MLX conversions for popular open source models on Hugging Face at [lmstudio-community](https://huggingface.co/lmstudio-community).
 
 ### Download an MLX model
@@ -25,6 +27,8 @@ When browsing models in LM Studio, you may see entries like `lmstudio-community/
 **From the GUI**
 
 In the app, head to the Model Search tab and filter by MLX to see only models in that format.
+
+<img src="/assets/docs/modelsearch-mlx.png" data-caption="Filter by MLX in model search" />
 
 **Using the CLI**
 
