@@ -47,7 +47,7 @@ lms daemon status  # Check if the daemon is running
 
 ## lms (the CLI)
 
-`lms` is LM Studio's CLI (command-line interface). It lets you interact with LM Studio and manage your models directly from a terminal. 
+`lms` is LM Studio's CLI (command-line interface). It lets you interact with both the LM Studio desktop app and llmster, and manage your models directly from a terminal. 
 
 `lms` is included automatically upon downloading the app or llmster.
 
