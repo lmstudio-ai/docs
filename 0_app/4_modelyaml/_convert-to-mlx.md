@@ -1,11 +1,11 @@
 ---
 title: Convert Models to MLX
-description: Convert models to MLX format for use with the MLX runtime in LM Studio
+description: Convert models to MLX format for use with the MLX engine in LM Studio
 index: 6
 ---
 
 ## Convert a model to MLX format
-Convert models to MLX to use with LM Studio’s MLX runtime backend. 
+Convert models to MLX to use with LM Studio’s MLX engine. 
 
 LM Studio’s MLX capability integrates two different implementations, **mlx-lm** and **mlx-vlm**. The former should be used for text-only models while the latter should be used for vision models.
 

@@ -1,12 +1,12 @@
 ---
 title: What is llama.cpp
-description: Learn about the llama.cpp inference runtime in LM Studio
+description: Learn about the llama.cpp inference engine in LM Studio
 index: 2
 ---
 
 ## What is llama.cpp
 
-If you’ve tinkered with open source models, you’ve likely heard of [llama.cpp](https://github.com/ggml-org/llama.cpp). llama.cpp is an open-source inference engine written in C++, developed by Georgi Gerganov in 2023. The goal of this project is to make LLM inference accessible across a wide range of hardware, with minimal setup and without compromising on performance. LM Studio integrates llama.cpp under the hood as one of our primary runtime engines. 
+If you’ve tinkered with open source models, you’ve likely heard of [llama.cpp](https://github.com/ggml-org/llama.cpp). llama.cpp is an open-source inference engine written in C++, developed by Georgi Gerganov in 2023. The goal of this project is to make LLM inference accessible across a wide range of hardware, with minimal setup and without compromising on performance. LM Studio integrates llama.cpp under the hood as one of our primary engines. 
 
 
 ### Relevant Terminology
@@ -19,7 +19,7 @@ If you’ve tinkered with open source models, you’ve likely heard of [llama.cp
 
 In the LM Studio app, open Runtime settings (⌘⇧R) to see llama.cpp as the runtime selection for GGUF.
 
-<img src="/assets/docs/settings-runtime-llamacpp.png" data-caption="llama.cpp runtime" />
+<img src="/assets/docs/settings-runtime-llamacpp.png" data-caption="llama.cpp engine" />
 
  When downloading models in LM Studio, you may see <Model-Name>-Q4_K_M.gguf in the model card. Q4_K_M.gguf indicates a Q4 quantized version of the model stored in GGUF format.
 
