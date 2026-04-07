@@ -1,5 +1,5 @@
 ---
-title: LM Studio vs llmster vs lms
+title: LM Studio, llmster, and lms
 description: Understand the differences between the LM Studio app, llmster, and lms
 index: 5
 ---
