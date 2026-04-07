@@ -111,6 +111,17 @@ variants:
         - name: trained_for_tool_use
           type: boolean
           description: Whether the model was trained for tool/function calling.
+        - name: reasoning
+          type: object
+          optional: true
+          description: Public reasoning configuration for the model. Absent when no reasoning config is exposed.
+          children:
+            - name: allowed_options
+              type: '("off" | "on" | "low" | "medium" | "high")[]'
+              description: Allowed public reasoning settings for the model.
+            - name: default
+              type: '"off" | "on" | "low" | "medium" | "high"'
+              description: Default public reasoning setting for the model.
     - name: description
       type: string | null
       optional: true
@@ -153,7 +164,36 @@ variants:
             "format": "gguf",
             "capabilities": {
               "vision": false,
-              "trained_for_tool_use": false
+              "trained_for_tool_use": false,
+              "reasoning": {
+                "allowed_options": ["off", "on"],
+                "default": "on"
+              }
+            },
+            "description": null
+          },
+          {
+            "type": "llm",
+            "publisher": "deepseek",
+            "key": "deepseek-r1",
+            "display_name": "DeepSeek R1",
+            "architecture": "deepseek",
+            "quantization": {
+              "name": "Q4_K_M",
+              "bits_per_weight": 4
+            },
+            "size_bytes": 40492610355,
+            "params_string": "671B",
+            "loaded_instances": [],
+            "max_context_length": 131072,
+            "format": "gguf",
+            "capabilities": {
+              "vision": false,
+              "trained_for_tool_use": true,
+              "reasoning": {
+                "allowed_options": ["on"],
+                "default": "on"
+              }
             },
             "description": null
           },
