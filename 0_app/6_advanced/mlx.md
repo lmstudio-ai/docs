@@ -8,7 +8,7 @@ index: 3
 
 [MLX](https://github.com/ml-explore/mlx) is a machine learning framework and library developed by Apple to optimize running ML workloads on Apple Silicon. [mlx-lm](https://github.com/ml-explore/mlx-lm/tree/main) and [mlx-vlm](https://github.com/Blaizzy/mlx-vlm) are packages built on top of the MLX framework that focuses specifically on performing inference with LLMs or VLMs, respectively. These packages maximize the speed and efficiency of running LLMs on Apple Silicon.
 
-LM Studio integrates both mlx-lm and mlx-vlm into its MLX engine. Because MLX is built by Apple for Apple hardware, it is a Mac-only engine and is not available on other platforms.
+LM Studio integrates both mlx-lm and mlx-vlm into the [LM Studio MLX engine](https://github.com/lmstudio-ai/mlx-engine). Because MLX is built by Apple for Apple hardware, it is a Mac-only engine and is not available on other platforms.
 
 ## MLX and unified memory
 
