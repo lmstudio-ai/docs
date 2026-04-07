@@ -90,4 +90,4 @@ Use the `--help` flag on either command (e.g., `python -m mlx_vlm.convert --help
 If you do not include the --mlx-path flag in your command, the tool automatically creates a folder called mlx_model in the folder you were currently in. In this case, you’ll need to manually import the converted MLX model to LM Studio by placing it in LM Studio’s expected models directory structure. By default, LM Studio stores models in `~/.lmstudio/models/`.
 
 
-See our [MLX overview](../runtimes/mlx) for more information about using MLX models in LM Studio.
+See our [MLX overview](../advanced/mlx) for more information about using MLX models in LM Studio.
