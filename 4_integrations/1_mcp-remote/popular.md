@@ -68,7 +68,7 @@ Work with Jira issues and Confluence pages from within LM Studio.
 
 
 <div className="w-fit">
-  <a style="background: rgb(255,255,255)" href="https://lmstudio.ai/install-mcp?name=atlassian&config=eyJ1cmwiOiJodHRwczovL21jcC5hdGxhc3NpYW4uY29tL21jcCJ9">
+  <a style="background: rgb(255,255,255)" href="https://lmstudio.ai/install-mcp?name=atlassian&config=eyJ1cmwiOiJodHRwczovL21jcC5hdGxhc3NpYW4uY29tL3YxL21jcCJ9">
     <LightVariant>
       <img src="https://files.lmstudio.ai/deeplink/mcp-install-light.svg" alt="Add Atlassian MCP to LM Studio" />
     </LightVariant>
@@ -82,7 +82,7 @@ Work with Jira issues and Confluence pages from within LM Studio.
 {
   "mcpServers": {
     "atlassian": {
-      "url": "https://mcp.atlassian.com/mcp"
+      "url": "https://mcp.atlassian.com/v1/mcp"
     }
   }
 }
