@@ -5,7 +5,7 @@ description: Connect external services to LM Studio via MCP.
 index: 1
 ---
 
-LM Studio now support MCP that use OAuth, letting you connect integrations that require authentication, no tokens to copy, no headers to configure. LM Studio opens a browser window, you log in, and the integration's tools become available to your models.
+LM Studio now supports MCP with OAuth. Seamlessly connect integrations that require authentication without copying tokens or configuring headers. Simply add your integration, log in via browser, and its tools are instantly available to your models in LM Studio.
 
 <img src="/assets/docs/mcp-auth.webp" style="width: 100%;" data-caption="Atlassian MCP logged in and Notion MCP requiring authentication" />
 
