@@ -39,7 +39,7 @@ Search pages, create documents, and read from your Notion workspace.
 
 
 <div className="w-fit">
-  <a style="background: rgb(255,255,255)" href="https://lmstudio.ai/install-mcp?name=notion&config=eyJ1cmwiOiJodHRwczovL2FwaS5ub3Rpb24uY29tL21jcCJ9">
+  <a style="background: rgb(255,255,255)" href="https://lmstudio.ai/install-mcp?name=notion&config=eyJ1cmwiOiJodHRwczovL21jcC5ub3Rpb24uY29tL21jcCJ9">
     <LightVariant>
       <img src="https://files.lmstudio.ai/deeplink/mcp-install-light.svg" alt="Add Notion MCP to LM Studio" />
     </LightVariant>
@@ -53,7 +53,7 @@ Search pages, create documents, and read from your Notion workspace.
 {
   "mcpServers": {
     "notion": {
-      "url": "https://api.notion.com/mcp"
+      "url": "https://mcp.notion.com/mcp"
     }
   }
 }
