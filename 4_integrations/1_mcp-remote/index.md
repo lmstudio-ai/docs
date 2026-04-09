@@ -25,7 +25,12 @@ From that point on, your model can call tools from that service just like any ot
 
 Some services require you to bring your own OAuth app, either because they don't support dynamic client registration, or because they need a specific redirect URL whitelisted in their developer portal.
 
-In these cases, add an `auth` object to the server entry in `mcp.json`:
+In these cases, add an `auth` object to the server entry in `mcp.json`. When configuring your OAuth app, use the following callback URL:
+
+```
+http://127.0.0.1:33389/mcp-oauth-callback
+```
+
 
 ```json
 {

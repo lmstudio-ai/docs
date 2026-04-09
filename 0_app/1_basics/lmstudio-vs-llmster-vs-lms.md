@@ -6,7 +6,7 @@ index: 5
 
 ## LM Studio app, llmster, and lms
 
-The LM Studio app, llmster, and `lms` are three distinct yet closely related components in LM Studio. Each serves a different purpose while all sharing the same underlying engine and functionalities.
+The LM Studio app, llmster, and `lms` are three different tools offered by LM Studio to make use of local AI easy and accessible.
 
 ## LM Studio (the desktop app)
 
@@ -38,13 +38,6 @@ Because llmster runs independently of the desktop app, you can get the full mode
 
 Learn more and install llmster [here](https://lmstudio.ai/docs/developer/core/headless)
 
-**Common commands:**
-
-```bash
-lms daemon up      # Start llmster
-lms daemon status  # Check if the daemon is running
-```
-
 ## lms (the CLI)
 
 `lms` is LM Studio's CLI (command-line interface). It lets you interact with both the LM Studio desktop app and llmster, and manage your models directly from a terminal. 
@@ -74,4 +67,4 @@ lms server start
 
 Once the server is running, it listens on http://localhost:1234. Point any SDK or compatible tool at our OpenAI or Anthropic-compatible endpoints to use your LM Studio models.
 
-In short, all three operate on the same running instance and can be used simultaneously. `lms` is the command-line tool to talk to both, whether you're running the desktop app, llmster headlessly, or both at once.
+In short, `lms` is the command-line tool to talk to both, the desktop app or llmster.
