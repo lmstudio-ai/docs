@@ -44,9 +44,3 @@ Read more about `lms get` [here](https://lmstudio.ai/docs/cli/local-models/get).
 Note that the MLX engine only supports models in MLX format, and the llama.cpp engine only supports models in GGUF format. 
 
 If you're on a Mac device, our Staff Picks will recommend the MLX model if it’s available as an option, and otherwise exclude the option if it is not recommended over GGUF.
-
-## Converting models to MLX format
-
-Many popular models already have MLX versions available. Before converting manually, check out [lmstudio-community](https://huggingface.co/lmstudio-community) or [mlx-community](https://huggingface.co/mlx-community) on HuggingFace to see if the model you want is available in MLX format. 
-
-Models stored locally in other formats can be converted to MLX format to use with the MLX engine. See our guide on [converting models to MLX format](../modelyaml/convert-to-mlx).
