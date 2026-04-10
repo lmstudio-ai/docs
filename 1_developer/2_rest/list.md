@@ -174,11 +174,7 @@ variants:
                 "default": "on"
               }
             },
-            "description": null,
-            "variants": [
-              "google/gemma-4-26b-a4b@q4_k_m"
-            ],
-            "selected_variant": "google/gemma-4-26b-a4b@q4_k_m"
+            "description": null
           },
             {
               "type": "llm",
