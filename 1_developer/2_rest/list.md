@@ -82,6 +82,10 @@ variants:
               type: number
               optional: true
               description: Number of input tokens to process together in a single batch during evaluation. Absent for embedding models.
+            - name: parallel
+              type: number
+              optional: true
+              description: Maximum number of parallel predictions the instance can handle. Absent for embedding models.
             - name: flash_attention
               type: boolean
               optional: true
@@ -111,10 +115,29 @@ variants:
         - name: trained_for_tool_use
           type: boolean
           description: Whether the model was trained for tool/function calling.
+        - name: reasoning
+          type: object
+          optional: true
+          description: Public reasoning configuration for the model. Absent when no reasoning config is exposed.
+          children:
+            - name: allowed_options
+              type: '("off" | "on" | "low" | "medium" | "high")[]'
+              description: Allowed public reasoning settings for the model.
+            - name: default
+              type: '"off" | "on" | "low" | "medium" | "high"'
+              description: Default public reasoning setting for the model.
     - name: description
       type: string | null
       optional: true
       description: Model description. Absent for embedding models.
+    - name: variants
+      type: array
+      optional: true
+      description: List of available quantization variant names for this model. Present for multi-variant models.
+    - name: selected_variant
+      type: string
+      optional: true
+      description: The currently selected variant name. Present when `variants` is present.
 ```
 :::split:::
 ```lms_code_snippet
@@ -127,51 +150,88 @@ variants:
         "models": [
           {
             "type": "llm",
-            "publisher": "lmstudio-community",
-            "key": "gemma-3-270m-it-qat",
-            "display_name": "Gemma 3 270m Instruct Qat",
-            "architecture": "gemma3",
+            "publisher": "google",
+            "key": "google/gemma-4-26b-a4b",
+            "display_name": "Gemma 4 26B A4B",
+            "architecture": "gemma4",
             "quantization": {
-              "name": "Q4_0",
+              "name": "Q4_K_M",
               "bits_per_weight": 4
             },
-            "size_bytes": 241410208,
-            "params_string": "270M",
+            "size_bytes": 17990911801,
+            "params_string": "26B-A4B",
             "loaded_instances": [
               {
-                "id": "gemma-3-270m-it-qat",
+                "id": "google/gemma-4-26b-a4b",
                 "config": {
                   "context_length": 4096,
                   "eval_batch_size": 512,
-                  "flash_attention": false,
-                  "num_experts": 0,
+                  "parallel": 4,
+                  "flash_attention": true,
+                  "num_experts": 8,
                   "offload_kv_cache_to_gpu": true
                 }
               }
             ],
-            "max_context_length": 32768,
+            "max_context_length": 262144,
             "format": "gguf",
             "capabilities": {
-              "vision": false,
-              "trained_for_tool_use": false
+              "vision": true,
+              "trained_for_tool_use": true,
+              "reasoning": {
+                "allowed_options": [
+                  "off",
+                  "on"
+                ],
+                "default": "on"
+              }
             },
-            "description": null
+            "description": null,
+            "variants": [
+              "google/gemma-4-26b-a4b@q4_k_m"
+            ],
+            "selected_variant": "google/gemma-4-26b-a4b@q4_k_m"
           },
-          {
-            "type": "embedding",
-            "publisher": "gaianet",
-            "key": "text-embedding-nomic-embed-text-v1.5-embedding",
-            "display_name": "Nomic Embed Text v1.5",
-            "quantization": {
-              "name": "F16",
-              "bits_per_weight": 16
+            {
+              "type": "llm",
+              "publisher": "deepseek",
+              "key": "deepseek-r1",
+              "display_name": "DeepSeek R1",
+              "architecture": "deepseek",
+              "quantization": {
+                "name": "Q4_K_M",
+                "bits_per_weight": 4
+              },
+              "size_bytes": 40492610355,
+              "params_string": "671B",
+              "loaded_instances": [],
+              "max_context_length": 131072,
+              "format": "gguf",
+              "capabilities": {
+                "vision": false,
+                "trained_for_tool_use": true,
+                "reasoning": {
+                  "allowed_options": ["on"],
+                  "default": "on"
+                }
+              },
+              "description": null
             },
-            "size_bytes": 274290560,
-            "params_string": null,
-            "loaded_instances": [],
-            "max_context_length": 2048,
-            "format": "gguf"
-          }
+            {
+              "type": "embedding",
+              "publisher": "gaianet",
+              "key": "text-embedding-nomic-embed-text-v1.5-embedding",
+              "display_name": "Nomic Embed Text v1.5",
+              "quantization": {
+                "name": "F16",
+                "bits_per_weight": 16
+              },
+              "size_bytes": 274290560,
+              "params_string": null,
+              "loaded_instances": [],
+              "max_context_length": 2048,
+              "format": "gguf"
+            }
         ]
       }
 ```
