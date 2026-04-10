@@ -190,7 +190,7 @@ variants:
             "variants": [
               "google/gemma-4-26b-a4b@q4_k_m"
             ],
-            "selected_variant": "google/gemma-4-26b-a4b@q4_k_m"dd
+            "selected_variant": "google/gemma-4-26b-a4b@q4_k_m"
           },
             {
               "type": "llm",
