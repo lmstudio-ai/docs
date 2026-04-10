@@ -82,6 +82,10 @@ variants:
               type: number
               optional: true
               description: Number of input tokens to process together in a single batch during evaluation. Absent for embedding models.
+            - name: parallel
+              type: number
+              optional: true
+              description: Maximum number of parallel predictions the instance can handle. Absent for embedding models.
             - name: flash_attention
               type: boolean
               optional: true
@@ -126,6 +130,14 @@ variants:
       type: string | null
       optional: true
       description: Model description. Absent for embedding models.
+    - name: variants
+      type: array
+      optional: true
+      description: List of available quantization variant names for this model. Present for multi-variant models.
+    - name: selected_variant
+      type: string
+      optional: true
+      description: The currently selected variant name. Present when `variants` is present.
 ```
 :::split:::
 ```lms_code_snippet
@@ -174,7 +186,11 @@ variants:
                 "default": "on"
               }
             },
-            "description": null
+            "description": null,
+            "variants": [
+              "google/gemma-4-26b-a4b@q4_k_m"
+            ],
+            "selected_variant": "google/gemma-4-26b-a4b@q4_k_m"dd
           },
             {
               "type": "llm",
