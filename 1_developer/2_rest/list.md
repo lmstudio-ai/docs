@@ -138,80 +138,88 @@ variants:
         "models": [
           {
             "type": "llm",
-            "publisher": "lmstudio-community",
-            "key": "gemma-3-270m-it-qat",
-            "display_name": "Gemma 3 270m Instruct Qat",
-            "architecture": "gemma3",
-            "quantization": {
-              "name": "Q4_0",
-              "bits_per_weight": 4
-            },
-            "size_bytes": 241410208,
-            "params_string": "270M",
-            "loaded_instances": [
-              {
-                "id": "gemma-3-270m-it-qat",
-                "config": {
-                  "context_length": 4096,
-                  "eval_batch_size": 512,
-                  "flash_attention": false,
-                  "num_experts": 0,
-                  "offload_kv_cache_to_gpu": true
-                }
-              }
-            ],
-            "max_context_length": 32768,
-            "format": "gguf",
-            "capabilities": {
-              "vision": false,
-              "trained_for_tool_use": false,
-              "reasoning": {
-                "allowed_options": ["off", "on"],
-                "default": "on"
-              }
-            },
-            "description": null
-          },
-          {
-            "type": "llm",
-            "publisher": "deepseek",
-            "key": "deepseek-r1",
-            "display_name": "DeepSeek R1",
-            "architecture": "deepseek",
+            "publisher": "google",
+            "key": "google/gemma-4-26b-a4b",
+            "display_name": "Gemma 4 26B A4B",
+            "architecture": "gemma4",
             "quantization": {
               "name": "Q4_K_M",
               "bits_per_weight": 4
             },
-            "size_bytes": 40492610355,
-            "params_string": "671B",
-            "loaded_instances": [],
-            "max_context_length": 131072,
+            "size_bytes": 17990911801,
+            "params_string": "26B-A4B",
+            "loaded_instances": [
+              {
+                "id": "google/gemma-4-26b-a4b",
+                "config": {
+                  "context_length": 4096,
+                  "eval_batch_size": 512,
+                  "parallel": 4,
+                  "flash_attention": true,
+                  "num_experts": 8,
+                  "offload_kv_cache_to_gpu": true
+                }
+              }
+            ],
+            "max_context_length": 262144,
             "format": "gguf",
             "capabilities": {
-              "vision": false,
+              "vision": true,
               "trained_for_tool_use": true,
               "reasoning": {
-                "allowed_options": ["on"],
+                "allowed_options": [
+                  "off",
+                  "on"
+                ],
                 "default": "on"
               }
             },
-            "description": null
+            "description": null,
+            "variants": [
+              "google/gemma-4-26b-a4b@q4_k_m"
+            ],
+            "selected_variant": "google/gemma-4-26b-a4b@q4_k_m"
           },
-          {
-            "type": "embedding",
-            "publisher": "gaianet",
-            "key": "text-embedding-nomic-embed-text-v1.5-embedding",
-            "display_name": "Nomic Embed Text v1.5",
-            "quantization": {
-              "name": "F16",
-              "bits_per_weight": 16
+            {
+              "type": "llm",
+              "publisher": "deepseek",
+              "key": "deepseek-r1",
+              "display_name": "DeepSeek R1",
+              "architecture": "deepseek",
+              "quantization": {
+                "name": "Q4_K_M",
+                "bits_per_weight": 4
+              },
+              "size_bytes": 40492610355,
+              "params_string": "671B",
+              "loaded_instances": [],
+              "max_context_length": 131072,
+              "format": "gguf",
+              "capabilities": {
+                "vision": false,
+                "trained_for_tool_use": true,
+                "reasoning": {
+                  "allowed_options": ["on"],
+                  "default": "on"
+                }
+              },
+              "description": null
             },
-            "size_bytes": 274290560,
-            "params_string": null,
-            "loaded_instances": [],
-            "max_context_length": 2048,
-            "format": "gguf"
-          }
+            {
+              "type": "embedding",
+              "publisher": "gaianet",
+              "key": "text-embedding-nomic-embed-text-v1.5-embedding",
+              "display_name": "Nomic Embed Text v1.5",
+              "quantization": {
+                "name": "F16",
+                "bits_per_weight": 16
+              },
+              "size_bytes": 274290560,
+              "params_string": null,
+              "loaded_instances": [],
+              "max_context_length": 2048,
+              "format": "gguf"
+            }
         ]
       }
 ```
