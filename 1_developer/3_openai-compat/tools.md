@@ -145,7 +145,6 @@ For each function call, return a json object with function name and arguments wi
 **Important**: The model can only _request_ calls to these tools because LLMs _cannot_ directly call functions, APIs, or any other tools. They can only output text, which can then be parsed to programmatically call the functions.
 
 2. When prompted, the LLM can then decide to either:
-
    - (a) Call one or more tools
 
    ```xml
@@ -163,7 +162,6 @@ For each function call, return a json object with function name and arguments wi
    ```
 
 3. LM Studio parses the text output from the model into an OpenAI-compliant `chat.completion` response object.
-
    - If the model was given access to `tools`, LM Studio will attempt to parse the tool calls into the `response.choices[0].message.tool_calls` field of the `chat.completion` response object.
    - If LM Studio cannot parse any **correctly formatted** tool calls, it will simply return the response to the standard `response.choices[0].message.content` field.
    - **Note**: Smaller models and models that were not trained for tool use may output improperly formatted tool calls, resulting in LM Studio being unable to parse them into the `tool_calls` field. This is useful for troubleshooting when you do not receive `tool_calls` as expected. Example of an improperly formatting `Qwen2.5-Instruct` tool call:
@@ -177,7 +175,6 @@ For each function call, return a json object with function name and arguments wi
    > Note that the brackets are incorrect, and the call does not follow the `name, argument` format.
 
 4. Your code parses the `chat.completion` response to check for tool calls from the model, then calls the appropriate tools with the parameters specified by the model. Your code then adds both:
-
    1. The model's tool call message
    2. The result of the tool call
 

@@ -21,17 +21,16 @@ lms --help
 
 ## Command quick links
 
-| Command | Syntax | Docs |
-| --- | --- | --- |
-| Chat in the terminal | `lms chat` | [Guide](/docs/cli/local-models/chat) |
-| Download models | `lms get` | [Guide](/docs/cli/local-models/get) |
-| List your models | `lms ls` | [Guide](/docs/cli/local-models/ls) |
-| See models loaded into memory | `lms ps` | [Guide](/docs/cli/local-models/ps) |
-| Control the server | `lms server start` | [Guide](/docs/cli/serve/server-start) |
-| Manage the inference runtime | `lms runtime` | [Guide](/docs/cli/runtime) |
-| Manage the headless daemon | `lms daemon` | [Guide](/docs/cli/daemon/daemon-up) |
-| Manage LM Link | `lms link` | [Guide](/docs/cli/link/link-enable) |
-
+| Command                       | Syntax             | Docs                                  |
+| ----------------------------- | ------------------ | ------------------------------------- |
+| Chat in the terminal          | `lms chat`         | [Guide](/docs/cli/local-models/chat)  |
+| Download models               | `lms get`          | [Guide](/docs/cli/local-models/get)   |
+| List your models              | `lms ls`           | [Guide](/docs/cli/local-models/ls)    |
+| See models loaded into memory | `lms ps`           | [Guide](/docs/cli/local-models/ps)    |
+| Control the server            | `lms server start` | [Guide](/docs/cli/serve/server-start) |
+| Manage the inference runtime  | `lms runtime`      | [Guide](/docs/cli/runtime)            |
+| Manage the headless daemon    | `lms daemon`       | [Guide](/docs/cli/daemon/daemon-up)   |
+| Manage LM Link                | `lms link`         | [Guide](/docs/cli/link/link-enable)   |
 
 ### Verify the installation
 
@@ -120,6 +119,7 @@ lms load openai/gpt-oss-20b --identifier="my-model-name"
 This is useful if you want to keep the model identifier consistent.
 
 ### Unload a model
+
 ```
 lms unload [--all]
 ```

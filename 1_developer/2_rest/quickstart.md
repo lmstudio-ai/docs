@@ -24,13 +24,11 @@ If you don't have a model downloaded yet, you can download the model:
 lms get ibm/granite-4-micro
 ```
 
-
 ## API Authentication
 
 By default, the LM Studio API server does **not** require authentication. You can configure the server to require authentication by API token in the [server settings](/docs/developer/core/server/settings) for added security.
 
 To authenticate API requests, generate an API token from the Developer page in LM Studio, and include it in the `Authorization` header of your requests as follows: `Authorization: Bearer $LM_API_TOKEN`. Read more about authentication [here](/docs/developer/core/authentication).
-
 
 ## Chat with a model
 
@@ -90,7 +88,6 @@ variants:
 See the full [chat](/docs/developer/rest/chat) docs for more details.
 
 ## Use MCP servers via API
-
 
 Enable the model interact with ephemeral Model Context Protocol (MCP) servers in `/api/v1/chat` by specifying servers in the `integrations` field.
 

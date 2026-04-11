@@ -24,7 +24,7 @@ index: 4
 
 By default, JIT-loaded models have a TTL of 60 minutes. You can configure a default TTL value for any model loaded via JIT like so:
 
-<img src="/assets/docs/app-default-ttl.png" style="width: 500px; " data-caption="Set a default TTL value. Will be used for all JIT loaded models unless specified otherwise in the request payload" />
+<img src="/assets/marketing/docs/app-default-ttl.png" style="width: 500px; " data-caption="Set a default TTL value. Will be used for all JIT loaded models unless specified otherwise in the request payload" />
 
 ### Set per-model TTL-model in API requests
 
@@ -60,7 +60,7 @@ lms load <model> --ttl 3600
 
 You can also set a TTL when loading a model in the server tab like so
 
-<img src="/assets/docs/ttl-server-model.png" style="width: 100%;" data-caption="Set a TTL value when loading a model in the server tab" />
+<img src="/assets/marketing/docs/ttl-server-model.png" style="width: 100%;" data-caption="Set a TTL value when loading a model in the server tab" />
 
 ## Configure Auto-Evict for JIT loaded models
 
@@ -68,7 +68,7 @@ With this setting, you can ensure new models loaded via JIT automatically unload
 
 This is useful when you want to switch between models from another app without worrying about memory building up with unused models.
 
-<img src="/assets/docs/auto-evict-and-ttl.png" style="width: 500px; margin-top:30px" data-caption="Enable or disable Auto-Evict for JIT loaded models in the Developer tab > Server Settings" />
+<img src="/assets/marketing/docs/auto-evict-and-ttl.png" style="width: 500px; margin-top:30px" data-caption="Enable or disable Auto-Evict for JIT loaded models in the Developer tab > Server Settings" />
 
 **When Auto-Evict is ON** (default):
 

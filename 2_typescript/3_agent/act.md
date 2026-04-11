@@ -22,7 +22,6 @@ A model might choose to run tools multiple times before returning a final result
 
 With this in mind, we say that the `.act()` API is an automatic "multi-round" tool calling API.
 
-
 ### Quick Example
 
 ```lms_code_snippet
@@ -48,14 +47,13 @@ With this in mind, we say that the `.act()` API is an automatic "multi-round" to
         });
 ```
 
-> **_NOTE:_**  at this time, this code expects zod v3
+> **_NOTE:_** at this time, this code expects zod v3
 
 ### What does it mean for an LLM to "use a tool"?
 
 LLMs are largely text-in, text-out programs. So, you may ask "how can an LLM use a tool?". The answer is that some LLMs are trained to ask the human to call the tool for them, and expect the tool output to to be provided back in some format.
 
 Imagine you're giving computer support to someone over the phone. You might say things like "run this command for me ... OK what did it output? ... OK now click there and tell me what it says ...". In this case you're the LLM! And you're "calling tools" vicariously through the person on the other side of the line.
-
 
 ### Important: Model Selection
 

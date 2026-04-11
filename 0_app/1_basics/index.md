@@ -23,7 +23,7 @@ Once you're all set up, you need to **download your first LLM**.
 
 Head over to the Discover tab to download models. Pick one of the curated options or search for models by search query (e.g. `"Llama"`). See more in-depth information about downloading models [here](/docs/basics/download-models).
 
-<img src="/assets/docs/discover.png" style="width: 500px; margin-top:30px" data-caption="The Discover tab in LM Studio" />
+<img src="/assets/marketing/docs/discover.png" style="width: 500px; margin-top:30px" data-caption="The Discover tab in LM Studio" />
 
 ### 2. Load a model to memory
 
@@ -33,7 +33,7 @@ Head over to the **Chat** tab, and
 2. Select one of the models you downloaded (or [sideloaded](/docs/advanced/sideload)).
 3. Optionally, choose load configuration parameters.
 
-<img src="/assets/docs/loader.png" data-caption="Quickly open the model loader with `cmd` + `L` on macOS or `ctrl` + `L` on Windows/Linux" />
+<img src="/assets/marketing/docs/loader.png" data-caption="Quickly open the model loader with `cmd` + `L` on macOS or `ctrl` + `L` on Windows/Linux" />
 
 ##### What does loading a model mean?
 
@@ -43,7 +43,7 @@ Loading a model typically means allocating memory to be able to accommodate the 
 
 Once the model is loaded, you can start a back-and-forth conversation with the model in the Chat tab.
 
-<img src="/assets/docs/chat.png" data-caption="LM Studio on macOS" />
+<img src="/assets/marketing/docs/chat.png" data-caption="LM Studio on macOS" />
 
 <hr>
 

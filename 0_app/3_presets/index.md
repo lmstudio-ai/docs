@@ -8,13 +8,14 @@ index: 1
 Presets are a way to bundle together a system prompt and other parameters into a single configuration that can be easily reused across different chats.
 
 New in 0.3.15: You can [import](/docs/app/presets/import) Presets from file or URL, and even [publish](/docs/app/presets/publish) your own Presets to share with others on to the LM Studio Hub.
+
 <hr>
 
 ## Saving, resetting, and deselecting Presets
 
 Below is the anatomy of the Preset manager:
 
-<img src="/assets/docs/preset-widget-anatomy.webp" style="width:70%" data-caption="The anatomy of the Preset manager in the settings sidebar.">
+<img src="/assets/marketing/docs/preset-widget-anatomy.webp" style="width:70%" data-caption="The anatomy of the Preset manager in the settings sidebar.">
 
 ## Importing, Publishing, and Updating Downloaded Presets
 

@@ -53,8 +53,8 @@ downloaded model reference to be converted in the full SDK handle for a loaded m
             print(model)
 
 ```
-This will give you results equivalent to using [`lms ls`](../../cli/ls) in the CLI.
 
+This will give you results equivalent to using [`lms ls`](../../cli/ls) in the CLI.
 
 ### Example output:
 

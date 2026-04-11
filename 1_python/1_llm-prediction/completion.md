@@ -15,7 +15,6 @@ This can be done using the top-level `llm` convenience API,
 or the `model` method in the `llm` namespace when using the scoped resource API.
 For example, here is how to use Qwen2.5 7B Instruct.
 
-
 ```lms_code_snippet
   variants:
     "Python (convenience API)":
@@ -263,10 +262,10 @@ that receives a float from 0.0-1.0 representing prompt processing progress.
 
 In addition to `on_prompt_processing_progress`, the other available progress callbacks are:
 
-* `on_first_token`: called after prompt processing is complete and the first token is being emitted.
+- `on_first_token`: called after prompt processing is complete and the first token is being emitted.
   Does not receive any arguments (use the streaming iteration API or `on_prediction_fragment`
   to process tokens as they are emitted).
-* `on_prediction_fragment`: called for each prediction fragment received by the client.
+- `on_prediction_fragment`: called for each prediction fragment received by the client.
   Receives the same prediction fragments as iterating over the stream iteration API.
-* `on_message`: called with an assistant response message when the prediction is complete.
+- `on_message`: called with an assistant response message when the prediction is complete.
   Intended for appending received messages to a chat history instance.

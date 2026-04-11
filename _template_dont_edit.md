@@ -98,7 +98,7 @@ You can jump to Settings from anywhere in the app by pressing `cmd` + `,` on mac
 
 List of formatted flags
 
-### Flags 
+### Flags
 
 ```lms_params
 - name: "[path]"
@@ -146,7 +146,7 @@ options:
     license: "MIT"
 ```
 
-<img src="/assets/hero-dark-classic@2x.png" alt="LM Studio" data-caption="Some caption and a [link](https://lmstudio.ai)" />
+<img src="/assets/marketing/hero-dark-classic@2x.png" alt="LM Studio" data-caption="Some caption and a [link](https://lmstudio.ai)" />
 
 ## Main Features
 

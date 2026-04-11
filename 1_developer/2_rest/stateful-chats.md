@@ -54,8 +54,6 @@ variants:
 
 Pass the `previous_response_id` in your next request to continue the conversation. The model will remember the previous context.
 
-
-
 ```lms_code_snippet
 title: Continue the conversation
 variants:

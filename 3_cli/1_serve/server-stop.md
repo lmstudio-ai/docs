@@ -12,6 +12,7 @@ lms server stop
 ```
 
 Example output:
+
 ```
 Stopped the server on port 1234.
 ```
