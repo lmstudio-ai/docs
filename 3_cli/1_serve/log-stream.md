@@ -59,12 +59,12 @@ lms log stream --source model --filter input,output
 
 Emit JSON:
 
-  ```shell
-  lms log stream --source model --filter input,output --json
-  ```
+```shell
+lms log stream --source model --filter input,output --json
+```
 
 Include prediction stats:
 
-  ```shell
-  lms log stream --source model --filter output --stats
-  ```
+```shell
+lms log stream --source model --filter output --stats
+```

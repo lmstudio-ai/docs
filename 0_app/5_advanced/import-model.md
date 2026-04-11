@@ -20,7 +20,7 @@ lms import <path/to/model.gguf>
 
 ### LM Studio's expected models directory structure
 
-<img src="/assets/docs/reveal-models-dir.png" style="width:80%" data-caption="Manage your models directory in the My Models tab">
+<img src="/assets/marketing/docs/reveal-models-dir.png" style="width:80%" data-caption="Manage your models directory in the My Models tab">
 
 LM Studio aims to preserves the directory structure of models downloaded from Hugging Face. The expected directory structure is as follows:
 

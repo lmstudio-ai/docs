@@ -22,11 +22,11 @@ Starting 0.3.17 (b10), LM Studio supports both local and remote MCP servers. You
 
 Switch to the "Program" tab in the right hand sidebar. Click `Install > Edit mcp.json`.
 
-<img src="/assets/docs/install-mcp.png"  data-caption="" style="width: 80%;" className="" />
+<img src="/assets/marketing/docs/install-mcp.png"  data-caption="" style="width: 80%;" className="" />
 
 This will open the `mcp.json` file in the in-app editor. You can add MCP servers by editing this file.
 
-<img src="/assets/docs/mcp-editor.png"  data-caption="Edit mcp.json using the in-app editor" style="width: 100%;" className="" />
+<img src="/assets/marketing/docs/mcp-editor.png"  data-caption="Edit mcp.json using the in-app editor" style="width: 100%;" className="" />
 
 ### Example MCP to try: Hugging Face MCP Server
 
@@ -67,7 +67,6 @@ Use the [deeplink button](mcp/deeplink), or copy the JSON snippet above and past
 - Never install MCP servers from untrusted sources. Some MCPs can have far reaching access to your system.
 
 - Some MCP servers were designed to be used with Claude, ChatGPT, Gemini and might use excessive amounts of tokens.
-
   - Watch out for this. It may quickly bog down your local model and trigger frequent context overflows.
 
 - When adding MCP servers manually, copy only the content after `"mcpServers": {` and before the closing `}`.

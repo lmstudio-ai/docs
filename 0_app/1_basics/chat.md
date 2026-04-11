@@ -26,7 +26,7 @@ You can duplicate a whole chat conversation by clicking the `•••` menu and
 
 ### Split view in chat
 
-You can view two chats side by side by dragging and dropping chat tabs to either half of the window. Alternatively, use the split view icon at the top right of a chat window to split left or right. 
+You can view two chats side by side by dragging and dropping chat tabs to either half of the window. Alternatively, use the split view icon at the top right of a chat window to split left or right.
 
 Close one side of the split view with the 'x' button in the top right of each pane.
 

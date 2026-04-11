@@ -7,7 +7,8 @@ index: 2
 
 The `lms server status` command displays the current status of the LM Studio local server, including whether it's running and its configuration.
 
-### Flags 
+### Flags
+
 ```lms_params
 - name: "--json"
   type: "flag"
@@ -36,6 +37,7 @@ lms server status
 ```
 
 Example output:
+
 ```
 The server is running on port 1234.
 ```
@@ -61,8 +63,9 @@ lms server status --json --quiet
 ```
 
 Example output:
+
 ```json
-{"running":true,"port":1234}
+{ "running": true, "port": 1234 }
 ```
 
 ### Control logging output

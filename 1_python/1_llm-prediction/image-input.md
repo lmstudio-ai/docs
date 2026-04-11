@@ -4,7 +4,7 @@ description: API for passing images as input to the model
 index: 2
 ---
 
-*Required Python SDK version*: **1.1.0**
+_Required Python SDK version_: **1.1.0**
 
 Some models, known as VLMs (Vision-Language Models), can accept images as input. You can pass images to the model using the `.respond()` method.
 
@@ -88,7 +88,7 @@ get a handle to the image that can subsequently be passed to the model.
 
 If you only have the raw data of the image, you can supply the raw data directly as a bytes
 object without having to write it to disk first. Due to this feature, binary filesystem
-paths are *not* supported (as they will be handled as malformed image data rather than as
+paths are _not_ supported (as they will be handled as malformed image data rather than as
 filesystem paths).
 
 Binary IO objects are also accepted as local file inputs.

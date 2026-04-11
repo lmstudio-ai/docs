@@ -166,10 +166,10 @@ exceptions locally in the client:
 
 When a tool request is passed in, the callback results are processed as follows:
 
-* `None`: the original exception text is passed to the LLM unmodified
-* a string: the returned string is passed to the LLM instead of the original
+- `None`: the original exception text is passed to the LLM unmodified
+- a string: the returned string is passed to the LLM instead of the original
   exception text
-* raising an exception (whether the passed in exception or a new exception):
+- raising an exception (whether the passed in exception or a new exception):
   the raised exception is propagated locally in the client, terminating the
   prediction process
 

@@ -5,8 +5,7 @@ description: Query which models are currently loaded
 
 You can iterate through models loaded into memory using the functions and methods shown below.
 
-The results are full SDK model handles, allowing access to all model functionality. 
-
+The results are full SDK model handles, allowing access to all model functionality.
 
 ## List Models Currently Loaded in Memory
 

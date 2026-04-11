@@ -7,6 +7,7 @@ index: 4
 Streaming events let you render chat responses incrementally over Server‑Sent Events (SSE). When you call `POST /api/v1/chat` with `stream: true`, the server emits a series of named events that you can consume. These events arrive in order and may include multiple deltas (for reasoning and message content), tool call boundaries and payloads, and any errors encountered. The stream always begins with `chat.start` and concludes with `chat.end`, which contains the aggregated result equivalent to a non‑streaming response.
 
 List of event types that can be sent in an `/api/v1/chat` response stream:
+
 - `chat.start`
 - `model_load.start`
 - `model_load.progress`
@@ -28,12 +29,14 @@ List of event types that can be sent in an `/api/v1/chat` response stream:
 - `chat.end`
 
 Events will be streamed out in the following raw format:
+
 ```bash
 event: <event type>
 data: <JSON event data>
 ```
 
 ### `chat.start`
+
 ````lms_hstack
 An event that is emitted at the start of a chat response stream.
 ```lms_params
@@ -59,6 +62,7 @@ variants:
 ````
 
 ### `model_load.start`
+
 ````lms_hstack
 Signals the start of a model being loaded to fulfill the chat request. Will not be emitted if the requested model is already loaded.
 ```lms_params
@@ -84,6 +88,7 @@ variants:
 ````
 
 ### `model_load.progress`
+
 ````lms_hstack
 Progress of the model load.
 ```lms_params
@@ -113,6 +118,7 @@ variants:
 ````
 
 ### `model_load.end`
+
 ````lms_hstack
 Signals a successfully completed model load.
 ```lms_params
@@ -142,6 +148,7 @@ variants:
 ````
 
 ### `prompt_processing.start`
+
 ````lms_hstack
 Signals the start of the model processing a prompt.
 ```lms_params
@@ -163,6 +170,7 @@ variants:
 ````
 
 ### `prompt_processing.progress`
+
 ````lms_hstack
 Progress of the model processing a prompt.
 ```lms_params
@@ -188,6 +196,7 @@ variants:
 ````
 
 ### `prompt_processing.end`
+
 ````lms_hstack
 Signals the end of the model processing a prompt.
 ```lms_params
@@ -209,6 +218,7 @@ variants:
 ````
 
 ### `reasoning.start`
+
 ````lms_hstack
 Signals the model is starting to stream reasoning content.
 ```lms_params
@@ -230,6 +240,7 @@ variants:
 ````
 
 ### `reasoning.delta`
+
 ````lms_hstack
 A chunk of reasoning content. Multiple deltas may arrive.
 ```lms_params
@@ -255,6 +266,7 @@ variants:
 ````
 
 ### `reasoning.end`
+
 ````lms_hstack
 Signals the end of the reasoning stream.
 ```lms_params
@@ -276,6 +288,7 @@ variants:
 ````
 
 ### `tool_call.start`
+
 ````lms_hstack
 Emitted when the model starts a tool call.
 ```lms_params
@@ -329,6 +342,7 @@ variants:
 ````
 
 ### `tool_call.arguments`
+
 ````lms_hstack
 Arguments streamed for the current tool call.
 ```lms_params
@@ -389,6 +403,7 @@ variants:
 ````
 
 ### `tool_call.success`
+
 ````lms_hstack
 Result of the tool call, along with the arguments used.
 ```lms_params
@@ -452,8 +467,8 @@ variants:
 ```
 ````
 
-
 ### `tool_call.failure`
+
 ````lms_hstack
 Indicates that the tool call failed.
 ```lms_params
@@ -513,6 +528,7 @@ variants:
 ````
 
 ### `message.start`
+
 ````lms_hstack
 Signals the model is about to stream a message.
 ```lms_params
@@ -534,6 +550,7 @@ variants:
 ````
 
 ### `message.delta`
+
 ````lms_hstack
 A chunk of message content. Multiple deltas may arrive.
 ```lms_params
@@ -559,6 +576,7 @@ variants:
 ````
 
 ### `message.end`
+
 ````lms_hstack
 Signals the end of the message stream.
 ```lms_params
@@ -580,6 +598,7 @@ variants:
 ````
 
 ### `error`
+
 ````lms_hstack
 An error occurred during streaming. The final payload will still be sent in `chat.end` with whatever was generated.
 ```lms_params
@@ -625,6 +644,7 @@ variants:
 ````
 
 ### `chat.end`
+
 ````lms_hstack
 Final event containing the full aggregated response, equivalent to the non-streaming `POST /api/v1/chat` response body.
 ```lms_params

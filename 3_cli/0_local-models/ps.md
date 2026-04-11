@@ -16,6 +16,7 @@ lms ps
 ```
 
 Example output:
+
 ```
    LOADED MODELS
 
@@ -29,6 +30,7 @@ Identifier: unsloth/deepseek-r1-distill-qwen-1.5b
 ### JSON output
 
 Get the list in machine-readable format:
+
 ```shell
 lms ps --json
 ```

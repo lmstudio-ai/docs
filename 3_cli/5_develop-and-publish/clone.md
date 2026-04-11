@@ -8,6 +8,7 @@ index: 1
 Use `lms clone` to copy an artifact from LM Studio Hub onto your machine.
 
 ### Flags
+
 ```lms_params
 - name: "<artifact>"
   type: "string"

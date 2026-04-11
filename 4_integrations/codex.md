@@ -7,7 +7,7 @@ index: 3
 Codex can talk to LM Studio via the OpenAI-compatible `POST /v1/responses` endpoint.
 See: [OpenAI-compatible Responses endpoint](/docs/developer/openai-compat/responses).
 
-<img src="/assets/docs/codex.webp" style="width: 100%;" data-caption="Codex configured to use LM Studio via the OpenAI-compatible API" />
+<img src="/assets/marketing/docs/codex.webp" style="width: 100%;" data-caption="Codex configured to use LM Studio via the OpenAI-compatible API" />
 
 ```lms_protip
 Have a powerful LLM rig? Use [LM Link](/docs/integrations/lmlink) to run Codex from your laptop while the model runs on your rig.
@@ -32,7 +32,6 @@ Example:
 ```bash
 codex --oss
 ```
-
 
 By default, Codex will download and use [openai/gpt-oss-20b](https://lmstudio.ai/models/openai/gpt-oss-20b).
 

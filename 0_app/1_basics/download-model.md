@@ -6,7 +6,7 @@ index: 3
 
 LM Studio comes with a built-in model downloader that let's you download any supported model from [Hugging Face](https://huggingface.co).
 
-<img src="/assets/docs/discover.png" style="width: 500px; margin-top:30px" data-caption="Download models from the Discover tab in LM Studio" />
+<img src="/assets/marketing/docs/discover.png" style="width: 500px; margin-top:30px" data-caption="Download models from the Discover tab in LM Studio" />
 
 <hr>
 
@@ -22,7 +22,7 @@ You will often see several options for any given model named things like `Q3_K_S
 
 Choose a 4-bit option or higher if your machine is capable enough for running it.
 
-<img src="/assets/docs/search.webp" style="" data-caption="Hugging Face search results in LM Studio" />
+<img src="/assets/marketing/docs/search.webp" style="" data-caption="Hugging Face search results in LM Studio" />
 
 <hr>
 
@@ -32,7 +32,7 @@ Choose a 4-bit option or higher if your machine is capable enough for running it
 
 You can change the models directory by heading to My Models
 
-<img src="/assets/docs/change-models-dir.png" style="width:80%" data-caption="Manage your models directory in the My Models tab">
+<img src="/assets/marketing/docs/change-models-dir.png" style="width:80%" data-caption="Manage your models directory in the My Models tab">
 
 <hr>
 

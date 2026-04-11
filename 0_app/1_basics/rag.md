@@ -18,6 +18,7 @@ This will provide additional context to LLMs you chat with through the app.
 - **Context**: the 'working memory' of an LLM. Has a maximum size
 
 ###### \* In this context, 'Generation' means the output of the LLM.
+
 ###### Context sizes are measured in "tokens". One token is often about 3/4 of a word.
 
 ## RAG vs. Full document 'in context'

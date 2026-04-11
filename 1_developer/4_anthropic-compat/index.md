@@ -90,5 +90,4 @@ print(message.content)
 If you have not enabled Require Authentication, the `x-api-key` header is optional.
 For the Python example, you can also omit `api_key` when authentication is disabled.
 
-
 If you're running into trouble, hop onto our [Discord](https://discord.gg/lmstudio) and enter the developers channel.

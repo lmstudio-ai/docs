@@ -10,22 +10,19 @@ You can serve local LLMs from LM Studio's Developer tab, either on `localhost` o
 
 LM Studio's APIs can be used through [REST API](/docs/developer/rest), client libraries like [lmstudio-js](/docs/typescript) and [lmstudio-python](/docs/python), and compatibility endpoints like [OpenAI-compatible](/docs/developer/openai-compat) and [Anthropic-compatible](/docs/developer/anthropic-compat).
 
-<img src="/assets/docs/server.png" style="" data-caption="Load and serve LLMs from LM Studio" />
+<img src="/assets/marketing/docs/server.png" style="" data-caption="Load and serve LLMs from LM Studio" />
 
 ### Running the server
 
 To run the server, go to the Developer tab in LM Studio, and toggle the "Start server" switch to start the API server.
 
-<img src="/assets/docs/server-start.png" style="" data-caption="Start the LM Studio API Server" />
-
-
+<img src="/assets/marketing/docs/server-start.png" style="" data-caption="Start the LM Studio API Server" />
 
 Alternatively, you can use `lms` ([LM Studio's CLI](/docs/cli)) to start the server from your terminal:
 
 ```bash
 lms server start
 ```
-
 
 ### API options
 

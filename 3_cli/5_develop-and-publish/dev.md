@@ -24,6 +24,7 @@ lms dev --install
 ```
 
 ### Flags
+
 ```lms_params
 - name: "-i, --install"
   type: "flag"

@@ -7,9 +7,10 @@ index: 2
 
 The `lms get` command allows you to search and download models from online repositories. If no model is specified, it shows staff-picked recommendations.
 
-Models you download via `lms get` will be stored in your LM Studio model directory. 
+Models you download via `lms get` will be stored in your LM Studio model directory.
 
-### Flags 
+### Flags
+
 ```lms_params
 - name: "[modelName]"
   type: "string"
