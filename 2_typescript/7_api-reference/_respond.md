@@ -5,4 +5,4 @@ description: ".respond() - API reference for generating chat responses from a lo
 index: 2
 ---
 
-`.respond()` is a method that generates chat responses from a loaded language model. 
+`.respond()` is a method that generates chat responses from a loaded language model.

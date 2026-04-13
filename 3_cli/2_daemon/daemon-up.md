@@ -33,8 +33,9 @@ lms daemon up --json
 ```
 
 Example output:
+
 ```json
-{"status":"running","pid":26754,"isDaemon":true,"version":"0.4.4+1"}
+{ "status": "running", "pid": 26754, "isDaemon": true, "version": "0.4.4+1" }
 ```
 
 ### Check the daemon status

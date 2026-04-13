@@ -14,8 +14,7 @@ LM Studio can be run as a background service without the GUI. There are two ways
 
 llmster is the core of the LM Studio desktop app, packaged to be server-native, without reliance on the GUI. It can run on Linux boxes, cloud servers, GPU rigs, or your local machine without the GUI. See the [LM Studio 0.4.0 release post](/blog/0.4.0) for more details.
 
-<img src="/assets/blog/0.4.0/llmster@2x.png" alt="llmster" style="" data-caption="" />
-
+<img src="/assets/marketing/blog/0.4.0/llmster@2x.png" alt="llmster" style="" data-caption="" />
 
 ### Install llmster
 
@@ -37,7 +36,6 @@ irm https://lmstudio.ai/install.ps1 | iex
 lms daemon up
 ```
 
-
 See the [daemon CLI docs](/docs/cli/daemon/daemon-up) for full reference.
 
 For setting up llmster as a startup task on Linux, see [Linux Startup Task](/docs/developer/core/headless_llmster).
@@ -50,7 +48,7 @@ This works on Mac, Windows, and Linux machines with a graphical user interface. 
 
 Head to app settings (`Cmd` / `Ctrl` + `,`) and check the box to run the LLM server on login.
 
-<img src="/assets/docs/headless-settings.webp" style="" data-caption="Enable the LLM server to start on machine login" />
+<img src="/assets/marketing/docs/headless-settings.webp" style="" data-caption="Enable the LLM server to start on machine login" />
 
 When this setting is enabled, exiting the app will minimize it to the system tray, and the LLM server will continue to run in the background.
 
@@ -68,7 +66,7 @@ lms server start
 
 Applies to both options. Useful when using LM Studio as an LLM service with other frontends or applications.
 
-<img src="/assets/docs/jit-loading.webp" style="" data-caption="Load models on demand" />
+<img src="/assets/marketing/docs/jit-loading.webp" style="" data-caption="Load models on demand" />
 
 #### When JIT loading is ON:
 

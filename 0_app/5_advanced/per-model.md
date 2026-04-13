@@ -15,7 +15,7 @@ When the model is loaded anywhere in the app (including through [`lms load`](/do
 
 Head to the My Models tab and click on the gear ⚙️ icon to edit the model's default parameters.
 
-<img src="/assets/docs/model-settings-gear.webp" style="width:80%" data-caption="Click on the gear icon to edit the default load settings for a model.">
+<img src="/assets/marketing/docs/model-settings-gear.webp" style="width:80%" data-caption="Click on the gear icon to edit the default load settings for a model.">
 
 This will open a dialog where you can set the default parameters for the model.
 
@@ -26,7 +26,6 @@ This will open a dialog where you can set the default parameters for the model.
 
 Next time you load the model, these settings will be used.
 
-
 ```lms_protip
 #### Reasons to set default load parameters (not required, totally optional)
 
@@ -36,25 +35,22 @@ Next time you load the model, these settings will be used.
 
 ```
 
-
-
-
 ## Advanced Topics
 
 ### Changing load settings before loading a model
 
 When you load a model, you can optionally change the default load settings.
 
-<img src="/assets/docs/load-model.png" style="width:80%" data-caption="You can change the load settings before loading a model.">
+<img src="/assets/marketing/docs/load-model.png" style="width:80%" data-caption="You can change the load settings before loading a model.">
 
 ### Saving your changes as the default settings for a model
 
 If you make changes to load settings when you load a model, you can save them as the default settings for that model.
 
-<img src="/assets/docs/save-load-changes.png" style="width:80%" data-caption="If you make changes to load settings when you load a model, you can save them as the default settings for that model.">
-
+<img src="/assets/marketing/docs/save-load-changes.png" style="width:80%" data-caption="If you make changes to load settings when you load a model, you can save them as the default settings for that model.">
 
 <hr>
 
 ### Community
+
 Chat with other LM Studio power users, discuss configs, models, hardware, and more on the [LM Studio Discord server](https://discord.gg/aPQfnNkxGC).

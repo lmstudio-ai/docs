@@ -31,13 +31,15 @@ lms daemon status --json
 ```
 
 Example output when running:
+
 ```json
-{"status":"running","pid":12345,"isDaemon":true}
+{ "status": "running", "pid": 12345, "isDaemon": true }
 ```
 
 Example output when not running:
+
 ```json
-{"status":"not-running"}
+{ "status": "not-running" }
 ```
 
 ### Start or stop the daemon

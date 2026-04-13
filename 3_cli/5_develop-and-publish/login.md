@@ -21,10 +21,11 @@ The CLI opens a browser window for authentication. If a browser cannot be opened
 lms login --with-pre-authenticated-keys \
   --key-id <KEY_ID> \
   --public-key <PUBLIC_KEY> \
-  --private-key <PRIVATE_KEY> 
+  --private-key <PRIVATE_KEY>
 ```
 
 ### Advanced Flags
+
 ```lms_params
 - name: "--with-pre-authenticated-keys"
   type: "flag"

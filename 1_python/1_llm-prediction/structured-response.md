@@ -28,7 +28,6 @@ class ModelSchema(Protocol):
 When a schema is provided, the prediction result's `parsed` field will contain a string-keyed dictionary that conforms
 to the given schema (for unstructured results, this field is a string field containing the same value as `content`).
 
-
 ## Enforce Using a Class Based Schema Definition
 
 If you wish the model to generate JSON that satisfies a given schema,

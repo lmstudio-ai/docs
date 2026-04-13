@@ -7,7 +7,7 @@ index: 1
 
 With [LM Link](/docs/lmlink), your coding tools can run models on a remote device (like a dedicated LLM rig on your network) while you work from your laptop
 
-<img src="/assets/docs/lmlink-claudecode.gif" style="width: 100%;" data-caption="Claude Code using a model loaded on a remote device via LM Link" />
+<img src="/assets/marketing/docs/lmlink-claudecode.gif" style="width: 100%;" data-caption="Claude Code using a model loaded on a remote device via LM Link" />
 
 ## Use your integration as normal
 
@@ -35,15 +35,12 @@ See the full [Claude Code](/docs/integrations/claude-code) guide.
 codex --oss -m qwen3-8b
 ```
 
-
 See the full [Codex](/docs/integrations/codex) guide.
 
 ## Set a preferred device
 
 To use a model on a specific remote device, set the device as the preferred device.
 
-
 See [set a preferred device](/docs/lmlink/basics/preferred-device) for more details.
-
 
 If you're running into trouble, hop onto our [Discord](https://discord.gg/lmstudio)

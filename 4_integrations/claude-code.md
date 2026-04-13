@@ -1,13 +1,13 @@
 ---
 title: Claude Code
 description: Use Claude Code with LM Studio
-index: 2 
+index: 2
 ---
 
 Claude Code can talk to LM Studio via the Anthropic-compatible `POST /v1/messages` endpoint.
 See: [Anthropic-compatible Messages endpoint](/docs/developer/anthropic-compat/messages).
 
-<img src="/assets/docs/claude-code.webp" style="width: 100%;" data-caption="Claude Code configured to use LM Studio via the Anthropic-compatible API" />
+<img src="/assets/marketing/docs/claude-code.webp" style="width: 100%;" data-caption="Claude Code configured to use LM Studio via the Anthropic-compatible API" />
 
 ```lms_protip
 Have a powerful LLM rig? Use [LM Link](/docs/integrations/lmlink) to run Claude Code from your laptop while the model runs on your rig.
@@ -32,8 +32,8 @@ export ANTHROPIC_BASE_URL=http://localhost:1234
 export ANTHROPIC_AUTH_TOKEN=lmstudio
 ```
 
-
 Notes:
+
 - If Require Authentication is enabled, set `ANTHROPIC_AUTH_TOKEN` to your LM Studio API token. To learn more, see: [Authentication](/docs/developer/core/authentication).
 
 ### 3) Run Claude Code against a local model

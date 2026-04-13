@@ -2,10 +2,10 @@
 title: Integrations
 sidebar_title: Introduction
 description: Use LM Studio with external tools and apps.
-index: 1 
+index: 1
 ---
 
-Use LM Studio as a seamless, drop-in local backend for your favorite tools. 
+Use LM Studio as a seamless, drop-in local backend for your favorite tools.
 
 Whether you are using an IDE extension or a custom automation script, simply point your base URL to `http://localhost:1234` to power your workflows with LM Studio and maintain complete control over your data privacy.
 

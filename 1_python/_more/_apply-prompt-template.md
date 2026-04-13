@@ -28,7 +28,7 @@ You can apply a prompt template to a `Chat` by using the `applyPromptTemplate` m
         chat = Chat.createEmpty()
         chat.append("system", "You are a helpful assistant.")
         chat.append("user", "What is LM Studio?")
-        
+
         formatted = model.applyPromptTemplate(chat)
         print(formatted)
 ```

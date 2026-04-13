@@ -6,6 +6,7 @@ index: 7
 api_info:
   method: POST
 ---
+
 ````lms_hstack
 `POST /api/v1/models/load`
 

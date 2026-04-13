@@ -90,7 +90,6 @@ const client = new OpenAI({
    }'
 ```
 
-
 ## Using Codex with LM Studio
 
 Codex is supported because LM Studio implements the OpenAI-compatible `POST /v1/responses` endpoint.

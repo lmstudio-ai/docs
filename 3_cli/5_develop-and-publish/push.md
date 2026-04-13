@@ -5,7 +5,7 @@ description: Upload the current folder's artifact to LM Studio Hub (beta).
 index: 2
 ---
 
-Run `lms push` from inside a [plugin](/docs/typescript/plugins), [preset](/docs/app/presets), or [`model.yaml`](/docs/app/modelyaml) project to publish a new revision. If a `model.yaml` exists, the CLI will generate a `manifest.json` for you before pushing. 
+Run `lms push` from inside a [plugin](/docs/typescript/plugins), [preset](/docs/app/presets), or [`model.yaml`](/docs/app/modelyaml) project to publish a new revision. If a `model.yaml` exists, the CLI will generate a `manifest.json` for you before pushing.
 
 For plugins, the CLI will ask for confirmation unless you pass `-y`.
 
@@ -16,6 +16,7 @@ lms push
 ```
 
 ### Flags
+
 ```lms_params
 - name: "--description"
   type: "string"
@@ -39,8 +40,7 @@ lms push
   description: "Write the returned revision number to manifest.json"
 ```
 
-
-### Advanced 
+### Advanced
 
 #### Publish quietly and keep the revision in manifest.json
 

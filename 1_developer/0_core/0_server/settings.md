@@ -8,8 +8,7 @@ index: 2
 
 You can configure server settings, such as the port number, whether to allow other API clients to access the server and MCP features.
 
-<img src="/assets/docs/server-settings.png" style="" data-caption="Configure LM Studio API Server settings" />
-
+<img src="/assets/marketing/docs/server-settings.png" style="" data-caption="Configure LM Studio API Server settings" />
 
 ### Settings information
 

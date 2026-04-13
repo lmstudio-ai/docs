@@ -3,7 +3,7 @@ title: Get Load Config
 description: Get the load configuration of the model
 ---
 
-*Required Python SDK version*: **1.2.0**
+_Required Python SDK version_: **1.2.0**
 
 LM Studio allows you to configure certain parameters when loading a model
 [through the server UI](/docs/advanced/per-model) or [through the API](/docs/api/sdk/load-model).

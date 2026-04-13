@@ -4,7 +4,7 @@ description: Download models to the machine running the LM Studio server
 ---
 
 TODO: model downloading is available, but the current API is a bit awkward, so hold
-      off on documenting it until the interface is nicer to use
+off on documenting it until the interface is nicer to use
 
 ## Overview
 
@@ -19,7 +19,6 @@ Downloading models consists of three steps:
 1. Search for the model you want;
 2. Find the download option you want (e.g. quantization) and
 3. Download the model!
-
 
 TODO: Actually translate this example code from TS to Python
 
