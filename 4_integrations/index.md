@@ -15,3 +15,4 @@ We provide guides below for popular tools and are constantly expanding this list
 
 - [Claude Code](/docs/integrations/claude-code)
 - [Codex](/docs/integrations/codex)
+- [OpenClaw](/docs/integrations/openclaw)
