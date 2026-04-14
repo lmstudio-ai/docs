@@ -1,0 +1,186 @@
+---
+title: LM Studio Developer Docs
+sidebar_title: Introduction
+description: Build with LM Studio's local APIs and SDKs — TypeScript, Python, REST, and OpenAI and Anthropic-compatible endpoints.
+index: 1
+---
+
+import { Card, Cards } from "fumadocs-ui/components/card";
+import {
+  Blocks,
+  Bot,
+  Braces,
+  Cable,
+  Code2,
+  Command,
+  Database,
+  MessageSquareText,
+  PackageSearch,
+  Sparkles,
+  Waves,
+} from "lucide-react";
+
+## Get to know the stack
+
+<Cards>
+  <Card
+    title="TypeScript SDK: lmstudio-js"
+    description="Use the TypeScript SDK to build apps, tools, and local AI workflows."
+    href="/docs/typescript"
+    icon={<Code2 className="text-sky-400" />}
+  />
+  <Card
+    title="Python SDK: lmstudio-python"
+    description="Work with local models from Python scripts, notebooks, and backend services."
+    href="/docs/python"
+    icon={<Braces className="text-emerald-400" />}
+  />
+  <Card
+    title="LM Studio REST API"
+    description="Use stateful chats, local server endpoints, and MCPs via HTTP."
+    href="/docs/developer/rest"
+    icon={<Waves className="text-indigo-400" />}
+  />
+  <Card
+    title="OpenAI-compatible"
+    description="Use chat, responses, embeddings, and other familiar OpenAI-style endpoints."
+    href="/docs/developer/openai-compat"
+    icon={<Sparkles className="text-violet-400" />}
+  />
+  <Card
+    title="Anthropic-compatible"
+    description="Use Claude-style Messages API flows against your local LM Studio server."
+    href="/docs/developer/anthropic-compat"
+    icon={<MessageSquareText className="text-amber-400" />}
+  />
+  <Card
+    title="LM Studio CLI: lms"
+    description="Download models, run the daemon, start the server, and script local workflows."
+    href="/docs/cli"
+    icon={<Command className="text-zinc-400" />}
+  />
+</Cards>
+
+## What you can build
+
+<Cards>
+  <Card
+    title="Chat and text generation with streaming"
+    description="Build local chat apps and text-generation flows with token streaming."
+    href="/docs/developer/rest/chat"
+    icon={<Bot className="text-cyan-400" />}
+  />
+  <Card
+    title="Tool calling and local agents with MCP"
+    description="Connect tools, MCP servers, and agent-like workflows entirely on your machine."
+    href="/docs/developer/openai-compat/tools"
+    icon={<Blocks className="text-fuchsia-400" />}
+  />
+  <Card
+    title="Structured output (JSON schema)"
+    description="Generate typed JSON outputs that validate against a schema."
+    href="/docs/developer/openai-compat/structured-output"
+    icon={<Cable className="text-orange-400" />}
+  />
+  <Card
+    title="Embeddings and tokenization"
+    description="Create embeddings, inspect tokens, and build retrieval or indexing pipelines."
+    href="/docs/developer/openai-compat/embeddings"
+    icon={<Database className="text-lime-400" />}
+  />
+  <Card
+    title="Model management (load, download, list)"
+    description="Load models into memory, download new ones, and inspect what is available."
+    href="/docs/developer/rest"
+    icon={<PackageSearch className="text-rose-400" />}
+  />
+</Cards>
+
+## Install `llmster` for headless deployments
+
+`llmster` is LM Studio's core, packaged as a daemon for headless deployment on servers, cloud instances, or CI. The daemon runs standalone, and it is not dependent on the LM Studio GUI.
+
+**Mac / Linux**
+
+```bash
+curl -fsSL https://lmstudio.ai/install.sh | bash
+```
+
+**Windows**
+
+```powershell
+irm https://lmstudio.ai/install.ps1 | iex
+```
+
+**Basic usage**
+
+```bash
+lms daemon up          # Start the daemon
+lms get <model>        # Download a model
+lms server start       # Start the local server
+lms chat               # Open an interactive session
+```
+
+Learn more: [Headless deployments](/blog/0.4.0#deploy-on-servers-deploy-in-ci-deploy-anywhere)
+
+## Super quick start
+
+### TypeScript (`lmstudio-js`)
+
+```bash
+npm install @lmstudio/sdk
+```
+
+```ts
+import { LMStudioClient } from "@lmstudio/sdk";
+
+const client = new LMStudioClient();
+const model = await client.llm.model("openai/gpt-oss-20b");
+const result = await model.respond("Who are you, and what can you do?");
+
+console.info(result.content);
+```
+
+Full docs: [lmstudio-js](/docs/typescript), Source: [GitHub](https://github.com/lmstudio-ai/lmstudio-js)
+
+### Python (`lmstudio-python`)
+
+```bash
+pip install lmstudio
+```
+
+```python
+import lmstudio as lms
+
+with lms.Client() as client:
+    model = client.llm.model("openai/gpt-oss-20b")
+    result = model.respond("Who are you, and what can you do?")
+    print(result)
+```
+
+Full docs: [lmstudio-python](/docs/python), Source: [GitHub](https://github.com/lmstudio-ai/lmstudio-python)
+
+### HTTP (LM Studio REST API)
+
+```bash
+lms server start --port 1234
+```
+
+```bash
+curl http://localhost:1234/api/v1/chat \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $LM_API_TOKEN" \
+  -d '{
+    "model": "openai/gpt-oss-20b",
+    "input": "Who are you, and what can you do?"
+  }'
+```
+
+Full docs: [LM Studio REST API](/docs/developer/rest)
+
+## Helpful links
+
+- [API Changelog](/docs/developer/api-changelog)
+- [Local server basics](/docs/developer/core/server)
+- [CLI reference](/docs/cli)
+- [Discord Community](https://discord.gg/lmstudio)
