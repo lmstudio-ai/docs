@@ -5,6 +5,56 @@ description: Learn how to run Llama, DeepSeek, Qwen, Phi, and other LLMs locally
 index: 1
 ---
 
+import { Card, Cards } from "fumadocs-ui/components/card";
+import { getDocsSectionIcon } from "@/lib/docsSectionIcon";
+
+## Explore the docs
+
+<Cards>
+  <Card
+    title="App"
+    description="Learn the LM Studio app: downloads, chats, MCP, presets, model.yaml, and advanced features."
+    href="/docs/app"
+    icon={getDocsSectionIcon("app")}
+  />
+  <Card
+    title="Developer"
+    description="Build with LM Studio's local REST API, OpenAI-compatible APIs, and developer tooling."
+    href="/docs/developer"
+    icon={getDocsSectionIcon("developer")}
+  />
+  <Card
+    title="Python SDK"
+    description="Use lmstudio-python to load models, generate text, embed content, and build agents."
+    href="/docs/python"
+    icon={getDocsSectionIcon("python")}
+  />
+  <Card
+    title="TypeScript SDK"
+    description="Use lmstudio-js in Node.js or TypeScript apps for local model workflows and plugins."
+    href="/docs/typescript"
+    icon={getDocsSectionIcon("typescript")}
+  />
+  <Card
+    title="CLI"
+    description="Use lms for chat, model downloads, daemon management, server control, and publishing."
+    href="/docs/cli"
+    icon={getDocsSectionIcon("cli")}
+  />
+  <Card
+    title="Integrations"
+    description="Connect LM Studio to Codex, Claude Code, OpenClaw, MCP tools, and remote workflows."
+    href="/docs/integrations"
+    icon={getDocsSectionIcon("integrations")}
+  />
+  <Card
+    title="LM Link"
+    description="Set up LM Link to route local AI workloads across devices and preferred machines."
+    href="/docs/lmlink"
+    icon={getDocsSectionIcon("lmlink")}
+  />
+</Cards>
+
 To get LM Studio, head over to the [Downloads page](/download) and download an installer for your operating system.
 
 LM Studio is available for macOS, Windows, and Linux.
