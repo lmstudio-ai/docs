@@ -46,38 +46,28 @@ Configurations that look good:
 2. no title + 2+ variants
 
 ````
-```lms_code_snippet
-  variants:
-    TypeScript:
-      language: typescript
-      code: |
-        // Multi-line TypeScript code
-        function hello() {
-          console.log("hey")
-          return "world"
-        }
+```typescript tab="TypeScript"
+// Multi-line TypeScript code
+function hello() {
+  console.log("hey")
+  return "world"
+}
+```
 
-    Python:
-      language: python
-      code: |
-        # Multi-line Python code
-        def hello():
-            print("hey")
-            return "world"
+```python tab="Python"
+# Multi-line Python code
+def hello():
+    print("hey")
+    return "world"
 ```
 ````
 
 ````
-```lms_code_snippet
-  title: "generator.py"
-  variants:
-    Python:
-      language: python
-      code: |
-        # Multi-line Python code
-        def hello():
-            print("hey")
-            return "world"
+```python title="generator.py"
+# Multi-line Python code
+def hello():
+    print("hey")
+    return "world"
 ```
 ````
 

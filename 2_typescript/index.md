@@ -10,20 +10,16 @@ The SDK provides you a set of programmatic tools to interact with LLMs, embeddin
 
 `lmstudio-js` is available as an npm package. You can install it using npm, yarn, or pnpm.
 
-```lms_code_snippet
-  variants:
-    npm:
-      language: bash
-      code: |
-        npm install @lmstudio/sdk --save
-    yarn:
-      language: bash
-      code: |
-        yarn add @lmstudio/sdk
-    pnpm:
-      language: bash
-      code: |
-        pnpm add @lmstudio/sdk
+```bash tab="npm"
+npm install @lmstudio/sdk --save
+```
+
+```bash tab="yarn"
+yarn add @lmstudio/sdk
+```
+
+```bash tab="pnpm"
+pnpm add @lmstudio/sdk
 ```
 
 For the source code and open source contribution, visit [lmstudio-js](https://github.com/lmstudio-ai/lmstudio-js) on GitHub.
@@ -38,19 +34,14 @@ For the source code and open source contribution, visit [lmstudio-js](https://gi
 
 ## Quick Example: Chat with a Llama Model
 
-```lms_code_snippet
-  title: "index.ts"
-  variants:
-    TypeScript:
-      language: typescript
-      code: |
-        import { LMStudioClient } from "@lmstudio/sdk";
-        const client = new LMStudioClient();
+```typescript title="index.ts"
+import { LMStudioClient } from "@lmstudio/sdk";
+const client = new LMStudioClient();
 
-        const model = await client.llm.model("qwen/qwen3-4b-2507");
-        const result = await model.respond("What is the meaning of life?");
+const model = await client.llm.model("qwen/qwen3-4b-2507");
+const result = await model.respond("What is the meaning of life?");
 
-        console.info(result.content);
+console.info(result.content);
 ```
 
 ### Getting Local Models

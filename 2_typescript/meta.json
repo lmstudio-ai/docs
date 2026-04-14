@@ -1,0 +1,16 @@
+{
+  "title": "TypeScript SDK",
+  "pages": [
+    "2_llm-prediction",
+    "3_agent",
+    "3_plugins",
+    "4_embedding",
+    "5_tokenization",
+    "6_manage-models",
+    "7_api-reference",
+    "8_model-info",
+    "authentication",
+    "_more",
+    "project-setup"
+  ]
+}

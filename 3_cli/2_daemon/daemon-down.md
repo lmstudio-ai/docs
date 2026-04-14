@@ -11,9 +11,9 @@ The `lms daemon down` command stops the running llmster.
 lms daemon down
 ```
 
-```lms_info
+:::info[Info]
 `lms daemon down` only works if llmster is running. It will not stop LM Studio if it is running as a GUI app.
-```
+:::
 
 ### Learn more
 

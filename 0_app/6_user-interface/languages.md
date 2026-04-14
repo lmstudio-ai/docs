@@ -14,9 +14,9 @@ You can choose a language in the Settings tab.
 
 Use the dropdown menu under Preferences > Language.
 
-```lms_protip
+:::tip[Pro Tip]
 You can jump to Settings from anywhere in the app by pressing `cmd` + `,` on macOS or `ctrl` + `,` on Windows/Linux.
-```
+:::
 
 ###### To get to the Settings page, you need to be on [Power User mode](/docs/modes) or higher.
 

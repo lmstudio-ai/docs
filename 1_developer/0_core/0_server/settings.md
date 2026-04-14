@@ -2,7 +2,7 @@
 title: Server Settings
 sidebar_title: Server Settings
 description: Configure server settings for LM Studio API Server
-fullPage: false
+full: false
 index: 2
 ---
 

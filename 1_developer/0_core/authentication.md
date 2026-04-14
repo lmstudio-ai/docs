@@ -13,9 +13,9 @@ LM Studio supports API Tokens for authentication, providing a secure and conveni
 
 By default, LM Studio does not require authentication for API requests. To enable authentication so that only requests with a valid API Token are accepted, toggle the switch in the Developers Page > Server Settings.
 
-```lms_info
+:::info[Info]
 Once enabled, all requests made through the REST API, Python SDK, or Typescript SDK will need to include a valid API Token. See usage [below](#api-token-usage).
-```
+:::
 
 <img src="/assets/marketing/docs/require-auth.png" style="width: 75%;" data-caption="Enable authentication to require valid API tokens for all requests" />
 
@@ -45,9 +45,9 @@ To edit the permissions of an existing API Token, click on the Edit button next 
 
 ### Using API Tokens with REST API:
 
-```lms_noticechill
+:::note
 The example below requires [allowing calling servers from mcp.json](/docs/developer/core/server/settings) to be enabled and the [Playwright MCP](https://github.com/microsoft/playwright-mcp) in mcp.json.
-```
+:::
 
 ```bash
 curl -X POST \

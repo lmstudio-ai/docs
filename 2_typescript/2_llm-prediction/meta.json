@@ -1,0 +1,14 @@
+{
+  "title": "Basics",
+  "pages": [
+    "cancelling-predictions",
+    "chat-completion",
+    "completion",
+    "image-input",
+    "_index",
+    "parameters",
+    "speculative-decoding",
+    "structured-response",
+    "working-with-chats"
+  ]
+}

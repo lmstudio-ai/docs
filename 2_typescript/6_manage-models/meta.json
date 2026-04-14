@@ -1,0 +1,9 @@
+{
+  "title": "Manage Models",
+  "pages": [
+    "_download-models",
+    "list-downloaded",
+    "list-loaded",
+    "loading"
+  ]
+}

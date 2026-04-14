@@ -1,0 +1,12 @@
+{
+  "title": "App",
+  "pages": [
+    "0_root",
+    "1_basics",
+    "2_mcp",
+    "3_modelyaml",
+    "3_presets",
+    "5_advanced",
+    "6_user-interface"
+  ]
+}

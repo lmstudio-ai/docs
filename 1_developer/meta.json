@@ -1,0 +1,11 @@
+{
+  "title": "Developer",
+  "pages": [
+    "0_core",
+    "2_rest",
+    "3_openai-compat",
+    "4_anthropic-compat",
+    "api-changelog",
+    "_embeddings"
+  ]
+}

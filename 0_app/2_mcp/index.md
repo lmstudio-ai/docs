@@ -10,9 +10,9 @@ Starting LM Studio 0.3.17, LM Studio acts as an **Model Context Protocol (MCP) H
 
 Never install MCPs from untrusted sources.
 
-```lms_warning
+:::warning[Heads Up]
 Some MCP servers can run arbitrary code, access your local files, and use your network connection. Always be cautious when installing and using MCP servers. If you don't trust the source, don't install it.
-```
+:::
 
 # Use MCP servers in LM Studio
 

@@ -20,33 +20,26 @@ lms get qwen2-vl-2b-instruct
 
 Connect to LM Studio and obtain a handle to the VLM (Vision-Language Model) you want to use.
 
-```lms_code_snippet
-  variants:
-    "Python (convenience API)":
-      language: python
-      code: |
-        import lmstudio as lms
+```python tab="Python (convenience API)"
+import lmstudio as lms
 
-        model = lms.llm("qwen2-vl-2b-instruct")
+model = lms.llm("qwen2-vl-2b-instruct")
+```
 
-    "Python (scoped resource API)":
-      language: python
-      code: |
-        import lmstudio as lms
+```python tab="Python (scoped resource API)"
+import lmstudio as lms
 
-        with lms.Client() as client:
-            model = client.llm.model("qwen2-vl-2b-instruct")
+with lms.Client() as client:
+    model = client.llm.model("qwen2-vl-2b-instruct")
+```
 
-    "Python (asynchronous API)":
-      language: python
-      code: |
-        # Note: assumes use of an async function or the "python -m asyncio" asynchronous REPL
-        # Requires Python SDK version 1.5.0 or later
-        import lmstudio as lms
+```python tab="Python (asynchronous API)"
+# Note: assumes use of an async function or the "python -m asyncio" asynchronous REPL
+# Requires Python SDK version 1.5.0 or later
+import lmstudio as lms
 
-        async with lms.AsyncClient() as client:
-            model = await client.llm.model("qwen2-vl-2b-instruct")
-
+async with lms.AsyncClient() as client:
+    model = await client.llm.model("qwen2-vl-2b-instruct")
 ```
 
 ## 2. Prepare the Image
@@ -54,36 +47,29 @@ Connect to LM Studio and obtain a handle to the VLM (Vision-Language Model) you 
 Use the `prepare_image()` function or `files` namespace method to
 get a handle to the image that can subsequently be passed to the model.
 
-```lms_code_snippet
-  variants:
-    "Python (convenience API)":
-      language: python
-      code: |
-        import lmstudio as lms
+```python tab="Python (convenience API)"
+import lmstudio as lms
 
-        image_path = "/path/to/image.jpg" # Replace with the path to your image
-        image_handle = lms.prepare_image(image_path)
+image_path = "/path/to/image.jpg" # Replace with the path to your image
+image_handle = lms.prepare_image(image_path)
+```
 
-    "Python (scoped resource API)":
-      language: python
-      code: |
-        import lmstudio as lms
+```python tab="Python (scoped resource API)"
+import lmstudio as lms
 
-        with lms.Client() as client:
-            image_path = "/path/to/image.jpg" # Replace with the path to your image
-            image_handle = client.files.prepare_image(image_path)
+with lms.Client() as client:
+    image_path = "/path/to/image.jpg" # Replace with the path to your image
+    image_handle = client.files.prepare_image(image_path)
+```
 
-    "Python (asynchronous API)":
-      language: python
-      code: |
-        # Note: assumes use of an async function or the "python -m asyncio" asynchronous REPL
-        # Requires Python SDK version 1.5.0 or later
-        import lmstudio as lms
+```python tab="Python (asynchronous API)"
+# Note: assumes use of an async function or the "python -m asyncio" asynchronous REPL
+# Requires Python SDK version 1.5.0 or later
+import lmstudio as lms
 
-        async with lms.AsyncClient() as client:
-            image_path = "/path/to/image.jpg" # Replace with the path to your image
-            image_handle = await client.files.prepare_image(image_path)
-
+async with lms.AsyncClient() as client:
+    image_path = "/path/to/image.jpg" # Replace with the path to your image
+    image_handle = await client.files.prepare_image(image_path)
 ```
 
 If you only have the raw data of the image, you can supply the raw data directly as a bytes
@@ -99,46 +85,39 @@ The LM Studio server supports JPEG, PNG, and WebP image formats.
 
 Generate a prediction by passing the image to the model in the `.respond()` method.
 
-```lms_code_snippet
-  variants:
-    "Python (convenience API)":
-      language: python
-      code: |
-        import lmstudio as lms
+```python tab="Python (convenience API)"
+import lmstudio as lms
 
-        image_path = "/path/to/image.jpg" # Replace with the path to your image
-        image_handle = lms.prepare_image(image_path)
-        model = lms.llm("qwen2-vl-2b-instruct")
-        chat = lms.Chat()
-        chat.add_user_message("Describe this image please", images=[image_handle])
-        prediction = model.respond(chat)
+image_path = "/path/to/image.jpg" # Replace with the path to your image
+image_handle = lms.prepare_image(image_path)
+model = lms.llm("qwen2-vl-2b-instruct")
+chat = lms.Chat()
+chat.add_user_message("Describe this image please", images=[image_handle])
+prediction = model.respond(chat)
+```
 
-    "Python (scoped resource API)":
-      language: python
-      code: |
-        import lmstudio as lms
+```python tab="Python (scoped resource API)"
+import lmstudio as lms
 
-        with lms.Client() as client:
-            image_path = "/path/to/image.jpg" # Replace with the path to your image
-            image_handle = client.files.prepare_image(image_path)
-            model = client.llm.model("qwen2-vl-2b-instruct")
-            chat = lms.Chat()
-            chat.add_user_message("Describe this image please", images=[image_handle])
-            prediction = model.respond(chat)
+with lms.Client() as client:
+    image_path = "/path/to/image.jpg" # Replace with the path to your image
+    image_handle = client.files.prepare_image(image_path)
+    model = client.llm.model("qwen2-vl-2b-instruct")
+    chat = lms.Chat()
+    chat.add_user_message("Describe this image please", images=[image_handle])
+    prediction = model.respond(chat)
+```
 
-    "Python (asynchronous API)":
-      language: python
-      code: |
-        # Note: assumes use of an async function or the "python -m asyncio" asynchronous REPL
-        # Requires Python SDK version 1.5.0 or later
-        import lmstudio as lms
+```python tab="Python (asynchronous API)"
+# Note: assumes use of an async function or the "python -m asyncio" asynchronous REPL
+# Requires Python SDK version 1.5.0 or later
+import lmstudio as lms
 
-        async with lms.AsyncClient() as client:
-            image_path = "/path/to/image.jpg" # Replace with the path to your image
-            image_handle = client.files.prepare_image(image_path)
-            model = await client.llm.model("qwen2-vl-2b-instruct")
-            chat = lms.Chat()
-            chat.add_user_message("Describe this image please", images=[image_handle])
-            prediction = await model.respond(chat)
-
+async with lms.AsyncClient() as client:
+    image_path = "/path/to/image.jpg" # Replace with the path to your image
+    image_handle = client.files.prepare_image(image_path)
+    model = await client.llm.model("qwen2-vl-2b-instruct")
+    chat = lms.Chat()
+    chat.add_user_message("Describe this image please", images=[image_handle])
+    prediction = await model.respond(chat)
 ```

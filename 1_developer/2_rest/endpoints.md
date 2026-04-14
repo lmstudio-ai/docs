@@ -3,9 +3,9 @@ title: REST API v0
 description: "The REST API includes enhanced stats such as Token / Second and Time To First Token (TTFT), as well as rich information about models such as loaded vs unloaded, max context, quantization, and more."
 ---
 
-```lms_warning
+:::warning[Heads Up]
 LM Studio now has a [v1 REST API](/docs/developer/rest)! We recommend using the v1 API for new projects!
-```
+:::
 
 ##### Requires [LM Studio 0.3.6](/download) or newer.
 
@@ -31,9 +31,9 @@ To start the server, run the following command:
 lms server start
 ```
 
-```lms_protip
+:::tip[Pro Tip]
 You can run LM Studio as a service and get the server to auto-start on boot without launching the GUI. [Learn about Headless Mode](/docs/developer/core/headless).
-```
+:::
 
 ## Endpoints
 

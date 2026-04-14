@@ -11,34 +11,26 @@ index: 2
 
 Use the following command to start an interactive project setup:
 
-```lms_code_snippet
-  variants:
-    TypeScript (Recommended):
-      language: bash
-      code: |
-        lms create node-typescript
-    Javascript:
-      language: bash
-      code: |
-        lms create node-javascript
+```bash tab="TypeScript (Recommended)"
+lms create node-typescript
+```
+
+```bash tab="Javascript"
+lms create node-javascript
 ```
 
 ## Add `lmstudio-js` to an Exiting Project
 
 If you have already created a project and would like to use `lmstudio-js` in it, you can install it using npm, yarn, or pnpm.
 
-```lms_code_snippet
-  variants:
-    npm:
-      language: bash
-      code: |
-        npm install @lmstudio/sdk --save
-    yarn:
-      language: bash
-      code: |
-        yarn add @lmstudio/sdk
-    pnpm:
-      language: bash
-      code: |
-        pnpm add @lmstudio/sdk
+```bash tab="npm"
+npm install @lmstudio/sdk --save
+```
+
+```bash tab="yarn"
+yarn add @lmstudio/sdk
+```
+
+```bash tab="pnpm"
+pnpm add @lmstudio/sdk
 ```

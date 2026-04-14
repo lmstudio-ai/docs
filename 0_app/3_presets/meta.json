@@ -1,0 +1,9 @@
+{
+  "title": "Presets",
+  "pages": [
+    "import",
+    "publish",
+    "pull",
+    "push"
+  ]
+}

@@ -39,64 +39,53 @@ while `lmstudio.BaseModel` is a `msgspec.Struct` subclass that implements `.mode
 
 #### Define a Class Based Schema
 
-```lms_code_snippet
-  variants:
-    "pydantic.BaseModel":
-      language: python
-      code: |
-        from pydantic import BaseModel
+```python tab="pydantic.BaseModel"
+from pydantic import BaseModel
 
-        # A class based schema for a book
-        class BookSchema(BaseModel):
-            title: str
-            author: str
-            year: int
+# A class based schema for a book
+class BookSchema(BaseModel):
+    title: str
+    author: str
+    year: int
+```
 
-    "lmstudio.BaseModel":
-      language: python
-      code: |
-        from lmstudio import BaseModel
+```python tab="lmstudio.BaseModel"
+from lmstudio import BaseModel
 
-        # A class based schema for a book
-        class BookSchema(BaseModel):
-            title: str
-            author: str
-            year: int
-
+# A class based schema for a book
+class BookSchema(BaseModel):
+    title: str
+    author: str
+    year: int
 ```
 
 #### Generate a Structured Response
 
-```lms_code_snippet
-  variants:
-    "Non-streaming":
-      language: python
-      code: |
-        result = model.respond("Tell me about The Hobbit", response_format=BookSchema)
-        book = result.parsed
+```python tab="Non-streaming"
+result = model.respond("Tell me about The Hobbit", response_format=BookSchema)
+book = result.parsed
 
-        print(book)
-        #           ^
-        # Note that `book` is correctly typed as { title: string, author: string, year: number }
+print(book)
+#           ^
+# Note that `book` is correctly typed as { title: string, author: string, year: number }
+```
 
-    Streaming:
-      language: python
-      code: |
-        prediction_stream = model.respond_stream("Tell me about The Hobbit", response_format=BookSchema)
+```python tab="Streaming"
+prediction_stream = model.respond_stream("Tell me about The Hobbit", response_format=BookSchema)
 
-        # Optionally stream the response
-        # for fragment in prediction:
-        #   print(fragment.content, end="", flush=True)
-        # print()
-        # Note that even for structured responses, the *fragment* contents are still only text
+# Optionally stream the response
+# for fragment in prediction:
+#   print(fragment.content, end="", flush=True)
+# print()
+# Note that even for structured responses, the *fragment* contents are still only text
 
-        # Get the final structured result
-        result = prediction_stream.result()
-        book = result.parsed
+# Get the final structured result
+result = prediction_stream.result()
+book = result.parsed
 
-        print(book)
-        #           ^
-        # Note that `book` is correctly typed as { title: string, author: string, year: number }
+print(book)
+#           ^
+# Note that `book` is correctly typed as { title: string, author: string, year: number }
 ```
 
 ## Enforce Using a JSON Schema
@@ -120,36 +109,31 @@ schema = {
 
 #### Generate a Structured Response
 
-```lms_code_snippet
-  variants:
-    "Non-streaming":
-      language: python
-      code: |
-        result = model.respond("Tell me about The Hobbit", response_format=schema)
-        book = result.parsed
+```python tab="Non-streaming"
+result = model.respond("Tell me about The Hobbit", response_format=schema)
+book = result.parsed
 
-        print(book)
-        #     ^
-        # Note that `book` is correctly typed as { title: string, author: string, year: number }
+print(book)
+#     ^
+# Note that `book` is correctly typed as { title: string, author: string, year: number }
+```
 
-    Streaming:
-      language: python
-      code: |
-        prediction_stream = model.respond_stream("Tell me about The Hobbit", response_format=schema)
+```python tab="Streaming"
+prediction_stream = model.respond_stream("Tell me about The Hobbit", response_format=schema)
 
-        # Stream the response
-        for fragment in prediction:
-            print(fragment.content, end="", flush=True)
-        print()
-        # Note that even for structured responses, the *fragment* contents are still only text
+# Stream the response
+for fragment in prediction:
+    print(fragment.content, end="", flush=True)
+print()
+# Note that even for structured responses, the *fragment* contents are still only text
 
-        # Get the final structured result
-        result = prediction_stream.result()
-        book = result.parsed
+# Get the final structured result
+result = prediction_stream.result()
+book = result.parsed
 
-        print(book)
-        #     ^
-        # Note that `book` is correctly typed as { title: string, author: string, year: number }
+print(book)
+#     ^
+# Note that `book` is correctly typed as { title: string, author: string, year: number }
 ```
 
 <!--
@@ -172,27 +156,23 @@ that need structured data. This structured data format is supported by both
 [`complete`](/docs/api/sdk/completion) and [`respond`](/docs/api/sdk/chat-completion)
 methods, and relies on Pydantic in Python and Zod in TypeScript.
 
-```lms_code_snippet
-  variants:
-    "Python (convenience API)":
-      language: python
-      code: |
-        import { LMStudioClient } from "@lmstudio/sdk";
-        import { z } from "zod";
+```python
+import { LMStudioClient } from "@lmstudio/sdk";
+import { z } from "zod";
 
-        const Book = z.object({
-          title: z.string(),
-          author: z.string(),
-          year: z.number().int()
-        })
+const Book = z.object({
+  title: z.string(),
+  author: z.string(),
+  year: z.number().int()
+})
 
-        const client = new LMStudioClient()
-        const llm = client.llm.model()
+const client = new LMStudioClient()
+const llm = client.llm.model()
 
-        const response = llm.respond(
-          "Tell me about The Hobbit.",
-          { structured: Book },
-        )
+const response = llm.respond(
+  "Tell me about The Hobbit.",
+  { structured: Book },
+)
 
-        console.log(response.content.title)
+console.log(response.content.title)
 ``` -->

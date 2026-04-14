@@ -26,14 +26,13 @@ This will open a dialog where you can set the default parameters for the model.
 
 Next time you load the model, these settings will be used.
 
-```lms_protip
+:::tip[Pro Tip]
 #### Reasons to set default load parameters (not required, totally optional)
 
 - Set a particular GPU offload settings for a given model
 - Set a particular context size for a given model
 - Whether or not to utilize Flash Attention for a given model
-
-```
+:::
 
 ## Advanced Topics
 

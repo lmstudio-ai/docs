@@ -9,9 +9,9 @@ See: [OpenClaw Docs](https://docs.openclaw.ai/providers/lmstudio).
 
 <img src="/assets/marketing/docs/openclaw.webp" style="width: 100%;" data-caption="OpenClaw using LM Studio as a model provider" />
 
-```lms_protip
+:::tip[Pro Tip]
 Have a powerful LLM rig? Use [LM Link](/docs/integrations/lmlink) to run OpenClaw from your laptop while the model runs on your rig.
-```
+:::
 
 ### 1) Start LM Studio's local server
 
@@ -45,9 +45,9 @@ openclaw onboard \
   --custom-model-id qwen/qwen3.5-9b
 ```
 
-```lms_protip
+:::tip[Pro Tip]
 Use a model (and server/model settings) with more than ~50k context length. Tools like OpenClaw can consume a lot of context.
-```
+:::
 
 ### 3) Set up LM Studio as default memory search provider
 

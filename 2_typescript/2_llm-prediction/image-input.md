@@ -18,40 +18,27 @@ lms get qwen2-vl-2b-instruct
 
 Connect to LM Studio and obtain a handle to the VLM (Vision-Language Model) you want to use.
 
-```lms_code_snippet
-  variants:
-    Example:
-      language: typescript
-      code: |
-        import { LMStudioClient } from "@lmstudio/sdk";
-        const client = new LMStudioClient();
+```typescript
+import { LMStudioClient } from "@lmstudio/sdk";
+const client = new LMStudioClient();
 
-        const model = await client.llm.model("qwen2-vl-2b-instruct");
+const model = await client.llm.model("qwen2-vl-2b-instruct");
 ```
 
 ## 2. Prepare the Image
 
 Use the `client.files.prepareImage()` method to get a handle to the image that can be subsequently passed to the model.
 
-```lms_code_snippet
-  variants:
-    Example:
-      language: typescript
-      code: |
-        const imagePath = "/path/to/image.jpg"; // Replace with the path to your image
-        const image = await client.files.prepareImage(imagePath);
-
+```typescript
+const imagePath = "/path/to/image.jpg"; // Replace with the path to your image
+const image = await client.files.prepareImage(imagePath);
 ```
 
 If you only have the image in the form of a base64 string, you can use the `client.files.prepareImageBase64()` method instead.
 
-```lms_code_snippet
-  variants:
-    Example:
-      language: typescript
-      code: |
-        const imageBase64 = "Your base64 string here";
-        const image = await client.files.prepareImageBase64(imageBase64);
+```typescript
+const imageBase64 = "Your base64 string here";
+const image = await client.files.prepareImageBase64(imageBase64);
 ```
 
 The LM Studio server supports JPEG, PNG, and WebP image formats.
@@ -60,12 +47,8 @@ The LM Studio server supports JPEG, PNG, and WebP image formats.
 
 Generate a prediction by passing the image to the model in the `.respond()` method.
 
-```lms_code_snippet
-  variants:
-    Example:
-      language: typescript
-      code: |
-        const prediction = model.respond([
-          { role: "user", content: "Describe this image please", images: [image] },
-        ]);
+```typescript
+const prediction = model.respond([
+  { role: "user", content: "Describe this image please", images: [image] },
+]);
 ```

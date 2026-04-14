@@ -1,0 +1,12 @@
+{
+  "title": "Docs",
+  "pages": [
+    "0_app",
+    "1_developer",
+    "1_python",
+    "2_typescript",
+    "3_cli",
+    "4_integrations",
+    "5_lmlink"
+  ]
+}

@@ -12,36 +12,26 @@ Configurations that look good:
 1. title + 1 variant
 2. no title + 2+ variants
 
-```lms_code_snippet
-  variants:
-    TypeScript:
-      language: typescript
-      code: |
-        // Multi-line TypeScript code
-        function hello() {
-          console.log("hey")
-          return "world"
-        }
-
-    Python:
-      language: python
-      code: |
-        # Multi-line Python code
-        def hello():
-            print("hey")
-            return "world"
+```typescript tab="TypeScript"
+// Multi-line TypeScript code
+function hello() {
+  console.log("hey")
+  return "world"
+}
 ```
 
-```lms_code_snippet
-  title: "generator.py"
-  variants:
-    Python:
-      language: python
-      code: |
-        # Multi-line Python code
-        def hello():
-            print("hey")
-            return "world"
+```python tab="Python"
+# Multi-line Python code
+def hello():
+    print("hey")
+    return "world"
+```
+
+```python title="generator.py"
+# Multi-line Python code
+def hello():
+    print("hey")
+    return "world"
 ```
 
 <br></br>
@@ -82,17 +72,17 @@ async function main() {
 main();
 ```
 
-```lms_notice
+:::note
 You can jump to Settings from anywhere in the app by pressing `cmd` + `,` on macOS or `ctrl` + `,` on Windows/Linux.
-```
+:::
 
-```lms_protip
+:::tip[Pro Tip]
 You can jump to Settings from anywhere in the app by pressing `cmd` + `,` on macOS or `ctrl` + `,` on Windows/Linux.
-```
+:::
 
-```lms_warning
+:::warning[Heads Up]
 You can jump to Settings from anywhere in the app by pressing `cmd` + `,` on macOS or `ctrl` + `,` on Windows/Linux.
-```
+:::
 
 ### Params
 

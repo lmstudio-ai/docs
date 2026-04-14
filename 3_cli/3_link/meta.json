@@ -1,0 +1,10 @@
+{
+  "title": "Link",
+  "pages": [
+    "link-disable",
+    "link-enable",
+    "link-set-device-name",
+    "link-set-preferred-device",
+    "link-status"
+  ]
+}

@@ -8,25 +8,20 @@ Generators take in the the generator controller and the current conversation sta
 
 The following is an example of a simple generator that echos back the last user message with 200 ms delay between each word:
 
-```lms_code_snippet
-  title: "src/toolsProvider.ts"
-  variants:
-    TypeScript:
-      language: typescript
-      code: |
-        import { Chat, GeneratorController } from "@lmstudio/sdk";
+```typescript title="src/toolsProvider.ts"
+import { Chat, GeneratorController } from "@lmstudio/sdk";
 
-        export async function generate(ctl: GeneratorController, chat: Chat) {
-          // Just echo back the last message
-          const lastMessage = chat.at(-1).getText();
-          // Split the last message into words
-          const words = lastMessage.split(/(?= )/);
-          for (const word of words) {
-            ctl.fragmentGenerated(word); // Send each word as a fragment
-            ctl.abortSignal.throwIfAborted(); // Allow for cancellation
-            await new Promise((resolve) => setTimeout(resolve, 200)); // Simulate some processing time
-          }
-        }
+export async function generate(ctl: GeneratorController, chat: Chat) {
+  // Just echo back the last message
+  const lastMessage = chat.at(-1).getText();
+  // Split the last message into words
+  const words = lastMessage.split(/(?= )/);
+  for (const word of words) {
+    ctl.fragmentGenerated(word); // Send each word as a fragment
+    ctl.abortSignal.throwIfAborted(); // Allow for cancellation
+    await new Promise((resolve) => setTimeout(resolve, 200)); // Simulate some processing time
+  }
+}
 ```
 
 ## Custom Configurations

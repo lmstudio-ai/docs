@@ -1,0 +1,18 @@
+{
+  "title": "API Reference",
+  "pages": [
+    "_act",
+    "_chat",
+    "_complete",
+    "_count-tokens",
+    "_embed",
+    "llm-load-model-config",
+    "_llm-namespace",
+    "llm-prediction-config-input",
+    "_lmstudioclient",
+    "_model",
+    "_respond",
+    "_system-namespace",
+    "_tokenize"
+  ]
+}

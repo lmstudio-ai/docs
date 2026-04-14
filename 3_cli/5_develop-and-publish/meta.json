@@ -1,0 +1,9 @@
+{
+  "title": "Develop & Publish",
+  "pages": [
+    "clone",
+    "dev",
+    "login",
+    "push"
+  ]
+}

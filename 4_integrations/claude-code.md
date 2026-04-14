@@ -9,9 +9,9 @@ See: [Anthropic-compatible Messages endpoint](/docs/developer/anthropic-compat/m
 
 <img src="/assets/marketing/docs/claude-code.webp" style="width: 100%;" data-caption="Claude Code configured to use LM Studio via the Anthropic-compatible API" />
 
-```lms_protip
+:::tip[Pro Tip]
 Have a powerful LLM rig? Use [LM Link](/docs/integrations/lmlink) to run Claude Code from your laptop while the model runs on your rig.
-```
+:::
 
 ### 1) Start LM Studio's local server
 
@@ -42,9 +42,9 @@ Notes:
 claude --model openai/gpt-oss-20b
 ```
 
-```lms_protip
+:::tip[Pro Tip]
 Use a model (and server/model settings) with more than ~25k context length. Tools like Claude Code can consume a lot of context.
-```
+:::
 
 ### 4) If Require Authentication is enabled, use your LM Studio API token
 

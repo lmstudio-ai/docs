@@ -7,9 +7,9 @@ index: 1
 
 The `lms link enable` command enables LM Link on this device, allowing it to connect with other devices on the same link.
 
-```lms_info
+:::info[Info]
 LM Link requires an LM Studio account. Run `lms login` first if you haven't already.
-```
+:::
 
 ## Enable LM Link
 

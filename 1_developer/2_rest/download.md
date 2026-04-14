@@ -1,7 +1,7 @@
 ---
 title: "Download a model"
 description: "Download LLMs and embedding models"
-fullPage: true
+full: true
 index: 8
 api_info:
   method: POST
@@ -22,18 +22,13 @@ api_info:
   description: Quantization level of the model to download (e.g., `Q4_K_M`). Only supported for Hugging Face links.
 ```
 :::split:::
-```lms_code_snippet
-title: Example Request
-variants:
-  curl:
-    language: bash
-    code: |
-      curl http://localhost:1234/api/v1/models/download \
-        -H "Authorization: Bearer $LM_API_TOKEN" \
-        -H "Content-Type: application/json" \
-        -d '{
-          "model": "ibm/granite-4-micro"
-        }'
+```bash title="Example Request"
+curl http://localhost:1234/api/v1/models/download \
+  -H "Authorization: Bearer $LM_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "ibm/granite-4-micro"
+  }'
 ```
 ````
 
@@ -64,17 +59,12 @@ Returns a download job status object. The response varies based on the download 
   description: Download start time in ISO 8601 format. Absent when `status` is `already_downloaded`.
 ```
 :::split:::
-```lms_code_snippet
-title: Response
-variants:
-  json:
-    language: json
-    code: |
-      {
-        "job_id": "job_493c7c9ded",
-        "status": "downloading",
-        "total_size_bytes": 2279145003,
-        "started_at": "2025-10-03T15:33:23.496Z"
-      }
+```json title="Response"
+{
+  "job_id": "job_493c7c9ded",
+  "status": "downloading",
+  "total_size_bytes": 2279145003,
+  "started_at": "2025-10-03T15:33:23.496Z"
+}
 ```
 ````

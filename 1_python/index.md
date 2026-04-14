@@ -10,12 +10,8 @@ description: "Getting started with LM Studio's Python SDK"
 
 `lmstudio-python` is available as a PyPI package. You can install it using pip.
 
-```lms_code_snippet
-  variants:
-    pip:
-      language: bash
-      code: |
-        pip install lmstudio
+```bash
+pip install lmstudio
 ```
 
 For the source code and open source contribution, visit [lmstudio-python](https://github.com/lmstudio-ai/lmstudio-python) on GitHub.
@@ -29,41 +25,35 @@ For the source code and open source contribution, visit [lmstudio-python](https:
 
 ## Quick Example: Chat with a Llama Model
 
-```lms_code_snippet
-  variants:
-    "Python (convenience API)":
-      language: python
-      code: |
-        import lmstudio as lms
+```python tab="Python (convenience API)"
+import lmstudio as lms
 
-        model = lms.llm("qwen/qwen3-4b-2507")
-        result = model.respond("What is the meaning of life?")
+model = lms.llm("qwen/qwen3-4b-2507")
+result = model.respond("What is the meaning of life?")
 
-        print(result)
+print(result)
+```
 
-    "Python (scoped resource API)":
-      language: python
-      code: |
-        import lmstudio as lms
+```python tab="Python (scoped resource API)"
+import lmstudio as lms
 
-        with lms.Client() as client:
-            model = client.llm.model("qwen/qwen3-4b-2507")
-            result = model.respond("What is the meaning of life?")
+with lms.Client() as client:
+    model = client.llm.model("qwen/qwen3-4b-2507")
+    result = model.respond("What is the meaning of life?")
 
-            print(result)
+    print(result)
+```
 
-    "Python (asynchronous API)":
-      language: python
-      code: |
-        # Note: assumes use of an async function or the "python -m asyncio" asynchronous REPL
-        # Requires Python SDK version 1.5.0 or later
-        import lmstudio as lms
+```python tab="Python (asynchronous API)"
+# Note: assumes use of an async function or the "python -m asyncio" asynchronous REPL
+# Requires Python SDK version 1.5.0 or later
+import lmstudio as lms
 
-        async with lms.AsyncClient() as client:
-            model = await client.llm.model("qwen/qwen3-4b-2507")
-            result = await model.respond("What is the meaning of life?")
+async with lms.AsyncClient() as client:
+    model = await client.llm.model("qwen/qwen3-4b-2507")
+    result = await model.respond("What is the meaning of life?")
 
-            print(result)
+    print(result)
 ```
 
 ### Getting Local Models

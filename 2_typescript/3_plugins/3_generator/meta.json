@@ -1,0 +1,7 @@
+{
+  "title": "Generators",
+  "pages": [
+    "text-only-generators",
+    "tool-calling-generators"
+  ]
+}

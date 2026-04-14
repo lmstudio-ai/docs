@@ -9,9 +9,9 @@ See: [OpenAI-compatible Responses endpoint](/docs/developer/openai-compat/respon
 
 <img src="/assets/marketing/docs/codex.webp" style="width: 100%;" data-caption="Codex configured to use LM Studio via the OpenAI-compatible API" />
 
-```lms_protip
+:::tip[Pro Tip]
 Have a powerful LLM rig? Use [LM Link](/docs/integrations/lmlink) to run Codex from your laptop while the model runs on your rig.
-```
+:::
 
 ### 1) Start LM Studio's local server
 
@@ -35,9 +35,9 @@ codex --oss
 
 By default, Codex will download and use [openai/gpt-oss-20b](https://lmstudio.ai/models/openai/gpt-oss-20b).
 
-```lms_protip
+:::tip[Pro Tip]
 Use a model (and server/model settings) with more than ~25k context length. Tools like Codex can consume a lot of context.
-```
+:::
 
 You can also use any other model you have available in LM Studio. For example:
 

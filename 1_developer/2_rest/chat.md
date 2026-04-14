@@ -1,7 +1,7 @@
 ---
 title: "Chat with a model"
 description: "Send a message to a model and receive a response. Supports MCP integration."
-fullPage: true
+full: true
 index: 5
 api_info:
   method: POST
@@ -157,59 +157,55 @@ api_info:
   description: Identifier of existing response to append to. Must start with `"resp_"`.
 ```
 :::split:::
-```lms_code_snippet
-variants:
-  Request with MCP:
-    language: bash
-    code: |
-      curl http://localhost:1234/api/v1/chat \
-        -H "Authorization: Bearer $LM_API_TOKEN" \
-        -H "Content-Type: application/json" \
-        -d '{
-          "model": "ibm/granite-4-micro",
-          "input": "Tell me the top trending model on hugging face and navigate to https://lmstudio.ai",
-          "integrations": [
-            {
-              "type": "ephemeral_mcp",
-              "server_label": "huggingface",
-              "server_url": "https://huggingface.co/mcp",
-              "allowed_tools": [
-                "model_search"
-              ]
-            },
-            {
-              "type": "plugin",
-              "id": "mcp/playwright",
-              "allowed_tools": [
-                "browser_navigate"
-              ]
-            }
-          ],
-          "context_length": 8000,
-          "temperature": 0
-        }'
-  Request with Images:
-    language: bash
-    code: |
-      # Image is a small red square encoded as a base64 data URL
-      curl http://localhost:1234/api/v1/chat \
-        -H "Authorization: Bearer $LM_API_TOKEN" \
-        -H "Content-Type: application/json" \
-        -d '{
-          "model": "qwen/qwen3-vl-4b",
-          "input": [
-            {
-              "type": "text",
-              "content": "Describe this image in two sentences"
-            },
-            {
-              "type": "image",
-              "data_url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFUlEQVR42mP8z8BQz0AEYBxVSF+FABJADveWkH6oAAAAAElFTkSuQmCC"
-            }
-          ],
-          "context_length": 2048,
-          "temperature": 0
-        }'
+```bash tab="Request with MCP"
+curl http://localhost:1234/api/v1/chat \
+  -H "Authorization: Bearer $LM_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "ibm/granite-4-micro",
+    "input": "Tell me the top trending model on hugging face and navigate to https://lmstudio.ai",
+    "integrations": [
+      {
+        "type": "ephemeral_mcp",
+        "server_label": "huggingface",
+        "server_url": "https://huggingface.co/mcp",
+        "allowed_tools": [
+          "model_search"
+        ]
+      },
+      {
+        "type": "plugin",
+        "id": "mcp/playwright",
+        "allowed_tools": [
+          "browser_navigate"
+        ]
+      }
+    ],
+    "context_length": 8000,
+    "temperature": 0
+  }'
+```
+
+```bash tab="Request with Images"
+# Image is a small red square encoded as a base64 data URL
+curl http://localhost:1234/api/v1/chat \
+  -H "Authorization: Bearer $LM_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "qwen/qwen3-vl-4b",
+    "input": [
+      {
+        "type": "text",
+        "content": "Describe this image in two sentences"
+      },
+      {
+        "type": "image",
+        "data_url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFUlEQVR42mP8z8BQz0AEYBxVSF+FABJADveWkH6oAAAAAElFTkSuQmCC"
+      }
+    ],
+    "context_length": 2048,
+    "temperature": 0
+  }'
 ```
 ````
 
@@ -349,78 +345,74 @@ variants:
   description: Identifier of the response for subsequent requests. Starts with `"resp_"`. Present when `store` is `true`.
 ```
 :::split:::
-```lms_code_snippet
-variants:
-  Request with MCP:
-    language: json
-    code: |
-      {
-        "model_instance_id": "ibm/granite-4-micro",
-        "output": [
-          {
-            "type": "tool_call",
-            "tool": "model_search",
-            "arguments": {
-              "sort": "trendingScore",
-              "query": "",
-              "limit": 1
-            },
-            "output": "...",
-            "provider_info": {
-              "server_label": "huggingface",
-              "type": "ephemeral_mcp"
-            }
-          },
-          {
-            "type": "message",
-            "content": "..."
-          },
-          {
-            "type": "tool_call",
-            "tool": "browser_navigate",
-            "arguments": {
-              "url": "https://lmstudio.ai"
-            },
-            "output": "...",
-            "provider_info": {
-              "plugin_id": "mcp/playwright",
-              "type": "plugin"
-            }
-          },
-          {
-            "type": "message",
-            "content": "**Top Trending Model on Hugging Face** ... Below is a quick snapshot of what’s on the landing page ... more details on the model or LM Studio itself!"
-          }
-        ],
-        "stats": {
-          "input_tokens": 646,
-          "total_output_tokens": 586,
-          "reasoning_output_tokens": 0,
-          "tokens_per_second": 29.753900615398926,
-          "time_to_first_token_seconds": 1.088,
-          "model_load_time_seconds": 2.656
-        },
-        "response_id": "resp_4ef013eba0def1ed23f19dde72b67974c579113f544086de"
+```json tab="Request with MCP"
+{
+  "model_instance_id": "ibm/granite-4-micro",
+  "output": [
+    {
+      "type": "tool_call",
+      "tool": "model_search",
+      "arguments": {
+        "sort": "trendingScore",
+        "query": "",
+        "limit": 1
+      },
+      "output": "...",
+      "provider_info": {
+        "server_label": "huggingface",
+        "type": "ephemeral_mcp"
       }
-  Request with Images:
-    language: json
-    code: |
-      {
-        "model_instance_id": "qwen/qwen3-vl-4b",
-        "output": [
-          {
-            "type": "message",
-            "content": "This image is a solid, vibrant red square that fills the entire frame, with no discernible texture, pattern, or other elements. It presents a minimalist, uniform visual field of pure red, evoking a sense of boldness or urgency."
-          }
-        ],
-        "stats": {
-          "input_tokens": 17,
-          "total_output_tokens": 50,
-          "reasoning_output_tokens": 0,
-          "tokens_per_second": 51.03762685242662,
-          "time_to_first_token_seconds": 0.814
-        },
-        "response_id": "resp_0182bd7c479d7451f9a35471f9c26b34de87a7255856b9a4"
+    },
+    {
+      "type": "message",
+      "content": "..."
+    },
+    {
+      "type": "tool_call",
+      "tool": "browser_navigate",
+      "arguments": {
+        "url": "https://lmstudio.ai"
+      },
+      "output": "...",
+      "provider_info": {
+        "plugin_id": "mcp/playwright",
+        "type": "plugin"
       }
+    },
+    {
+      "type": "message",
+      "content": "**Top Trending Model on Hugging Face** ... Below is a quick snapshot of what’s on the landing page ... more details on the model or LM Studio itself!"
+    }
+  ],
+  "stats": {
+    "input_tokens": 646,
+    "total_output_tokens": 586,
+    "reasoning_output_tokens": 0,
+    "tokens_per_second": 29.753900615398926,
+    "time_to_first_token_seconds": 1.088,
+    "model_load_time_seconds": 2.656
+  },
+  "response_id": "resp_4ef013eba0def1ed23f19dde72b67974c579113f544086de"
+}
+```
+
+```json tab="Request with Images"
+{
+  "model_instance_id": "qwen/qwen3-vl-4b",
+  "output": [
+    {
+      "type": "message",
+      "content": "This image is a solid, vibrant red square that fills the entire frame, with no discernible texture, pattern, or other elements. It presents a minimalist, uniform visual field of pure red, evoking a sense of boldness or urgency."
+    }
+  ],
+  "stats": {
+    "input_tokens": 17,
+    "total_output_tokens": 50,
+    "reasoning_output_tokens": 0,
+    "tokens_per_second": 51.03762685242662,
+    "time_to_first_token_seconds": 0.814
+  },
+  "response_id": "resp_0182bd7c479d7451f9a35471f9c26b34de87a7255856b9a4"
+}
 ```
 ````

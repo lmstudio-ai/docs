@@ -4,9 +4,9 @@ description: LM Studio can operate entirely offline, just make sure to get some 
 index: 4
 ---
 
-```lms_notice
+:::note
 In general, LM Studio does not require the internet in order to work. This includes core functions like chatting with models, chatting with documents, or running a local server, none of which require the internet.
-```
+:::
 
 ### Operations that do NOT require connectivity
 

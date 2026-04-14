@@ -7,9 +7,9 @@ index: 3
 
 `llmster`, LM Studio's headless daemon, can be configured to run on startup. This guide covers setting up `llmster` to launch, load a model, and start an HTTP server automatically using `systemctl` on Linux.
 
-```lms_info
+:::info[Info]
 This guide is for Linux systems without a graphical interface. For machines with a GUI, you can configure LM Studio to [run as a service on login](/docs/developer/core/headless) instead.
-```
+:::
 
 ## Install the Daemon
 

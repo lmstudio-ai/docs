@@ -1,0 +1,14 @@
+{
+  "title": "Python SDK",
+  "pages": [
+    "1_getting-started",
+    "1_llm-prediction",
+    "2_agent",
+    "3_embedding",
+    "4_tokenization",
+    "5_manage-models",
+    "6_model-info",
+    "_7_api-reference",
+    "_more"
+  ]
+}

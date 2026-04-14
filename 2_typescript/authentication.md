@@ -11,9 +11,9 @@ LM Studio supports API Tokens for authentication, providing a secure and conveni
 
 By default, the LM Studio API runs **without enforcing authentication**. For production or shared environments, enable API Token authentication for secure access.
 
-```lms_info
+:::info[Info]
 To enable API Token authentication, create tokens and control granular permissions, check [this guide](/docs/developer/core/authentication) for more details.
-```
+:::
 
 ## Providing the API Token
 
@@ -22,32 +22,28 @@ There are two ways to provide the API Token when creating an instance of `LMStud
 1. **Environment Variable (Recommended)**: Set the `LM_API_TOKEN` environment variable, and the SDK will automatically read it.
 2. **Function Argument**: Pass the token directly as the `apiToken` parameter in the constructor.
 
-```lms_code_snippet
-  variants:
-    Environment Variable:
-      language: typescript
-      code: |
-        // Set environment variables in your terminal before running the code:
-        // export LM_API_TOKEN="your-token-here"
+```typescript tab="Environment Variable"
+// Set environment variables in your terminal before running the code:
+// export LM_API_TOKEN="your-token-here"
 
-        import { LMStudioClient } from "@lmstudio/sdk";
-        // The SDK automatically reads from LM_API_TOKEN environment variable
-        const client = new LMStudioClient();
+import { LMStudioClient } from "@lmstudio/sdk";
+// The SDK automatically reads from LM_API_TOKEN environment variable
+const client = new LMStudioClient();
 
-        const model = await client.llm.model("qwen/qwen3-4b-2507");
-        const result = await model.respond("What is the meaning of life?");
+const model = await client.llm.model("qwen/qwen3-4b-2507");
+const result = await model.respond("What is the meaning of life?");
 
-        console.info(result.content);
-    Function Argument:
-      language: typescript
-      code: |
-        import { LMStudioClient } from "@lmstudio/sdk";
-        const client = new LMStudioClient({
-          apiToken: "your-token-here",
-        });
+console.info(result.content);
+```
 
-        const model = await client.llm.model("qwen/qwen3-4b-2507");
-        const result = await model.respond("What is the meaning of life?");
+```typescript tab="Function Argument"
+import { LMStudioClient } from "@lmstudio/sdk";
+const client = new LMStudioClient({
+  apiToken: "your-token-here",
+});
 
-        console.info(result.content);
+const model = await client.llm.model("qwen/qwen3-4b-2507");
+const result = await model.respond("What is the meaning of life?");
+
+console.info(result.content);
 ```

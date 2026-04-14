@@ -9,17 +9,13 @@ You can iterate through models loaded into memory using the `listLoaded` method.
 
 This will give you results equivalent to using [`lms ps`](../../cli/ps) in the CLI.
 
-```lms_code_snippet
-  variants:
-    TypeScript:
-      language: typescript
-      code: |
-        import { LMStudioClient } from "@lmstudio/sdk";
+```typescript
+import { LMStudioClient } from "@lmstudio/sdk";
 
-        const client = new LMStudioClient();
+const client = new LMStudioClient();
 
-        const llmOnly = await client.llm.listLoaded();
-        const embeddingOnly = await client.embedding.listLoaded();
+const llmOnly = await client.llm.listLoaded();
+const embeddingOnly = await client.embedding.listLoaded();
 ```
 
 <!-- Learn more about `client.llm` namespace in the [API Reference](../api-reference/llm-namespace). -->

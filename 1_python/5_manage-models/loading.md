@@ -28,33 +28,26 @@ AI models are huge. It can take a while to load them into memory. LM Studio's SD
 If you already have a model loaded in LM Studio (either via the GUI or `lms load`),
 you can use it by calling `.model()` without any arguments.
 
-```lms_code_snippet
-  variants:
-    "Python (convenience API)":
-      language: python
-      code: |
-        import lmstudio as lms
+```python tab="Python (convenience API)"
+import lmstudio as lms
 
-        model = lms.llm()
+model = lms.llm()
+```
 
-    "Python (scoped resource API)":
-      language: python
-      code: |
-        import lmstudio as lms
+```python tab="Python (scoped resource API)"
+import lmstudio as lms
 
-        with lms.Client() as client:
-            model = client.llm.model()
+with lms.Client() as client:
+    model = client.llm.model()
+```
 
-    "Python (asynchronous API)":
-      language: python
-      code: |
-        # Note: assumes use of an async function or the "python -m asyncio" asynchronous REPL
-        # Requires Python SDK version 1.5.0 or later
-        import lmstudio as lms
+```python tab="Python (asynchronous API)"
+# Note: assumes use of an async function or the "python -m asyncio" asynchronous REPL
+# Requires Python SDK version 1.5.0 or later
+import lmstudio as lms
 
-        async with lms.AsyncClient() as client:
-            model = await client.llm.model()
-
+async with lms.AsyncClient() as client:
+    model = await client.llm.model()
 ```
 
 ## Get a Specific Model with `.model("model-key")`
@@ -65,33 +58,26 @@ If you want to use a specific model, you can provide the model key as an argumen
 
 Calling `.model("model-key")` will load the model if it's not already loaded, or return the existing instance if it is.
 
-```lms_code_snippet
-  variants:
-    "Python (convenience API)":
-      language: python
-      code: |
-        import lmstudio as lms
+```python tab="Python (convenience API)"
+import lmstudio as lms
 
-        model = lms.llm("qwen/qwen3-4b-2507")
+model = lms.llm("qwen/qwen3-4b-2507")
+```
 
-    "Python (scoped resource API)":
-      language: python
-      code: |
-        import lmstudio as lms
+```python tab="Python (scoped resource API)"
+import lmstudio as lms
 
-        with lms.Client() as client:
-            model = client.llm.model("qwen/qwen3-4b-2507")
+with lms.Client() as client:
+    model = client.llm.model("qwen/qwen3-4b-2507")
+```
 
-    "Python (asynchronous API)":
-      language: python
-      code: |
-        # Note: assumes use of an async function or the "python -m asyncio" asynchronous REPL
-        # Requires Python SDK version 1.5.0 or later
-        import lmstudio as lms
+```python tab="Python (asynchronous API)"
+# Note: assumes use of an async function or the "python -m asyncio" asynchronous REPL
+# Requires Python SDK version 1.5.0 or later
+import lmstudio as lms
 
-        async with lms.AsyncClient() as client:
-            model = await client.llm.model("qwen/qwen3-4b-2507")
-
+async with lms.AsyncClient() as client:
+    model = await client.llm.model("qwen/qwen3-4b-2507")
 ```
 
 <!--
@@ -103,37 +89,30 @@ Learn more about the `.model()` method and the parameters it accepts in the [API
 Use `load_new_instance()` to load a new instance of a model, even if one already exists.
 This allows you to have multiple instances of the same or different models loaded at the same time.
 
-```lms_code_snippet
-  variants:
-    "Python (convenience API)":
-      language: python
-      code: |
-        import lmstudio as lms
+```python tab="Python (convenience API)"
+import lmstudio as lms
 
-        client = lms.get_default_client()
-        model = client.llm.load_new_instance("qwen/qwen3-4b-2507")
-        another_model = client.llm.load_new_instance("qwen/qwen3-4b-2507", "my-second-model")
+client = lms.get_default_client()
+model = client.llm.load_new_instance("qwen/qwen3-4b-2507")
+another_model = client.llm.load_new_instance("qwen/qwen3-4b-2507", "my-second-model")
+```
 
-    "Python (scoped resource API)":
-      language: python
-      code: |
-        import lmstudio as lms
+```python tab="Python (scoped resource API)"
+import lmstudio as lms
 
-        with lms.Client() as client:
-            model = client.llm.load_new_instance("qwen/qwen3-4b-2507")
-            another_model = client.llm.load_new_instance("qwen/qwen3-4b-2507", "my-second-model")
+with lms.Client() as client:
+    model = client.llm.load_new_instance("qwen/qwen3-4b-2507")
+    another_model = client.llm.load_new_instance("qwen/qwen3-4b-2507", "my-second-model")
+```
 
-    "Python (asynchronous API)":
-      language: python
-      code: |
-        # Note: assumes use of an async function or the "python -m asyncio" asynchronous REPL
-        # Requires Python SDK version 1.5.0 or later
-        import lmstudio as lms
+```python tab="Python (asynchronous API)"
+# Note: assumes use of an async function or the "python -m asyncio" asynchronous REPL
+# Requires Python SDK version 1.5.0 or later
+import lmstudio as lms
 
-        async with lms.AsyncClient() as client:
-            model = await client.llm.load_new_instance("qwen/qwen3-4b-2507")
-            another_model = await client.llm.load_new_instance("qwen/qwen3-4b-2507", "my-second-model")
-
+async with lms.AsyncClient() as client:
+    model = await client.llm.load_new_instance("qwen/qwen3-4b-2507")
+    another_model = await client.llm.load_new_instance("qwen/qwen3-4b-2507", "my-second-model")
 ```
 
 <!--
@@ -150,36 +129,29 @@ the server will generate one for you. You can always check in the server tab in 
 
 Once you no longer need a model, you can unload it by simply calling `unload()` on its handle.
 
-```lms_code_snippet
-  variants:
-    "Python (convenience API)":
-      language: python
-      code: |
-        import lmstudio as lms
+```python tab="Python (convenience API)"
+import lmstudio as lms
 
-        model = lms.llm()
-        model.unload()
+model = lms.llm()
+model.unload()
+```
 
-    "Python (scoped resource API)":
-      language: python
-      code: |
-        import lmstudio as lms
+```python tab="Python (scoped resource API)"
+import lmstudio as lms
 
-        with lms.Client() as client:
-            model = client.llm.model()
-            model.unload()
+with lms.Client() as client:
+    model = client.llm.model()
+    model.unload()
+```
 
-    "Python (asynchronous API)":
-      language: python
-      code: |
-        # Note: assumes use of an async function or the "python -m asyncio" asynchronous REPL
-        # Requires Python SDK version 1.5.0 or later
-        import lmstudio as lms
+```python tab="Python (asynchronous API)"
+# Note: assumes use of an async function or the "python -m asyncio" asynchronous REPL
+# Requires Python SDK version 1.5.0 or later
+import lmstudio as lms
 
-        async with lms.AsyncClient() as client:
-            model = await client.llm.model()
-            await model.unload()
-
+async with lms.AsyncClient() as client:
+    model = await client.llm.model()
+    await model.unload()
 ```
 
 ## Set Custom Load Config Parameters
@@ -193,38 +165,31 @@ See [load-time configuration](../llm-prediction/parameters) for more.
 You can specify a _time to live_ for a model you load, which is the idle time (in seconds)
 after the last request until the model unloads. See [Idle TTL](/docs/app/api/ttl-and-auto-evict) for more on this.
 
-```lms_protip
+:::tip[Pro Tip]
 If you specify a TTL to `model()`, it will only apply if `model()` loads
 a new instance, and will _not_ retroactively change the TTL of an existing instance.
+:::
+
+```python tab="Python (convenience API)"
+import lmstudio as lms
+
+model = lms.llm("qwen/qwen3-4b-2507", ttl=3600)
 ```
 
-```lms_code_snippet
-  variants:
-    "Python (convenience API)":
-      language: python
-      code: |
-        import lmstudio as lms
+```python tab="Python (scoped resource API)"
+import lmstudio as lms
 
-        model = lms.llm("qwen/qwen3-4b-2507", ttl=3600)
+with lms.Client() as client:
+    model = client.llm.model("qwen/qwen3-4b-2507", ttl=3600)
+```
 
-    "Python (scoped resource API)":
-      language: python
-      code: |
-        import lmstudio as lms
+```python tab="Python (asynchronous API)"
+# Note: assumes use of an async function or the "python -m asyncio" asynchronous REPL
+# Requires Python SDK version 1.5.0 or later
+import lmstudio as lms
 
-        with lms.Client() as client:
-            model = client.llm.model("qwen/qwen3-4b-2507", ttl=3600)
-
-    "Python (asynchronous API)":
-      language: python
-      code: |
-        # Note: assumes use of an async function or the "python -m asyncio" asynchronous REPL
-        # Requires Python SDK version 1.5.0 or later
-        import lmstudio as lms
-
-        async with lms.AsyncClient() as client:
-            model = await client.llm.model("qwen/qwen3-4b-2507", ttl=3600)
-
+async with lms.AsyncClient() as client:
+    model = await client.llm.model("qwen/qwen3-4b-2507", ttl=3600)
 ```
 
 <!--

@@ -1,0 +1,9 @@
+{
+  "title": "Prompt Preprocessor",
+  "pages": [
+    "custom-configuration",
+    "custom-status-report",
+    "examples",
+    "handling-aborts"
+  ]
+}

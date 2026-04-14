@@ -34,13 +34,13 @@ lms --help
 
 ### Verify the installation
 
-```lms_info
+:::info[Info]
 👉 You need to run LM Studio _at least once_ before you can use `lms`.
-```
+:::
 
 Open a terminal window and run `lms`.
 
-```lms_terminal
+```bash title="Terminal"
 $ lms
 
 lms is LM Studio's CLI utility for your models, server, and inference runtime. (v0.0.47)

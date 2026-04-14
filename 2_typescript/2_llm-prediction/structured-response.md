@@ -26,41 +26,36 @@ const bookSchema = z.object({
 
 #### Generate a Structured Response
 
-```lms_code_snippet
-  variants:
-    "Non-streaming":
-      language: typescript
-      code: |
-        const result = await model.respond("Tell me about The Hobbit.",
-          { structured: bookSchema },
-          maxTokens: 100, // Recommended to avoid getting stuck
-        );
+```typescript tab="Non-streaming"
+const result = await model.respond("Tell me about The Hobbit.",
+  { structured: bookSchema },
+  maxTokens: 100, // Recommended to avoid getting stuck
+);
 
-        const book = result.parsed;
-        console.info(book);
-        //           ^
-        // Note that `book` is now correctly typed as { title: string, author: string, year: number }
+const book = result.parsed;
+console.info(book);
+//           ^
+// Note that `book` is now correctly typed as { title: string, author: string, year: number }
+```
 
-    Streaming:
-      language: typescript
-      code: |
-        const prediction = model.respond("Tell me about The Hobbit.",
-          { structured: bookSchema },
-          maxTokens: 100, // Recommended to avoid getting stuck
-        );
+```typescript tab="Streaming"
+const prediction = model.respond("Tell me about The Hobbit.",
+  { structured: bookSchema },
+  maxTokens: 100, // Recommended to avoid getting stuck
+);
 
-        for await (const { content } of prediction) {
-          process.stdout.write(content);
-        }
-        process.stdout.write("\n");
+for await (const { content } of prediction) {
+  process.stdout.write(content);
+}
+process.stdout.write("\n");
 
-        // Get the final structured result
-        const result = await prediction.result();
-        const book = result.parsed;
+// Get the final structured result
+const result = await prediction.result();
+const book = result.parsed;
 
-        console.info(book);
-        //           ^
-        // Note that `book` is now correctly typed as { title: string, author: string, year: number }
+console.info(book);
+//           ^
+// Note that `book` is now correctly typed as { title: string, author: string, year: number }
 ```
 
 ## Enforce Using a JSON Schema
@@ -84,50 +79,46 @@ const schema = {
 
 #### Generate a Structured Response
 
-```lms_code_snippet
-  variants:
-    "Non-streaming":
-      language: typescript
-      code: |
-        const result = await model.respond("Tell me about The Hobbit.", {
-          structured: {
-            type: "json",
-            jsonSchema: schema,
-          },
-          maxTokens: 100, // Recommended to avoid getting stuck
-        });
+```typescript tab="Non-streaming"
+const result = await model.respond("Tell me about The Hobbit.", {
+  structured: {
+    type: "json",
+    jsonSchema: schema,
+  },
+  maxTokens: 100, // Recommended to avoid getting stuck
+});
 
-        const book = JSON.parse(result.content);
-        console.info(book);
-    Streaming:
-      language: typescript
-      code: |
-        const prediction = model.respond("Tell me about The Hobbit.", {
-          structured: {
-            type: "json",
-            jsonSchema: schema,
-          },
-          maxTokens: 100, // Recommended to avoid getting stuck
-        });
-
-        for await (const { content } of prediction) {
-          process.stdout.write(content);
-        }
-        process.stdout.write("\n");
-
-        const result = await prediction.result();
-        const book = JSON.parse(result.content);
-
-        console.info("Parsed", book);
+const book = JSON.parse(result.content);
+console.info(book);
 ```
 
-```lms_warning
+```typescript tab="Streaming"
+const prediction = model.respond("Tell me about The Hobbit.", {
+  structured: {
+    type: "json",
+    jsonSchema: schema,
+  },
+  maxTokens: 100, // Recommended to avoid getting stuck
+});
+
+for await (const { content } of prediction) {
+  process.stdout.write(content);
+}
+process.stdout.write("\n");
+
+const result = await prediction.result();
+const book = JSON.parse(result.content);
+
+console.info("Parsed", book);
+```
+
+:::warning[Heads Up]
 Structured generation works by constraining the model to only generate tokens that conform to the provided schema. This ensures valid output in normal cases, but comes with two important limitations:
 
 1. Models (especially smaller ones) may occasionally get stuck in an unclosed structure (like an open bracket), when they "forget" they are in such structure and cannot stop due to schema requirements. Thus, it is recommended to always include a `maxTokens` parameter to prevent infinite generation.
 
 2. Schema compliance is only guaranteed for complete, successful generations. If generation is interrupted (by cancellation, reaching the `maxTokens` limit, or other reasons), the output will likely violate the schema. With `zod` schema input, this will raise an error; with JSON schema, you'll receive an invalid string that doesn't satisfy schema.
-```
+:::
 
 <!-- ## Overview
 
@@ -145,27 +136,23 @@ that need structured data. This structured data format is supported by both
 [`complete`](/docs/api/sdk/completion) and [`respond`](/docs/api/sdk/chat-completion)
 methods, and relies on Pydantic in Python and Zod in TypeScript.
 
-```lms_code_snippet
-  variants:
-    TypeScript:
-      language: typescript
-      code: |
-        import { LMStudioClient } from "@lmstudio/sdk";
-        import { z } from "zod";
+```typescript
+import { LMStudioClient } from "@lmstudio/sdk";
+import { z } from "zod";
 
-        const Book = z.object({
-          title: z.string(),
-          author: z.string(),
-          year: z.number().int()
-        })
+const Book = z.object({
+  title: z.string(),
+  author: z.string(),
+  year: z.number().int()
+})
 
-        const client = new LMStudioClient();
-        const llm = await client.llm.model();
+const client = new LMStudioClient();
+const llm = await client.llm.model();
 
-        const response = await llm.respond(
-          "Tell me about The Hobbit.",
-          { structured: Book },
-        )
+const response = await llm.respond(
+  "Tell me about The Hobbit.",
+  { structured: Book },
+)
 
-        console.log(response.content.title)
+console.log(response.content.title)
 ``` -->

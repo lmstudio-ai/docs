@@ -8,26 +8,21 @@ You can access the configuration using the method `ctl.getPluginConfig(configSch
 
 For example, here is how to access the config within the promptPreprocessor:
 
-```lms_code_snippet
-  title: "src/promptPreprocessor.ts"
-  variants:
-    TypeScript:
-      language: typescript
-      code: |
-        import { type PreprocessorController, type ChatMessage } from "@lmstudio/sdk";
-        import { configSchematics } from "./config";
+```typescript title="src/promptPreprocessor.ts"
+import { type PreprocessorController, type ChatMessage } from "@lmstudio/sdk";
+import { configSchematics } from "./config";
 
-        export async function preprocess(ctl: PreprocessorController, userMessage: ChatMessage) {
-          const pluginConfig = ctl.getPluginConfig(configSchematics);
-          const myCustomField = pluginConfig.get("myCustomField");
+export async function preprocess(ctl: PreprocessorController, userMessage: ChatMessage) {
+  const pluginConfig = ctl.getPluginConfig(configSchematics);
+  const myCustomField = pluginConfig.get("myCustomField");
 
-          const globalPluginConfig = ctl.getGlobalPluginConfig(configSchematics);
-          const globalMyCustomField = globalPluginConfig.get("myCustomField");
+  const globalPluginConfig = ctl.getGlobalPluginConfig(configSchematics);
+  const globalMyCustomField = globalPluginConfig.get("myCustomField");
 
-          return (
-            `${userMessage.getText()},` +
-            `myCustomField: ${myCustomField}, ` +
-            `globalMyCustomField: ${globalMyCustomField}`
-          );
-        }
+  return (
+    `${userMessage.getText()},` +
+    `myCustomField: ${myCustomField}, ` +
+    `globalMyCustomField: ${globalMyCustomField}`
+  );
+}
 ```

@@ -1,0 +1,10 @@
+{
+  "title": "Integrations",
+  "pages": [
+    "1_mcp-remote",
+    "claude-code",
+    "codex",
+    "lmlink",
+    "openclaw"
+  ]
+}

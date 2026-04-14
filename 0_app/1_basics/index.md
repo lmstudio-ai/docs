@@ -7,9 +7,9 @@ index: 1
 
 Double check computer meets the minimum [system requirements](/docs/system-requirements).
 
-```lms_info
+:::info[Info]
 You might sometimes see terms such as `open-source models` or `open-weights models`. Different models might be released under different licenses and varying degrees of 'openness'. In order to run a model locally, you need to be able to get access to its "weights", often distributed as one or more files that end with `.gguf`, `.safetensors` etc.
-```
+:::
 
 <hr>
 

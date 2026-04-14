@@ -18,16 +18,10 @@ lms get nomic-ai/nomic-embed-text-v1.5
 
 To convert a string to a vector representation, pass it to the `embed` method on the corresponding embedding model handle.
 
-```lms_code_snippet
-  title: "example.py"
-  variants:
-    "Python (convenience API)":
-      language: python
-      code: |
-        import lmstudio as lms
+```python title="example.py"
+import lmstudio as lms
 
-        model = lms.embedding_model("nomic-embed-text-v1.5")
+model = lms.embedding_model("nomic-embed-text-v1.5")
 
-        embedding = model.embed("Hello, world!")
-
+embedding = model.embed("Hello, world!")
 ```
