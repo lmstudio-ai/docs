@@ -5,42 +5,52 @@ description: Enable LLMs to interact with external functions and APIs.
 index: 2
 ---
 
+import { Step, Steps } from "fumadocs-ui/components/steps";
+
 Tool use enables LLMs to request calls to external functions and APIs through the `/v1/chat/completions` and `v1/responses` endpoints ([Learn more](/docs/developer/openai-compat)), via LM Studio's REST API (or via any OpenAI client). This expands their functionality far beyond text output.
 
-<hr>
+<hr />
 
 ## Quick Start
 
-### 1. Start LM Studio as a server
+<Steps>
+  <Step>
+    <h3>Start LM Studio as a server</h3>
 
-To use LM Studio programmatically from your own code, run LM Studio as a local server.
+    To use LM Studio programmatically from your own code, run LM Studio as a local server.
 
-You can turn on the server from the "Developer" tab in LM Studio, or via the `lms` CLI:
+    You can turn on the server from the "Developer" tab in LM Studio, or via the `lms` CLI:
 
-```bash
-lms server start
-```
+    ```bash
+    lms server start
+    ```
 
-###### Install `lms` by running `npx lmstudio install-cli`
+    **Install `lms` by running `npx lmstudio install-cli`**
 
-This will allow you to interact with LM Studio via the REST API. For an intro to LM Studio's REST API, see [REST API Overview](/docs/developer/rest).
+    This will allow you to interact with LM Studio via the REST API. For an intro to LM Studio's REST API, see [REST API Overview](/docs/developer/rest).
+  </Step>
 
-### 2. Load a Model
+  <Step>
+    <h3>Load a Model</h3>
 
-You can load a model from the "Chat" or "Developer" tabs in LM Studio, or via the `lms` CLI:
+    You can load a model from the "Chat" or "Developer" tabs in LM Studio, or via the `lms` CLI:
 
-```bash
-lms load
-```
+    ```bash
+    lms load
+    ```
+  </Step>
 
-### 3. Copy, Paste, and Run an Example!
+  <Step>
+    <h3>Copy, Paste, and Run an Example!</h3>
 
-- `Curl`
-  - [Single Turn Tool Call Request](#example-using-curl)
-- `Python`
-  - [Single Turn Tool Call + Tool Use](#single-turn-example)
-  - [Multi-Turn Example](#multi-turn-example)
-  - [Advanced Agent Example](#advanced-agent-example)
+    - `Curl`
+      - [Single Turn Tool Call Request](#example-using-curl)
+    - `Python`
+      - [Single Turn Tool Call + Tool Use](#single-turn-example)
+      - [Multi-Turn Example](#multi-turn-example)
+      - [Advanced Agent Example](#advanced-agent-example)
+  </Step>
+</Steps>
 
 ## Tool Use
 
@@ -287,26 +297,26 @@ modelIdentifier: gemma-2-2b-it
 modelPath: lmstudio-community/gemma-2-2b-it-GGUF/gemma-2-2b-it-Q4_K_M.gguf
 input: "<start_of_turn>system
 You are a tool-calling AI. You can request calls to available tools with this EXACT format:
-[TOOL_REQUEST]{"name": "tool_name", "arguments": {"param1": "value1"}}[END_TOOL_REQUEST]
+[TOOL_REQUEST]{\"name\": \"tool_name\", \"arguments\": {\"param1\": \"value1\"}}[END_TOOL_REQUEST]
 
 AVAILABLE TOOLS:
 {
-  "type": "toolArray",
-  "tools": [
+  \"type\": \"toolArray\",
+  \"tools\": [
     {
-      "type": "function",
-      "function": {
-        "name": "get_delivery_date",
-        "description": "Get the delivery date for a customer's order",
-        "parameters": {
-          "type": "object",
-          "properties": {
-            "order_id": {
-              "type": "string"
+      \"type\": \"function\",
+      \"function\": {
+        \"name\": \"get_delivery_date\",
+        \"description\": \"Get the delivery date for a customer's order\",
+        \"parameters\": {
+          \"type\": \"object\",
+          \"properties\": {
+            \"order_id\": {
+              \"type\": \"string\"
             }
           },
-          "required": [
-            "order_id"
+          \"required\": [
+            \"order_id\"
           ]
         }
       }
@@ -322,12 +332,12 @@ RULES:
 - If you decide to call one or more tools, there should be no other text in your message
 
 Examples:
-"Check Paris weather"
-[TOOL_REQUEST]{"name": "get_weather", "arguments": {"location": "Paris"}}[END_TOOL_REQUEST]
+\"Check Paris weather\"
+[TOOL_REQUEST]{\"name\": \"get_weather\", \"arguments\": {\"location\": \"Paris\"}}[END_TOOL_REQUEST]
 
-"Send email to John about meeting and open browser"
-[TOOL_REQUEST]{"name": "send_email", "arguments": {"to": "John", "subject": "meeting"}}[END_TOOL_REQUEST]
-[TOOL_REQUEST]{"name": "open_browser", "arguments": {}}[END_TOOL_REQUEST]
+\"Send email to John about meeting and open browser\"
+[TOOL_REQUEST]{\"name\": \"send_email\", \"arguments\": {\"to\": \"John\", \"subject\": \"meeting\"}}[END_TOOL_REQUEST]
+[TOOL_REQUEST]{\"name\": \"open_browser\", \"arguments\": {}}[END_TOOL_REQUEST]
 
 Respond conversationally if no matching tools exist.<end_of_turn>
 <start_of_turn>user
@@ -339,7 +349,7 @@ Get me delivery date for order 123<end_of_turn>
 If the model follows this format exactly to call tools, i.e:
 
 ```
-[TOOL_REQUEST]{"name": "get_delivery_date", "arguments": {"order_id": "123"}}[END_TOOL_REQUEST]
+[TOOL_REQUEST]{\"name\": \"get_delivery_date\", \"arguments\": {\"order_id\": \"123\"}}[END_TOOL_REQUEST]
 ```
 
 Then LM Studio will be able to parse those tool calls into the `chat.completions` object, just like for natively supported models.
@@ -742,6 +752,7 @@ def open_safe_url(url: str) -> dict:
                 "status": "error",
                 "message": f"Domain {domain} not in allowed list",
             }
+        }
     except Exception as e:
         return {"status": "error", "message": str(e)}
 

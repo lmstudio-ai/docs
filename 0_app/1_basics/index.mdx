@@ -5,6 +5,8 @@ description: Download and run Large Language Models like Qwen, Mistral, Gemma, o
 index: 1
 ---
 
+import { Step, Steps } from "fumadocs-ui/components/steps";
+
 Double check computer meets the minimum [system requirements](/docs/system-requirements).
 
 <Callout type="info" title="Info">
@@ -19,31 +21,39 @@ First, **install the latest version of LM Studio**. You can get it from [here](/
 
 Once you're all set up, you need to **download your first LLM**.
 
-### 1. Download an LLM to your computer
+<Steps>
+  <Step>
+    <h3>Download an LLM to your computer</h3>
 
-Head over to the Discover tab to download models. Pick one of the curated options or search for models by search query (e.g. `"Llama"`). See more in-depth information about downloading models [here](/docs/basics/download-models).
+    Head over to the Discover tab to download models. Pick one of the curated options or search for models by search query (e.g. `"Llama"`). See more in-depth information about downloading models [here](/docs/basics/download-models).
 
-<img src="/assets/marketing/docs/discover.png" style={{ width: "500px", marginTop: "30px" }} data-caption="The Discover tab in LM Studio" />
+    <img src="/assets/marketing/docs/discover.png" style={{ width: "500px", marginTop: "30px" }} data-caption="The Discover tab in LM Studio" />
+  </Step>
 
-### 2. Load a model to memory
+  <Step>
+    <h3>Load a model to memory</h3>
 
-Head over to the **Chat** tab, and
+    Head over to the **Chat** tab, and
 
-1. Open the model loader
-2. Select one of the models you downloaded (or [sideloaded](/docs/advanced/sideload)).
-3. Optionally, choose load configuration parameters.
+    1. Open the model loader
+    2. Select one of the models you downloaded (or [sideloaded](/docs/advanced/sideload)).
+    3. Optionally, choose load configuration parameters.
 
-<img src="/assets/marketing/docs/loader.png" data-caption="Quickly open the model loader with `cmd` + `L` on macOS or `ctrl` + `L` on Windows/Linux" />
+    <img src="/assets/marketing/docs/loader.png" data-caption="Quickly open the model loader with `cmd` + `L` on macOS or `ctrl` + `L` on Windows/Linux" />
 
-##### What does loading a model mean?
+    <h4>What does loading a model mean?</h4>
 
-Loading a model typically means allocating memory to be able to accommodate the model's weights and other parameters in your computer's RAM.
+    Loading a model typically means allocating memory to be able to accommodate the model's weights and other parameters in your computer's RAM.
+  </Step>
 
-### 3. Chat!
+  <Step>
+    <h3>Chat!</h3>
 
-Once the model is loaded, you can start a back-and-forth conversation with the model in the Chat tab.
+    Once the model is loaded, you can start a back-and-forth conversation with the model in the Chat tab.
 
-<img src="/assets/marketing/docs/chat.png" data-caption="LM Studio on macOS" />
+    <img src="/assets/marketing/docs/chat.png" data-caption="LM Studio on macOS" />
+  </Step>
+</Steps>
 
 <hr />
 
