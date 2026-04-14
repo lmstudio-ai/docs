@@ -1,10 +1,13 @@
 {
   "title": "Integrations",
   "pages": [
-    "1_mcp-remote",
+    "---Introduction---",
+    "index",
+    "lmlink",
     "claude-code",
     "codex",
-    "lmlink",
-    "openclaw"
+    "openclaw",
+    "---MCP Integrations---",
+    "...1_mcp-remote"
   ]
 }

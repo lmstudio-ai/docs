@@ -1,6 +1,9 @@
 {
   "title": "LM Link",
   "pages": [
-    "1_basics"
+    "---Introduction---",
+    "index",
+    "---Getting Started---",
+    "...1_basics"
   ]
 }

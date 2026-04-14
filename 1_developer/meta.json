@@ -1,11 +1,17 @@
 {
   "title": "Developer",
   "pages": [
-    "0_core",
-    "2_rest",
-    "3_openai-compat",
-    "4_anthropic-compat",
+    "---Introduction---",
+    "index",
     "api-changelog",
-    "_embeddings"
+    "_embeddings",
+    "---Core---",
+    "...0_core",
+    "---REST API---",
+    "...2_rest",
+    "---OpenAI Compatibility---",
+    "...3_openai-compat",
+    "---Anthropic Compatibility---",
+    "...4_anthropic-compat"
   ]
 }
