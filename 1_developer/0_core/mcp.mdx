@@ -15,7 +15,7 @@ MCP servers provide tools that models can call during chat requests. You can ena
 
 ## Ephemeral vs mcp.json servers
 
-<table class="flexible-cols">
+<table className="flexible-cols">
   <thead>
     <tr>
       <th>Feature</th>
@@ -56,9 +56,9 @@ MCP servers provide tools that models can call during chat requests. You can ena
 
 Ephemeral MCP servers are defined on-the-fly in each request. This is useful for testing or when you don't want to pre-configure servers.
 
-:::info[Info]
+<Callout type="info" title="Info">
 Ephemeral MCP servers require the "Allow per-request MCPs" setting to be enabled in [Server Settings](/docs/developer/core/server/settings).
-:::
+</Callout>
 
 ```bash tab="curl"
 curl http://localhost:1234/api/v1/chat \
@@ -182,11 +182,11 @@ The model can now call tools from the specified MCP server:
 
 MCP servers can be pre-configured in your `mcp.json` file. This is the recommended approach for using MCP servers that take actions on your computer (like [microsoft/playwright-mcp](https://github.com/microsoft/playwright-mcp)) and servers that you use frequently.
 
-:::info[Info]
+<Callout type="info" title="Info">
 MCP servers from mcp.json require the "Allow calling servers from mcp.json" setting to be enabled in [Server Settings](/docs/developer/core/server/settings).
-:::
+</Callout>
 
-<img src="/assets/marketing/docs/mcp-editor.png" style="" data-caption="Editing mcp.json in LM Studio" />
+<img src="/assets/marketing/docs/mcp-editor.png" data-caption="Editing mcp.json in LM Studio" />
 
 ```bash tab="curl"
 curl http://localhost:1234/api/v1/chat \

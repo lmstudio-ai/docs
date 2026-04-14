@@ -80,10 +80,6 @@ async with lms.AsyncClient() as client:
     model = await client.llm.model("qwen/qwen3-4b-2507")
 ```
 
-<!--
-Learn more about the `.model()` method and the parameters it accepts in the [API Reference](../api-reference/model).
--->
-
 ## Load a New Instance of a Model with `.load_new_instance()`
 
 Use `load_new_instance()` to load a new instance of a model, even if one already exists.
@@ -114,10 +110,6 @@ async with lms.AsyncClient() as client:
     model = await client.llm.load_new_instance("qwen/qwen3-4b-2507")
     another_model = await client.llm.load_new_instance("qwen/qwen3-4b-2507", "my-second-model")
 ```
-
-<!--
-Learn more about the `.load_new_instance()` method and the parameters it accepts in the [API Reference](../api-reference/load_new_instance).
--->
 
 ### Note about Instance Identifiers
 
@@ -165,10 +157,10 @@ See [load-time configuration](../llm-prediction/parameters) for more.
 You can specify a _time to live_ for a model you load, which is the idle time (in seconds)
 after the last request until the model unloads. See [Idle TTL](/docs/app/api/ttl-and-auto-evict) for more on this.
 
-:::tip[Pro Tip]
+<Callout type="success" title="Pro Tip">
 If you specify a TTL to `model()`, it will only apply if `model()` loads
 a new instance, and will _not_ retroactively change the TTL of an existing instance.
-:::
+</Callout>
 
 ```python tab="Python (convenience API)"
 import lmstudio as lms
@@ -191,7 +183,3 @@ import lmstudio as lms
 async with lms.AsyncClient() as client:
     model = await client.llm.model("qwen/qwen3-4b-2507", ttl=3600)
 ```
-
-<!--
-(TODO?: Cover the JIT implications of setting a TTL, and the default TTL variations)
--->

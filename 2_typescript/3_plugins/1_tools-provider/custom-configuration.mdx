@@ -24,11 +24,11 @@ export const configSchematics = createConfigSchematics()
   .build();
 ```
 
-:::info[Info]
+<Callout type="info" title="Info">
 In this example, we added the field to `configSchematics`, which is the "per-chat" configuration. If you want to add a global configuration field that is shared across different chats, you should add it under the section `globalConfigSchematics` in the same file.
 
 Learn more about configurations in [Custom Configurations](../plugins/configurations).
-:::
+</Callout>
 
 Then, modify the tools provider to use the configuration value:
 
