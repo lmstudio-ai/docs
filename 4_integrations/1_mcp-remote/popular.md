@@ -11,12 +11,16 @@ Create issues, search projects, update statuses, and more in Linear, directly fr
 
 <div className="w-fit">
   <a style="background: rgb(255,255,255)" href="https://lmstudio.ai/install-mcp?name=linear&config=eyJ1cmwiOiJodHRwczovL21jcC5saW5lYXIuYXBwL21jcCJ9">
-    <LightVariant>
-      <img src="https://files.lmstudio.ai/deeplink/mcp-install-light.svg" alt="Add Linear MCP to LM Studio" />
-    </LightVariant>
-    <DarkVariant>
-      <img src="https://files.lmstudio.ai/deeplink/mcp-install-dark.svg" alt="Add Linear MCP to LM Studio" />
-    </DarkVariant>
+    <img
+      src="https://files.lmstudio.ai/deeplink/mcp-install-light.svg"
+      alt="Add Linear MCP to LM Studio"
+      className="dark:hidden"
+    />
+    <img
+      src="https://files.lmstudio.ai/deeplink/mcp-install-dark.svg"
+      alt="Add Linear MCP to LM Studio"
+      className="hidden dark:block"
+    />
   </a>
 </div>
 
@@ -40,12 +44,16 @@ Search pages, create documents, and read from your Notion workspace.
 
 <div className="w-fit">
   <a style="background: rgb(255,255,255)" href="https://lmstudio.ai/install-mcp?name=notion&config=eyJ1cmwiOiJodHRwczovL21jcC5ub3Rpb24uY29tL21jcCJ9">
-    <LightVariant>
-      <img src="https://files.lmstudio.ai/deeplink/mcp-install-light.svg" alt="Add Notion MCP to LM Studio" />
-    </LightVariant>
-    <DarkVariant>
-      <img src="https://files.lmstudio.ai/deeplink/mcp-install-dark.svg" alt="Add Notion MCP to LM Studio" />
-    </DarkVariant>
+    <img
+      src="https://files.lmstudio.ai/deeplink/mcp-install-light.svg"
+      alt="Add Notion MCP to LM Studio"
+      className="dark:hidden"
+    />
+    <img
+      src="https://files.lmstudio.ai/deeplink/mcp-install-dark.svg"
+      alt="Add Notion MCP to LM Studio"
+      className="hidden dark:block"
+    />
   </a>
 </div>
 
@@ -69,12 +77,16 @@ Work with Jira issues and Confluence pages from within LM Studio.
 
 <div className="w-fit">
   <a style="background: rgb(255,255,255)" href="https://lmstudio.ai/install-mcp?name=atlassian&config=eyJ1cmwiOiJodHRwczovL21jcC5hdGxhc3NpYW4uY29tL3YxL21jcCJ9">
-    <LightVariant>
-      <img src="https://files.lmstudio.ai/deeplink/mcp-install-light.svg" alt="Add Atlassian MCP to LM Studio" />
-    </LightVariant>
-    <DarkVariant>
-      <img src="https://files.lmstudio.ai/deeplink/mcp-install-dark.svg" alt="Add Atlassian MCP to LM Studio" />
-    </DarkVariant>
+    <img
+      src="https://files.lmstudio.ai/deeplink/mcp-install-light.svg"
+      alt="Add Atlassian MCP to LM Studio"
+      className="dark:hidden"
+    />
+    <img
+      src="https://files.lmstudio.ai/deeplink/mcp-install-dark.svg"
+      alt="Add Atlassian MCP to LM Studio"
+      className="hidden dark:block"
+    />
   </a>
 </div>
 
@@ -98,12 +110,16 @@ Query issues, inspect stack traces, and analyze errors from your Sentry projects
 
 <div className="w-fit">
   <a style="background: rgb(255,255,255)" href="https://lmstudio.ai/install-mcp?name=sentry&config=eyJ1cmwiOiJodHRwczovL21jcC5zZW50cnkuZGV2L21jcCJ9">
-    <LightVariant>
-      <img src="https://files.lmstudio.ai/deeplink/mcp-install-light.svg" alt="Add Sentry MCP to LM Studio" />
-    </LightVariant>
-    <DarkVariant>
-      <img src="https://files.lmstudio.ai/deeplink/mcp-install-dark.svg" alt="Add Sentry MCP to LM Studio" />
-    </DarkVariant>
+    <img
+      src="https://files.lmstudio.ai/deeplink/mcp-install-light.svg"
+      alt="Add Sentry MCP to LM Studio"
+      className="dark:hidden"
+    />
+    <img
+      src="https://files.lmstudio.ai/deeplink/mcp-install-dark.svg"
+      alt="Add Sentry MCP to LM Studio"
+      className="hidden dark:block"
+    />
   </a>
 </div>
 

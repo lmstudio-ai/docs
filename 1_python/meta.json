@@ -1,0 +1,25 @@
+{
+  "title": "Python SDK",
+  "pages": [
+    "---Introduction---",
+    "index",
+    "---Getting Started---",
+    "...1_getting-started",
+    "---Basics---",
+    "...1_llm-prediction",
+    "---Agentic Flows---",
+    "...2_agent",
+    "---Text Embedding---",
+    "...3_embedding",
+    "---Tokenization---",
+    "...4_tokenization",
+    "---Manage Models---",
+    "...5_manage-models",
+    "---Model Info---",
+    "...6_model-info",
+    "---API Reference---",
+    "..._7_api-reference",
+    "---More---",
+    "..._more"
+  ]
+}

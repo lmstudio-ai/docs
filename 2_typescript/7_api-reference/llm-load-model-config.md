@@ -1,6 +1,6 @@
 ---
-title: "`LLMLoadModelConfig`"
-description: "API Reference for `LLMLoadModelConfig`"
+title: "LLMLoadModelConfig"
+description: "API Reference for LLMLoadModelConfig"
 ---
 
 ### Parameters

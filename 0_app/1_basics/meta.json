@@ -1,0 +1,12 @@
+{
+  "title": "Getting Started",
+  "pages": [
+    "chat",
+    "_connect-apps",
+    "download-model",
+    "_keychords",
+    "lmstudio-vs-llmster-vs-lms",
+    "rag",
+    "_troubleshooting"
+  ]
+}

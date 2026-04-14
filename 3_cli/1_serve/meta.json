@@ -1,0 +1,9 @@
+{
+  "title": "Serve",
+  "pages": [
+    "log-stream",
+    "server-start",
+    "server-status",
+    "server-stop"
+  ]
+}

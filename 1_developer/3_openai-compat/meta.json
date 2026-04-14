@@ -1,0 +1,12 @@
+{
+  "title": "OpenAI Compatibility",
+  "pages": [
+    "chat-completions",
+    "completions",
+    "embeddings",
+    "models",
+    "responses",
+    "structured-output",
+    "tools"
+  ]
+}

@@ -1,6 +1,6 @@
 ---
-title: "`.embed()`"
-sidebar_title: "`.embed()`"
+title: ".embed()"
+sidebar_title: ".embed()"
 description: ".embed() - API reference for generating embeddings from a loaded embedding model"
 ---
 

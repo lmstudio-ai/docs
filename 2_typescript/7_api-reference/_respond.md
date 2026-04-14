@@ -1,6 +1,6 @@
 ---
-title: "`.respond()`"
-sidebar_title: "`.respond()`"
+title: ".respond()"
+sidebar_title: ".respond()"
 description: ".respond() - API reference for generating chat responses from a loaded language model"
 index: 2
 ---

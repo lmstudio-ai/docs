@@ -1,6 +1,6 @@
 ---
-title: "`lms link set-preferred-device`"
-sidebar_title: "`lms link set-preferred-device`"
+title: "lms link set-preferred-device"
+sidebar_title: "lms link set-preferred-device"
 description: Set the preferred device for model resolution on LM Link.
 index: 5
 ---

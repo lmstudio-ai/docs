@@ -1,0 +1,8 @@
+{
+  "title": "Custom Configuration",
+  "pages": [
+    "accessing-config",
+    "config-ts",
+    "defining-new-fields"
+  ]
+}

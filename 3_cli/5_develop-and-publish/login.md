@@ -1,6 +1,6 @@
 ---
-title: "`lms login`"
-sidebar_title: "`lms login`"
+title: "lms login"
+sidebar_title: "lms login"
 description: Authenticate with LM Studio Hub (beta).
 index: 4
 ---

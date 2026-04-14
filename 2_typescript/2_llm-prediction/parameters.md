@@ -10,23 +10,19 @@ You can customize both inference-time and load-time parameters for your model. I
 
 Set inference-time parameters such as `temperature`, `maxTokens`, `topP` and more.
 
-```lms_code_snippet
-  variants:
-    ".respond()":
-      language: typescript
-      code: |
-        const prediction = model.respond(chat, {
-          temperature: 0.6,
-          maxTokens: 50,
-        });
-    ".complete()":
-        language: typescript
-        code: |
-          const prediction = model.complete(prompt, {
-            temperature: 0.6,
-            maxTokens: 50,
-            stop: ["\n\n"],
-          });
+```typescript tab=".respond()"
+const prediction = model.respond(chat, {
+  temperature: 0.6,
+  maxTokens: 50,
+});
+```
+
+```typescript tab=".complete()"
+const prediction = model.complete(prompt, {
+  temperature: 0.6,
+  maxTokens: 50,
+  stop: ["\n\n"],
+});
 ```
 
 See [`LLMPredictionConfigInput`](./../api-reference/llm-prediction-config-input) for all configurable fields.
@@ -43,19 +39,15 @@ The `.model()` retrieves a handle to a model that has already been loaded, or lo
 
 **Note**: if the model is already loaded, the configuration will be **ignored**.
 
-```lms_code_snippet
-  variants:
-    TypeScript:
-      language: typescript
-      code: |
-        const model = await client.llm.model("qwen2.5-7b-instruct", {
-          config: {
-            contextLength: 8192,
-            gpu: {
-              ratio: 0.5,
-            },
-          },
-        });
+```typescript
+const model = await client.llm.model("qwen2.5-7b-instruct", {
+  config: {
+    contextLength: 8192,
+    gpu: {
+      ratio: 0.5,
+    },
+  },
+});
 ```
 
 See [`LLMLoadModelConfig`](./../api-reference/llm-load-model-config) for all configurable fields.
@@ -64,19 +56,15 @@ See [`LLMLoadModelConfig`](./../api-reference/llm-load-model-config) for all con
 
 The `.load()` method creates a new model instance and loads it with the specified configuration.
 
-```lms_code_snippet
-  variants:
-    TypeScript:
-      language: typescript
-      code: |
-        const model = await client.llm.load("qwen2.5-7b-instruct", {
-          config: {
-            contextLength: 8192,
-            gpu: {
-              ratio: 0.5,
-            },
-          },
-        });
+```typescript
+const model = await client.llm.load("qwen2.5-7b-instruct", {
+  config: {
+    contextLength: 8192,
+    gpu: {
+      ratio: 0.5,
+    },
+  },
+});
 ```
 
 See [`LLMLoadModelConfig`](./../api-reference/llm-load-model-config) for all configurable fields.

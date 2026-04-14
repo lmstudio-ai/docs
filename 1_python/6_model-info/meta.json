@@ -1,0 +1,8 @@
+{
+  "title": "Model Info",
+  "pages": [
+    "get-context-length",
+    "get-load-config",
+    "get-model-info"
+  ]
+}

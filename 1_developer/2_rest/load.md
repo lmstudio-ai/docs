@@ -1,7 +1,7 @@
 ---
 title: "Load a model"
 description: "Load an LLM or Embedding model into memory with custom configuration for inference"
-fullPage: true
+full: true
 index: 7
 api_info:
   method: POST
@@ -42,21 +42,16 @@ api_info:
   description: If true, echoes the final load configuration in the response under `"load_config"`. Default `false`.
 ```
 :::split:::
-```lms_code_snippet
-title: Example Request
-variants:
-  curl:
-    language: bash
-    code: |
-      curl http://localhost:1234/api/v1/models/load \
-        -H "Authorization: Bearer $LM_API_TOKEN" \
-        -H "Content-Type: application/json" \
-        -d '{
-          "model": "openai/gpt-oss-20b",
-          "context_length": 16384,
-          "flash_attention": true,
-          "echo_load_config": true
-        }'
+```bash title="Example Request"
+curl http://localhost:1234/api/v1/models/load \
+  -H "Authorization: Bearer $LM_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "openai/gpt-oss-20b",
+    "context_length": 16384,
+    "flash_attention": true,
+    "echo_load_config": true
+  }'
 ```
 ````
 
@@ -118,24 +113,19 @@ variants:
           description: Maximum number of tokens that the model will consider.
 ```
 :::split:::
-```lms_code_snippet
-title: Response
-variants:
-  json:
-    language: json
-    code: |
-      {
-        "type": "llm",
-        "instance_id": "openai/gpt-oss-20b",
-        "load_time_seconds": 9.099,
-        "status": "loaded",
-        "load_config": {
-          "context_length": 16384,
-          "eval_batch_size": 512,
-          "flash_attention": true,
-          "offload_kv_cache_to_gpu": true,
-          "num_experts": 4
-        }
-      }
+```json title="Response"
+{
+  "type": "llm",
+  "instance_id": "openai/gpt-oss-20b",
+  "load_time_seconds": 9.099,
+  "status": "loaded",
+  "load_config": {
+    "context_length": 16384,
+    "eval_batch_size": 512,
+    "flash_attention": true,
+    "offload_kv_cache_to_gpu": true,
+    "num_experts": 4
+  }
+}
 ```
 ````

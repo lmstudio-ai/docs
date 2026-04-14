@@ -2,7 +2,7 @@
 title: Serve on Local Network
 sidebar_title: Serve on Local Network
 description: Allow other devices in your network use this LM Studio API server
-fullPage: false
+full: false
 index: 3
 ---
 

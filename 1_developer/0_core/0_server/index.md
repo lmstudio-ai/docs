@@ -1,8 +1,8 @@
 ---
 title: LM Studio as a Local LLM API Server
 sidebar_title: Running the Server
-description: Run an LLM API server on `localhost` with LM Studio
-fullPage: false
+description: Run an LLM API server on localhost with LM Studio
+full: false
 index: 1
 ---
 

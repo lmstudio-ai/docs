@@ -9,15 +9,11 @@ You can iterate through locally available models using the `listLocalModels` met
 
 `listLocalModels` lives under the `system` namespace of the `LMStudioClient` object.
 
-```lms_code_snippet
-  variants:
-    TypeScript:
-      language: typescript
-      code: |
-        import { LMStudioClient } from "@lmstudio/sdk";
-        const client = new LMStudioClient();
+```typescript
+import { LMStudioClient } from "@lmstudio/sdk";
+const client = new LMStudioClient();
 
-        console.info(await client.system.listDownloadedModels());
+console.info(await client.system.listDownloadedModels());
 ```
 
 This will give you results equivalent to using [`lms ls`](../../cli/ls) in the CLI.

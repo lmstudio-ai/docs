@@ -1,0 +1,11 @@
+{
+  "title": "Plugins",
+  "pages": [
+    "1_tools-provider",
+    "2_prompt-preprocessor",
+    "3_generator",
+    "4_custom-configuration",
+    "5_publish-plugins",
+    "dependencies"
+  ]
+}

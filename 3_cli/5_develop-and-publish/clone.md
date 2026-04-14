@@ -1,6 +1,6 @@
 ---
-title: "`lms clone`"
-sidebar_title: "`lms clone`"
+title: "lms clone"
+sidebar_title: "lms clone"
 description: Clone an artifact from LM Studio Hub to a local folder (beta).
 index: 1
 ---

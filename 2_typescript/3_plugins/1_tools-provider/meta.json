@@ -1,0 +1,10 @@
+{
+  "title": "Tools Provider",
+  "pages": [
+    "custom-configuration",
+    "handling-aborts",
+    "multiple-tools",
+    "single-tool",
+    "status-reports-and-warnings"
+  ]
+}

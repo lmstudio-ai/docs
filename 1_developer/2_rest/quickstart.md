@@ -2,7 +2,7 @@
 title: Get up and running with the LM Studio API
 sidebar_title: Quickstart
 description: Download a model and start a simple Chat session using the REST API
-fullPage: false
+full: false
 index: 2
 ---
 
@@ -36,53 +36,49 @@ Use the chat endpoint to send a message to a model. By default, the model will b
 
 The `/api/v1/chat` endpoint is stateful, which means you do not need to pass the full history in every request. Read more about it [here](/docs/developer/rest/stateful-chats).
 
-```lms_code_snippet
-variants:
-  curl:
-    language: bash
-    code: |
-      curl http://localhost:1234/api/v1/chat \
-        -H "Authorization: Bearer $LM_API_TOKEN" \
-        -H "Content-Type: application/json" \
-        -d '{
-          "model": "ibm/granite-4-micro",
-          "input": "Write a short haiku about sunrise."
-        }'
-  Python:
-    language: python
-    code: |
-      import os
-      import requests
-      import json
+```bash tab="curl"
+curl http://localhost:1234/api/v1/chat \
+  -H "Authorization: Bearer $LM_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "ibm/granite-4-micro",
+    "input": "Write a short haiku about sunrise."
+  }'
+```
 
-      response = requests.post(
-        "http://localhost:1234/api/v1/chat",
-        headers={
-          "Authorization": f"Bearer {os.environ['LM_API_TOKEN']}",
-          "Content-Type": "application/json"
-        },
-        json={
-          "model": "ibm/granite-4-micro",
-          "input": "Write a short haiku about sunrise."
-        }
-      )
-      print(json.dumps(response.json(), indent=2))
-  TypeScript:
-    language: typescript
-    code: |
-      const response = await fetch("http://localhost:1234/api/v1/chat", {
-        method: "POST",
-        headers: {
-          "Authorization": `Bearer ${process.env.LM_API_TOKEN}`,
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          model: "ibm/granite-4-micro",
-          input: "Write a short haiku about sunrise."
-        })
-      });
-      const data = await response.json();
-      console.log(data);
+```python tab="Python"
+import os
+import requests
+import json
+
+response = requests.post(
+  "http://localhost:1234/api/v1/chat",
+  headers={
+    "Authorization": f"Bearer {os.environ['LM_API_TOKEN']}",
+    "Content-Type": "application/json"
+  },
+  json={
+    "model": "ibm/granite-4-micro",
+    "input": "Write a short haiku about sunrise."
+  }
+)
+print(json.dumps(response.json(), indent=2))
+```
+
+```typescript tab="TypeScript"
+const response = await fetch("http://localhost:1234/api/v1/chat", {
+  method: "POST",
+  headers: {
+    "Authorization": `Bearer ${process.env.LM_API_TOKEN}`,
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    model: "ibm/granite-4-micro",
+    input: "Write a short haiku about sunrise."
+  })
+});
+const data = await response.json();
+console.log(data);
 ```
 
 See the full [chat](/docs/developer/rest/chat) docs for more details.
@@ -91,154 +87,146 @@ See the full [chat](/docs/developer/rest/chat) docs for more details.
 
 Enable the model interact with ephemeral Model Context Protocol (MCP) servers in `/api/v1/chat` by specifying servers in the `integrations` field.
 
-```lms_code_snippet
-variants:
-  curl:
-    language: bash
-    code: |
-      curl http://localhost:1234/api/v1/chat \
-        -H "Authorization: Bearer $LM_API_TOKEN" \
-        -H "Content-Type: application/json" \
-        -d '{
-          "model": "ibm/granite-4-micro",
-          "input": "What is the top trending model on hugging face?",
-          "integrations": [
-            {
-              "type": "ephemeral_mcp",
-              "server_label": "huggingface",
-              "server_url": "https://huggingface.co/mcp",
-              "allowed_tools": ["model_search"]
-            }
-          ],
-          "context_length": 8000
-        }'
-  Python:
-    language: python
-    code: |
-      import os
-      import requests
-      import json
+```bash tab="curl"
+curl http://localhost:1234/api/v1/chat \
+  -H "Authorization: Bearer $LM_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "ibm/granite-4-micro",
+    "input": "What is the top trending model on hugging face?",
+    "integrations": [
+      {
+        "type": "ephemeral_mcp",
+        "server_label": "huggingface",
+        "server_url": "https://huggingface.co/mcp",
+        "allowed_tools": ["model_search"]
+      }
+    ],
+    "context_length": 8000
+  }'
+```
 
-      response = requests.post(
-        "http://localhost:1234/api/v1/chat",
-        headers={
-          "Authorization": f"Bearer {os.environ['LM_API_TOKEN']}",
-          "Content-Type": "application/json"
-        },
-        json={
-          "model": "ibm/granite-4-micro",
-          "input": "What is the top trending model on hugging face?",
-          "integrations": [
-            {
-              "type": "ephemeral_mcp",
-              "server_label": "huggingface",
-              "server_url": "https://huggingface.co/mcp",
-              "allowed_tools": ["model_search"]
-            }
-          ],
-          "context_length": 8000
-        }
-      )
-      print(json.dumps(response.json(), indent=2))
-  TypeScript:
-    language: typescript
-    code: |
-      const response = await fetch("http://localhost:1234/api/v1/chat", {
-        method: "POST",
-        headers: {
-          "Authorization": `Bearer ${process.env.LM_API_TOKEN}`,
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          model: "ibm/granite-4-micro",
-          input: "What is the top trending model on hugging face?",
-          integrations: [
-            {
-              type: "ephemeral_mcp",
-              server_label: "huggingface",
-              server_url: "https://huggingface.co/mcp",
-              allowed_tools: ["model_search"]
-            }
-          ],
-          context_length: 8000
-        })
-      const data = await response.json();
-      console.log(data);
+```python tab="Python"
+import os
+import requests
+import json
+
+response = requests.post(
+  "http://localhost:1234/api/v1/chat",
+  headers={
+    "Authorization": f"Bearer {os.environ['LM_API_TOKEN']}",
+    "Content-Type": "application/json"
+  },
+  json={
+    "model": "ibm/granite-4-micro",
+    "input": "What is the top trending model on hugging face?",
+    "integrations": [
+      {
+        "type": "ephemeral_mcp",
+        "server_label": "huggingface",
+        "server_url": "https://huggingface.co/mcp",
+        "allowed_tools": ["model_search"]
+      }
+    ],
+    "context_length": 8000
+  }
+)
+print(json.dumps(response.json(), indent=2))
+```
+
+```typescript tab="TypeScript"
+const response = await fetch("http://localhost:1234/api/v1/chat", {
+  method: "POST",
+  headers: {
+    "Authorization": `Bearer ${process.env.LM_API_TOKEN}`,
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    model: "ibm/granite-4-micro",
+    input: "What is the top trending model on hugging face?",
+    integrations: [
+      {
+        type: "ephemeral_mcp",
+        server_label: "huggingface",
+        server_url: "https://huggingface.co/mcp",
+        allowed_tools: ["model_search"]
+      }
+    ],
+    context_length: 8000
+  })
+const data = await response.json();
+console.log(data);
 ```
 
 You can also use locally configured MCP plugins (from your `mcp.json`) via the `integrations` field. Using locally run MCP plugins requires authentication via an API token passed through the `Authorization` header. Read more about authentication [here](/docs/developer/core/authentication).
 
-```lms_code_snippet
-variants:
-  curl:
-    language: bash
-    code: |
-      curl http://localhost:1234/api/v1/chat \
-        -H "Authorization: Bearer $LM_API_TOKEN" \
-        -H "Content-Type: application/json" \
-        -d '{
-          "model": "ibm/granite-4-micro",
-          "input": "Open lmstudio.ai",
-          "integrations": [
-            {
-              "type": "plugin",
-              "id": "mcp/playwright",
-              "allowed_tools": ["browser_navigate"]
-            }
-          ],
-          "context_length": 8000
-        }'
-  Python:
-    language: python
-    code: |
-      import os
-      import requests
-      import json
+```bash tab="curl"
+curl http://localhost:1234/api/v1/chat \
+  -H "Authorization: Bearer $LM_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "ibm/granite-4-micro",
+    "input": "Open lmstudio.ai",
+    "integrations": [
+      {
+        "type": "plugin",
+        "id": "mcp/playwright",
+        "allowed_tools": ["browser_navigate"]
+      }
+    ],
+    "context_length": 8000
+  }'
+```
 
-      response = requests.post(
-        "http://localhost:1234/api/v1/chat",
-        headers={
-          "Authorization": f"Bearer {os.environ['LM_API_TOKEN']}",
-          "Content-Type": "application/json"
-        },
-        json={
-          "model": "ibm/granite-4-micro",
-          "input": "Open lmstudio.ai",
-          "integrations": [
-            {
-              "type": "plugin",
-              "id": "mcp/playwright",
-              "allowed_tools": ["browser_navigate"]
-            }
-          ],
-          "context_length": 8000
-        }
-      )
-      print(json.dumps(response.json(), indent=2))
-  TypeScript:
-    language: typescript
-    code: |
-      const response = await fetch("http://localhost:1234/api/v1/chat", {
-        method: "POST",
-        headers: {
-          "Authorization": `Bearer ${process.env.LM_API_TOKEN}`,
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          model: "ibm/granite-4-micro",
-          input: "Open lmstudio.ai",
-          integrations: [
-            {
-              type: "plugin",
-              id: "mcp/playwright",
-              allowed_tools: ["browser_navigate"]
-            }
-          ],
-          context_length: 8000
-        })
-      });
-      const data = await response.json();
-      console.log(data);
+```python tab="Python"
+import os
+import requests
+import json
+
+response = requests.post(
+  "http://localhost:1234/api/v1/chat",
+  headers={
+    "Authorization": f"Bearer {os.environ['LM_API_TOKEN']}",
+    "Content-Type": "application/json"
+  },
+  json={
+    "model": "ibm/granite-4-micro",
+    "input": "Open lmstudio.ai",
+    "integrations": [
+      {
+        "type": "plugin",
+        "id": "mcp/playwright",
+        "allowed_tools": ["browser_navigate"]
+      }
+    ],
+    "context_length": 8000
+  }
+)
+print(json.dumps(response.json(), indent=2))
+```
+
+```typescript tab="TypeScript"
+const response = await fetch("http://localhost:1234/api/v1/chat", {
+  method: "POST",
+  headers: {
+    "Authorization": `Bearer ${process.env.LM_API_TOKEN}`,
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    model: "ibm/granite-4-micro",
+    input: "Open lmstudio.ai",
+    integrations: [
+      {
+        type: "plugin",
+        id: "mcp/playwright",
+        allowed_tools: ["browser_navigate"]
+      }
+    ],
+    context_length: 8000
+  })
+});
+const data = await response.json();
+console.log(data);
 ```
 
 See the full [chat](/docs/developer/rest/chat) docs for more details.
@@ -247,86 +235,78 @@ See the full [chat](/docs/developer/rest/chat) docs for more details.
 
 Use the download endpoint to download models by identifier from the [LM Studio model catalog](https://lmstudio.ai/models), or by Hugging Face model URL.
 
-```lms_code_snippet
-variants:
-  curl:
-    language: bash
-    code: |
-      curl http://localhost:1234/api/v1/models/download \
-        -H "Authorization: Bearer $LM_API_TOKEN" \
-        -H "Content-Type: application/json" \
-        -d '{
-          "model": "ibm/granite-4-micro"
-        }'
-  Python:
-    language: python
-    code: |
-      import os
-      import requests
-      import json
+```bash tab="curl"
+curl http://localhost:1234/api/v1/models/download \
+  -H "Authorization: Bearer $LM_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "ibm/granite-4-micro"
+  }'
+```
 
-      response = requests.post(
-        "http://localhost:1234/api/v1/models/download",
-        headers={
-          "Authorization": f"Bearer {os.environ['LM_API_TOKEN']}",
-          "Content-Type": "application/json"
-        },
-        json={"model": "ibm/granite-4-micro"}
-      )
-      print(json.dumps(response.json(), indent=2))
-  TypeScript:
-    language: typescript
-    code: |
-      const response = await fetch("http://localhost:1234/api/v1/models/download", {
-        method: "POST",
-        headers: {
-          "Authorization": `Bearer ${process.env.LM_API_TOKEN}`,
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          model: "ibm/granite-4-micro"
-        })
-      });
-      const data = await response.json();
-      console.log(data);
+```python tab="Python"
+import os
+import requests
+import json
+
+response = requests.post(
+  "http://localhost:1234/api/v1/models/download",
+  headers={
+    "Authorization": f"Bearer {os.environ['LM_API_TOKEN']}",
+    "Content-Type": "application/json"
+  },
+  json={"model": "ibm/granite-4-micro"}
+)
+print(json.dumps(response.json(), indent=2))
+```
+
+```typescript tab="TypeScript"
+const response = await fetch("http://localhost:1234/api/v1/models/download", {
+  method: "POST",
+  headers: {
+    "Authorization": `Bearer ${process.env.LM_API_TOKEN}`,
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    model: "ibm/granite-4-micro"
+  })
+});
+const data = await response.json();
+console.log(data);
 ```
 
 The response will return a `job_id` that you can use to track download progress.
 
-```lms_code_snippet
-variants:
-  curl:
-    language: bash
-    code: |
-      curl -H "Authorization: Bearer $LM_API_TOKEN" \
-        http://localhost:1234/api/v1/models/download/status/{job_id}
-  Python:
-    language: python
-    code: |
-      import os
-      import requests
-      import json
+```bash tab="curl"
+curl -H "Authorization: Bearer $LM_API_TOKEN" \
+  http://localhost:1234/api/v1/models/download/status/{job_id}
+```
 
-      job_id = "your-job-id"
-      response = requests.get(
-        f"http://localhost:1234/api/v1/models/download/status/{job_id}",
-        headers={"Authorization": f"Bearer {os.environ['LM_API_TOKEN']}"}
-      )
-      print(json.dumps(response.json(), indent=2))
-  TypeScript:
-    language: typescript
-    code: |
-      const jobId = "your-job-id";
-      const response = await fetch(
-        `http://localhost:1234/api/v1/models/download/status/${jobId}`,
-        {
-          headers: {
-            "Authorization": `Bearer ${process.env.LM_API_TOKEN}`
-          }
-        }
-      );
-      const data = await response.json();
-      console.log(data);
+```python tab="Python"
+import os
+import requests
+import json
+
+job_id = "your-job-id"
+response = requests.get(
+  f"http://localhost:1234/api/v1/models/download/status/{job_id}",
+  headers={"Authorization": f"Bearer {os.environ['LM_API_TOKEN']}"}
+)
+print(json.dumps(response.json(), indent=2))
+```
+
+```typescript tab="TypeScript"
+const jobId = "your-job-id";
+const response = await fetch(
+  `http://localhost:1234/api/v1/models/download/status/${jobId}`,
+  {
+    headers: {
+      "Authorization": `Bearer ${process.env.LM_API_TOKEN}`
+    }
+  }
+);
+const data = await response.json();
+console.log(data);
 ```
 
 See the [download](/docs/developer/rest/download) and [download status](/docs/developer/rest/download-status) docs for more details.

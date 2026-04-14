@@ -1,0 +1,9 @@
+{
+  "title": "Daemon",
+  "pages": [
+    "daemon-down",
+    "daemon-status",
+    "daemon-up",
+    "daemon-update"
+  ]
+}

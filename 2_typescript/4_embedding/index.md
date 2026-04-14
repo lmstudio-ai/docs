@@ -18,16 +18,11 @@ lms get nomic-ai/nomic-embed-text-v1.5
 
 To convert a string to a vector representation, pass it to the `embed` method on the corresponding embedding model handle.
 
-```lms_code_snippet
-  title: "index.ts"
-  variants:
-    TypeScript:
-      language: typescript
-      code: |
-        import { LMStudioClient } from "@lmstudio/sdk";
-        const client = new LMStudioClient();
+```typescript title="index.ts"
+import { LMStudioClient } from "@lmstudio/sdk";
+const client = new LMStudioClient();
 
-        const model = await client.embedding.model("nomic-embed-text-v1.5");
+const model = await client.embedding.model("nomic-embed-text-v1.5");
 
-        const { embedding } = await model.embed("Hello, world!");
+const { embedding } = await model.embed("Hello, world!");
 ```

@@ -1,7 +1,7 @@
 ---
 title: "List your models"
 description: "Get a list of available models on your system, including both LLMs and embedding models."
-fullPage: true
+full: true
 index: 6
 api_info:
   method: GET
@@ -12,14 +12,9 @@ api_info:
 
 This endpoint has no request parameters.
 :::split:::
-```lms_code_snippet
-title: Example Request
-variants:
-  curl:
-    language: bash
-    code: |
-      curl http://localhost:1234/api/v1/models \
-        -H "Authorization: Bearer $LM_API_TOKEN"
+```bash title="Example Request"
+curl http://localhost:1234/api/v1/models \
+  -H "Authorization: Bearer $LM_API_TOKEN"
 ```
 ````
 
@@ -140,99 +135,94 @@ variants:
       description: The currently selected variant name. Present when `variants` is present.
 ```
 :::split:::
-```lms_code_snippet
-title: Response
-variants:
-  json:
-    language: json
-    code: |
+```json title="Response"
+{
+  "models": [
+    {
+      "type": "llm",
+      "publisher": "google",
+      "key": "google/gemma-4-26b-a4b",
+      "display_name": "Gemma 4 26B A4B",
+      "architecture": "gemma4",
+      "quantization": {
+        "name": "Q4_K_M",
+        "bits_per_weight": 4
+      },
+      "size_bytes": 17990911801,
+      "params_string": "26B-A4B",
+      "loaded_instances": [
+        {
+          "id": "google/gemma-4-26b-a4b",
+          "config": {
+            "context_length": 4096,
+            "eval_batch_size": 512,
+            "parallel": 4,
+            "flash_attention": true,
+            "num_experts": 8,
+            "offload_kv_cache_to_gpu": true
+          }
+        }
+      ],
+      "max_context_length": 262144,
+      "format": "gguf",
+      "capabilities": {
+        "vision": true,
+        "trained_for_tool_use": true,
+        "reasoning": {
+          "allowed_options": [
+            "off",
+            "on"
+          ],
+          "default": "on"
+        }
+      },
+      "description": null,
+      "variants": [
+        "google/gemma-4-26b-a4b@q4_k_m"
+      ],
+      "selected_variant": "google/gemma-4-26b-a4b@q4_k_m"
+    },
       {
-        "models": [
-          {
-            "type": "llm",
-            "publisher": "google",
-            "key": "google/gemma-4-26b-a4b",
-            "display_name": "Gemma 4 26B A4B",
-            "architecture": "gemma4",
-            "quantization": {
-              "name": "Q4_K_M",
-              "bits_per_weight": 4
-            },
-            "size_bytes": 17990911801,
-            "params_string": "26B-A4B",
-            "loaded_instances": [
-              {
-                "id": "google/gemma-4-26b-a4b",
-                "config": {
-                  "context_length": 4096,
-                  "eval_batch_size": 512,
-                  "parallel": 4,
-                  "flash_attention": true,
-                  "num_experts": 8,
-                  "offload_kv_cache_to_gpu": true
-                }
-              }
-            ],
-            "max_context_length": 262144,
-            "format": "gguf",
-            "capabilities": {
-              "vision": true,
-              "trained_for_tool_use": true,
-              "reasoning": {
-                "allowed_options": [
-                  "off",
-                  "on"
-                ],
-                "default": "on"
-              }
-            },
-            "description": null,
-            "variants": [
-              "google/gemma-4-26b-a4b@q4_k_m"
-            ],
-            "selected_variant": "google/gemma-4-26b-a4b@q4_k_m"
-          },
-            {
-              "type": "llm",
-              "publisher": "deepseek",
-              "key": "deepseek-r1",
-              "display_name": "DeepSeek R1",
-              "architecture": "deepseek",
-              "quantization": {
-                "name": "Q4_K_M",
-                "bits_per_weight": 4
-              },
-              "size_bytes": 40492610355,
-              "params_string": "671B",
-              "loaded_instances": [],
-              "max_context_length": 131072,
-              "format": "gguf",
-              "capabilities": {
-                "vision": false,
-                "trained_for_tool_use": true,
-                "reasoning": {
-                  "allowed_options": ["on"],
-                  "default": "on"
-                }
-              },
-              "description": null
-            },
-            {
-              "type": "embedding",
-              "publisher": "gaianet",
-              "key": "text-embedding-nomic-embed-text-v1.5-embedding",
-              "display_name": "Nomic Embed Text v1.5",
-              "quantization": {
-                "name": "F16",
-                "bits_per_weight": 16
-              },
-              "size_bytes": 274290560,
-              "params_string": null,
-              "loaded_instances": [],
-              "max_context_length": 2048,
-              "format": "gguf"
-            }
-        ]
+        "type": "llm",
+        "publisher": "deepseek",
+        "key": "deepseek-r1",
+        "display_name": "DeepSeek R1",
+        "architecture": "deepseek",
+        "quantization": {
+          "name": "Q4_K_M",
+          "bits_per_weight": 4
+        },
+        "size_bytes": 40492610355,
+        "params_string": "671B",
+        "loaded_instances": [],
+        "max_context_length": 131072,
+        "format": "gguf",
+        "capabilities": {
+          "vision": false,
+          "trained_for_tool_use": true,
+          "reasoning": {
+            "allowed_options": ["on"],
+            "default": "on"
+          }
+        },
+        "description": null
+      },
+      {
+        "type": "embedding",
+        "publisher": "gaianet",
+        "key": "text-embedding-nomic-embed-text-v1.5-embedding",
+        "display_name": "Nomic Embed Text v1.5",
+        "quantization": {
+          "name": "F16",
+          "bits_per_weight": 16
+        },
+        "size_bytes": 274290560,
+        "params_string": null,
+        "loaded_instances": [],
+        "max_context_length": 2048,
+        "format": "gguf"
       }
+  ]
+}
 ```
 ````

@@ -1,0 +1,27 @@
+{
+  "title": "TypeScript SDK",
+  "pages": [
+    "---Introduction---",
+    "index",
+    "authentication",
+    "project-setup",
+    "---Basics---",
+    "...2_llm-prediction",
+    "---Agentic Flows---",
+    "...3_agent",
+    "---Plugins---",
+    "...3_plugins",
+    "---Text Embedding---",
+    "...4_embedding",
+    "---Tokenization---",
+    "...5_tokenization",
+    "---Manage Models---",
+    "...6_manage-models",
+    "---API Reference---",
+    "...7_api-reference",
+    "---Model Info---",
+    "...8_model-info",
+    "---More---",
+    "..._more"
+  ]
+}

@@ -1,6 +1,6 @@
 ---
-title: "`lms daemon status`"
-sidebar_title: "`lms daemon status`"
+title: "lms daemon status"
+sidebar_title: "lms daemon status"
 description: Check whether llmster is running.
 index: 3
 ---

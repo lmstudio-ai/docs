@@ -1,0 +1,17 @@
+{
+  "title": "Developer",
+  "pages": [
+    "---Introduction---",
+    "index",
+    "api-changelog",
+    "_embeddings",
+    "---Core---",
+    "...0_core",
+    "---REST API---",
+    "...2_rest",
+    "---OpenAI Compatibility---",
+    "...3_openai-compat",
+    "---Anthropic Compatibility---",
+    "...4_anthropic-compat"
+  ]
+}

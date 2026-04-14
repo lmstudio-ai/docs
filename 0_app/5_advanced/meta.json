@@ -1,0 +1,14 @@
+{
+  "title": "Advanced",
+  "pages": [
+    "_branching",
+    "_context",
+    "_errors",
+    "import-model",
+    "parallel-requests",
+    "per-model",
+    "prompt-template",
+    "speculative-decoding",
+    "_vision"
+  ]
+}

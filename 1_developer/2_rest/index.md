@@ -2,7 +2,7 @@
 title: LM Studio API
 sidebar_title: Overview
 description: LM Studio's REST API for local inference and model management
-fullPage: false
+full: false
 index: 1
 ---
 

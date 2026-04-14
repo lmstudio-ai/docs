@@ -10,25 +10,19 @@ You can customize both inference-time and load-time parameters for your model. I
 
 Set inference-time parameters such as `temperature`, `maxTokens`, `topP` and more.
 
-```lms_code_snippet
-  variants:
-    ".respond()":
-      language: python
-      code: |
-        result = model.respond(chat, config={
-            "temperature": 0.6,
-            "maxTokens": 50,
-        })
+```python tab=".respond()"
+result = model.respond(chat, config={
+    "temperature": 0.6,
+    "maxTokens": 50,
+})
+```
 
-    ".complete()":
-      language: python
-      code: |
-        result = model.complete(chat, config={
-            "temperature": 0.6,
-            "maxTokens": 50,
-            "stopStrings": ["\n\n"],
-          })
-
+```python tab=".complete()"
+result = model.complete(chat, config={
+    "temperature": 0.6,
+    "maxTokens": 50,
+    "stopStrings": ["\n\n"],
+  })
 ```
 
 See [`LLMPredictionConfigInput`](./../../typescript/api-reference/llm-prediction-config-input) in the
@@ -49,54 +43,47 @@ The `.model()` retrieves a handle to a model that has already been loaded, or lo
 
 **Note**: if the model is already loaded, the given configuration will be **ignored**.
 
-```lms_code_snippet
-  variants:
-    "Python (convenience API)":
-      language: python
-      code: |
-        import lmstudio as lms
+```python tab="Python (convenience API)"
+import lmstudio as lms
 
-        model = lms.llm("qwen2.5-7b-instruct", config={
+model = lms.llm("qwen2.5-7b-instruct", config={
+    "contextLength": 8192,
+    "gpu": {
+      "ratio": 0.5,
+    }
+})
+```
+
+```python tab="Python (scoped resource API)"
+import lmstudio as lms
+
+with lms.Client() as client:
+    model = client.llm.model(
+        "qwen2.5-7b-instruct",
+        config={
             "contextLength": 8192,
             "gpu": {
               "ratio": 0.5,
             }
-        })
+        }
+    )
+```
 
-    "Python (scoped resource API)":
-      language: python
-      code: |
-        import lmstudio as lms
+```python tab="Python (asynchronous API)"
+# Note: assumes use of an async function or the "python -m asyncio" asynchronous REPL
+# Requires Python SDK version 1.5.0 or later
+import lmstudio as lms
 
-        with lms.Client() as client:
-            model = client.llm.model(
-                "qwen2.5-7b-instruct",
-                config={
-                    "contextLength": 8192,
-                    "gpu": {
-                      "ratio": 0.5,
-                    }
-                }
-            )
-
-    "Python (asynchronous API)":
-      language: python
-      code: |
-        # Note: assumes use of an async function or the "python -m asyncio" asynchronous REPL
-        # Requires Python SDK version 1.5.0 or later
-        import lmstudio as lms
-
-        async with lms.AsyncClient() as client:
-            model = await client.llm.model(
-                "qwen2.5-7b-instruct",
-                config={
-                    "contextLength": 8192,
-                    "gpu": {
-                      "ratio": 0.5,
-                    }
-                }
-            )
-
+async with lms.AsyncClient() as client:
+    model = await client.llm.model(
+        "qwen2.5-7b-instruct",
+        config={
+            "contextLength": 8192,
+            "gpu": {
+              "ratio": 0.5,
+            }
+        }
+    )
 ```
 
 See [`LLMLoadModelConfig`](./../../typescript/api-reference/llm-load-model-config) in the
@@ -106,55 +93,48 @@ Typescript SDK documentation for all configurable fields.
 
 The `.load_new_instance()` method creates a new model instance and loads it with the specified configuration.
 
-```lms_code_snippet
-  variants:
-    "Python (convenience API)":
-      language: python
-      code: |
-        import lmstudio as lms
+```python tab="Python (convenience API)"
+import lmstudio as lms
 
-        client = lms.get_default_client()
-        model = client.llm.load_new_instance("qwen2.5-7b-instruct", config={
+client = lms.get_default_client()
+model = client.llm.load_new_instance("qwen2.5-7b-instruct", config={
+    "contextLength": 8192,
+    "gpu": {
+      "ratio": 0.5,
+    }
+})
+```
+
+```python tab="Python (scoped resource API)"
+import lmstudio as lms
+
+with lms.Client() as client:
+    model = client.llm.load_new_instance(
+        "qwen2.5-7b-instruct",
+        config={
             "contextLength": 8192,
             "gpu": {
               "ratio": 0.5,
             }
-        })
+        }
+    )
+```
 
-    "Python (scoped resource API)":
-      language: python
-      code: |
-        import lmstudio as lms
+```python tab="Python (asynchronous API)"
+# Note: assumes use of an async function or the "python -m asyncio" asynchronous REPL
+# Requires Python SDK version 1.5.0 or later
+import lmstudio as lms
 
-        with lms.Client() as client:
-            model = client.llm.load_new_instance(
-                "qwen2.5-7b-instruct",
-                config={
-                    "contextLength": 8192,
-                    "gpu": {
-                      "ratio": 0.5,
-                    }
-                }
-            )
-
-    "Python (asynchronous API)":
-      language: python
-      code: |
-        # Note: assumes use of an async function or the "python -m asyncio" asynchronous REPL
-        # Requires Python SDK version 1.5.0 or later
-        import lmstudio as lms
-
-        async with lms.AsyncClient() as client:
-            model = await client.llm.load_new_instance(
-                "qwen2.5-7b-instruct",
-                config={
-                    "contextLength": 8192,
-                    "gpu": {
-                      "ratio": 0.5,
-                    }
-                }
-            )
-
+async with lms.AsyncClient() as client:
+    model = await client.llm.load_new_instance(
+        "qwen2.5-7b-instruct",
+        config={
+            "contextLength": 8192,
+            "gpu": {
+              "ratio": 0.5,
+            }
+        }
+    )
 ```
 
 See [`LLMLoadModelConfig`](./../../typescript/api-reference/llm-load-model-config) in the

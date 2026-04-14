@@ -1,0 +1,12 @@
+{
+  "title": "Core",
+  "pages": [
+    "0_server",
+    "authentication",
+    "headless_llmster",
+    "headless",
+    "lmlink",
+    "mcp",
+    "ttl-and-auto-evict"
+  ]
+}

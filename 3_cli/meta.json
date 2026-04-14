@@ -1,0 +1,21 @@
+{
+  "title": "CLI",
+  "pages": [
+    "---Introduction---",
+    "index",
+    "contributing",
+    "_lms-load",
+    "---Local Models---",
+    "...0_local-models",
+    "---Serve---",
+    "...1_serve",
+    "---Daemon---",
+    "...2_daemon",
+    "---Link---",
+    "...3_link",
+    "---Runtime---",
+    "...4_runtime",
+    "---Develop & Publish---",
+    "...5_develop-and-publish"
+  ]
+}

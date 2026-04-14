@@ -1,0 +1,15 @@
+{
+  "title": "REST API",
+  "pages": [
+    "chat",
+    "download-status",
+    "download",
+    "endpoints",
+    "list",
+    "load",
+    "quickstart",
+    "stateful-chats",
+    "streaming-events",
+    "unload"
+  ]
+}

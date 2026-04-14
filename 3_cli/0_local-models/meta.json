@@ -1,0 +1,11 @@
+{
+  "title": "Local Models",
+  "pages": [
+    "chat",
+    "get",
+    "import",
+    "load",
+    "ls",
+    "ps"
+  ]
+}

@@ -1,6 +1,6 @@
 ---
-title: "`lms link status`"
-sidebar_title: "`lms link status`"
+title: "lms link status"
+sidebar_title: "lms link status"
 description: Check LM Link connection status and see connected peers.
 index: 3
 ---

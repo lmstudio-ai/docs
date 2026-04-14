@@ -1,5 +1,5 @@
 ---
-title: "`LLMLoadModelConfig`"
+title: "LLMLoadModelConfig"
 ---
 
 ### Parameters

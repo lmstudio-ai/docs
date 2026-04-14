@@ -1,0 +1,64 @@
+---
+title: Image Input
+description: API for passing images as input to the model
+index: 4
+---
+
+import { Step, Steps } from "fumadocs-ui/components/steps";
+
+Some models, known as VLMs (Vision-Language Models), can accept images as input. You can pass images to the model using the `.respond()` method.
+
+### Prerequisite: Get a VLM (Vision-Language Model)
+
+If you don't yet have a VLM, you can download a model like `qwen2-vl-2b-instruct` using the following command:
+
+```bash
+lms get qwen2-vl-2b-instruct
+```
+
+<Steps>
+  <Step>
+    <h3>Instantiate the Model</h3>
+
+    Connect to LM Studio and obtain a handle to the VLM (Vision-Language Model) you want to use.
+
+    ```typescript
+    import { LMStudioClient } from "@lmstudio/sdk";
+    const client = new LMStudioClient();
+
+    const model = await client.llm.model("qwen2-vl-2b-instruct");
+    ```
+  </Step>
+
+  <Step>
+    <h3>Prepare the Image</h3>
+
+    Use the `client.files.prepareImage()` method to get a handle to the image that can be subsequently passed to the model.
+
+    ```typescript
+    const imagePath = "/path/to/image.jpg"; // Replace with the path to your image
+    const image = await client.files.prepareImage(imagePath);
+    ```
+
+    If you only have the image in the form of a base64 string, you can use the `client.files.prepareImageBase64()` method instead.
+
+    ```typescript
+    const imageBase64 = "Your base64 string here";
+    const image = await client.files.prepareImageBase64(imageBase64);
+    ```
+
+    The LM Studio server supports JPEG, PNG, and WebP image formats.
+  </Step>
+
+  <Step>
+    <h3>Pass the Image to the Model in `.respond()`</h3>
+
+    Generate a prediction by passing the image to the model in the `.respond()` method.
+
+    ```typescript
+    const prediction = model.respond([
+      { role: "user", content: "Describe this image please", images: [image] },
+    ]);
+    ```
+  </Step>
+</Steps>

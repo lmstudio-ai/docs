@@ -1,6 +1,6 @@
 ---
-title: "`lms import`"
-sidebar_title: "`lms import`"
+title: "lms import"
+sidebar_title: "lms import"
 description: Import a local model file into your LM Studio models directory.
 index: 6
 ---

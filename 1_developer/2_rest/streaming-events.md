@@ -1,6 +1,6 @@
 ---
 title: "Streaming events"
-description: "When you chat with a model with `stream` set to `true`, the response is sent as a stream of events using Server-Sent Events (SSE)."
+description: "When you chat with a model with stream set to true, the response is sent as a stream of events using Server-Sent Events (SSE)."
 index: 4
 ---
 
@@ -48,16 +48,11 @@ An event that is emitted at the start of a chat response stream.
   description: The type of the event. Always `chat.start`.
 ```
 :::split:::
-```lms_code_snippet
-title: Example Event Data
-variants:
-  json:
-    language: json
-    code: |
-      {
-        "type": "chat.start",
-        "model_instance_id": "openai/gpt-oss-20b"
-      }
+```json title="Example Event Data"
+{
+  "type": "chat.start",
+  "model_instance_id": "openai/gpt-oss-20b"
+}
 ```
 ````
 
@@ -74,16 +69,11 @@ Signals the start of a model being loaded to fulfill the chat request. Will not 
   description: The type of the event. Always `model_load.start`.
 ```
 :::split:::
-```lms_code_snippet
-title: Example Event Data
-variants:
-  json:
-    language: json
-    code: |
-      {
-        "type": "model_load.start",
-        "model_instance_id": "openai/gpt-oss-20b"
-      }
+```json title="Example Event Data"
+{
+  "type": "model_load.start",
+  "model_instance_id": "openai/gpt-oss-20b"
+}
 ```
 ````
 
@@ -103,17 +93,12 @@ Progress of the model load.
   description: The type of the event. Always `model_load.progress`.
 ```
 :::split:::
-```lms_code_snippet
-title: Example Event Data
-variants:
-  json:
-    language: json
-    code: |
-      {
-        "type": "model_load.progress",
-        "model_instance_id": "openai/gpt-oss-20b",
-        "progress": 0.65
-      }
+```json title="Example Event Data"
+{
+  "type": "model_load.progress",
+  "model_instance_id": "openai/gpt-oss-20b",
+  "progress": 0.65
+}
 ```
 ````
 
@@ -133,17 +118,12 @@ Signals a successfully completed model load.
   description: The type of the event. Always `model_load.end`.
 ```
 :::split:::
-```lms_code_snippet
-title: Example Event Data
-variants:
-  json:
-    language: json
-    code: |
-      {
-        "type": "model_load.end",
-        "model_instance_id": "openai/gpt-oss-20b",
-        "load_time_seconds": 12.34
-      }
+```json title="Example Event Data"
+{
+  "type": "model_load.end",
+  "model_instance_id": "openai/gpt-oss-20b",
+  "load_time_seconds": 12.34
+}
 ```
 ````
 
@@ -157,15 +137,10 @@ Signals the start of the model processing a prompt.
   description: The type of the event. Always `prompt_processing.start`.
 ```
 :::split:::
-```lms_code_snippet
-title: Example Event Data
-variants:
-  json:
-    language: json
-    code: |
-      {
-        "type": "prompt_processing.start"
-      }
+```json title="Example Event Data"
+{
+  "type": "prompt_processing.start"
+}
 ```
 ````
 
@@ -182,16 +157,11 @@ Progress of the model processing a prompt.
   description: The type of the event. Always `prompt_processing.progress`.
 ```
 :::split:::
-```lms_code_snippet
-title: Example Event Data
-variants:
-  json:
-    language: json
-    code: |
-      {
-        "type": "prompt_processing.progress",
-        "progress": 0.5
-      }
+```json title="Example Event Data"
+{
+  "type": "prompt_processing.progress",
+  "progress": 0.5
+}
 ```
 ````
 
@@ -205,15 +175,10 @@ Signals the end of the model processing a prompt.
   description: The type of the event. Always `prompt_processing.end`.
 ```
 :::split:::
-```lms_code_snippet
-title: Example Event Data
-variants:
-  json:
-    language: json
-    code: |
-      {
-        "type": "prompt_processing.end"
-      }
+```json title="Example Event Data"
+{
+  "type": "prompt_processing.end"
+}
 ```
 ````
 
@@ -227,15 +192,10 @@ Signals the model is starting to stream reasoning content.
   description: The type of the event. Always `reasoning.start`.
 ```
 :::split:::
-```lms_code_snippet
-title: Example Event Data
-variants:
-  json:
-    language: json
-    code: |
-      {
-        "type": "reasoning.start"
-      }
+```json title="Example Event Data"
+{
+  "type": "reasoning.start"
+}
 ```
 ````
 
@@ -252,16 +212,11 @@ A chunk of reasoning content. Multiple deltas may arrive.
   description: The type of the event. Always `reasoning.delta`.
 ```
 :::split:::
-```lms_code_snippet
-title: Example Event Data
-variants:
-  json:
-    language: json
-    code: |
-      {
-        "type": "reasoning.delta",
-        "content": "Need to"
-      }
+```json title="Example Event Data"
+{
+  "type": "reasoning.delta",
+  "content": "Need to"
+}
 ```
 ````
 
@@ -275,15 +230,10 @@ Signals the end of the reasoning stream.
   description: The type of the event. Always `reasoning.end`.
 ```
 :::split:::
-```lms_code_snippet
-title: Example Event Data
-variants:
-  json:
-    language: json
-    code: |
-      {
-        "type": "reasoning.end"
-      }
+```json title="Example Event Data"
+{
+  "type": "reasoning.end"
+}
 ```
 ````
 
@@ -324,20 +274,15 @@ Emitted when the model starts a tool call.
   description: The type of the event. Always `tool_call.start`.
 ```
 :::split:::
-```lms_code_snippet
-title: Example Event Data
-variants:
-  json:
-    language: json
-    code: |
-      {
-        "type": "tool_call.start",
-        "tool": "model_search",
-        "provider_info": {
-          "type": "ephemeral_mcp",
-          "server_label": "huggingface"
-        }
-      }
+```json title="Example Event Data"
+{
+  "type": "tool_call.start",
+  "tool": "model_search",
+  "provider_info": {
+    "type": "ephemeral_mcp",
+    "server_label": "huggingface"
+  }
+}
 ```
 ````
 
@@ -381,24 +326,19 @@ Arguments streamed for the current tool call.
   description: The type of the event. Always `tool_call.arguments`.
 ```
 :::split:::
-```lms_code_snippet
-title: Example Event Data
-variants:
-  json:
-    language: json
-    code: |
-      {
-        "type": "tool_call.arguments",
-        "tool": "model_search",
-        "arguments": {
-          "sort": "trendingScore",
-          "limit": 1
-        },
-        "provider_info": {
-          "type": "ephemeral_mcp",
-          "server_label": "huggingface"
-        }
-      }
+```json title="Example Event Data"
+{
+  "type": "tool_call.arguments",
+  "tool": "model_search",
+  "arguments": {
+    "sort": "trendingScore",
+    "limit": 1
+  },
+  "provider_info": {
+    "type": "ephemeral_mcp",
+    "server_label": "huggingface"
+  }
+}
 ```
 ````
 
@@ -445,25 +385,20 @@ Result of the tool call, along with the arguments used.
   description: The type of the event. Always `tool_call.success`.
 ```
 :::split:::
-```lms_code_snippet
-title: Example Event Data
-variants:
-  json:
-    language: json
-    code: |
-      {
-        "type": "tool_call.success",
-        "tool": "model_search",
-        "arguments": {
-          "sort": "trendingScore",
-          "limit": 1
-        },
-        "output": "[{\"type\":\"text\",\"text\":\"Showing first 1 models...\"}]",
-        "provider_info": {
-          "type": "ephemeral_mcp",
-          "server_label": "huggingface"
-        }
-      }
+```json title="Example Event Data"
+{
+  "type": "tool_call.success",
+  "tool": "model_search",
+  "arguments": {
+    "sort": "trendingScore",
+    "limit": 1
+  },
+  "output": "[{\"type\":\"text\",\"text\":\"Showing first 1 models...\"}]",
+  "provider_info": {
+    "type": "ephemeral_mcp",
+    "server_label": "huggingface"
+  }
+}
 ```
 ````
 
@@ -510,20 +445,15 @@ Indicates that the tool call failed.
   description: The type of the event. Always `tool_call.failure`.
 ```
 :::split:::
-```lms_code_snippet
-title: Example Event Data
-variants:
-  json:
-    language: json
-    code: |
-      {
-        "type": "tool_call.failure",
-        "reason": "Cannot find tool with name open_browser.",
-        "metadata": {
-          "type": "invalid_name",
-          "tool_name": "open_browser"
-        }
-      }
+```json title="Example Event Data"
+{
+  "type": "tool_call.failure",
+  "reason": "Cannot find tool with name open_browser.",
+  "metadata": {
+    "type": "invalid_name",
+    "tool_name": "open_browser"
+  }
+}
 ```
 ````
 
@@ -537,15 +467,10 @@ Signals the model is about to stream a message.
   description: The type of the event. Always `message.start`.
 ```
 :::split:::
-```lms_code_snippet
-title: Example Event Data
-variants:
-  json:
-    language: json
-    code: |
-      {
-        "type": "message.start"
-      }
+```json title="Example Event Data"
+{
+  "type": "message.start"
+}
 ```
 ````
 
@@ -562,16 +487,11 @@ A chunk of message content. Multiple deltas may arrive.
   description: The type of the event. Always `message.delta`.
 ```
 :::split:::
-```lms_code_snippet
-title: Example Event Data
-variants:
-  json:
-    language: json
-    code: |
-      {
-        "type": "message.delta",
-        "content": "The current"
-      }
+```json title="Example Event Data"
+{
+  "type": "message.delta",
+  "content": "The current"
+}
 ```
 ````
 
@@ -585,15 +505,10 @@ Signals the end of the message stream.
   description: The type of the event. Always `message.end`.
 ```
 :::split:::
-```lms_code_snippet
-title: Example Event Data
-variants:
-  json:
-    language: json
-    code: |
-      {
-        "type": "message.end"
-      }
+```json title="Example Event Data"
+{
+  "type": "message.end"
+}
 ```
 ````
 
@@ -625,21 +540,16 @@ An error occurred during streaming. The final payload will still be sent in `cha
   description: The type of the event. Always `error`.
 ```
 :::split:::
-```lms_code_snippet
-title: Example Event Data
-variants:
-  json:
-    language: json
-    code: |
-      {
-        "type": "error",
-        "error": {
-          "type": "invalid_request",
-          "message": "\"model\" is required",
-          "code": "missing_required_parameter",
-          "param": "model"
-        }
-      }
+```json title="Example Event Data"
+{
+  "type": "error",
+  "error": {
+    "type": "invalid_request",
+    "message": "\"model\" is required",
+    "code": "missing_required_parameter",
+    "param": "model"
+  }
+}
 ```
 ````
 
@@ -656,36 +566,31 @@ Final event containing the full aggregated response, equivalent to the non-strea
   description: The type of the event. Always `chat.end`.
 ```
 :::split:::
-```lms_code_snippet
-title: Example Event Data
-variants:
-  json:
-    language: json
-    code: |
+```json title="Example Event Data"
+{
+  "type": "chat.end",
+  "result": {
+    "model_instance_id": "openai/gpt-oss-20b",
+    "output": [
+      { "type": "reasoning", "content": "Need to call function." },
       {
-        "type": "chat.end",
-        "result": {
-          "model_instance_id": "openai/gpt-oss-20b",
-          "output": [
-            { "type": "reasoning", "content": "Need to call function." },
-            {
-              "type": "tool_call",
-              "tool": "model_search",
-              "arguments": { "sort": "trendingScore", "limit": 1 },
-              "output": "[{\"type\":\"text\",\"text\":\"Showing first 1 models...\"}]",
-              "provider_info": { "type": "ephemeral_mcp", "server_label": "huggingface" }
-            },
-            { "type": "message", "content": "The current top‑trending model is..." }
-          ],
-          "stats": {
-            "input_tokens": 329,
-            "total_output_tokens": 268,
-            "reasoning_output_tokens": 5,
-            "tokens_per_second": 43.73,
-            "time_to_first_token_seconds": 0.781
-          },
-          "response_id": "resp_02b2017dbc06c12bfc353a2ed6c2b802f8cc682884bb5716"
-        }
-      }
+        "type": "tool_call",
+        "tool": "model_search",
+        "arguments": { "sort": "trendingScore", "limit": 1 },
+        "output": "[{\"type\":\"text\",\"text\":\"Showing first 1 models...\"}]",
+        "provider_info": { "type": "ephemeral_mcp", "server_label": "huggingface" }
+      },
+      { "type": "message", "content": "The current top‑trending model is..." }
+    ],
+    "stats": {
+      "input_tokens": 329,
+      "total_output_tokens": 268,
+      "reasoning_output_tokens": 5,
+      "tokens_per_second": 43.73,
+      "time_to_first_token_seconds": 0.781
+    },
+    "response_id": "resp_02b2017dbc06c12bfc353a2ed6c2b802f8cc682884bb5716"
+  }
+}
 ```
 ````
