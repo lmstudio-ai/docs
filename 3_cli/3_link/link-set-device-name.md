@@ -1,6 +1,6 @@
 ---
-title: "`lms link set-device-name`"
-sidebar_title: "`lms link set-device-name`"
+title: "lms link set-device-name"
+sidebar_title: "lms link set-device-name"
 description: Rename this device on LM Link from the CLI.
 index: 4
 ---

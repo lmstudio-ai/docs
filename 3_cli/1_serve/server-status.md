@@ -1,6 +1,6 @@
 ---
-title: "`lms server status`"
-sidebar_title: "`lms server status`"
+title: "lms server status"
+sidebar_title: "lms server status"
 description: Check the status of your running LM Studio server instance.
 index: 2
 ---

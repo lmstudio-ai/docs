@@ -1,7 +1,7 @@
 ---
 title: "Contributing"
 sidebar_title: "Contributing"
-description: "Learn where to file issues and how to contribute to the `lms` CLI."
+description: "Learn where to file issues and how to contribute to the lms CLI."
 index: 2
 ---
 

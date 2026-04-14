@@ -1,6 +1,6 @@
 ---
-title: "`lms dev` (Beta)"
-sidebar_title: "`lms dev`"
+title: "lms dev (Beta)"
+sidebar_title: "lms dev"
 description: Start a plugin dev server or install a local plugin (beta).
 index: 3
 ---

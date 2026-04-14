@@ -136,7 +136,9 @@ index: 2
 
 ---
 
-###### [👾 LM Studio 0.3.15](/blog/lmstudio-v0.3.15) • 2025-04-24
+###### 👾 LM Studio 0.3.15 • 2025-04-24
+
+Release post: [LM Studio 0.3.15](/blog/lmstudio-v0.3.15)
 
 ### Improved Tool Use API Support
 
@@ -156,7 +158,9 @@ Chunked responses now set `"finish_reason": "tool_calls"` when appropriate.
 
 ---
 
-###### [👾 LM Studio 0.3.14](/blog/lmstudio-v0.3.14) • 2025-03-27
+###### 👾 LM Studio 0.3.14 • 2025-03-27
+
+Release post: [LM Studio 0.3.14](/blog/lmstudio-v0.3.14)
 
 ### [API/SDK] Preset Support
 
@@ -164,7 +168,9 @@ RESTful API and SDKs support specifying presets in requests.
 
 _(example needed)_
 
-###### [👾 LM Studio 0.3.10](/blog/lmstudio-v0.3.10) • 2025-02-18
+###### 👾 LM Studio 0.3.10 • 2025-02-18
+
+Release post: [LM Studio 0.3.10](/blog/lmstudio-v0.3.10)
 
 ### Speculative Decoding API
 
@@ -193,7 +199,9 @@ Responses now include a `stats` object for speculative decoding:
 
 ---
 
-###### [👾 LM Studio 0.3.9](blog/lmstudio-v0.3.9) • 2025-01-30
+###### 👾 LM Studio 0.3.9 • 2025-01-30
+
+Release post: [LM Studio 0.3.9](blog/lmstudio-v0.3.9)
 
 ### Idle TTL and Auto Evict
 
@@ -223,7 +231,9 @@ Turn this on in App Settings > Developer.
 
 ---
 
-###### [👾 LM Studio 0.3.6](blog/lmstudio-v0.3.6) • 2025-01-06
+###### 👾 LM Studio 0.3.6 • 2025-01-06
+
+Release post: [LM Studio 0.3.6](blog/lmstudio-v0.3.6)
 
 ### Tool and Function Calling API
 
@@ -233,7 +243,9 @@ Docs: [Tool Use and Function Calling](/docs/developer/core/tools).
 
 ---
 
-###### [👾 LM Studio 0.3.5](blog/lmstudio-v0.3.5) • 2024-10-22
+###### 👾 LM Studio 0.3.5 • 2024-10-22
+
+Release post: [LM Studio 0.3.5](blog/lmstudio-v0.3.5)
 
 ### Introducing `lms get`: download models from the terminal
 

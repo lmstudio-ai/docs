@@ -1,6 +1,6 @@
 ---
-title: "`lms link disable`"
-sidebar_title: "`lms link disable`"
+title: "lms link disable"
+sidebar_title: "lms link disable"
 description: Disable LM Link on this device from the CLI.
 index: 2
 ---

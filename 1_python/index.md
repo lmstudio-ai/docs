@@ -1,5 +1,5 @@
 ---
-title: "`lmstudio-python` (Python SDK)"
+title: "lmstudio-python (Python SDK)"
 sidebar_title: "Introduction"
 description: "Getting started with LM Studio's Python SDK"
 ---

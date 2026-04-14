@@ -1,6 +1,6 @@
 ---
 title: "Streaming events"
-description: "When you chat with a model with `stream` set to `true`, the response is sent as a stream of events using Server-Sent Events (SSE)."
+description: "When you chat with a model with stream set to true, the response is sent as a stream of events using Server-Sent Events (SSE)."
 index: 4
 ---
 

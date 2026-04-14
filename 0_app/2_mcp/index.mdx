@@ -34,12 +34,16 @@ This MCP server provides access to functions like model and dataset search.
 
 <div className="w-fit">
   <a style={{ background: "rgb(255,255,255)" }} href="https://lmstudio.ai/install-mcp?name=hf-mcp-server&config=eyJ1cmwiOiJodHRwczovL2h1Z2dpbmdmYWNlLmNvL21jcCIsImhlYWRlcnMiOnsiQXV0aG9yaXphdGlvbiI6IkJlYXJlciA8WU9VUl9IRl9UT0tFTj4ifX0%3D">
-    <LightVariant>
-      <img src="https://files.lmstudio.ai/deeplink/mcp-install-light.svg" alt="Add MCP Server hf-mcp-server to LM Studio" />
-    </LightVariant>
-    <DarkVariant>
-      <img src="https://files.lmstudio.ai/deeplink/mcp-install-dark.svg" alt="Add MCP Server hf-mcp-server to LM Studio" />
-    </DarkVariant>
+    <img
+      src="https://files.lmstudio.ai/deeplink/mcp-install-light.svg"
+      alt="Add MCP Server hf-mcp-server to LM Studio"
+      className="dark:hidden"
+    />
+    <img
+      src="https://files.lmstudio.ai/deeplink/mcp-install-dark.svg"
+      alt="Add MCP Server hf-mcp-server to LM Studio"
+      className="hidden dark:block"
+    />
   </a>
 </div>
 
@@ -56,7 +60,7 @@ This MCP server provides access to functions like model and dataset search.
 }
 ```
 
-###### You will need to replace `<YOUR_HF_TOKEN>` with your actual Hugging Face token. Learn more [here](https://huggingface.co/docs/hub/en/security-tokens).
+You will need to replace `<YOUR_HF_TOKEN>` with your actual Hugging Face token. Learn more [here](https://huggingface.co/docs/hub/en/security-tokens).
 
 Use the [deeplink button](mcp/deeplink), or copy the JSON snippet above and paste it into your `mcp.json` file.
 

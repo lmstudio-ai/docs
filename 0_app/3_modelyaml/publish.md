@@ -1,5 +1,5 @@
 ---
-title: Publish a `model.yaml`
+title: Publish a model.yaml
 description: Upload your model definition to the LM Studio Hub.
 index: 7
 ---

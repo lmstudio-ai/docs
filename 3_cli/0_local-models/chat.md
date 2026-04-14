@@ -1,6 +1,6 @@
 ---
-title: "`lms chat`"
-sidebar_title: "`lms chat`"
+title: "lms chat"
+sidebar_title: "lms chat"
 description: Start a chat session with a local model from the command line.
 index: 1
 ---

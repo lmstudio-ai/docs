@@ -1,6 +1,6 @@
 ---
-title: "`lms load`"
-sidebar_title: "`lms load`"
+title: "lms load"
+sidebar_title: "lms load"
 description: Load or unload models, set context length, GPU offload, TTL, or estimate memory usage without loading.
 index: 3
 ---

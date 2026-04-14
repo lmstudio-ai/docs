@@ -1,5 +1,5 @@
 ---
-title: "`LLMPredictionConfigInput`"
+title: "LLMPredictionConfigInput"
 ---
 
 ### Fields

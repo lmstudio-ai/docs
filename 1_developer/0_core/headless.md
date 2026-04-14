@@ -1,6 +1,6 @@
 ---
 title: "Run LM Studio as a service (headless)"
-sidebar_title: "`llmster` - Headless Mode"
+sidebar_title: "llmster - Headless Mode"
 description: "GUI-less operation of LM Studio: run in the background, start on machine login, and load models on demand"
 index: 2
 ---

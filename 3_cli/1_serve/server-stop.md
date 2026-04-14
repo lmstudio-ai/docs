@@ -1,6 +1,6 @@
 ---
-title: "`lms server stop`"
-sidebar_title: "`lms server stop`"
+title: "lms server stop"
+sidebar_title: "lms server stop"
 description: Stop the running LM Studio server instance.
 index: 3
 ---

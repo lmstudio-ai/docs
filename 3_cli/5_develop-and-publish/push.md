@@ -1,6 +1,6 @@
 ---
-title: "`lms push` (Beta)"
-sidebar_title: "`lms push`"
+title: "lms push (Beta)"
+sidebar_title: "lms push"
 description: Upload the current folder's artifact to LM Studio Hub (beta).
 index: 2
 ---

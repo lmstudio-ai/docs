@@ -1,7 +1,7 @@
 ---
-title: "`.model()`"
-sidebar_title: "`.model()`"
-description: ".model() - API reference for obtaining a model handle from an `LMStudioClient` instance"
+title: ".model()"
+sidebar_title: ".model()"
+description: ".model() - API reference for obtaining a model handle from an LMStudioClient instance"
 index: 2
 ---
 

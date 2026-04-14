@@ -1,5 +1,5 @@
 ---
-title: "`config.ts` File"
+title: "config.ts File"
 +description: "Define custom configuration options for your LM Studio plugin in config.ts"
 index: 2
 ---

@@ -1,5 +1,5 @@
 ---
-title: "`lmstudio-js` (TypeScript SDK)"
+title: "lmstudio-js (TypeScript SDK)"
 sidebar_title: "Introduction"
 description: "Getting started with LM Studio's Typescript / JavaScript SDK"
 ---

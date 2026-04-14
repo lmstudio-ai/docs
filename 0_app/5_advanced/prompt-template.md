@@ -33,7 +33,7 @@ You can make this config box always show up by right clicking the sidebar and se
 
 You can express the prompt template in Jinja.
 
-###### 💡 [Jinja](<https://en.wikipedia.org/wiki/Jinja_(template_engine)>) is a templating engine used to encode the prompt template in several popular LLM model file formats.
+###### Jinja is a templating engine used to encode the prompt template in several popular LLM model file formats.
 
 #### Manual
 

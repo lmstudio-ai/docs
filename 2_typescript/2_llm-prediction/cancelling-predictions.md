@@ -1,6 +1,6 @@
 ---
 title: Cancelling Predictions
-description: Stop an ongoing prediction in `lmstudio-js`
+description: Stop an ongoing prediction in lmstudio-js
 index: 4
 ---
 

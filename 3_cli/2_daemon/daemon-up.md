@@ -1,6 +1,6 @@
 ---
-title: "`lms daemon up`"
-sidebar_title: "`lms daemon up`"
+title: "lms daemon up"
+sidebar_title: "lms daemon up"
 description: Start llmster from the CLI.
 index: 1
 ---

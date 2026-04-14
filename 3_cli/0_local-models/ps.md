@@ -1,6 +1,6 @@
 ---
-title: "`lms ps`"
-sidebar_title: "`lms ps`"
+title: "lms ps"
+sidebar_title: "lms ps"
 description: Show information about currently loaded models from the command line.
 index: 5
 ---

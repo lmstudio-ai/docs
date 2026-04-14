@@ -1,7 +1,7 @@
 ---
 title: "Project Setup"
 sidebar_title: "Project Setup"
-description: "Set up your `lmstudio-python` app or script."
+description: "Set up your lmstudio-python app or script."
 index: 2
 ---
 

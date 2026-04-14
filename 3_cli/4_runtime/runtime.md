@@ -1,6 +1,6 @@
 ---
-title: "`lms runtime`"
-sidebar_title: "`lms runtime`"
+title: "lms runtime"
+sidebar_title: "lms runtime"
 description: Manage LM Studio inference runtimes from the CLI.
 index: 1
 ---

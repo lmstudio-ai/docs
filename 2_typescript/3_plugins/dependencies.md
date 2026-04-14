@@ -1,5 +1,5 @@
 ---
-title: "Using `npm` Dependencies"
+title: "Using npm Dependencies"
 description: "How to use npm packages in LM Studio plugins"
 index: 6
 ---

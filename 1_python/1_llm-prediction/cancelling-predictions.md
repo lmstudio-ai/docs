@@ -1,6 +1,6 @@
 ---
 title: Cancelling Predictions
-description: Stop an ongoing prediction in `lmstudio-python`
+description: Stop an ongoing prediction in lmstudio-python
 index: 4
 ---
 

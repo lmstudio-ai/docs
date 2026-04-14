@@ -1,6 +1,6 @@
 ---
-title: "`lms daemon update`"
-sidebar_title: "`lms daemon update`"
+title: "lms daemon update"
+sidebar_title: "lms daemon update"
 description: Update llmster to the latest version.
 index: 4
 ---

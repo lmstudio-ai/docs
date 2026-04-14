@@ -1,5 +1,5 @@
 ---
-title: "`lms load`"
+title: "lms load"
 description: Use the lms CLI to load or unload models
 ---
 
