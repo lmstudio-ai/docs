@@ -1,13 +1,13 @@
 ---
 title: Anthropic Compatibility Endpoints
 sidebar_title: Overview
-description: Send Messages requests using the Anthropic-compatible API.
+description: Send requests to Anthropic-compatible Messages endpoints.
 index: 1
 ---
 
 ### Supported endpoints
 
-<table class="flexible-cols">
+<table className="flexible-cols">
   <thead>
     <tr>
       <th>Endpoint</th>
@@ -18,13 +18,11 @@ index: 1
   <tbody>
     <tr>
       <td><code>/v1/messages</code></td>
-      <td><apimethod method="POST" /></td>
+      <td><ApiMethod method="POST" /></td>
       <td><a href="/docs/developer/anthropic-compat/messages">Messages</a></td>
     </tr>
   </tbody>
 </table>
-
-<hr>
 
 ## Using Claude Code with LM Studio
 
@@ -38,11 +36,11 @@ claude --model openai/gpt-oss-20b
 
 ## Authentication headers
 
-When Require Authentication is enabled, LM Studio accepts both `x-api-key` and the standard `Authorization: Bearer <token>` header. To learn more about enabling auth in LM Studio, checkout [Authentication](/docs/developer/core/authentication).
+When Require Authentication is enabled, LM Studio accepts both `x-api-key` and the standard `Authorization: Bearer <token>` header. To learn more about enabling auth in LM Studio, see [Authentication](/docs/developer/core/authentication).
 
 ## Set the base URL to point to LM Studio
 
-Point your Anthropic client (or any HTTP request) at your local LM Studio server.
+Point your Anthropic client, or any HTTP request, at your local LM Studio server.
 
 Note: The following examples assume the server port is `1234`.
 
@@ -87,7 +85,6 @@ message = client.messages.create(
 print(message.content)
 ```
 
-If you have not enabled Require Authentication, the `x-api-key` header is optional.
-For the Python example, you can also omit `api_key` when authentication is disabled.
+If you have not enabled Require Authentication, the `x-api-key` header is optional. For the Python example, you can also omit `api_key` when authentication is disabled.
 
 If you're running into trouble, hop onto our [Discord](https://discord.gg/lmstudio) and enter the developers channel.
