@@ -1,15 +1,15 @@
 {
-  "title": "REST API",
+  "title": "LM STUDIO REST API",
   "pages": [
-    "chat",
-    "download-status",
-    "download",
-    "endpoints",
-    "list",
-    "load",
     "quickstart",
     "stateful-chats",
     "streaming-events",
-    "unload"
+    "chat",
+    "list",
+    "load",
+    "download",
+    "unload",
+    "download-status",
+    "endpoints"
   ]
 }
