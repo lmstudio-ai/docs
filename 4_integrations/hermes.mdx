@@ -6,14 +6,14 @@ index: 3
 
 import { Step, Steps } from "fumadocs-ui/components/steps";
 
-Hermes Agent now supports LM Studio as a first class local model provider. It comes with JIT loading with higher context and reasoning effort support.
+Hermes Agent now supports LM Studio as a first class local model provider. It comes with JIT loading with higher context length (64K) and reasoning effort support.
 
 See: [Hermes Agent Docs](https://hermes-agent.nousresearch.com/docs/integrations/providers#lm-studio--desktop-app-with-local-models).
 
 <img src="/assets/marketing/docs/hermes-agent.webp" style={{ width: "100%" }} data-caption="Hermes Agent using LM Studio as a model provider with LM Link" />
 
 <Callout type="success" title="Pro Tip">
-Have a powerful LLM rig? Use [LM Link](/docs/integrations/lmlink) to run OpenClaw from your laptop while the model runs on your rig.
+Have a powerful LLM rig? Use [LM Link](/docs/integrations/lmlink) to run Hermes Agent from your laptop while the model runs on your rig.
 </Callout>
 
 ## Setup
@@ -43,7 +43,7 @@ Have a powerful LLM rig? Use [LM Link](/docs/integrations/lmlink) to run OpenCla
     and complete the interactive setup with LM Studio as your model provider.
 
     <Callout type="success" title="Pro Tip">
-      Use a model (and server/model settings) with more than ~64k context length. Tools like Hermes Agent can consume a lot of context and have better experience with longer context.
+      Use a model with more than ~64k context length. Tools like Hermes Agent can consume a lot of context and have better experience with longer context.
     </Callout>
   </Step>
 
