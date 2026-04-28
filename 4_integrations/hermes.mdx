@@ -5,6 +5,7 @@ index: 3
 ---
 
 import { Step, Steps } from "fumadocs-ui/components/steps";
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
 Hermes Agent now supports LM Studio as a first class model provider. It comes with JIT loading with higher context length (64K) and reasoning effort support.
 
@@ -47,6 +48,17 @@ Have a powerful LLM rig? Use [LM Link](/docs/integrations/lmlink) to run Hermes 
     ```
 
     and complete the interactive setup with LM Studio as your model provider.
+
+    <Accordions>
+      <Accordion title="Alternative: Non-interactive CLI setup">
+        ```bash
+        hermes config set model.provider lmstudio
+        hermes config set model.base_url http://localhost:1234/v1
+        hermes config set model.default your-model-name
+        hermes config set LM_API_KEY your-key
+        ```
+      </Accordion>
+    </Accordions>
 
     <Callout type="success" title="Pro Tip">
       Use a model with more than ~64k context length. Tools like Hermes Agent can consume a lot of context and have better experience with longer context.
