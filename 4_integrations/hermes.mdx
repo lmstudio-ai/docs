@@ -1,0 +1,70 @@
+---
+title: Hermes Agent
+description: Use Hermes Agent with LM Studio
+index: 3
+---
+
+import { Step, Steps } from "fumadocs-ui/components/steps";
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+
+Hermes Agent now supports LM Studio as a first class model provider. It comes with JIT loading with higher context length (64K) and reasoning effort support.
+
+See: [Hermes Agent Docs](https://hermes-agent.nousresearch.com/docs/integrations/providers#lm-studio--desktop-app-with-local-models).
+
+<img src="/assets/marketing/docs/hermes-agent.webp" style={{ width: "100%" }} data-caption="Hermes Agent using LM Studio as a model provider with LM Link" />
+
+<Callout type="success" title="Pro Tip">
+Have a powerful LLM rig? Use [LM Link](/docs/integrations/lmlink) to run Hermes Agent from your laptop while the model runs on your rig.
+</Callout>
+
+## Setup
+
+<Steps>
+  <Step>
+    <h3>Start LM Studio's local server</h3>
+
+    Make sure LM Studio is running as a server (default port `1234`).
+
+    You can start it from the app, or from the terminal with `lms`:
+
+    ```bash
+    lms server start --port 1234
+    ```
+  </Step>
+
+  <Step>
+    <h3>Run Hermes Agent with LM Studio as model provider</h3>
+
+    Run your hermes setup with the following command:
+
+    ```bash
+    hermes setup
+    ```
+    
+    or if you have hermes setup already, run
+    
+    ```bash
+    hermes model
+    ```
+
+    and complete the interactive setup with LM Studio as your model provider.
+
+    <Accordions>
+      <Accordion title="Alternative: Non-interactive CLI setup">
+        ```bash
+        hermes config set model.provider lmstudio
+        hermes config set model.base_url http://localhost:1234/v1
+        hermes config set model.default your-model-name
+        hermes config set LM_API_KEY your-key
+        ```
+      </Accordion>
+    </Accordions>
+
+    <Callout type="success" title="Pro Tip">
+      Use a model with more than ~64k context length. Tools like Hermes Agent can consume a lot of context and have better experience with longer context.
+    </Callout>
+  </Step>
+
+</Steps>
+
+If you're running into trouble, hop onto our [Discord](https://discord.gg/lmstudio)
