@@ -15,4 +15,5 @@ We provide guides below for popular tools and are constantly expanding this list
 
 - [Claude Code](/docs/integrations/claude-code)
 - [Codex](/docs/integrations/codex)
+- [Hermes Agent](/docs/integrations/hermes)
 - [OpenClaw](/docs/integrations/openclaw)
