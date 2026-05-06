@@ -18,6 +18,10 @@ The `lms server start` command launches the LM Studio local server, allowing you
   type: "flag"
   optional: true
   description: "Enable CORS support for web application development. When not set, CORS is disabled"
+- name: "--bind"
+  type: "string"
+  optional: true
+  description: "Network address to bind the server to (e.g. 127.0.0.1 for local-only, 0.0.0.0 for all interfaces). Use 0.0.0.0 when other machines on your network need to reach this server. Increases exposure—use only on trusted networks."
 ```
 
 ## Start the server
