@@ -14,7 +14,7 @@ This is useful for scenarios where you want to:
 - Let multiple people use a single LM Studio instance on the network.
 - Use the API from IoT devices, edge computing units, or other services in your local setup.
 
-Once enabled, the server will bind to your local network IP address instead of localhost. The API access URL will be updated accordingly which you can use in your applications.
+Once enabled, the server will bind to your local network IP address instead of localhost. Make sure you do this over a trusted network only. The API access URL will be updated accordingly which you can use in your applications.
 
 <img src="/assets/marketing/docs/serve-local-network.png" style="" data-caption="Serve LM Studio API Server on Local Network" />
 

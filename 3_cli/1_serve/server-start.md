@@ -21,7 +21,7 @@ The `lms server start` command launches the LM Studio local server, allowing you
 - name: "--bind"
   type: "string"
   optional: true
-  description: "Network address to bind the server to. Use \"0.0.0.0\" to accept connections from the local network, or \"127.0.0.1\" (default) for localhost only. Can also be set via the LMS_SERVER_HOST environment variable."
+  description: "Network address to bind the server to. Use \"0.0.0.0\" to listen on all IPv4 interfaces, or \"127.0.0.1\" (default) for localhost only. Can also be set via the LMS_SERVER_HOST environment variable."
 ```
 
 ## Start the server
@@ -57,6 +57,8 @@ To make the server available on your local network, run:
 ```shell
 lms server start --bind 0.0.0.0
 ```
+
+Any non-`127.0.0.1` bind exposes the server beyond `localhost`. The CLI shows a warning when you do this, and you should use it only on trusted networks.
 
 ### Check the server status
 
