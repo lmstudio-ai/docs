@@ -54,11 +54,13 @@ Note that enabling CORS may expose your server to security risks, so use it only
 
 To make the server available on your local network, run:
 
+<Callout type="warning" title="Heads Up">
+Any bind other than `127.0.0.1` exposes the server beyond `localhost`; we recommend enabling [authentication](/docs/developer/core/authentication). Only do this if you know what you're doing.
+</Callout>
+
 ```shell
 lms server start --bind 0.0.0.0
 ```
-
-Any non-`127.0.0.1` bind exposes the server beyond `localhost`. The CLI shows a warning when you do this, and you should use it only on trusted networks.
 
 ### Check the server status
 
