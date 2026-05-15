@@ -48,7 +48,9 @@ For usage with web applications or some VS Code extensions, you may need to enab
 lms server start --cors
 ```
 
-Note that enabling CORS may expose your server to security risks, so use it only when necessary.
+<Callout type="warning" title="Heads Up">
+Enabling CORS can expose your server to security risks; we recommend enabling [authentication](/docs/developer/core/authentication). Only do this if you know what you're doing.
+</Callout>
 
 ### Bind to a network address
 
