@@ -18,6 +18,10 @@ The `lms server start` command launches the LM Studio local server, allowing you
   type: "flag"
   optional: true
   description: "Enable CORS support for web application development. When not set, CORS is disabled"
+- name: "--bind"
+  type: "string"
+  optional: true
+  description: "Network address to bind the server to. Use \"0.0.0.0\" to accept connections from the local network, or \"127.0.0.1\" (default) for localhost only. Can also be set via the LMS_SERVER_HOST environment variable."
 ```
 
 ## Start the server
@@ -45,6 +49,14 @@ lms server start --cors
 ```
 
 Note that enabling CORS may expose your server to security risks, so use it only when necessary.
+
+### Bind to a network address
+
+To make the server available on your local network, run:
+
+```shell
+lms server start --bind 0.0.0.0
+```
 
 ### Check the server status
 

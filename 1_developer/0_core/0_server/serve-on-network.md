@@ -17,3 +17,9 @@ This is useful for scenarios where you want to:
 Once enabled, the server will bind to your local network IP address instead of localhost. The API access URL will be updated accordingly which you can use in your applications.
 
 <img src="/assets/marketing/docs/serve-local-network.png" style="" data-caption="Serve LM Studio API Server on Local Network" />
+
+To make the server available on your local network via the CLI, run:
+
+```
+lms server start --bind 0.0.0.0
+```
