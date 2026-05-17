@@ -94,7 +94,7 @@ SERVER_API_HOST = "localhost:1234"
 if lms.Client.is_valid_api_host(SERVER_API_HOST):
     print(f"An LM Studio API server instance is available at {SERVER_API_HOST}")
 else:
-    print("No LM Studio API server instance found at {SERVER_API_HOST}")
+    print(f"No LM Studio API server instance found at {SERVER_API_HOST}")
 ```
 
 ```python tab="Python (asynchronous API)"
@@ -106,7 +106,7 @@ SERVER_API_HOST = "localhost:1234"
 if await lms.AsyncClient.is_valid_api_host(SERVER_API_HOST):
     print(f"An LM Studio API server instance is available at {SERVER_API_HOST}")
 else:
-    print("No LM Studio API server instance found at {SERVER_API_HOST}")
+    print(f"No LM Studio API server instance found at {SERVER_API_HOST}")
 ```
 
 ### Determining the default local API server port
@@ -124,7 +124,7 @@ import lmstudio as lms
 api_host = lms.Client.find_default_local_api_host()
 if api_host is not None:
     print(f"An LM Studio API server instance is available at {api_host}")
-  else:
+else:
     print("No LM Studio API server instance found on any of the default local ports")
 ```
 
@@ -136,6 +136,6 @@ import lmstudio as lms
 api_host = await lms.AsyncClient.find_default_local_api_host()
 if api_host is not None:
     print(f"An LM Studio API server instance is available at {api_host}")
-  else:
+else:
     print("No LM Studio API server instance found on any of the default local ports")
 ```

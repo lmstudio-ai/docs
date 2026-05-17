@@ -85,7 +85,7 @@ def is_prime(n: int) -> bool:
     if n < 2:
         return False
     sqrt = int(math.sqrt(n))
-    for i in range(2, sqrt):
+    for i in range(2, sqrt + 1):
         if n % i == 0:
             return False
     return True
@@ -116,7 +116,7 @@ def create_file(name: str, content: str):
     try:
         dest_path.write_text(content, encoding="utf-8")
     except Exception as exc:
-        return "Error: {exc!r}"
+        return f"Error: {exc!r}"
     return "File created."
 
 def print_fragment(fragment, round_index=0):
