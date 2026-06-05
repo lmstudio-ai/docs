@@ -13,7 +13,9 @@ LM Link is a new feature in LM Studio that provides a way to access local models
 
 LM Link unlocks the full potential of your hardware by sharing compute across connected devices. 
 
-For example, you might have a powerful desktop in your home office, and a lightweight laptop you carry on the go. With LM Link, you can run large open-weight models on a powerful machine, and use them seamlessly from your laptop as if they were local. For even more portability, [download Locally](https://apps.apple.com/us/app/locally-ai-local-ai-chat/id6741426692) on your iPhone, link it to LM Studio, and those models are now in your pocket wherever you are. All communication and data transfer between devices is always end-to-end encrypted, thanks to Tailscale.
+For example, you might have a powerful desktop in your home office, and a lightweight laptop you carry on the go. With LM Link, you can run large open-weight models on a powerful machine, and use them seamlessly from your laptop as if they were local. 
+
+For even more portability, [download Locally](https://apps.apple.com/us/app/locally-ai-local-ai-chat/id6741426692) on your iPhone, link it to LM Studio, and those models are now in your pocket wherever you are. All communication and data transfer between devices is always end-to-end encrypted, thanks to Tailscale.
 
 ## Use Cases
 
