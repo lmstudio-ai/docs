@@ -1,17 +1,43 @@
 ---
 title: "LM Link in Locally"
 sidebar_title: "LM Link in Locally"
-description: "Use LM Link from your iPhone and iPad through Locally, the LM Studio mobile app."
+description: "Use your LM Studio models on your iPhone and iPad with Locally, the LM Studio mobile app."
 index: 2
 ---
 
-LM Link is available on iPhone and iPad through [Locally](https://apps.apple.com/us/app/locally-ai-local-ai-chat/id6741426692), the LM Studio mobile app. With LM Link in Locally you can use your largest local models running in LM Studio directly from your phone, wherever you are. All data and communication between your devices is end-to-end encrypted.
+[Locally](https://apps.apple.com/us/app/locally-ai-local-ai-chat/id6741426692) is LM Studio's mobile app, available for iPhone and iPad. Enable LM Link in Locally to use your largest local models running in LM Studio directly from your phone. All data and communication between your devices stay end-to-end encrypted.
+
+<img src="/assets/marketing/blog/locally-lm-link.png" alt="Locally with LM Link on iPhone" style="width: 100%;" data-caption="Locally with LM Link on iPhone" />
 
 ## Getting Started
 
 1. If you don't yet have LM Studio, [download it here](https://lmstudio.ai/download).
-2. Make sure your [LM Link](/link) is up and running.
-3. [Download](https://apps.apple.com/us/app/locally-ai-local-ai-chat/id6741426692) the Locally app on your iPhone or iPad.
-4. Follow the instructions in the app to add your iPhone to your Link.
+2. Sign in to your LM Studio account, and make sure LM Link is enabled in LM Studio. 
+3. [Download the Locally app](https://apps.apple.com/us/app/locally-ai-local-ai-chat/id6741426692) on your iPhone or iPad.
+4. Sign in to Locally with the same account you used for LM Studio, and enable LM Link in Locally.
 
-Now you can use your largest models running in LM Studio, directly from your phone.
+Your Locally and LM Studio devices will discover each other over the link, and you can begin using your largest models running in LM Studio, directly from your phone.
+
+## FAQ
+
+<details>
+<summary>Does the connection stay active when I close the Locally app?</summary>
+
+LM Link is an alive end-to-end encrypted connection between your devices, while this ensures it is secure there are limitations on how long this connection can last once the app is backgrounded. We are actively working on both improving the latency for faster reconnect and ways of keeping the connection alive.
+
+</details>
+
+<details>
+<summary>Does LM Link require internet connection?</summary>
+
+Yes. Although your data never touches the internet, LM Link requires an internet connection to establish the connection between your devices. 
+
+</details>
+
+<details>
+<summary>I see Locally is also supported on Macs. Can I use LM Link between my iPhone and Mac versions of Locally?</summary>
+
+Not quite — LM Link is designed to connect LM Studio on your computer to Locally on your mobile device, not between two Locally apps.
+
+</details>
+
