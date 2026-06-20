@@ -1,0 +1,94 @@
+---
+title: AFK
+description: Use AFK with LM Studio
+index: 5
+---
+
+import { Step, Steps } from "fumadocs-ui/components/steps";
+
+AFK can talk to LM Studio through LM Studio's OpenAI-compatible local server. Use AFK's browser UI to create a Local model connection, then choose your LM Studio model when starting an AFK coding-agent session.
+
+<Callout type="success" title="Pro Tip">
+Have a powerful LLM rig? Run LM Studio on that machine and connect an AFK daemon that can reach it. In AFK, `localhost` is resolved from the daemon machine.
+</Callout>
+
+## Setup
+
+<Steps>
+  <Step>
+    <h3>Start LM Studio's local server</h3>
+
+    Make sure LM Studio is running as a server (default port `1234`).
+
+    You can start it from the app, or from the terminal with `lms`:
+
+    ```bash
+    lms server start --port 1234
+    ```
+  </Step>
+
+  <Step>
+    <h3>Create or sign in to AFK</h3>
+
+    Open [afk.mooglest.com](https://afk.mooglest.com) and create an account or sign in.
+  </Step>
+
+  <Step>
+    <h3>Install and connect an AFK daemon</h3>
+
+    AFK sessions run through a daemon that has access to your projects and can reach LM Studio.
+
+    In AFK:
+
+    1. Open **Account → API Keys**.
+    2. Create a daemon token.
+    3. Follow the installation command shown in the app to install and connect the daemon.
+    4. Confirm your machine appears as a connected daemon in the browser.
+
+    If LM Studio is running on the same machine as the daemon, use `http://localhost:1234/v1` as the base URL. If LM Studio is running on a different machine, use a URL the daemon machine can reach.
+  </Step>
+
+  <Step>
+    <h3>Add a Local model connection in AFK</h3>
+
+    In AFK:
+
+    1. Open **Account → LLM**.
+    2. Click **Add connection** and choose **Local model**.
+    3. Set **Base URL** to:
+
+       ```text
+       http://localhost:1234/v1
+       ```
+
+    4. If Require Authentication is enabled in LM Studio, paste your LM Studio API token as the API key.
+    5. Bind the connection to the daemon machine that can reach LM Studio.
+    6. Save or test the connection.
+  </Step>
+
+  <Step>
+    <h3>Start an AFK session with an LM Studio model</h3>
+
+    Click **New session** in AFK, then:
+
+    1. Select the connected daemon and project directory.
+    2. Choose the LM Studio Local model connection.
+    3. Select or type the model identifier exposed by LM Studio.
+    4. Choose a permission mode and enter the coding task.
+
+    AFK will route the session's model requests to LM Studio.
+
+    <Callout type="success" title="Pro Tip">
+      Use a model and context length large enough for coding-agent work. Agent sessions can consume a lot of context, especially when reading files and using tools.
+    </Callout>
+  </Step>
+</Steps>
+
+## Troubleshooting
+
+- **Connection fails:** Confirm LM Studio's server is running and reachable from the AFK daemon machine.
+- **`localhost` does not work:** In AFK, `localhost` means the daemon machine, not the hosted AFK web app. Use the daemon-reachable host or IP if LM Studio is on another machine.
+- **Authentication errors:** If Require Authentication is enabled in LM Studio, create an LM Studio API token and paste it into the AFK Local model connection.
+- **Model is missing:** Load a model in LM Studio and try testing the AFK connection again. You can also type the model identifier manually when starting a session.
+
+If you're running into trouble, hop onto the [LM Studio Discord](https://discord.gg/lmstudio).
