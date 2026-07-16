@@ -1,12 +1,12 @@
 ---
 title: What is LM Studio Bionic?
-description: Learn how LM Studio Bionic relates to LM Studio and what you can do with it.
+description: Introducing Bionic, the AI agent designed for open models.
 index: 1
 ---
 
-LM Studio Bionic is an agentic workspace in the LM Studio product family. It is made for tasks where a model needs to inspect context, use tools, and create or change files.
+Meet LM Studio Bionic, the next generation of LM Studio designed for agentic work with open models.
 
-Bionic has its own project and session interface. It uses LM Studio's local model and LM Link foundations, and it can also run sessions with cloud models.
+Bionic is the AI agent for getting real work done with open models, including coding, research, and complex work with documents and files. You can use local models or switch to open-source models in the cloud for heavier tasks, all while staying in control of your privacy and AI spend.
 
 ## What you can do
 
@@ -15,20 +15,18 @@ Bionic has two project types:
 - **Work Projects** for research, writing, analysis, and document work.
 - **Code Projects** for working in a local codebase with file, search, Git, and shell tools.
 
-Within a project, create separate sessions for separate tasks. A session can keep working while you view another tab or project.
+Within a project, create separate sessions for separate tasks. Run multiple sessions across projects to parallelize your workflows. 
 
 ## Choose where a model runs
 
 A Bionic session can use:
 
-- **Cloud** models provided through LM Studio's cloud service.
+- **Frontier open models** running in LM Studio Secure Cloud with Zero Data Retention.
 - **Local** models running on your computer.
-- **Remote** models shared by another device through LM Link.
-
-The model picker identifies each option as **Cloud**, **Local**, or **Remote**.
+- **Remote** models from another device through LM Link.
 
 ## How this differs from LM Studio
 
-LM Studio is the general-purpose app for discovering, running, chatting with, and serving local models. LM Studio Bionic adds a project-based workspace for longer, tool-using tasks.
+Bionic is a new, separate app from LM Studio. For advanced low-level configuration, you can continue to use LM Studio alongside Bionic.
 
-Start with [Projects and Sessions](/docs/bionic/projects-and-sessions), or [create your first project](/docs/bionic/quick-start).
+Download Bionic and [create your first project](/docs/bionic/quick-start) to get started!
