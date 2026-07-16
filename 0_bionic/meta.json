@@ -5,13 +5,9 @@
     "...0_root",
     "---Accounts, Plans, and Billing---",
     "...1_accounts-plans-and-billing",
-    "---Work Projects---",
-    "...2_work-projects",
-    "---Code Projects---",
-    "...3_code-projects",
+    "---Projects---",
+    "...2_projects",
     "---Models---",
-    "...4_models",
-    "---Voice Input---",
-    "...5_voice-input"
+    "...4_models"
   ]
 }

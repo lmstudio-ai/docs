@@ -18,7 +18,7 @@ For example:
 
 Attach or drag in files and folders to add source material. Files Bionic creates appear in the right sidebar under **Project Files**. Project Files are shared across all sessions in the same project.
 
-Learn more in [Using Work Projects](/docs/bionic/work-projects).
+Learn more in [Work Project](/docs/bionic/projects/work-project).
 
 ## Start a Code Project
 
@@ -33,10 +33,10 @@ For example:
 
 Bionic can search the repository, edit several files, and run local shell commands. Review its diffs and command output before keeping the changes.
 
-Learn more in [Using Code Projects](/docs/bionic/code-projects).
+Learn more in [Code Project](/docs/bionic/projects/code-project).
 
 ## Keep tasks focused
 
 Give Bionic a clear goal, relevant files, and a concrete output. For larger work, ask it to investigate first, then implement in the same session.
 
-See [Projects and Sessions](/docs/bionic/projects-and-sessions) to organize more work.
+See [Projects and Sessions](/docs/bionic/projects/projects-and-sessions) to organize more work.
