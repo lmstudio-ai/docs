@@ -16,7 +16,7 @@ Cloud models require:
 - A signed-in LM Studio account.
 - Available personal or organization credits.
 
-Cloud requests send the context needed for inference to LM Studio's cloud service. See [Privacy in LM Studio Bionic](/docs/bionic/privacy) and [Understand Credits and Usage](/docs/bionic/accounts-plans-and-billing/credits-and-usage).
+Cloud requests send the context needed for inference to LM Studio's cloud service. See [Understand Credits and Usage](/docs/bionic/accounts-plans-and-billing/credits-and-usage).
 
 ## Local models
 
@@ -30,7 +30,7 @@ See [Download Local Models](/docs/bionic/models/download-local-models).
 
 A **Remote** model is a local model shared by another device through LM Link. The remote device handles inference, while the conversation stays on the device where you are using Bionic.
 
-Remote models appear only while the linked device is available and sharing its local models. See [Use Remote Models with LM Link](/docs/bionic/lmlink).
+Remote models appear only while the linked device is available and sharing its local models.
 
 ## Choose for the task
 

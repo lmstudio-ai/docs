@@ -49,4 +49,4 @@ Then ask for a web-based task and state any source requirements:
 
 > Find the current documentation for these three tools. Compare their supported export formats and include links to the sources.
 
-Connected websites have their own data practices. See [Privacy in LM Studio Bionic](/docs/bionic/privacy).
+Connected websites have their own data practices. Only send information you are comfortable sharing with that service.

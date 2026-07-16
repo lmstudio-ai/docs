@@ -4,30 +4,28 @@ description: Start a Work Project or Code Project and run your first task in LM 
 index: 4
 ---
 
-Choose a **Work Project** for documents, research, and analysis. Choose a **Code Project** for a local codebase.
+Choose a **Work Project** for documents, research, and analysis. Choose a **Code Project** for developing in a local codebase.
 
 ## Start a Work Project
 
-1. Open **Projects**.
-2. Select **Create New Work Project...**
-3. In the new session, select a model if Bionic has not already chosen the **Root model**.
-4. Describe the result you want.
+1. Create a new **Work** project
+2. In the new session, select a model if Bionic has not already chosen the **Root model**.
+3. Tell the agent what you'd like to do.
 
 For example:
 
 > Research the options in these notes, summarize the tradeoffs, and save a recommendation as `recommendation.md`.
 
-Use **Attach files** to add source material. Files Bionic creates appear in the project's **Workspace**.
+Attach or drag in files and folders to add source material. Files Bionic creates appear in the right sidebar under **Project Files**. Project Files are shared across all sessions in the same project.
 
 Learn more in [Using Work Projects](/docs/bionic/work-projects).
 
 ## Start a Code Project
 
-1. Open **Projects**.
-2. Select **Create New Code Project...**
-3. Select **Select working directory**, then choose your local codebase.
-4. Select a model if needed.
-5. Ask Bionic to inspect the code before making changes.
+1. Create a new **Code** project
+2. Select **Select working directory**, then choose your local codebase.
+3. Select a model if needed.
+4. Tell the agent what you'd like to do.
 
 For example:
 

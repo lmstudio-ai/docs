@@ -38,4 +38,4 @@ Then open a Bionic session and select the model labeled **Local**. Bionic loads 
 
 If you downloaded the model to an LM Link device, it appears as **Remote** when that device is online and has **Share local models** enabled.
 
-See [Choose a Cloud, Local, or Remote Model](/docs/bionic/models) or [Use Remote Models with LM Link](/docs/bionic/lmlink).
+See [Choose a Cloud, Local, or Remote Model](/docs/bionic/models).
