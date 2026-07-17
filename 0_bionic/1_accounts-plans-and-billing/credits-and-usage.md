@@ -12,7 +12,7 @@ Bionic uses credits when a session runs a **Cloud** model. The amount depends on
 
 Open **Settings** → **Billing and Usage**.
 
-Choose **Personal** or an available organization under **Billing account**. The data reflects how many credits your user has consumed from the selected account over the last 30 days. Organization billing and credits are only available on the web.
+The data reflects how many credits you have consumed from the selected account over the last 30 days. 
 
 Select **Refresh** to load the latest account and usage information.
 
