@@ -1,10 +1,10 @@
 ---
-title: Set Up Voice Keyboard
-description: Install a local voice model and set a global shortcut for transcription.
+title: Voice Input in Bionic
+description: Use voice input with local transcription in Bionic
 index: 1
 ---
 
-**Voice Keyboard** transcribes speech locally and sends the transcript into the active app. It uses a voice model installed on your device.
+**Voice Input** transcribes speech locally and sends the transcript into Bionic. Currently, Bionic supports Voxtral by Mistral AI, which is a performant multilingual realtime transcription model.
 
 ## Install a voice model
 
@@ -41,5 +41,3 @@ macOS also offers trigger choices such as **Double Caps** and **2x Right Shift**
 4. Review the text before sending or saving it.
 
 The shortcut works globally, so the active app does not need to be Bionic.
-
-If setup does not work, see [Troubleshoot Voice Input](/docs/bionic/voice-input/troubleshooting).
