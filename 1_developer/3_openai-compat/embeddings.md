@@ -7,7 +7,7 @@ api_info:
 ---
 
 - Method: `POST`
-- See OpenAI docs: https://platform.openai.com/docs/api-reference/embeddings
+- See OpenAI docs: https://developers.openai.com/api/reference/resources/embeddings/methods/create
 
 ##### Python example
 
