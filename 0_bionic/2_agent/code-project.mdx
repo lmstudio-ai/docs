@@ -1,0 +1,60 @@
+---
+title: Coding
+description: Work with a local codebase using Bionic's search, editing, and shell tools.
+index: 2
+---
+
+Point Bionic to a local working directory to use it for tasks that require understanding or changing a codebase.
+
+<figure>
+  <img
+    src="/assets/marketing/docs/bionic-coding.png"
+    alt="Bionic coding project with source files open"
+    style={{ width: "100%", marginTop: "16px" }}
+  />
+  <figcaption className="text-fd-muted-foreground mt-2 text-center text-sm">
+    Bionic can inspect local codebases, explain unfamiliar code, and help you make changes.
+  </figcaption>
+</figure>
+
+
+## Open a codebase
+
+1. Create a new Project and give it a name
+2. Toggle on **Allow coding**
+3. Select **Choose a folder for Bionic to work in**
+4. Choose the root folder of your codebase.
+5. Click Create
+
+If you need a different folder later, open the right sidebar to see your working directory. From the working directory options, select **Change working directory...**.
+
+Bionic indexes the selected folder so it can search project files. If the folder is a Git repository, the Files panel also shows the repository and current branch.
+
+## What to ask Bionic to do
+
+Coding projects support tasks such as:
+
+- Finding how a feature is implemented.
+- Debugging a failing behavior.
+- Refactoring code across several files.
+- Implementing a feature.
+- Adding or updating tests.
+- Updating documentation.
+- Reviewing a multi-file change.
+
+For example:
+
+> Find the code that validates uploaded images. Explain the current flow, add support for the new size limit, update the tests, and run only the relevant test suite.
+
+## Use an inspect, change, test workflow
+
+For safer results:
+
+1. Ask Bionic to inspect the repository and explain the relevant code.
+2. Confirm the intended change and constraints.
+3. Let it edit the files.
+4. Ask it to run focused tests or checks.
+5. Review the inline diffs and your Git diff.
+
+For a large task, ask Bionic to divide the investigation into smaller parts. It can search the repository and use sub-sessions to investigate in parallel when appropriate.
+
