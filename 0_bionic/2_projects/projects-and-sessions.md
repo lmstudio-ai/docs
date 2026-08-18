@@ -4,18 +4,16 @@ description: Learn how LM Studio Bionic organizes work, conversations, files, an
 index: 1
 ---
 
-LM Studio Bionic organizes work into **Projects** and **Sessions**.
+LM Studio Bionic organizes work into Projects and Sessions.
+
 
 ## Projects
 
-A project keeps related sessions and files together. Choose a project type based on the work:
+A project keeps related sessions and files together, giving the agent a shared working context.
 
-- A **Work Project** has a Bionic-managed **Workspace** for documents and other non-code work.
-- A **Code Project** works with a local folder that you select as its working directory.
-
-Project files give sessions shared working context. A new session has its own conversation, but it can work with files in the same project.
-
-See [Work Project](/docs/bionic/projects/work-project) and [Code Project](/docs/bionic/projects/code-project).
+For example:
+- For coding work, point a project to a local directory. Then create multiple sessions within that project so the agent can work on different parts of the repository in parallel while sharing the same codebase.
+- For a long-running research initiative, add relevant templates and source files up front, then continue adding documents as you go. Start separate sessions within the project to explore different questions or workstreams, while keeping every session grounded in the same shared document set.
 
 ## Sessions
 
