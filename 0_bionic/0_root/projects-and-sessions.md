@@ -29,12 +29,6 @@ To view two sessions side by side, drag a session tab over the left or right hal
 
 You can also use **Fork** on an eligible response to open a new branch beside the current session.
 
-## Open Projects in Workspace
-
-A Workspace window can contain several projects. From **Projects**, use **Open in Workspace** to add a project to the current Workspace, or **Open in New Window** to keep it separate.
-
-Sessions and tabs stay grouped by project.
-
 ## Background sessions
 
 Switching to another tab or project does not stop a running session. Bionic continues the task in the background.
