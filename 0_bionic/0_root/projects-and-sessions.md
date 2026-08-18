@@ -12,7 +12,7 @@ LM Studio Bionic organizes work into Projects and Sessions.
 A project keeps related sessions and files together, giving the agent a shared working context.
 
 For example:
-- For coding work, point a project to a local directory. Then create multiple sessions within that project so the agent can work on different parts of the repository in parallel while sharing the same codebase.
+- For coding work, point a project to a local directory. Then create separate sessions within that project for different tasks while sharing the same codebase.
 - For a long-running research initiative, add relevant templates and source files up front, then continue adding documents as you go. Start separate sessions within the project to explore different questions or workstreams, while keeping every session grounded in the same shared document set.
 
 ## Sessions
