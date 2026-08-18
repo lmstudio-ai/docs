@@ -35,7 +35,7 @@ A Workspace window can contain several projects. From **Projects**, use **Open i
 
 Sessions and tabs stay grouped by project.
 
-## Background sessions 
+## Background sessions
 
 Switching to another tab or project does not stop a running session. Bionic continues the task in the background.
 
