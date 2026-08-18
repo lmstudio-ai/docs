@@ -27,7 +27,7 @@ Learn more in [Working with Documents](/docs/bionic/agent/work-project).
 
 ## Work with a codebase
 
-When **Allow coding** is enabled, Bionic can search the repository, edit files, use Git, and run local shell commands in the selected working directory.
+When **Allow coding** is enabled, Bionic can search the repository, edit files, use Git, and run shell commands in the selected working directory.
 
 For example:
 
