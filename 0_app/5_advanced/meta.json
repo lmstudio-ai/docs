@@ -5,6 +5,7 @@
     "_context",
     "_errors",
     "import-model",
+    "neuronpool",
     "parallel-requests",
     "per-model",
     "prompt-template",
