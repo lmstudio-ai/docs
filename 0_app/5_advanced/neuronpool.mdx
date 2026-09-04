@@ -1,0 +1,42 @@
+---
+title: Use NeuronPool as a remote OpenAI-compatible endpoint
+---
+
+NeuronPool is an OpenAI-compatible inference API. LM Studio can consume it as a remote endpoint (or via the [openai-compat-endpoint](https://lmstudio.ai/ankh/openai-compat-endpoint) Hub plugin) the same way it talks to any other `/v1` host.
+
+Mint a buyer key on the [NeuronPool dashboard](https://neuronpool.damnknee.workers.dev/dashboard). Keys start with `sk-neuronpool-`.
+
+## In the app
+
+Add a remote OpenAI-compatible model:
+
+| Field | Value |
+| --- | --- |
+| Base URL | `https://neuronpool.damnknee.workers.dev/v1` |
+| API key | `sk-neuronpool-…` |
+| Model | `gpt-oss-20b` (or any id from `GET /v1/models`) |
+
+Until `api.neuronpool.dev` resolves, use the live Worker URL above. After the custom-domain cutover, swap the base to `https://api.neuronpool.dev/v1`.
+
+## Hub plugin
+
+Point [ankh/openai-compat-endpoint](https://lmstudio.ai/ankh/openai-compat-endpoint) at NeuronPool:
+
+- API Key = buyer key
+- Base URL = `https://neuronpool.damnknee.workers.dev/v1`
+- Model = catalog id (`gpt-oss-20b`, `llama-3.1-8b-instruct`, …)
+
+## Python (OpenAI client)
+
+LM Studio is not required for this path. The same OpenAI client works against NeuronPool:
+
+```python
+from openai import OpenAI
+import os
+
+client = OpenAI(
+    base_url="https://neuronpool.damnknee.workers.dev/v1",
+    api_key=os.environ["NEURONPOOL_API_KEY"],
+)
+print(client.models.list())
+```
