@@ -36,7 +36,7 @@ api_info:
           description: Text input to provide user messages
           children:
             - name: type
-              type: '"message"'
+              type: '"text"'
               optional: false
               description: Type of input item.
             - name: content
