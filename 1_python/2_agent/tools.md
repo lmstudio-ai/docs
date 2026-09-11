@@ -84,7 +84,7 @@ def create_file(name: str, content: str):
     try:
         dest_path.write_text(content, encoding="utf-8")
     except Exception as exc:
-        return "Error: {exc!r}"
+        return f"Error: {exc!r}"
     return "File created."
 ```
 
@@ -124,7 +124,7 @@ def divide(numerator: float, denominator: float) -> float:
     return numerator / denominator
 
 model = lms.llm("qwen2.5-7b-instruct")
-chat = Chat()
+chat = lms.Chat()
 chat.add_user_message(
     "Attempt to divide 1 by 0 using the tool. Explain the result."
 )
@@ -134,7 +134,7 @@ def _raise_exc_in_client(
 ) -> None:
     raise exc
 
-act_result = llm.act(
+act_result = model.act(
     chat,
     [divide],
     handle_invalid_tool_request=_raise_exc_in_client,
