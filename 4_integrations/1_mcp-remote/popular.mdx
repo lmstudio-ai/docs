@@ -148,4 +148,40 @@ Query issues, inspect stack traces, and analyze errors from your Sentry projects
 
 ---
 
+## Exa
+
+Search the web, fetch page contents, and research companies, people, or code using [Exa](https://exa.ai), an AI-native search engine.
+
+
+<div className="w-fit">
+  <a
+    style={{ background: "rgb(255,255,255)" }}
+    href="https://lmstudio.ai/install-mcp?name=exa&config=eyJ1cmwiOiJodHRwczovL21jcC5leGEuYWkvbWNwIn0%3D"
+  >
+    <img
+      src="https://files.lmstudio.ai/deeplink/mcp-install-light.svg"
+      alt="Add Exa MCP to LM Studio"
+      className="dark:hidden"
+    />
+    <img
+      src="https://files.lmstudio.ai/deeplink/mcp-install-dark.svg"
+      alt="Add Exa MCP to LM Studio"
+      className="hidden dark:block"
+    />
+  </a>
+</div>
+
+```json
+{
+  "mcpServers": {
+    "exa": {
+      "url": "https://mcp.exa.ai/mcp"
+    }
+  }
+}
+```
+
+
+---
+
 Many more integrations are supported. Any MCP server that uses OAuth or standard HTTP transport can be connected to LM Studio. See [Use MCP Servers](/docs/app/mcp) for how to add custom servers manually via `mcp.json`.
