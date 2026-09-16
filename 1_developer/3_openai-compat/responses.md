@@ -7,7 +7,7 @@ api_info:
 ---
 
 - Method: `POST`
-- See OpenAI docs: https://platform.openai.com/docs/api-reference/responses
+- See OpenAI docs: https://developers.openai.com/api/reference/responses/overview
 
 ##### cURL (non‑streaming)
 

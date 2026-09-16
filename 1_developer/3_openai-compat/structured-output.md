@@ -26,7 +26,7 @@ This will allow you to interact with LM Studio via the REST API. For an intro to
 
 The API supports structured JSON outputs through the `/v1/chat/completions` endpoint when given a [JSON schema](https://json-schema.org/overview/what-is-jsonschema). Doing this will cause the LLM to respond in valid JSON conforming to the schema provided.
 
-It follows the same format as OpenAI's recently announced [Structured Output](https://platform.openai.com/docs/guides/structured-outputs) API and is expected to work via the OpenAI client SDKs.
+It follows the same format as OpenAI's recently announced [Structured Output](https://developers.openai.com/api/docs/guides/structured-outputs) API and is expected to work via the OpenAI client SDKs.
 
 **Example using `curl`**
 
