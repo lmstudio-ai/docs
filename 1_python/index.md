@@ -19,7 +19,7 @@ For the source code and open source contribution, visit [lmstudio-python](https:
 ## Features
 
 - Use LLMs to [respond in chats](./python/llm-prediction/chat-completion) or predict [text completions](./python/llm-prediction/completion)
-- Define functions as tools, and turn LLMs into [autonomous agents](./python/agent) that run completely locally
+- Define functions as tools, and turn LLMs into [autonomous agents](./python/agent/act) that run completely locally
 - [Load](./python/manage-models/loading), [configure](./python/llm-prediction/parameters), and [unload](./python/manage-models/loading) models from memory
 - Generate embeddings for text, and more!
 
