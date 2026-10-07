@@ -13,6 +13,8 @@ Requires a [loaded decision model](/docs/developer/rest/load), not a regular cha
 
 ##### Python example
 
+Requires OpenAI Python 3.26.0+.
+
 ```python
 from openai import OpenAI
 client = OpenAI(base_url="http://localhost:1234/v1", api_key="lm-studio")
