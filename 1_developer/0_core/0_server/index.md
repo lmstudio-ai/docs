@@ -31,4 +31,4 @@ lms server start
 - [Python SDK](/docs/python) - `lmstudio-python`
 - [OpenAI-compatible endpoints](/docs/developer/openai-compat)
 - [Anthropic-compatible endpoints](/docs/developer/anthropic-compat)
-- [TypeSafe-compatible endpoints](/docs/developer/typesafe-compat)
+- [Jev (TypeSafe AI)-compatible endpoints](/docs/developer/typesafe-compat)
