@@ -3,6 +3,7 @@
   "pages": [
     "chat-completions",
     "completions",
+    "decisions",
     "embeddings",
     "models",
     "responses",

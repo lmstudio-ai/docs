@@ -1,7 +1,7 @@
 ---
 title: OpenAI Compatibility Endpoints
 sidebar_title: Overview
-description: Send requests to Responses, Chat Completions (text and images), Completions, and Embeddings endpoints.
+description: Send requests to Responses, Chat Completions (text and images), Completions, Embeddings, and Decisions endpoints.
 index: 1
 ---
 
@@ -27,6 +27,11 @@ index: 1
       <td><a href="/docs/developer/openai-compat/responses">Responses</a></td>
     </tr>
     <tr>
+      <td><code>/v1/decisions</code></td>
+      <td><ApiMethod method="POST" /></td>
+      <td><a href="/docs/developer/openai-compat/decisions">Decisions</a></td>
+    </tr>
+    <tr>
       <td><code>/v1/chat/completions</code></td>
       <td><ApiMethod method="POST" /></td>
       <td><a href="/docs/developer/openai-compat/chat-completions">Chat Completions</a></td>
@@ -43,6 +48,8 @@ index: 1
     </tr>
   </tbody>
 </table>
+
+LM Studio also supports the TypeSafe-compatible [`POST /v1/systemone`](/docs/developer/openai-compat/decisions#system-one) endpoint for decision models.
 
 <hr />
 
