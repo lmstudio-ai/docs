@@ -48,19 +48,3 @@ result = client.decisions.create(
 )
 print(result.answers)
 ```
-
-##### System One
-
-`POST /v1/systemone` is also supported. This TypeSafe-compatible endpoint uses `state`, a question-ID-keyed `questions` object, and `noul` instead of `predicate`. Choice and score questions use `criteria` instead of `choices` and `levels`. Answers are keyed by question ID. It is a separate request/response format, not an alias for `/v1/decisions`.
-
-```bash
-curl http://localhost:1234/v1/systemone \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "your-decision-model",
-    "state": "I was charged twice.",
-    "questions": {
-      "angry": {"type": "noul", "instructions": "Is the customer angry?"}
-    }
-  }'
-```
