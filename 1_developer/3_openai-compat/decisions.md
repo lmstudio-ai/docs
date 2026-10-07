@@ -11,7 +11,7 @@ api_info:
 
 Requires a [loaded decision model](/docs/developer/rest/load), not a regular chat model.
 
-##### Python example (Requires OpenAI Python 3.26.0+)
+##### Python example
 
 ```python
 from openai import OpenAI
@@ -27,3 +27,5 @@ decision = client.decisions.create(
 
 print(decision.answers)
 ```
+
+Requires OpenAI Python 3.26.0+.
