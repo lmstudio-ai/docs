@@ -8,6 +8,7 @@ api_info:
 
 - Method: `POST`
 - Endpoint: `/v1/systemone`
+- See TypeSafe docs: https://docs.typesafe.ai/api
 
 Use the identifier of a [loaded decision model](/docs/developer/rest/load), not a regular chat model.
 
