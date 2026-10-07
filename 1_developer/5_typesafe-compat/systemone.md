@@ -1,5 +1,5 @@
 ---
-title: System One
+title: Decisions (System One)
 description: Answer typed questions using the TypeSafe-compatible System One endpoint.
 index: 2
 api_info:
