@@ -8,7 +8,7 @@ index: 1
 
 You can serve local LLMs from LM Studio's Developer tab, either on `localhost` or on the network.
 
-LM Studio's APIs can be used through [REST API](/docs/developer/rest), client libraries like [lmstudio-js](/docs/typescript) and [lmstudio-python](/docs/python), and compatibility endpoints like [OpenAI-compatible](/docs/developer/openai-compat), [Anthropic-compatible](/docs/developer/anthropic-compat), and [TypeSafe-compatible](/docs/developer/typesafe-compat).
+LM Studio's APIs can be used through [REST API](/docs/developer/rest), client libraries like [lmstudio-js](/docs/typescript) and [lmstudio-python](/docs/python), and compatibility endpoints like [OpenAI-compatible](/docs/developer/openai-compat), [Anthropic-compatible](/docs/developer/anthropic-compat), and [Jev (TypeSafe AI)-compatible](/docs/developer/typesafe-compat).
 
 <img src="/assets/marketing/docs/server.png" style="" data-caption="Load and serve LLMs from LM Studio" />
 
