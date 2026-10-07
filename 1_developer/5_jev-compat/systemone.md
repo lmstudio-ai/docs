@@ -1,6 +1,6 @@
 ---
 title: Decisions (System One)
-description: Answer typed questions using the Jev-compatible Decision endpoint
+description: Answer typed questions using the Jev (TypeSafe AI)-compatible Decision endpoint
 index: 2
 api_info:
   method: POST

@@ -13,7 +13,7 @@
     "...3_openai-compat",
     "---Anthropic Compatibility---",
     "...4_anthropic-compat",
-    "---Jev (TypeSafe AI) Compatibility---",
+    "---Jev Compatibility---",
     "...5_jev-compat"
   ]
 }
