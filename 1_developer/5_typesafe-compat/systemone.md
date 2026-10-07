@@ -14,7 +14,7 @@ Use the identifier of a [loaded decision model](/docs/developer/rest/load), not 
 
 Provide `state` and a `questions` object keyed by question ID. Question types are `noul` (probability that a condition is true), `choice` (select from a `criteria` object), and `score` (rate against an ordered `criteria` array). Responses contain an `answers` object keyed by question ID.
 
-Streaming is not supported. Images must be inline base64 data URLs and require a model that supports image input.
+Images must be inline base64 data URLs and require a model that supports image input.
 
 ##### cURL
 
