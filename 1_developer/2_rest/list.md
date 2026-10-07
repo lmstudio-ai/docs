@@ -42,7 +42,7 @@ curl http://localhost:1234/api/v1/models \
     - name: architecture
       type: string | null
       optional: true
-      description: Model architecture (e.g., "llama", "mistral"). Null when unavailable. Absent for embedding models.
+      description: Model architecture (e.g., "llama", "mistral"). Absent for embedding models.
     - name: quantization
       type: object | null
       description: Quantization information for the model.
@@ -77,10 +77,6 @@ curl http://localhost:1234/api/v1/models \
               type: number
               optional: true
               description: Number of input tokens to process together in a single batch during evaluation. Absent for embedding models.
-            - name: physical_batch_size
-              type: number
-              optional: true
-              description: Maximum number of tokens processed in a physical batch. Absent for embedding models.
             - name: parallel
               type: number
               optional: true
@@ -106,7 +102,7 @@ curl http://localhost:1234/api/v1/models \
     - name: capabilities
       type: object
       optional: true
-      description: LLM capabilities. Absent for embedding and decision models.
+      description: Model capabilities. Absent for embedding and decision models.
       children:
         - name: vision
           type: boolean

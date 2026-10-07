@@ -24,14 +24,6 @@ api_info:
   type: number
   optional: true
   description: Number of input tokens to process together in a single batch during evaluation. Will only have an effect on LLMs and decision models loaded by LM Studio's [llama.cpp](https://github.com/ggml-org/llama.cpp)-based engine.
-- name: physical_batch_size
-  type: number
-  optional: true
-  description: Maximum number of tokens to process in a physical batch. Will only have an effect on LLMs and decision models loaded by LM Studio's [llama.cpp](https://github.com/ggml-org/llama.cpp)-based engine.
-- name: parallel
-  type: number
-  optional: true
-  description: Maximum number of concurrent inference operations for LLMs and decision models.
 - name: flash_attention
   type: boolean
   optional: true
@@ -98,14 +90,6 @@ curl http://localhost:1234/api/v1/models/load \
           type: number
           optional: true
           description: Number of input tokens to process together in a single batch during evaluation. Only present for models loaded with LM Studio's [llama.cpp](https://github.com/ggml-org/llama.cpp)-based engine.
-        - name: physical_batch_size
-          type: number
-          optional: true
-          description: Maximum number of tokens processed in a physical batch. Only present for models loaded with LM Studio's [llama.cpp](https://github.com/ggml-org/llama.cpp)-based engine.
-        - name: parallel
-          type: number
-          optional: true
-          description: Maximum number of concurrent inference operations.
         - name: flash_attention
           type: boolean
           optional: true
