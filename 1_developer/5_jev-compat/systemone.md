@@ -8,7 +8,7 @@ api_info:
 
 - Method: `POST`
 - Endpoint: `/v1/systemone`
-- See TypeSafe docs: https://docs.typesafe.ai/api
+- See llama.cpp docs: [System One API](https://github.com/ggml-org/llama.cpp/blob/master/tools/server/README.md#post-v1systemone-typesafe-compatible-system-one-api)
 
 Use the identifier of a [loaded decision model](/docs/developer/rest/load), not a regular chat model.
 
