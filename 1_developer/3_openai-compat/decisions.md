@@ -7,11 +7,9 @@ api_info:
 ---
 
 - Method: `POST`
-- Requires a [loaded decision model](/docs/developer/rest/load), not a regular chat model
-- Question types: `predicate`, `choice`, and `score`
-- Streaming is not supported; images must be inline base64 data URLs and require an image-capable decision model
-- Requires OpenAI Python SDK `3.26.0` or newer
-- See OpenAI docs: https://developers.openai.com/api/docs/guides/decisions
+- See OpenAI docs: [Decisions guide](https://developers.openai.com/api/docs/guides/decisions) and [API reference](https://developers.openai.com/api/reference/resources/decisions/methods/create)
+
+Requires OpenAI Python SDK `3.26.0` or newer and a [loaded decision model](/docs/developer/rest/load), not a regular chat model.
 
 ##### Python example
 
@@ -28,14 +26,4 @@ decision = client.decisions.create(
 )
 
 print(decision.answers)
-```
-
-### Supported payload parameters
-
-See https://developers.openai.com/api/reference/resources/decisions/methods/create for parameter semantics.
-
-```py
-model
-input
-questions
 ```
