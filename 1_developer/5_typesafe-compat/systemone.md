@@ -29,4 +29,4 @@ curl http://localhost:1234/v1/systemone \
   }'
 ```
 
-For the OpenAI-compatible request and response format, use [Decisions](/docs/developer/openai-compat/decisions). The two endpoints are not interchangeable aliases.
+For the OpenAI-compatible request and response format, use [Decisions](/docs/developer/openai-compat/decisions).
