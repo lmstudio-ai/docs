@@ -9,7 +9,7 @@ api_info:
 - Method: `POST`
 - See OpenAI docs: [Decisions guide](https://developers.openai.com/api/docs/guides/decisions) and [API reference](https://developers.openai.com/api/reference/resources/decisions/methods/create)
 
-Requires OpenAI Python SDK `3.26.0` or newer and a [loaded decision model](/docs/developer/rest/load), not a regular chat model.
+Requires a [loaded decision model](/docs/developer/rest/load), not a regular chat model.
 
 ##### Python example
 
