@@ -1,7 +1,7 @@
 ---
 title: LM Studio Developer Docs
 sidebar_title: Introduction
-description: Build with LM Studio's local APIs and SDKs — TypeScript, Python, REST, and OpenAI and Anthropic-compatible endpoints.
+description: Build with LM Studio's local APIs and SDKs — TypeScript, Python, REST, and OpenAI, Anthropic, and TypeSafe-compatible endpoints.
 index: 1
 ---
 
@@ -14,6 +14,7 @@ import {
   Code2,
   Command,
   Database,
+  ListChecks,
   MessageSquareText,
   PackageSearch,
   Sparkles,
@@ -52,6 +53,12 @@ import {
     description="Use Claude-style Messages API flows against your local LM Studio server."
     href="/docs/developer/anthropic-compat"
     icon={<MessageSquareText className="text-amber-400" />}
+  />
+  <Card
+    title="TypeSafe-compatible"
+    description="Use the System One endpoint with local decision models."
+    href="/docs/developer/typesafe-compat"
+    icon={<ListChecks className="text-teal-400" />}
   />
   <Card
     title="LM Studio CLI: lms"
