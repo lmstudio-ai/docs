@@ -1,6 +1,6 @@
 ---
 title: "Load a model"
-description: "Load an LLM or Embedding model into memory with custom configuration for inference"
+description: "Load an LLM, embedding model, or decision model into memory with custom configuration for inference"
 full: true
 index: 7
 api_info:
@@ -15,7 +15,7 @@ api_info:
 - name: model
   type: string
   optional: false
-  description: Unique identifier for the model to load. Can be an LLM or embedding model.
+  description: Unique identifier for the model to load. Can be an LLM, embedding model, or decision model.
 - name: context_length
   type: number
   optional: true
@@ -23,19 +23,19 @@ api_info:
 - name: eval_batch_size
   type: number
   optional: true
-  description: Number of input tokens to process together in a single batch during evaluation. Will only have an effect on LLMs loaded by LM Studio's [llama.cpp](https://github.com/ggml-org/llama.cpp)-based engine.
+  description: Number of input tokens to process together in a single batch during evaluation. Will only have an effect on LLMs and decision models loaded by LM Studio's [llama.cpp](https://github.com/ggml-org/llama.cpp)-based engine.
 - name: flash_attention
   type: boolean
   optional: true
-  description: Whether to optimize attention computation. Can decrease memory usage and improved generation speed. Will only have an effect on LLMs loaded by LM Studio's [llama.cpp](https://github.com/ggml-org/llama.cpp)-based engine.
+  description: Whether to optimize attention computation. Can decrease memory usage and improve inference speed. Will only have an effect on LLMs and decision models loaded by LM Studio's [llama.cpp](https://github.com/ggml-org/llama.cpp)-based engine.
 - name: num_experts
   type: number
   optional: true
-  description: Number of expert to use during inference for MoE (Mixture of Experts) models. Will only have an effect on MoE LLMs loaded by LM Studio's [llama.cpp](https://github.com/ggml-org/llama.cpp)-based engine.
+  description: Number of experts to use during inference for MoE (Mixture of Experts) models. Will only have an effect on MoE LLMs and decision models loaded by LM Studio's [llama.cpp](https://github.com/ggml-org/llama.cpp)-based engine.
 - name: offload_kv_cache_to_gpu
   type: boolean
   optional: true
-  description: Whether KV cache is offloaded to GPU memory. If false, KV cache is stored in CPU memory/RAM. Will only have an effect on LLMs loaded by LM Studio's [llama.cpp](https://github.com/ggml-org/llama.cpp)-based engine.
+  description: Whether KV cache is offloaded to GPU memory. If false, KV cache is stored in CPU memory/RAM. Will only have an effect on LLMs and decision models loaded by LM Studio's [llama.cpp](https://github.com/ggml-org/llama.cpp)-based engine.
 - name: echo_load_config
   type: boolean
   optional: true
@@ -61,7 +61,7 @@ curl http://localhost:1234/api/v1/models/load \
 **Response fields**
 ```lms_params
 - name: type
-  type: '"llm" | "embedding"'
+  type: '"llm" | "embedding" | "decision"'
   description: Type of the loaded model.
 - name: instance_id
   type: string
@@ -77,10 +77,10 @@ curl http://localhost:1234/api/v1/models/load \
   optional: true
   description: The final configuration applied to the loaded model. This may include settings that were not specified in the request. Included only when `"echo_load_config"` is `true` in the request.
   children:
-    - name: LLM load config
+    - name: LLM and decision model load config
       unstyledName: true
       type: object
-      description: Configuration parameters specific to LLM models. `load_config` will be this type when `"type"` is `"llm"`. Only parameters that applied to the load will be present.
+      description: Configuration parameters for LLM and decision models. `load_config` will be this type when `"type"` is `"llm"` or `"decision"`. Only parameters that applied to the load will be present.
       children:
         - name: context_length
           type: number

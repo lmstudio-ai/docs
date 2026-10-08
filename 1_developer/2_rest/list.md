@@ -1,6 +1,6 @@
 ---
 title: "List your models"
-description: "Get a list of available models on your system, including both LLMs and embedding models."
+description: "Get a list of available models on your system, including LLMs, embedding models, and decision models."
 full: true
 index: 6
 api_info:
@@ -25,10 +25,10 @@ curl http://localhost:1234/api/v1/models \
 ```lms_params
 - name: models
   type: array
-  description: List of available models (both LLMs and embedding models).
+  description: List of available models (LLMs, embedding models, and decision models).
   children:
     - name: type
-      type: '"llm" | "embedding"'
+      type: '"llm" | "embedding" | "decision"'
       description: Type of model.
     - name: publisher
       type: string
@@ -94,15 +94,15 @@ curl http://localhost:1234/api/v1/models \
               optional: true
               description: Whether KV cache is offloaded to GPU memory. Absent for embedding models.
     - name: max_context_length
-      type: number
-      description: Maximum context length supported by the model in number of tokens.
+      type: number | null
+      description: Maximum context length supported by the model in number of tokens. May be null for decision models when unavailable.
     - name: format
       type: '"gguf" | "mlx" | null'
       description: Model file format.
     - name: capabilities
       type: object
       optional: true
-      description: Model capabilities. Absent for embedding models.
+      description: Model capabilities. Absent for embedding and decision models.
       children:
         - name: vision
           type: boolean
@@ -121,10 +121,18 @@ curl http://localhost:1234/api/v1/models \
             - name: default
               type: '"off" | "on" | "low" | "medium" | "high"'
               description: Default public reasoning setting for the model.
+    - name: decision_type
+      type: string
+      optional: true
+      description: Decision model type. Only present for decision models when available.
+    - name: has_vision_adapter
+      type: boolean
+      optional: true
+      description: Whether the decision model has a vision adapter. Only present for decision models.
     - name: description
       type: string | null
       optional: true
-      description: Model description. Absent for embedding models.
+      description: Model description. Absent for embedding and decision models.
     - name: variants
       type: array
       optional: true
