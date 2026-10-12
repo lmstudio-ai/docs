@@ -8,6 +8,7 @@ api_info:
 
 - Method: `POST`
 - See OpenAI docs: [Decisions guide](https://developers.openai.com/api/docs/guides/decisions) and [API reference](https://developers.openai.com/api/reference/resources/decisions/methods/create)
+- Explore some supported models: https://huggingface.co/collections/ggml-org/decision-models
 
 Requires a [loaded decision model](/docs/developer/rest/load), not a regular chat model.
 
