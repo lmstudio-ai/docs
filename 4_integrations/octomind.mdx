@@ -1,0 +1,84 @@
+---
+title: Octomind
+description: Use Octomind with LM Studio
+index: 3
+---
+
+import { Step, Steps } from "fumadocs-ui/components/steps";
+
+[Octomind](https://github.com/muvon/octomind) is an open-source CLI coding agent. It can use LM Studio through the OpenAI-compatible `POST /v1/chat/completions` endpoint.
+See: [Chat Completions](/docs/developer/openai-compat/chat-completions).
+
+## Setup
+
+<Steps>
+  <Step>
+    <h3>Start LM Studio's local server</h3>
+
+    Load a model that supports [tool calling](/docs/developer/openai-compat/tools), then start the server from the Developer page or with `lms`:
+
+    ```bash
+    lms server start --port 1234
+    ```
+
+    Note the model identifier shown in LM Studio. Replace `your-model-id` below with that identifier.
+  </Step>
+
+  <Step>
+    <h3>Install and configure Octomind</h3>
+
+    Follow the [Octomind installation instructions](https://octomind.run/docs/usage/01-installation), then generate its configuration:
+
+    ```bash
+    octomind config
+    ```
+
+    The command prints the configuration file's location. In that file, update the `name` field in each of these existing tables, preserving their other settings:
+
+    ```toml
+    [model]
+    name = "local:your-model-id"
+
+    [supervisor.model]
+    name = "local:your-model-id"
+
+    [compression.model]
+    name = "local:your-model-id"
+    ```
+
+    Supervisor and compression use separate model profiles. Setting only the main model leaves those profiles on their previous provider.
+  </Step>
+
+  <Step>
+    <h3>Point Octomind to LM Studio</h3>
+
+    Set the full Chat Completions endpoint in the shell where you will run Octomind:
+
+    ```bash
+    export LOCAL_API_URL="http://localhost:1234/v1/chat/completions"
+    ```
+
+    If [Require Authentication](/docs/developer/core/authentication) is enabled, also set your LM Studio API token:
+
+    ```bash
+    export LOCAL_API_KEY="your-lm-studio-api-token"
+    ```
+
+    Use Octomind's `local:` provider for this endpoint. Its `openai:` provider uses the Responses API.
+  </Step>
+
+  <Step>
+    <h3>Start a coding session</h3>
+
+    From your project directory, run:
+
+    ```bash
+    octomind config --validate
+    octomind run developer:general --model local:your-model-id
+    ```
+
+    The explicit model option takes precedence over the specialist's model setting. The first run fetches the specialist's manifest and may install its tool dependencies, so it requires internet access. Using a local model does not make that initial setup offline.
+  </Step>
+</Steps>
+
+For Octomind's model profiles and endpoint settings, see its [provider guide](https://octomind.run/docs/usage/04-providers).
