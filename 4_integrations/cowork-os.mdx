@@ -1,0 +1,50 @@
+---
+title: CoWork OS
+description: Use CoWork OS with LM Studio
+index: 5
+---
+
+import { Step, Steps } from "fumadocs-ui/components/steps";
+
+CoWork OS is an open-source (MIT) desktop agent app for macOS and Windows where every action the agent takes is visible and approvable. It connects to LM Studio through its OpenAI-compatible provider, so tasks run on your local model with no API key.
+
+See: [CoWork OS on GitHub](https://github.com/CoWork-OS/CoWork-OS).
+
+## Setup
+
+<Steps>
+  <Step>
+    <h3>Start LM Studio's local server</h3>
+
+    Make sure LM Studio is running as a server (default port `1234`).
+
+    You can start it from the app, or from the terminal with `lms`:
+
+    ```bash
+    lms server start --port 1234
+    ```
+
+    <Callout type="success" title="Pro Tip">
+      Load the model with a longer context length, for example `lms load qwen/qwen3-4b-2507 -c 32768`. Agent apps like CoWork OS send long system prompts and tool definitions.
+    </Callout>
+  </Step>
+
+  <Step>
+    <h3>Add LM Studio as the model provider in CoWork OS</h3>
+
+    Install CoWork OS from its [releases page](https://github.com/CoWork-OS/CoWork-OS/releases), then open **Settings → AI & Models → More providers → OpenAI-Compatible** and set:
+
+    - **Base URL**: `http://127.0.0.1:1234/v1`
+    - **API Key**: leave empty (fill it in only if you enabled authentication on the LM Studio server)
+
+    Click **Fetch Models**, pick your model from the list, then click **Save Settings**.
+  </Step>
+
+  <Step>
+    <h3>Run a task</h3>
+
+    Start a new session. The composer's model picker shows your LM Studio model. Type a task, for example `Write a three-line haiku about local models into haiku.md`, and CoWork OS runs it on LM Studio.
+  </Step>
+</Steps>
+
+If you're running into trouble, hop onto our [Discord](https://discord.gg/lmstudio)
