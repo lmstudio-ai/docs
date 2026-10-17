@@ -17,3 +17,4 @@ We provide guides below for popular tools and are constantly expanding this list
 - [Codex](/docs/integrations/codex)
 - [Hermes Agent](/docs/integrations/hermes)
 - [OpenClaw](/docs/integrations/openclaw)
+- [CoWork OS](/docs/integrations/cowork-os)
