@@ -12,7 +12,7 @@ def main():
     lms.configure_default_client("<SPARK_LOCAL_IP>:1234")
 
     # Get model reference (uses already loaded model if available)
-    model = lms.llm("openai/gpt-oss-120b")
+    model = lms.llm("nvidia/nemotron-3.5-super-vl")
 
     # Hard-coded prompt
     prompt = "List three cool project ideas that I can run with a local LLM"

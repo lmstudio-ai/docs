@@ -12,7 +12,7 @@ echo "Response:"
 curl -s -N http://{SPARK_LOCAL_IP}:1234/api/v1/chat \
  -H "Content-Type: application/json" \
  -d "{
-   \"model\": \"openai/gpt-oss-120b\",
+   \"model\": \"nvidia/nemotron-3.5-super-vl\",
    \"input\": \"$PROMPT\",
    \"stream\": true
  }" | while IFS= read -r line; do
@@ -44,7 +44,7 @@ echo "Response:"
 curl -s -N http://{SPARK_LOCAL_IP}:1234/v1/chat/completions \
   -H "Content-Type: application/json" \
   -d "{
-    \"model\": \"openai/gpt-oss-120b\",
+    \"model\": \"nvidia/nemotron-3.5-super-vl\",
     \"messages\": [
       {
         \"role\": \"user\",
