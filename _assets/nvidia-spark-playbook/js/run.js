@@ -5,7 +5,7 @@ async function main() {
   const client = new LMStudioClient({ baseUrl: "ws://{SPARK_LOCAL_IP}:1234" });
 
   // Get model reference (uses already loaded model if available)
-  const model = await client.llm.model("openai/gpt-oss-120b");
+  const model = await client.llm.model("nvidia/nemotron-3.5-super-vl");
 
   const prompt = "List three cool project ideas that I can run with a local LLM";
 
