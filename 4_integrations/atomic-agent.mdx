@@ -1,0 +1,50 @@
+---
+title: Atomic Agent
+description: Use Atomic Agent with LM Studio
+index: 5
+---
+
+import { Step, Steps } from "fumadocs-ui/components/steps";
+
+[Atomic Agent](https://github.com/AtomicBot-ai/atomic-agent) is an open-source (MIT) local-first AI agent for the terminal. LM Studio is a built-in provider preset: no base URL to type and no API key, and the model list comes straight from LM Studio's `/v1/models`, so every model you have downloaded shows up without a restart.
+
+## Setup
+
+<Steps>
+  <Step>
+    <h3>Start LM Studio's local server</h3>
+
+    Make sure LM Studio is running as a server (default port `1234`) with a model downloaded.
+
+    You can start it from the app, or from the terminal with `lms`:
+
+    ```bash
+    lms server start --port 1234
+    ```
+  </Step>
+
+  <Step>
+    <h3>Install Atomic Agent</h3>
+
+    ```bash
+    curl -fsSL https://atomicagent.io/install | sh
+    ```
+  </Step>
+
+  <Step>
+    <h3>Pick LM Studio as the provider</h3>
+
+    ```bash
+    atomic-agent tui --cwd /path/to/work
+    ```
+
+    Open the LLM tab, add a provider and choose **LM Studio (local)**. A local server needs no key, so the wizard goes straight to the model list: pick the model you loaded in LM Studio.
+
+    <Callout type="success" title="Pro Tip">
+      Use a model with a long context window (64K or more). Agents read files and tool output into context and work better with room to spare.
+    </Callout>
+  </Step>
+
+</Steps>
+
+If you're running into trouble, hop onto our [Discord](https://discord.gg/lmstudio)
