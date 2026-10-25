@@ -15,7 +15,7 @@ which use `with` statements to ensure deterministic cleanup of network communica
 resources).
 
 The convenience API allows the standard Python REPL, or more flexible alternatives like
-Juypter Notebooks, to be used to interact with AI models loaded into LM Studio. For
+Jupyter Notebooks, to be used to interact with AI models loaded into LM Studio. For
 example:
 
 ```python title="Python REPL"
@@ -26,7 +26,6 @@ example:
 ...
   0 LLM(identifier='qwen2.5-7b-instruct')
 >>> model = loaded_models[0]
->>> chat = lms.Chat("You answer questions concisely")
 >>> chat = lms.Chat("You answer questions concisely")
 >>> chat.add_user_message("Tell me three fruits")
 UserMessage(content=[TextData(text='Tell me three fruits')])
