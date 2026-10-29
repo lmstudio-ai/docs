@@ -64,6 +64,29 @@ You will need to replace `<YOUR_HF_TOKEN>` with your actual Hugging Face token. 
 
 Use the [deeplink button](mcp/deeplink), or copy the JSON snippet above and paste it into your `mcp.json` file.
 
+### Example: Baizhi Cloud Browser
+
+[Baizhi Cloud Browser](https://baizhibrowser.cloud/) (also known as CapyBrowser) provides remote MCP tools for checking your account credentials and managing cloud browser sessions and profiles. You need a service account and API key. Browser runs are billed separately from your local model.
+
+```json
+{
+  "mcpServers": {
+    "baizhi-cloud-browser": {
+      "url": "https://capybrowser.app.baizhi.cloud/mcp",
+      "headers": {
+        "Authorization": "Bearer <YOUR_CAPY_API_KEY>"
+      }
+    }
+  }
+}
+```
+
+Merge this entry with your existing `mcpServers` entries. Replace `<YOUR_CAPY_API_KEY>` with your key; keep the `Bearer ` prefix and space. This is API-key authentication, not an OAuth browser login. Keep the edited configuration private.
+
+For an initial check, ask the model to call only `browser_auth_check`, report whether it succeeded without returning account details, and create no browser run. Review tool calls before approving them.
+
+These tools manage browser resources; navigating or clicking webpages also requires a separate compatible CDP client. Before creating a run, read the [service setup and lifecycle guide](https://capybrowser.app.baizhi.cloud/docs/installation.md). Stop runs you created and confirm `released` before removing this entry; disconnecting LM Studio does not stop them.
+
 ---
 
 ## Gotchas and Troubleshooting
